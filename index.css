@@ -70,7 +70,6 @@ header{
     justify-content: space-between;
     padding: 0rem 5rem;
     z-index: 1000;
-    overflow: visible;
 }
 
 .contenedor-menu{
