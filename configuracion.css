@@ -25,9 +25,12 @@
     /* border: 2px solid red; */
 }
 
+body{
+    overflow-x: hidden;
+}
+
 html{
     font-size: 62.5%;
     font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
