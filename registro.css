@@ -1,0 +1,130 @@
+.contenedor-registro{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-principal{
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color1);
+    border-radius: 1rem;
+    width: 90%;
+    box-shadow: 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.lado-izquierdo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    background-color: var(--color3);
+    padding: 3rem;
+    text-align: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.lado-izquierdo h1{
+    color: var(--color1);
+    font-size: 4rem;
+}
+
+.iconos-inicio{
+    display: flex;
+    gap: 2rem;
+}
+
+.lado-izquierdo p{
+    color: var(--color1);
+    font-size: var(--normal);
+}
+
+.lado-izquierdo a{
+    color: var(--color1);
+    border: 2px solid var(--color1);
+    padding: 1rem 3rem;
+    border-radius: 3rem;
+    font-weight: var(--text-grueso);
+}
+
+.lado-derecho{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+.lado-derecho h2{
+    color: var(--color3);
+    font-size: 3rem;
+}
+
+.lado-derecho p{
+    font-size: var(--normal);
+}
+
+.lado-derecho form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.datos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color2);
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
+.datos:hover{
+    border: 3px solid var(--color3);
+}
+
+.datos label{
+    display: flex;
+}
+
+.datos input{
+    height: 3rem;
+    border: none;
+    background-color: var(--color2);
+    color: var(--color1);
+}
+
+.datos input:focus{
+    outline: none;
+}
+
+.datos input::placeholder{
+    color: var(--color1);
+}
+
+
+.registro{
+    
+    max-width: 1280px;
+    height: 4rem;
+    border: none;
+    background-color: var(--color3);
+    color: var(--color1);
+    font-weight: var(--text-grueso);
+    font-size: 2rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+}
