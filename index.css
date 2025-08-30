@@ -56,7 +56,6 @@ body{
 
 .navbar{
     display:flex;
-    overflow-x: hidden;
 }
 
 header{
