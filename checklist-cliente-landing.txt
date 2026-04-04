@@ -1,0 +1,210 @@
+═══════════════════════════════════════════════════════════════════
+  FORMULARIO PARA CREAR LANDING PAGE DE SERVICIO TÉCNICO
+═══════════════════════════════════════════════════════════════════
+
+USO INTERNO: JC Electrónica - Modelo de checklist para nuevos clientes
+
+─────────────────────────────────────────────────────────────────
+1. DATOS DEL NEGOCIO
+─────────────────────────────────────────────────────────────────
+□ Nombre del negocio: _______________________________
+□ Nombre del técnico/responsable: ____________________
+□ Tagline o frase de cabecera: ______________________
+  (ej: "Servicio técnico profesional", "Reparamos todo")
+
+□ Teléfono/WhatsApp: _______________________________
+□ Email: __________________________________________
+□ Dirección: ______________________________________
+□ Horario de atención: ______________________________
+□ Años de experiencia: _______
+
+─────────────────────────────────────────────────────────────────
+2. REDES SOCIALES
+─────────────────────────────────────────────────────────────────
+□ Instagram: @ _______________
+□ TikTok: @ _______________
+□ Facebook: ________________
+□ Google Maps (link): ______________________________
+□ Otras redes: ____________________________________
+
+─────────────────────────────────────────────────────────────────
+3. SERVICIOS QUE OFRECE
+─────────────────────────────────────────────────────────────────
+Enumeralos de mayor a menor importancia:
+
+1. _________________________________________________
+   - Descripción breve: _____________________________
+   - ¿Tiene página propia? □ Sí □ No
+
+2. _________________________________________________
+   - Descripción breve: _____________________________
+   - ¿Tiene página propia? □ Sí □ No
+
+3. _________________________________________________
+   - Descripción breve: _____________________________
+   - ¿Tiene página propia? □ Sí □ No
+
+4. _________________________________________________
+   - Descripción breve: _____________________________
+   - ¿Tiene página propia? □ Sí □ No
+
+(Agregar más si es necesario)
+
+─────────────────────────────────────────────────────────────────
+4. DETALLE DE SERVICIOS (por cada uno)
+─────────────────────────────────────────────────────────────────
+
+PARA CADA SERVICIO, COMPLETAR:
+
+► Servicio: _______________________________________
+
+  SOFTWARE (si aplica):
+  □ Formateo e instalación SO: $________
+  □ Instalación de programas: $________
+  □ Recuperación de datos: desde $________
+  □ Eliminación de virus: $________
+  □ Otro: ________________________ $________
+
+  HARDWARE (si aplica):
+  □ Cambio de pantalla: desde $________
+  □ Cambio de teclado: desde $________
+  □ Cambio de batería: desde $________
+  □ Cambio de disco/SSD: desde $________
+  □ Upgrade de RAM: desde $________
+  □ Otro: ________________________ $________
+
+  PLACA/MOTHERBOARD (si aplica):
+  □ Reparación de placa: desde $________
+  □ Cambio de jack de carga: $________
+  □ Puerto USB: $________
+  □ Otro: ________________________ $________
+
+  MANTENIMIENTO (si aplica):
+  □ Limpieza interna: $________
+  □ Cambio de pasta térmica: $________
+  □ Service de refrigeración: $________
+  □ Otro: ________________________ $________
+
+  TIEMPO DE REPARACIÓN: ___________________________
+  GARANTÍA: ______________________________________
+
+─────────────────────────────────────────────────────────────────
+5. PROCESO DE TRABAJO (operatoria)
+─────────────────────────────────────────────────────────────────
+¿Cómo es el proceso de atención? (ejemplo)
+
+1. _________________________________________________
+2. _________________________________________________
+3. _________________________________________________
+4. _________________________________________________
+5. _________________________________________________
+
+¿Hay turno previo obligatorio? □ Sí □ No
+
+¿Se puede enviar equipo por moto/correo? □ Sí □ No
+Medios de envío disponibles: _______________________
+
+─────────────────────────────────────────────────────────────────
+6. SOCIAL PROOF (prueba social)
+─────────────────────────────────────────────────────────────────
+□ Cantidad de clientes atendidos: _______________
+□ Reseñas en Google: □ Sí (link: _____________) □ No
+□ Calificación promedio: ___.__ / 5
+
+□ Testimonios de clientes:
+  - Testimonio 1: _________________________________
+    Autor: _______________________________________
+  - Testimonio 2: _________________________________
+    Autor: _______________________________________
+  - Testimonio 3: _________________________________
+    Autor: _______________________________________
+
+□ Algún caso de éxito notable? _____________________
+__________________________________________________
+
+─────────────────────────────────────────────────────────────────
+7. POLÍTICAS IMPORTANTES
+─────────────────────────────────────────────────────────────────
+□ Costo de diagnóstico/revisión si no se repara: $________
+□ Forma de pago: □ Efectivo □ Transferencia □ MercadoPago □ Otro
+□ ¿Incluye IVA? □ Sí □ No
+□ Garantía general: _________________________________
+
+OTRAS CONDICIONES:
+__________________________________________________
+__________________________________________________
+__________________________________________________
+
+─────────────────────────────────────────────────────────────────
+8. IMÁGENES Y LOGOS
+─────────────────────────────────────────────────────────────────
+□ Logo del negocio: □ Tengo □ Falta
+□ Fotos del local/laboratorio: □ Tengo □ Falta
+□ Fotos de equipos reparados: □ Tengo □ Falta
+□ Imágenes de stock (hero, etc): □ Tengo □ Falta
+□ Iconos de servicios: □ Tengo □ Falta
+
+NOTAS sobre imágenes: _____________________________
+__________________________________________________
+
+─────────────────────────────────────────────────────────────────
+9. ELEMENTOS EXTRA (¿qué quiere incluir?)
+─────────────────────────────────────────────────────────────────
+□ Sección de preguntas frecuentes (FAQ): □ Sí □ No
+□ Blog/Artículos: □ Sí □ No
+□ Galería de trabajos: □ Sí □ No
+□ Estadísticas (equipos reparados, etc): □ Sí □ No
+□ Mapa embebido de Google: □ Sí □ No
+□ Botón de WhatsApp flotante: □ Sí □ No (obligatorio SIEMPRE)
+□ Formulario de contacto: □ Sí □ No
+□ Newsletter: □ Sí □ No
+
+OTRO: ___________________________________________
+
+─────────────────────────────────────────────────────────────────
+10. COLORES Y ESTILO
+─────────────────────────────────────────────────────────────────
+□ Colores de marca (hex): ___________________________
+□ Colores que NO quiere: ___________________________
+□ Estilo preferido: □ Moderno □ Clásico □ Minimalista □ another
+□ Referencias de otras páginas que le gusten: __________
+__________________________________________________
+
+─────────────────────────────────────────────────────────────────
+11. DOMINIO Y HOSTING
+─────────────────────────────────────────────────────────────────
+□ ¿Ya tiene dominio? □ Sí □ No
+  Dominio: ________________________________________
+□ ¿Ya tiene hosting? □ Sí □ No
+  Proveedor: _____________________________________
+□ ¿Necesita ayuda con esto? □ Sí □ No
+
+─────────────────────────────────────────────────────────────────
+NOTAS ADICIONALES
+─────────────────────────────────────────────────────────────────
+__________________________________________________
+__________________________________________________
+__________________________________________________
+__________________________________________________
+__________________________________________________
+
+═══════════════════════════════════════════════════════════════════
+  RESUMEN PARA EL CLIENTE
+═══════════════════════════════════════════════════════════════════
+
+Esta información me permite crear una landing page profesional
+que incluya:
+
+✓ Estructura optimizada para convertir visitantes en clientes
+✓ Botón de WhatsApp siempre visible
+✓ Lista de servicios con precios
+✓ Proceso de trabajo claro
+✓ Prueba social (reseñas, testimonios)
+✓ Información de contacto completa
+✓ Diseño responsive (móvil, tablet, PC)
+
+TIEMPO ESTIMADO DE ENTREGA: 3-5 días hábiles
+REQUISITOS MÍNIMOS: Datos del negocio + al menos 1 servicio
+con precios + imágenes del negocio
+
+═══════════════════════════════════════════════════════════════════

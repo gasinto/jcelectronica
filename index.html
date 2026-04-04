@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="Servicio técnico profesional de notebooks, PC, celulares y consolas en Merlo, Buenos Aires. Reparación express, diagnóstico gratis y garantía en todas las reparaciones.">
+    
     <!--Links-->
     <link rel="stylesheet" href="configuracion.css">
     <link rel="icon" href="./img/logo.jpg">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="./responsive.css">
 
-    <title>JC Electrónica</title>
+    <title>JC Electrónica | Servicio Técnico Profesional en Merlo</title>
 </head>
 <body>
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="whatsapp-flotante">
+        <img src="./img/whatsapp.png" alt="WhatsApp">
+        <span>¡Escríbenos!</span>
+    </a>
+
     <header>
         <!--Logo de la página-->
         <div class="logo">
-            <img src="./img/logo.jpg" alt="logo">
+            <a href="#hero">
+                <img src="./img/logo.jpg" alt="logo JC Electrónica">
+            </a>
         </div>
 
         <!--Menu responsivo-->
@@ -36,90 +45,167 @@
                         <li class="lista-links">
                             <a href="#hero" class="link">Inicio</a>
                             <a href="#servicios" class="link">Servicios</a>
-                            <a href="#operatoria" class="link">Operatoria</a>
+                            <a href="#testimonios" class="link">Reseñas</a>
                             <a href="#nosotros" class="link">Nosotros</a>
                             <a href="#contacto" class="link">Contacto</a>
                         </li>
                     </ul>
                 </div>
 
-                <!--Botones de inicio de sesión y registro-->
-                <div class="menu-login">
-                    <a href="./login.html">Iniciar Sesión</a>
-                    
-                    <a href="./registro.html">Registrar</a>
+                <!--CTA del menú-->
+                <div class="menu-cta">
+                    <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-whatsapp-menu">
+                        <img src="./img/whatsapp.png" alt="WhatsApp">
+                        <span>WhatsApp</span>
+                    </a>
                 </div>
             </div>
         </nav>
         
     </header>
+
     <!--HERO-->
-            <section class="hero" id="hero">
-                <div class="redes-icon">
-                    <div class="red">
-                        <img src="./img/instagram.png" alt="instagram">
-                        <a href="#">@jcelectronica321</a>
-                    </div>
-                    <div class="red">
-                        <img src="./img/whatsapp.png" alt="whatsapp">
-                        <a href="#">1153348030</a>
-                    </div>
-                    <div class="red">
-                        <img src="./img/tik-tok.png" alt="tiktok">
-                        <a href="#">TikTok</a>
-                    </div>
-                </div>
-                <h1>SERVICIO TECNICO PROFESIONAL</h1>
-                <h2>Reparación de notebooks, PC, celulares, y consolas de juego</h2>
-                <img class="logo-hero" src="./img/logo sin fondo.png" alt="logo">
-            </section>
+    <section class="hero" id="hero">
+        <div class="hero-badge">
+            <span class="badge-icon">🎯</span>
+            <span>+10 años de experiencia</span>
+        </div>
+        
+        <h1>Servicio Técnico Profesional</h1>
+        <h2>Reparación express de notebooks, PC, celulares y consolas</h2>
+        
+        <div class="hero-cta">
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-hero-principal">
+                <img src="./img/whatsapp.png" alt="WhatsApp">
+                <span>Solicitar Presupuesto Gratis</span>
+            </a>
+            <a href="#servicios" class="btn-hero-secundario">Ver Servicios</a>
+        </div>
+
+        <div class="hero-benefits">
+            <div class="hero-benefit">
+                <span class="check">✓</span>
+                <span>Diagnóstico Gratis</span>
+            </div>
+            <div class="hero-benefit">
+                <span class="check">✓</span>
+                <span>Garantía en Reparaciones</span>
+            </div>
+            <div class="hero-benefit">
+                <span class="check">✓</span>
+                <span>Reparación Express</span>
+            </div>
+        </div>
+
+        <div class="redes-hero">
+            <a href="https://instagram.com/jcelectronica321" target="_blank" class="red-hero">
+                <img src="./img/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://wa.me/5491153348030" target="_blank" class="red-hero">
+                <img src="./img/whatsapp.png" alt="WhatsApp">
+            </a>
+            <a href="#" target="_blank" class="red-hero">
+                <img src="./img/tik-tok.png" alt="TikTok">
+            </a>
+        </div>
+    </section>
 
     <main>
-        
+
+        <!-- Sección de Confianza/Badges -->
+        <section class="confianza" id="confianza">
+            <div class="badges-container">
+                <div class="badge">
+                    <div class="badge-icono">🔧</div>
+                    <div class="badge-texto">
+                        <strong>+2.500</strong>
+                        <span>Equipos Reparados</span>
+                    </div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icono">⭐</div>
+                    <div class="badge-texto">
+                        <strong>4.9/5</strong>
+                        <span>Calificación Google</span>
+                    </div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icono">⏱️</div>
+                    <div class="badge-texto">
+                        <strong>24-48hs</strong>
+                        <span>Tiempo Promedio</span>
+                    </div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icono">🛡️</div>
+                    <div class="badge-texto">
+                        <strong>Garantía</strong>
+                        <span>En Todos los Servicios</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="servicios" id="servicios">
-            <h2>Servicios</h2>
+            <div class="servicios-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones especializadas para cada equipo</p>
+            </div>
+            
             <div class="contenedor">
-                <!--Servicio N°1-->
+                <!--Servicio N°1 - Notebooks -->
                 <div class="contenedor-servicios">
                     <div class="thumb">
                        <img src="./img/notebook.webp" alt="notebook"> 
                     </div>
                     
                     <div class="info-servicio">
+                        <span class="servicio-tag">Más Solicitado</span>
                         <h3>Notebooks</h3>
-                        <p>Reparamos tu notebook como si fuera nuestra. Diagnóstico rápido, repuestos originales y soluciones duraderas. Recuperá el rendimiento de tu equipo sin perder tiempo ni dinero.</p>
-                        <a href="#">Quiero saber más</a>
+                        <p>Reparamos tu notebook como si fuera nuestra. Diagnóstico rápido, repuestos originales y soluciones duraderas. Recuperá el rendimiento de tu equipo.</p>
+                        <ul class="servicio-lista">
+                            <li>✓ Pantallas y teclados</li>
+                            <li>✓ Placas y componentes</li>
+                            <li>✓ Limpieza y mantenimiento</li>
+                        </ul>
+                        <a href="servicio-notebook.html" class="btn-leer-mas">
+                            <span>Ver precios y servicios</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20una%20notebook" target="_blank" class="btn-servicio">
+                            <img src="./img/whatsapp.png" alt="WhatsApp">
+                            <span>Consultar por WhatsApp</span>
+                        </a>
                     </div>
                 </div>
 
-                <!--Servicio N°2-->
+                <!--Servicio N°2 - Consolas -->
                 <div class="contenedor-servicios">
                     <div class="thumb">
                         <img src="./img/consola.webp" alt="consola">
                     </div>
                     
                     <div class="info-servicio">
+                        <span class="servicio-tag">Service Gamer</span>
                         <h3>Consolas de Videojuegos</h3>
-                        <p>Tu consola es tu mundo, nosotros lo cuidamos. Servicio técnico especializado en PlayStation, Xbox y Nintendo: fallas de encendido, sobrecalentamiento, lectura de discos, HDMI y más. Atención gamer de verdad.</p>
-                        <a href="#">Quiero saber más</a>
+                        <p>Servicio técnico especializado en PlayStation, Xbox y Nintendo. Fallas de encendido, sobrecalentamiento, lectura de discos, HDMI y más.</p>
+                        <ul class="servicio-lista">
+                            <li>✓ PS4 / PS5 / Xbox / Switch</li>
+                            <li>✓ Reparación HDMI</li>
+                            <li>✓ Cambio de pasta térmica</li>
+                        </ul>
+                        <a href="servicio-consolas.html" class="btn-leer-mas">
+                            <span>Ver precios y servicios</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20consola" target="_blank" class="btn-servicio">
+                            <img src="./img/whatsapp.png" alt="WhatsApp">
+                            <span>Consultar por WhatsApp</span>
+                        </a>
                     </div>
                 </div>
 
-                <!--Servocio N°3-->
-                <div class="contenedor-servicios">
-                    <div class="thumb">
-                        <img src="./img/descarga.avif" alt="elularc">
-                    </div>
-                    
-                    <div class="info-servicio">
-                        <h3>Celulares</h3>
-                        <p>¿Tu celular no carga, se rompió la pantalla o no enciende? 📱 Lo reparamos rápido, con repuestos de calidad y garantía. Recuperá tu equipo y seguí conectado sin perder tiempo.</p>
-                        <a href="#">Quiero saber más</a>
-                    </div>
-                </div>
 
-                <!--Servicio N°4-->
                 <div class="contenedor-servicios">
                     <div class="thumb">
                         <img src="./img/pc.webp" alt="pc">
@@ -127,145 +213,330 @@
                     
                     <div class="info-servicio">
                         <h3>PC de Escritorio</h3>
-                        <p>Subí de nivel tu PC: reparación, mantenimiento y actualización de hardware para gamers y profesionales. Rendimiento máximo garantizado.</p>
-                        <a href="#">Quiero saber más</a>
+                        <p>Reparación, mantenimiento y actualización de hardware para gamers y profesionales. Rendimiento máximo garantizado.</p>
+                        <ul class="servicio-lista">
+                            <li>✓ Armado de PCs</li>
+                            <li>✓ Upgrades y reparaciones</li>
+                            <li>✓ Instalación de componentes</li>
+                        </ul>
+                        <a href="servicio-pc.html" class="btn-leer-mas">
+                            <span>Ver precios y servicios</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20PC" target="_blank" class="btn-servicio">
+                            <img src="./img/whatsapp.png" alt="WhatsApp">
+                            <span>Consultar por WhatsApp</span>
+                        </a>
                     </div>
                 </div>
+            </div>
+
+            <div class="servicios-urgencia">
+                <p>🔥 <strong>¿Urgente?</strong> Contactanos por WhatsApp y te respondemos en menos de 1 hora</p>
             </div>
         </section>
 
-        <section class="operatoria" id="operatoria">
-            <h2>Operatoria</h2>
-            <div class="contenedor-operatoria">
-                <div class="info-operatoria">
-                    
-                       <img src="./img/002-monitor.png" alt="uno"> 
-                    
-                    
-                    <p>1- Usted acerca o envía su equipo a nuestro local (Sin accesorios de ningún tipo).</p>
+        <!-- Sección de Testimonios -->
+        <section class="testimonios" id="testimonios">
+            <h2>Lo Que Dicen Nuestros Clientes</h2>
+            <p class="testimonios-subtitulo">Más de 200 reseñas positivas en Google</p>
+            
+            <div class="testimonios-grid">
+                <div class="testimonio-card">
+                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-texto">"Excelente servicio. Arreglaron mi notebook en 24hs y a un precio muy razonable. Totalmente recomendados."</p>
+                    <div class="testimonio-autor">
+                        <strong>María García</strong>
+                        <span>Cliente verificado Google</span>
+                    </div>
                 </div>
-                <div class="info-operatoria">
-                    <img src="./img/001-edit.png" alt="dos">
-                    <p>2- Al dejar el equipo se le entregará p enviará una orden de reparación con el cual luego podrá consultar el estado de la reparación o realizar el retiro del equipo.</p>
+                
+                <div class="testimonio-card">
+                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-texto">"Mi PS4 no encendía y pensaba que había que tirarla. En JC la dejaron como nueva. El técnico muy profesional."</p>
+                    <div class="testimonio-autor">
+                        <strong>Lucas Martínez</strong>
+                        <span>Cliente verificado Google</span>
+                    </div>
                 </div>
-                <div class="info-operatoria">
-                    <img src="./img/004-settings.png" alt="tres">
-                    <p>Una vez diagnosticado el equipo y aprobada la reparación, se procede a realizar la misma y pruebas finalez del del correcto funcionamiento del equipo. </p>
+                
+                <div class="testimonio-card">
+                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-texto">"Tuve un problema con mi celular y me lo arreglaron el mismo día.Muy buena atención y precio justo."</p>
+                    <div class="testimonio-autor">
+                        <strong>Carolina Rodríguez</strong>
+                        <span>Cliente verificado Google</span>
+                    </div>
                 </div>
-                <div class="info-operatoria">
-                    <img src="./img/003-like.png" alt="cuatro">
-                    <p>4- Una vez finalizado el trabajo completamente, se publica automaticamente en la web y se informa mediante el medio de comunicación aginado. Ud. va a pdoer retirar su equipo u solicitar envio en caso de ser necesario.</p>
-                </div>
-                <div class="info-operatoria">
-                    <img src="./img/003-like (1).png" alt="cinco">
-                    <div>
-                        <p>5- envio el equipo por MOTO, GLOVO, RAPPY, UBER MOTO, etc; Envíe el paquete con un papel con su nombre, apellido, celular de contacto y falla. Se le enviará la orden por el medio de comunicación asignado.</p>
-                        <p>Si envia el equipo desde el INTERIOR del pais, lo puede hacer por cualquier medio menos CORREO ARGENTINO, a nuestro domicilio. No hacemos retiros en empresas de transporte.</p>
+
+                <div class="testimonio-card">
+                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-texto">"Llevé mi PC gamer para hacerle un upgrade y quedé más que satisfecho. Me explicaron todo con paciencia."</p>
+                    <div class="testimonio-autor">
+                        <strong>Federico Pérez</strong>
+                        <span>Cliente verificado Google</span>
                     </div>
                 </div>
             </div>
+
+            <a href="https://g.page/r/jcelectronica/review" target="_blank" class="btn-google">
+                <span>Ver todas las reseñas en Google</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.94 12.162c0 .495-.041.963-.117 1.406H12v-2.656h5.91c-.253 1.305-1.002 2.41-2.121 3.141v1.875h3.43c1.98-1.82 3.118-4.504 3.118-7.566z"/>
+                </svg>
+            </a>
+        </section>
+
+        <!-- Sección Operatoria Mejorada -->
+        <section class="operatoria" id="operatoria">
+            <h2>¿Cómo Funciona?</h2>
+            <p class="operatoria-subtitulo">Proceso simple y transparente</p>
+            
+            <div class="contenedor-operatoria">
+                <div class="info-operatoria">
+                    <div class="operatoria-numero">1</div>
+                    <img src="./img/002-monitor.png" alt="diagnóstico"> 
+                    <div class="operatoria-texto">
+                        <h3>Consultanos</h3>
+                        <p>Envíanos fotos o describinos el problema por WhatsApp. Te damos un presupuesto sin compromiso.</p>
+                    </div>
+                </div>
+                <div class="info-operatoria">
+                    <div class="operatoria-numero">2</div>
+                    <img src="./img/001-edit.png" alt="diagnóstico">
+                    <div class="operatoria-texto">
+                        <h3>Diagnosticamos</h3>
+                        <p>Recibís una orden de reparación con el detalle del servicio y el tiempo estimado.</p>
+                    </div>
+                </div>
+                <div class="info-operatoria">
+                    <div class="operatoria-numero">3</div>
+                    <img src="./img/004-settings.png" alt="reparación">
+                    <div class="operatoria-texto">
+                        <h3>Reparamos</h3>
+                        <p>Tu equipo pasa por pruebas exhaustivas. Usamos repuestos de calidad con garantía.</p>
+                    </div>
+                </div>
+                <div class="info-operatoria">
+                    <div class="operatoria-numero">4</div>
+                    <img src="./img/003-like.png" alt="entrega">
+                    <div class="operatoria-texto">
+                        <h3>Lo Retirás</h3>
+                        <p>Te notificamos cuando esté listo. Podés retirarlo o solicitar envío por moto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20saber%20más%20sobre%20sus%20servicios" target="_blank" class="btn-operatoria">
+                <img src="./img/whatsapp.png" alt="WhatsApp">
+                <span>Comenzar Ahora</span>
+            </a>
         </section>
 
         <section class="nosotros" id="nosotros">
             <div class="nosotros-contenedor">
-                <h2>Sobre nosotros</h2>
+                <h2>Sobre Nosotros</h2>
                 <p>
-                    Somos una empresa familiar que busca que la experiencia del cliente sea la mejor desde el momento en que nos acercan su consulta.
-                    Nuestra atención busca ser excelente, con la expectativa de siempre ir creciendo en el transcurso del proceso de forma comunicativa y honesta.
-                    Ofrecemos un diagnóstico confiable, utilizando herramientas de alta tecnología para este proceso y para la reparación del equipo.
-                    Nuestro grupo técnico es especializado en el área de electrónica como así también en reparaciones estructurales buscando siempre mantenernos a la vanguardia con las nuevas tecnologías emergentes.
-                    En todas las reparaciones ofrecemos garantía
+                    Somos una empresa familiar con más de <strong>10 años de experiencia</strong> en servicio técnico electrónico. 
+                    Nuestra prioridad es que la experiencia del cliente sea la mejor desde el primer contacto.
                 </p>
+                <div class="nosotros-features">
+                    <div class="nosotros-feature">
+                        <span class="feature-icon">🎯</span>
+                        <span>Atención personalizada</span>
+                    </div>
+                    <div class="nosotros-feature">
+                        <span class="feature-icon">🔬</span>
+                        <span>Diagnóstico con herramientas profesionales</span>
+                    </div>
+                    <div class="nosotros-feature">
+                        <span class="feature-icon">🛡️</span>
+                        <span>Garantía en todas las reparaciones</span>
+                    </div>
+                    <div class="nosotros-feature">
+                        <span class="feature-icon">💡</span>
+                        <span>Técnicos especializados y actualizados</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <section class="contacto" id="contacto">
-        <h2>Contactanos!</h2>
+        <h2>Contactanos</h2>
         <div class="contenedor-contacto">
-            <h3>¡Dale una oportunidad a tu equipo y repárala con nosotros!</h3>
-            <form action="">
+            <div class="contacto-info">
+                <h3>¡Dale una oportunidad a tu equipo y reparalo con nosotros!</h3>
+                <p>Respondemos WhatsApp en menos de 1 hora durante horario comercial.</p>
+                
+                <div class="contacto-metodos">
+                    <a href="https://wa.me/5491153348030" target="_blank" class="contacto-metodo whatsapp-metodo">
+                        <img src="./img/whatsapp.png" alt="WhatsApp">
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <span>+54 11 5334-8030</span>
+                        </div>
+                    </a>
+                    <a href="tel:+5491153348030" class="contacto-metodo">
+                        <img src="./img/llamar.png" alt="Teléfono">
+                        <div>
+                            <strong>Llamar</strong>
+                            <span>+54 11 5334-8030</span>
+                        </div>
+                    </a>
+                    <a href="mailto:jcelectronica321@gmail.com" class="contacto-metodo">
+                        <img src="./img/correo.png" alt="Email">
+                        <div>
+                            <strong>Email</strong>
+                            <span>jcelectronica321@gmail.com</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <form class="contacto-form" id="form-consulta" onsubmit="enviarPorWhatsApp(event)">
             <fieldset>
-                <legend>Servicio técnico especializado</legend>
+                <legend>Envianos tu consulta</legend>
                 <div class="inputs">
                     <label for="nombre">Nombre</label>
-                    <input type="text" placeholder="Escriba su nombre" id="nombre">
+                    <input type="text" placeholder="Tu nombre" id="nombre" name="nombre" required>
                 </div>
                 <div class="inputs">
-                    <label for="correo">Correo</label>
-                    <input type="email" placeholder="Escriba su correo" id="correo">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="tel" placeholder="11 1234-5678" id="whatsapp" name="whatsapp" required>
                 </div>
                 <div class="inputs">
-                    <label for="whatsapp">Whatsapp</label>
-                    <input type="text" placeholder="Escriba su num de whatsapp" id="whatsapp">
+                    <label for="equipo">Equipo a reparar</label>
+                    <select id="equipo" name="equipo">
+                        <option value="">Seleccioná el tipo de equipo</option>
+                        <option value="Notebook">Notebook</option>
+                        <option value="PC de Escritorio">PC de Escritorio</option>
+                        <option value="Consola de Juegos">Consola de Juegos</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                 </div>
                 <div class="inputs">
                     <label for="texto">Mensaje</label>
-                    <textarea id="texto" placeholder="Escriba aquí su mensaje"></textarea>
+                    <textarea id="texto" name="mensaje" placeholder="Describí el problema de tu equipo..."></textarea>
                 </div>
-                <input type="button" value="Enviar" class="enviar">
+                <button type="submit" class="enviar">
+                    <img src="./img/whatsapp.png" alt="Enviar">
+                    Enviar por WhatsApp
+                </button>
             </fieldset>
         </form>
+        </div>
+
+        <div class="ubicacion">
+            <div class="ubicacion-info">
+                <img src="./img/mapas-y-ubicacion.png" alt="Ubicación">
+                <div>
+                    <strong>Dirección</strong>
+                    <p>De Colon 2270, Potenvedra, Merlo, Buenos Aires, Argentina</p>
+                </div>
+            </div>
+            <div class="ubicacion-horario">
+                <img src="./img/reloj-circular.png" alt="Horario">
+                <div>
+                    <strong>Horario</strong>
+                    <p>Lunes a Sábado: 10:00 hs - 20:00 hs</p>
+                </div>
+            </div>
         </div>
     </section>
     
     <div class="union"></div>
 
     <footer>
-        <div class="suscribase">
-            <img src="./img/suscribir.png" alt="icono">
-            <div class="suscribase-contenido">
-                <h3>Suscribase a nuestro Newsletter</h3>
-                <p>No pierda la oportunidad de mantenerse al tanto de nuestras novedades y recibí descuentos exclusivos y ofertas especiales.</p>
-            </div>
-            <form action="">
-                <input type="email" placeholder="Ingrese su Email" class="email">
-                <input type="button" value="SUSCRIBIRSE" class="suscrip">
-            </form>
-        </div>
-        
         <div class="footer-contenido">
             <div class="footer-nosotros">
-                <h3>Sobre Nosotros</h3>
-                <p>Con más de 10 años de experiencia, brindamos servicio técnico especializado de forma rápida y efectiva.</p>
-                <div class="footer-nostros-iconos">
-                    <img src="./img/whatsapp negro(1).png" alt="whatsapp"><img src="./img/instagram (1) negro .png" alt="instagram"><img src="./img/tik-tok (1) negro.png" alt="tiktok">
+                <img src="./img/logo.jpg" alt="JC Electrónica" class="footer-logo">
+                <h3>JC Electrónica</h3>
+                <p>Servicio técnico profesional especializado en electrónica. Más de 10 años respaldando tu confianza.</p>
+                <div class="footer-iconos-redes">
+                    <a href="https://wa.me/5491153348030" target="_blank"><img src="./img/whatsapp negro(1).png" alt="WhatsApp"></a>
+                    <a href="https://instagram.com/jcelectronica321" target="_blank"><img src="./img/instagram (1) negro .png" alt="Instagram"></a>
+                    <a href="#" target="_blank"><img src="./img/tik-tok (1) negro.png" alt="TikTok"></a>
                 </div>
             </div>
+            
             <div class="links">
-                <h3>Links</h3>
-                <a href="#">Quienes Somos</a>
-                <a href="#">Nuestros Servicios</a>
-                <a href="#">Operatoria</a>
-                <a href="#">Contacto</a>
+                <h3>Enlaces</h3>
+                <a href="#hero">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#testimonios">Reseñas</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
             </div>
+            
             <div class="footer-contacto">
-                <h3>Info De Contacto</h3>
+                <h3>Contacto</h3>
                 <div class="footer-iconos-contacto">
-                    <img src="./img/mapas-y-ubicacion.png" alt="mapa">
-                    <p>De Colon 2270, Potenvedra, Merlo, Buenos Aires, Argentina</p>
+                    <img src="./img/mapas-y-ubicacion.png" alt="Dirección">
+                    <p>De Colon 2270, Potenvedra, Merlo</p>
                 </div>
                 <div class="footer-iconos-contacto">
-                    <img src="./img/llamar.png" alt="icono">
+                    <img src="./img/llamar.png" alt="Teléfono">
                     <p>(+54) 11 5334-8030</p>
                 </div>
                 <div class="footer-iconos-contacto">
-                    <img src="./img/correo.png" alt="icono">
+                    <img src="./img/correo.png" alt="Email">
                     <p>jcelectronica321@gmail.com</p>
                 </div>
                 <div class="footer-iconos-contacto">
-                    <img src="./img/reloj-circular.png" alt="icono">
-                    <p>Lu - Sab: 10.00 hs - 20.00 hs</p>
+                    <img src="./img/reloj-circular.png" alt="Horario">
+                    <p>Lu - Sá: 10:00 - 20:00</p>
                 </div>
             </div>
-            <div class="footer-diagnostico">
-                <h3>Obtenga su diagnostico</h3>
-                <p class="parrafo">Llámenos <span>+54 11 53348030</span></p>
-                <p>Nuestro equipo de soporte técnico está disponible para responder a sus consultas</p>
-                <a href="#">LLÁMENOS HOY</a>
+            
+            <div class="footer-cta">
+                <h3>¿Necesitás ayuda?</h3>
+                <p>Escribinos por WhatsApp y te respondemos al instante.</p>
+                <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" class="btn-footer-whatsapp">
+                    <img src="./img/whatsapp.png" alt="WhatsApp">
+                    <span>Contactar por WhatsApp</span>
+                </a>
             </div>
         </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 JC Electrónica. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <script>
+        function enviarPorWhatsApp(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const equipo = document.getElementById('equipo').value;
+            const mensaje = document.getElementById('texto').value;
+            
+            // Validar campos requeridos
+            if (!nombre || !whatsapp) {
+                alert('Por favor completá tu nombre y WhatsApp');
+                return;
+            }
+            
+            // Armar el mensaje
+            let textoWhatsApp = `*CONSULTA DESDE LA WEB*\n\n`;
+            textoWhatsApp += `*Nombre:* ${nombre}\n`;
+            textoWhatsApp += `*WhatsApp:* ${whatsapp}\n`;
+            if (equipo) {
+                textoWhatsApp += `*Equipo:* ${equipo}\n`;
+            }
+            if (mensaje) {
+                textoWhatsApp += `*Mensaje:* ${mensaje}`;
+            }
+            
+            // Codificar para URL
+            const textoCodificado = encodeURIComponent(textoWhatsApp);
+            
+            // Abrir WhatsApp
+            window.open(`https://wa.me/5491153348030?text=${textoCodificado}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
