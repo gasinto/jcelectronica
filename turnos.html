@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reservá tu turno en JC Electrónica — Servicio técnico de notebooks, PC, celulares y consolas en Merlo. Diagnóstico gratis.">
+  <meta name="keywords" content="turnos, servicio técnico, reparación, Merlo, notebooks, PC, consolas">
+  <meta name="author" content="JC Electrónica">
+
+  <meta property="og:title" content="Reservá tu Turno | JC Electrónica">
+  <meta property="og:description" content="Reservá tu turno para servicio técnico en Merlo. Rápido, fácil y sin compromiso.">
+  <meta property="og:image" content="./img/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="stylesheet" href="configuracion.css">
+  <link rel="icon" href="./img/logo.jpg">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./responsive.css">
+
+  <title>Reservá tu Turno | JC Electrónica — Merlo</title>
+
+  <style>
+    /* ============================================
+       TURNOS PAGE — estilos específicos
+    ============================================ */
+    :root {
+      --turnos-radius: 16px;
+      --turnos-radius-sm: 8px;
+      --turnos-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========== PAGE WRAPPER ========== */
+    .turnos-page {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 8rem;
+    }
+
+    /* ========== HERO ========== */
+    .turnos-hero {
+      background: linear-gradient(135deg, var(--color4) 0%, var(--color2) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 2rem 3rem;
+      border-radius: 2rem;
+    }
+    .turnos-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(255, 128, 0, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(255, 128, 0, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .turnos-hero-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .turnos-hero-icon {
+      font-size: 3rem; margin-bottom: 1rem;
+      display: inline-block;
+      animation: turnosFloat 3s ease-in-out infinite;
+    }
+    @keyframes turnosFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .turnos-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .turnos-hero h1 span { color: var(--color3); }
+    .turnos-hero p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.6);
+      max-width: 480px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ========== FORM SECTION ========== */
+    .turnos-section {
+      background: #fff;
+      border-radius: var(--turnos-radius);
+      border: 1px solid #e2e8f0;
+      padding: 2.5rem;
+      margin: 0 2rem 3rem;
+    }
+    .turnos-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color2);
+      margin-bottom: 0.5rem;
+    }
+    .turnos-section p {
+      color: var(--color4);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ========== FORM GRID ========== */
+    .turnos-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .turnos-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .turnos-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .turnos-field.full {
+      grid-column: 1 / -1;
+    }
+    .turnos-field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color2);
+    }
+    .turnos-field label .required {
+      color: #ef4444;
+    }
+    .turnos-field input,
+    .turnos-field select,
+    .turnos-field textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--turnos-radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--color2);
+      outline: none;
+      transition: border-color var(--turnos-transition);
+      background: #fff;
+    }
+    .turnos-field input:focus,
+    .turnos-field select:focus,
+    .turnos-field textarea:focus {
+      border-color: var(--color3);
+      box-shadow: 0 0 0 3px rgba(255,128,0,0.1);
+    }
+    .turnos-field input::placeholder,
+    .turnos-field textarea::placeholder {
+      color: #94a3b8;
+    }
+    .turnos-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .turnos-field .field-hint {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* ========== DATE INFO ========== */
+    .turnos-date-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-radius: var(--turnos-radius-sm);
+      font-size: 0.85rem;
+      color: var(--color4);
+    }
+    .turnos-date-info svg {
+      flex-shrink: 0;
+    }
+
+    /* ========== SLOTS GRID ========== */
+    .turnos-slots-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color2);
+      margin-bottom: 0.25rem;
+    }
+    .turnos-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .turnos-slot {
+      padding: 0.65rem 0.5rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--turnos-radius-sm);
+      background: #fff;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color2);
+      transition: all var(--turnos-transition);
+      font-family: inherit;
+    }
+    .turnos-slot:hover:not(.disabled):not(.selected) {
+      border-color: var(--color3);
+      background: #fff8f0;
+    }
+    .turnos-slot.selected {
+      border-color: var(--color3);
+      background: var(--color3);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255,128,0,0.25);
+    }
+    .turnos-slot.disabled {
+      background: #f1f5f9;
+      color: #94a3b8;
+      cursor: not-allowed;
+      border-color: transparent;
+    }
+    .turnos-slot.unavailable {
+      background: #fef2f2;
+      color: #ef4444;
+      cursor: not-allowed;
+      border-color: #fecaca;
+      text-decoration: line-through;
+    }
+    .turnos-slots-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--color4);
+      font-size: 0.9rem;
+      background: #f8fafc;
+      border-radius: var(--turnos-radius-sm);
+    }
+
+    /* ========== SUBMIT ========== */
+    .turnos-submit {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: var(--turnos-radius-sm);
+      background: linear-gradient(135deg, var(--color3) 0%, #e67300 100%);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--turnos-transition);
+      font-family: inherit;
+      box-shadow: 0 4px 16px rgba(255,128,0,0.25);
+      width: 100%;
+    }
+    .turnos-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(255,128,0,0.35);
+    }
+    .turnos-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .turnos-submit.loading {
+      background: linear-gradient(135deg, #94a3b8, #64748b);
+      pointer-events: none;
+    }
+
+    /* ========== SUCCESS STATE ========== */
+    .turnos-success {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+    }
+    .turnos-success.show {
+      display: block;
+      animation: fadeInUp 0.5s ease both;
+    }
+    .turnos-success .success-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .turnos-success h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #22c55e;
+      margin-bottom: 0.75rem;
+    }
+    .turnos-success p {
+      color: var(--color4);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .turnos-success .success-detail {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--turnos-radius-sm);
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #166534;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .turnos-success .btn-nuevo-turno {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: var(--turnos-radius-sm);
+      background: var(--color3);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--turnos-transition);
+    }
+    .turnos-success .btn-nuevo-turno:hover {
+      background: #e67300;
+    }
+
+    /* ========== ERROR ========== */
+    .turnos-error {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--turnos-radius-sm);
+      padding: 0.85rem 1rem;
+      color: #dc2626;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .turnos-error.show {
+      display: block;
+    }
+
+    /* ========== LOADING SPINNER ========== */
+    .turnos-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      color: var(--color4);
+      font-size: 0.9rem;
+    }
+    .turnos-loading .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #e2e8f0;
+      border-top-color: var(--color3);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ========== CÓMO FUNCIONA ========== */
+    .turnos-how {
+      margin: 0 2rem 3rem;
+    }
+    .turnos-how-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color2);
+      margin-bottom: 2.5rem;
+    }
+    .turnos-how-title span {
+      color: var(--color3);
+    }
+    .turnos-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .turnos-steps::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 16px;
+      bottom: 16px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--color3), #e2e8f0);
+      border-radius: 2px;
+    }
+    .turnos-step {
+      display: flex;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .turnos-step:last-child {
+      padding-bottom: 0;
+    }
+    .turnos-step-number {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color3) 0%, #e67300 100%);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(255,128,0,0.25);
+    }
+    .turnos-step-body {
+      flex: 1;
+      padding-top: 0.5rem;
+    }
+    .turnos-step-icon {
+      font-size: 1.1rem;
+      margin-right: 0.25rem;
+    }
+    .turnos-step-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color2);
+      margin-bottom: 0.35rem;
+    }
+    .turnos-step-body p {
+      font-size: 0.85rem;
+      color: var(--color4);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .turnos-page { padding-top: 6rem; }
+      .turnos-hero { margin: 0 1rem 2rem; padding: 3rem 1rem; }
+      .turnos-section { margin: 0 1rem 2rem; padding: 1.5rem; }
+      .turnos-how { margin: 0 1rem 2rem; }
+      .turnos-how-title { margin-bottom: 1.5rem; }
+      .turnos-step { padding-bottom: 1.5rem; }
+      .turnos-row { grid-template-columns: 1fr; }
+      .turnos-slots-grid { grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); }
+      .turnos-slot { padding: 0.5rem 0.25rem; font-size: 0.8rem; }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       BANNER FILE://
+  ========================================== -->
+  <div id="fileProtocolBanner" style="display:none;background:#ef4444;color:#fff;text-align:center;padding:12px 20px;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;line-height:1.5;position:fixed;top:0;left:0;right:0;z-index:9999;">
+    ⚠️ <strong>Modo archivo local</strong> — algunas funciones no funcionan con <code>file://</code>.
+    Hacé doble clic en <strong>servir.bat</strong> o ejecutá <code style="background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:4px;">node server.js</code>
+    y abrí <strong>http://localhost:3000/turnos.html</strong>
+  </div>
+
+  <!-- ==========================================
+       WHATSAPP FLOTANTE
+  ========================================== -->
+  <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20reservar%20un%20turno%20para%20reparar%20mi%20equipo" target="_blank" class="whatsapp-flotante" style="text-decoration:none;z-index:999;">
+    <img src="./img/whatsapp.png" alt="WhatsApp" style="width:24px !important;height:24px !important;vertical-align:middle;">
+    <span style="font-size:0.85rem;">📅 Turnos</span>
+  </a>
+
+  <!-- ==========================================
+       HEADER / NAV
+  ========================================== -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="./img/logo.jpg" alt="JC Electrónica">
+      </a>
+    </div>
+
+    <nav class="navbar">
+      <input type="checkbox" id="menu-responsive">
+      <label for="menu-responsive" class="label-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="contenedor-menu">
+        <div class="menu">
+          <ul class="menu-lista">
+            <li class="lista-links">
+              <a href="index.html" class="link">Inicio</a>
+              <a href="catalogo.html" class="link">Catálogo</a>
+              <a href="servicios.html" class="link">Servicios</a>
+              <a href="turnos.html" class="link active">Turnos</a>
+              <a href="index.html#testimonios" class="link">Reseñas</a>
+              <a href="index.html#contacto" class="link">Contacto</a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-cta">
+          <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20reservar%20un%20turno%20para%20reparar%20mi%20equipo" target="_blank" class="btn-whatsapp-menu">
+            <img src="./img/whatsapp.png" alt="WhatsApp">
+            <span>WhatsApp</span>
+          </a>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       CONTENIDO PRINCIPAL
+  ========================================== -->
+  <div class="turnos-page">
+
+    <!-- HERO -->
+    <section class="turnos-hero">
+      <div class="turnos-hero-content">
+        <div class="turnos-hero-icon">📅</div>
+        <h1>Reservá tu <span>turno</span></h1>
+        <p>
+          Elegí el día y horario que más te convenga. 
+          Te confirmamos por WhatsApp — la respuesta puede demorar hasta 24 horas hábiles.
+        </p>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="turnos-how">
+      <h2 class="turnos-how-title">Cómo <span>funciona</span></h2>
+      <div class="turnos-steps">
+        <div class="turnos-step">
+          <div class="turnos-step-number">1</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">📝</span> Completá tus datos y elegí turno</h3>
+            <p>Nombre, WhatsApp, la dirección y toda la info de tu equipo. Contanos bien qué falla tiene, elegí el día y horario que mejor te quede y reservalo al instante.</p>
+          </div>
+        </div>
+        <div class="turnos-step">
+          <div class="turnos-step-number">2</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">💬</span> Confirmación y pago del diagnóstico</h3>
+            <p>El admin revisa tu turno y te llega un WhatsApp con la confirmación y el link de pago del diagnóstico por Mercado Pago.</p>
+          </div>
+        </div>
+        <div class="turnos-step">
+          <div class="turnos-step-number">3</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">💳</span> Pagás y compartís el comprobante</h3>
+            <p>El diagnóstico se paga por adelantado. Es rápido y sin compromiso. Una vez hecho, reenviás el comprobante por WhatsApp al técnico para que quede registrado.</p>
+          </div>
+        </div>
+        <div class="turnos-step">
+          <div class="turnos-step-number">4</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">🏪</span> Traés tu equipo al taller</h3>
+            <p>Te presentás en el taller el día y hora acordados con tu equipo para dejarlo en revisión. No hace falta que esperes, lo recibimos y arrancamos.</p>
+          </div>
+        </div>
+        <div class="turnos-step">
+          <div class="turnos-step-number">5</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">🔬</span> Revisamos y te pasamos el presupuesto</h3>
+            <p>apenas recibimos tu equipo arrancamos con la revisión. El plazo puede variar según la demanda del taller, pero ni bien tengamos el diagnóstico te pasamos el presupuesto por WhatsApp con el detalle de los trabajos necesarios.</p>
+          </div>
+        </div>
+        <div class="turnos-step">
+          <div class="turnos-step-number">6</div>
+          <div class="turnos-step-body">
+            <h3><span class="turnos-step-icon">✅</span> Aprobás la reparación</h3>
+            <p>Si aceptás el presupuesto, el valor del diagnóstico se descuenta del total de la reparación. Si no, solo abonaste el diagnóstico y te llevás el equipo sin cargo extra.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="turnos-section" id="turnosFormSection">
+      <h2>Completá tus datos</h2>
+      <p>Contanos sobre vos y tu equipo, y elegí el horario que mejor te quede.</p>
+
+      <div class="turnos-error" id="turnosError"></div>
+
+      <form class="turnos-form" id="turnosForm" onsubmit="return reservarTurno(event)" novalidate>
+
+        <!-- NOMBRE + DNI -->
+        <div class="turnos-row">
+          <div class="turnos-field">
+            <label for="turnoNombre">Nombre y Apellido <span class="required">*</span></label>
+            <input type="text" id="turnoNombre" placeholder="Ej: Juan Pérez" required>
+          </div>
+          <div class="turnos-field">
+            <label for="turnoDni">DNI <span class="required">*</span></label>
+            <input type="text" id="turnoDni" placeholder="12.345.678" required>
+          </div>
+        </div>
+
+        <!-- WHATSAPP + CP -->
+        <div class="turnos-row">
+          <div class="turnos-field">
+            <label for="turnoWhatsapp">WhatsApp <span class="required">*</span></label>
+            <input type="tel" id="turnoWhatsapp" placeholder="11 1234-5678" required>
+            <span class="field-hint">Te confirmamos el turno acá</span>
+          </div>
+          <div class="turnos-field">
+            <label for="turnoCp">Código Postal</label>
+            <input type="text" id="turnoCp" placeholder="Ej: 1718">
+          </div>
+        </div>
+
+        <!-- CIUDAD + DOMICILIO -->
+        <div class="turnos-row">
+          <div class="turnos-field">
+            <label for="turnoCiudad">Ciudad <span class="required">*</span></label>
+            <input type="text" id="turnoCiudad" placeholder="Ej: Merlo" required>
+          </div>
+          <div class="turnos-field">
+            <label for="turnoDomicilio">Domicilio <span class="required">*</span></label>
+            <input type="text" id="turnoDomicilio" placeholder="Calle y número" required>
+          </div>
+        </div>
+
+        <!-- CANTIDAD EQUIPOS + TIPO EQUIPO -->
+        <div class="turnos-row">
+          <div class="turnos-field">
+            <label for="turnoCantidad">Cantidad de equipos <span class="required">*</span></label>
+            <input type="number" id="turnoCantidad" min="1" max="10" value="1" required>
+          </div>
+          <div class="turnos-field">
+            <label for="turnoEquipo">Tipo de equipo <span class="required">*</span></label>
+            <select id="turnoEquipo" required>
+              <option value="">Seleccioná</option>
+              <option value="notebooks">💻 Notebook</option>
+              <option value="consolas">🎮 Consola</option>
+              <option value="pc">🖥️ PC de Escritorio</option>
+              <option value="celulares">📱 Celular</option>
+              <option value="tv">📺 TV / Monitor</option>
+              <option value="parlantes">🔊 Parlante / Audio</option>
+              <option value="electronica">🔧 Reparación Electrónica</option>
+              <option value="otro">❓ Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- TIPO REPARACIÓN -->
+        <div class="turnos-field full">
+          <label for="turnoReparacion">Tipo de reparación <span class="required">*</span></label>
+          <select id="turnoReparacion" required>
+            <option value="">Seleccioná el tipo de reparación</option>
+            <option value="diagnostico">🔬 Diagnóstico</option>
+            <option value="hardware">🔧 Reparación de Hardware</option>
+            <option value="software">💻 Software y Sistemas</option>
+            <option value="mantenimiento">🧹 Mantenimiento</option>
+            <option value="upgrade">⬆️ Upgrade / Mejora</option>
+            <option value="otro">❓ Otro</option>
+          </select>
+        </div>
+
+        <!-- FALLA -->
+        <div class="turnos-field full">
+          <label for="turnoFalla">¿Qué falla tiene el equipo? <span class="required">*</span></label>
+          <textarea id="turnoFalla" placeholder="Ej: No enciende, se escucha un ruido extraño, la pantalla se ve borrosa..." rows="3" required></textarea>
+        </div>
+
+        <!-- FECHA -->
+        <div class="turnos-row">
+          <div class="turnos-field">
+            <label for="turnoFecha">Fecha del turno <span class="required">*</span></label>
+            <input type="date" id="turnoFecha" required onchange="onFechaChange()">
+            <div class="turnos-date-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span id="turnosDateInfo">Seleccioná una fecha para ver los horarios disponibles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HORARIOS -->
+        <div class="turnos-field full">
+          <div class="turnos-slots-label">Horarios disponibles</div>
+          <div id="turnosSlotsContainer">
+            <div class="turnos-loading" id="turnosSlotsLoading" style="display:none;">
+              <div class="spinner"></div>
+              <span>Consultando disponibilidad...</span>
+            </div>
+            <div class="turnos-slots-grid" id="turnosSlotsGrid">
+              <div class="turnos-slots-empty">Seleccioná una fecha para ver los horarios libres</div>
+            </div>
+          </div>
+          <input type="hidden" id="turnoHora" value="">
+        </div>
+
+        <!-- TÉRMINOS -->
+        <div class="turnos-field full">
+          <label style="flex-direction:row;align-items:flex-start;gap:0.5rem;cursor:pointer;font-weight:400;font-size:0.85rem;color:var(--color4);">
+            <input type="checkbox" id="turnoTerminos" required style="width:18px;height:18px;margin-top:2px;cursor:pointer;flex-shrink:0;">
+            <span>Leí y acepto los <a href="servicios.html#condiciones" target="_blank" style="color:var(--color3);font-weight:600;">términos y condiciones</a> del servicio <span class="required">*</span></span>
+          </label>
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="turnos-submit" id="turnosSubmitBtn">
+          📅 Reservar turno
+        </button>
+      </form>
+    </section>
+
+    <!-- SUCCESS -->
+    <section class="turnos-section" id="turnosSuccessSection">
+      <div class="turnos-success" id="turnosSuccess">
+        <div class="success-icon">✅</div>
+        <h2>¡Turno registrado!</h2>
+        <p>Te confirmamos el turno por WhatsApp en hasta <strong>24 horas hábiles</strong>. Si no ves el mensaje, revisá que el número sea correcto.</p>
+        <div class="success-detail" id="turnosSuccessDetail"></div>
+        <a href="turnos.html" class="btn-nuevo-turno">📅 Reservar otro turno</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <div class="union"></div>
+
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-nosotros">
+        <img src="./img/logo.jpg" alt="JC Electrónica" class="footer-logo">
+        <h3>JC Electrónica</h3>
+        <p>Servicio técnico profesional especializado en electrónica. Más de 10 años respaldando tu confianza.</p>
+        <div class="footer-iconos-redes">
+          <a href="https://wa.me/5491153348030" target="_blank"><img src="./img/whatsapp%20negro(1).png" alt="WhatsApp"></a>
+          <a href="https://instagram.com/jcelectronica321" target="_blank"><img src="./img/instagram%20(1)%20negro%20.png" alt="Instagram"></a>
+          <a href="#" target="_blank"><img src="./img/tik-tok%20(1)%20negro.png" alt="TikTok"></a>
+        </div>
+      </div>
+      <div class="links">
+        <h3>Enlaces</h3>
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="turnos.html">Turnos</a>
+        <a href="index.html#testimonios">Reseñas</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+      <div class="footer-contacto">
+        <h3>Contacto</h3>
+        <div class="footer-iconos-contacto">
+          <img src="./img/mapas-y-ubicacion.png" alt="Dirección">
+          <p>De Colon 2270, Pontevedra, Merlo</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/llamar.png" alt="Teléfono">
+          <p>(+54) 11 5334-8030</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/correo.png" alt="Email">
+          <p>jcelectronica321@gmail.com</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/reloj-circular.png" alt="Horario">
+          <p>Lu - Sá: 10:00 - 20:00</p>
+        </div>
+      </div>
+      <div class="footer-cta">
+        <h3>¿Necesitás ayuda?</h3>
+        <p>Escribinos por WhatsApp o reservá un turno directamente.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" class="btn-footer-whatsapp">
+          <img src="./img/whatsapp.png" alt="WhatsApp">
+          <span>Contactar por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 JC Electrónica. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script src="config.js"></script>
+  <script>
+    /* =============================================
+       FILE:// DETECTION
+    ============================================= */
+    if (window.location.protocol === 'file:') {
+      document.getElementById('fileProtocolBanner').style.display = 'block';
+    }
+
+    let horarios = null;
+    let turnosExistentes = [];
+    let selectedSlot = null;
+
+    /* =============================================
+       HORARIOS
+    ============================================= */
+    async function fetchHorarios() {
+      try {
+        const resp = await fetch(API_URL + '?action=getHorarios');
+        const json = await resp.json();
+        // Validar que la respuesta tenga la ESTRUCTURA esperada
+        // (el API desplegado podría no tener el handler 'getHorarios'
+        //  y devolver productos, servicios, etc.)
+        if (json.success && json.data && json.data.horario_inicio) {
+          horarios = json.data;
+          return true;
+        }
+      } catch (e) {}
+      // Fallback: valores por defecto
+      horarios = {
+        horario_inicio: '09:00',
+        horario_fin: '20:00',
+        intervalo: 30,
+        pausa_1_inicio: '12:30',
+        pausa_1_fin: '13:30',
+        pausa_2_inicio: '16:30',
+        pausa_2_fin: '18:00',
+        dias_laborales: '1,2,3,4,5,6'
+      };
+      return false;
+    }
+
+    async function fetchTurnos(fecha) {
+      try {
+        const resp = await fetch(API_URL + '?sheet=turnos');
+        const json = await resp.json();
+        if (json.success && json.data) {
+          turnosExistentes = json.data.filter(t => t.fecha === fecha && t.estado !== 'cancelado');
+          return true;
+        }
+      } catch (e) {}
+      turnosExistentes = [];
+      return false;
+    }
+
+    /* =============================================
+       TIME HELPERS
+    ============================================= */
+    function parseTime(str) {
+      const [h, m] = str.split(':').map(Number);
+      return h * 60 + m;
+    }
+
+    function formatTime(minutes) {
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    function generateAllSlots(inicio, fin, intervalo) {
+      const slots = [];
+      let current = parseTime(inicio);
+      const end = parseTime(fin);
+      while (current < end) {
+        slots.push(formatTime(current));
+        current += intervalo;
+      }
+      return slots;
+    }
+
+    function isSlotInPause(slotStr, pausaInicio, pausaFin) {
+      if (!pausaInicio || !pausaFin) return false;
+      const slot = parseTime(slotStr);
+      const pStart = parseTime(pausaInicio);
+      const pEnd = parseTime(pausaFin);
+      return slot >= pStart && slot < pEnd;
+    }
+
+    function isSlotBooked(slotStr, turnos) {
+      return turnos.some(t => t.hora === slotStr && t.estado !== 'cancelado');
+    }
+
+    function isDiaLaboral(fecha) {
+      const date = new Date(fecha + 'T12:00:00');
+      const day = date.getDay(); // 0=domingo, 6=sabado
+      if (!horarios) return day !== 0; // default: no domingos
+      const laborales = (horarios.dias_laborales || '1,2,3,4,5,6').split(',').map(Number);
+      // En JS getDay(): 0=domingo, 6=sábado
+      // En nuestra config: 1=lunes, 7=domingo
+      const configDay = day === 0 ? 7 : day;
+      return laborales.includes(configDay);
+    }
+
+    /* =============================================
+       DATE PICKER: set min = today
+    ============================================= */
+    function setMinDate() {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      const d = String(today.getDate()).padStart(2, '0');
+      document.getElementById('turnoFecha').setAttribute('min', y + '-' + m + '-' + d);
+    }
+
+    /* =============================================
+       ON FECHA CHANGE
+    ============================================= */
+    async function onFechaChange() {
+      const fecha = document.getElementById('turnoFecha').value;
+      const info = document.getElementById('turnosDateInfo');
+      const grid = document.getElementById('turnosSlotsGrid');
+      const loading = document.getElementById('turnosSlotsLoading');
+      const hourInput = document.getElementById('turnoHora');
+
+      // Reset
+      selectedSlot = null;
+      hourInput.value = '';
+
+      if (!fecha) {
+        grid.innerHTML = '<div class="turnos-slots-empty">Seleccioná una fecha para ver los horarios libres</div>';
+        info.textContent = 'Seleccioná una fecha para ver los horarios disponibles';
+        return;
+      }
+
+      // Validar día laboral
+      if (!isDiaLaboral(fecha)) {
+        grid.innerHTML = '<div class="turnos-slots-empty">❌ Los domingos no recibimos turnos. Elegí otro día.</div>';
+        info.textContent = '❌ Domingo no disponible';
+        return;
+      }
+
+      try {
+        // Cargar horarios si no están
+        if (!horarios) {
+          loading.style.display = 'flex';
+          grid.innerHTML = '';
+          await fetchHorarios();
+          loading.style.display = 'none';
+        }
+
+        // Fetch existing turnos for this date
+        info.textContent = '⏳ Consultando disponibilidad...';
+        loading.style.display = 'flex';
+        grid.innerHTML = '';
+        await fetchTurnos(fecha);
+        loading.style.display = 'none';
+
+        // Asegurar que horarios tiene la estructura esperada
+        const h = horarios || {};
+        const allSlots = generateAllSlots(
+          h.horario_inicio || '09:00',
+          h.horario_fin || '20:00',
+          h.intervalo || 30
+        );
+
+        const pauses = [
+          { inicio: h.pausa_1_inicio, fin: h.pausa_1_fin },
+          { inicio: h.pausa_2_inicio, fin: h.pausa_2_fin }
+        ];
+
+        let html = '';
+        let availableCount = 0;
+
+        allSlots.forEach(slot => {
+          const inPause = pauses.some(p => isSlotInPause(slot, p.inicio, p.fin));
+          const booked = isSlotBooked(slot, turnosExistentes);
+
+          if (inPause) {
+            html += `<button type="button" class="turnos-slot disabled" disabled>${slot}</button>`;
+          } else if (booked) {
+            html += `<button type="button" class="turnos-slot unavailable" disabled>${slot}</button>`;
+          } else {
+            availableCount++;
+            html += `<button type="button" class="turnos-slot available" data-slot="${slot}" onclick="selectSlot(this)">${slot}</button>`;
+          }
+        });
+
+        if (availableCount === 0) {
+          html = '<div class="turnos-slots-empty">😕 No hay horarios disponibles para esta fecha. Probá con otra.</div>';
+          info.textContent = 'Sin horarios disponibles';
+        } else {
+          info.textContent = `✅ Mostrando ${availableCount} horario${availableCount !== 1 ? 's' : ''} disponible${availableCount !== 1 ? 's' : ''}`;
+        }
+
+        grid.innerHTML = html;
+
+      } catch (err) {
+        console.error('Error al cargar horarios:', err);
+        loading.style.display = 'none';
+        grid.innerHTML = '<div class="turnos-slots-empty">⚠️ Ocurrió un error al cargar los horarios. Recargá la página o intentá de nuevo.</div>';
+        info.textContent = 'Error al cargar horarios';
+      }
+    }
+
+    /* =============================================
+       SELECT SLOT
+    ============================================= */
+    function selectSlot(btn) {
+      // Deseleccionar anterior
+      document.querySelectorAll('.turnos-slot.selected').forEach(el => {
+        el.classList.remove('selected');
+      });
+
+      btn.classList.add('selected');
+      selectedSlot = btn.dataset.slot;
+      document.getElementById('turnoHora').value = selectedSlot;
+    }
+
+    /* =============================================
+       RESERVAR TURNO
+    ============================================= */
+    async function reservarTurno(e) {
+      e.preventDefault();
+
+      const errorEl = document.getElementById('turnosError');
+      errorEl.classList.remove('show');
+
+      // Obtener valores
+      const nombre = document.getElementById('turnoNombre').value.trim();
+      const dni = document.getElementById('turnoDni').value.trim();
+      const whatsapp = document.getElementById('turnoWhatsapp').value.trim();
+      const cp = document.getElementById('turnoCp').value.trim();
+      const ciudad = document.getElementById('turnoCiudad').value.trim();
+      const domicilio = document.getElementById('turnoDomicilio').value.trim();
+      const cantidad = document.getElementById('turnoCantidad').value;
+      const equipo = document.getElementById('turnoEquipo').value;
+      const reparacion = document.getElementById('turnoReparacion').value;
+      const falla = document.getElementById('turnoFalla').value.trim();
+      const fecha = document.getElementById('turnoFecha').value;
+      const hora = document.getElementById('turnoHora').value;
+      const terminos = document.getElementById('turnoTerminos').checked;
+
+      // Validaciones
+      if (!nombre) { showError('Ingresá tu nombre y apellido.'); return false; }
+      if (!dni) { showError('Ingresá tu DNI.'); return false; }
+      if (!whatsapp) { showError('Ingresá tu WhatsApp.'); return false; }
+      if (!ciudad) { showError('Ingresá tu ciudad.'); return false; }
+      if (!domicilio) { showError('Ingresá tu domicilio.'); return false; }
+      if (!equipo) { showError('Seleccioná el tipo de equipo.'); return false; }
+      if (!reparacion) { showError('Seleccioná el tipo de reparación.'); return false; }
+      if (!falla) { showError('Describí qué falla tiene el equipo.'); return false; }
+      if (!fecha) { showError('Seleccioná una fecha.'); return false; }
+      if (!hora) { showError('Seleccioná un horario disponible.'); return false; }
+      if (!isDiaLaboral(fecha)) { showError('Los domingos no recibimos turnos. Elegí otro día.'); return false; }
+      if (!terminos) { showError('Tenés que aceptar los términos y condiciones.'); return false; }
+
+      // Preparar datos
+      const turnoData = {
+        nombre,
+        dni,
+        whatsapp: whatsapp.replace(/\s/g, ''),
+        codigo_postal: cp || '',
+        ciudad,
+        domicilio,
+        cantidad_equipos: Number(cantidad) || 1,
+        equipo,
+        tipo_reparacion: reparacion,
+        falla,
+        fecha,
+        hora
+      };
+
+      // Enviar
+      const btn = document.getElementById('turnosSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Reservando...';
+      btn.classList.add('loading');
+
+      try {
+        const resp = await fetch(API_URL + '?action=saveTurno&data=' + encodeURIComponent(JSON.stringify(turnoData)));
+        const json = await resp.json();
+
+        if (json.success) {
+          // Mostrar éxito
+          document.getElementById('turnosFormSection').style.display = 'none';
+          document.getElementById('turnosSuccessSection').style.display = 'block';
+          document.getElementById('turnosSuccess').classList.add('show');
+
+          const detail = document.getElementById('turnosSuccessDetail');
+          const dateObj = new Date(fecha + 'T12:00:00');
+          const dateStr = dateObj.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+          const equipoLabels = {
+            notebooks: 'Notebook', consolas: 'Consola', pc: 'PC',
+            celulares: 'Celular', tv: 'TV / Monitor', parlantes: 'Parlante',
+            electronica: 'Rep. Electrónica', otro: 'Otro'
+          };
+          const eqLabel = equipoLabels[equipo] || equipo;
+
+          // Armar mensaje para notificar al técnico
+          const notifMsg = encodeURIComponent(
+            `📅 *NUEVO TURNO* 📅\n\n` +
+            `👤 ${nombre}\n` +
+            `📱 ${whatsapp.replace(/\s/g,'')}\n` +
+            `🔧 ${eqLabel} — ${reparacion}\n` +
+            `📅 ${dateStr} — ⏰ ${hora}\n` +
+            `📍 ${domicilio}, ${ciudad}\n\n` +
+            `💬 Pendiente de confirmación`
+          );
+          const waAdminUrl = `https://wa.me/5491153348030?text=${notifMsg}`;
+
+          detail.innerHTML = `
+            <strong>${nombre}</strong>, tu turno fue registrado con éxito:<br><br>
+            📅 ${dateStr} — ⏰ ${hora}<br>
+            📍 ${domicilio}, ${ciudad}<br>
+            📱 Te confirmamos al <strong>${whatsapp}</strong> por WhatsApp<br>
+            🔧 ${eqLabel} — ${reparacion}<br><br>
+            <small style="color:#94a3b8;">La confirmación puede demorar hasta 24 horas hábiles.</small>
+          `;
+
+          // Intentar abrir WhatsApp del técnico para notificar
+          setTimeout(() => {
+            window.open(waAdminUrl, '_blank');
+          }, 500);
+        } else {
+          showError(json.error || 'Error al reservar el turno. Intentá de nuevo o escribinos por WhatsApp.');
+          btn.disabled = false;
+          btn.textContent = '📅 Reservar turno';
+          btn.classList.remove('loading');
+        }
+      } catch (err) {
+        showError('Error de conexión. Intentá de nuevo o escribinos por WhatsApp.');
+        btn.disabled = false;
+        btn.textContent = '📅 Reservar turno';
+        btn.classList.remove('loading');
+      }
+
+      return false;
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('turnosError');
+      el.textContent = msg;
+      el.classList.add('show');
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* =============================================
+       INIT
+    ============================================= */
+    setMinDate();
+    // No precargamos horarios acá; se cargan lazy
+    // cuando el usuario elige una fecha en onFechaChange()
+
+    console.log('✅ Página de turnos lista');
+  </script>
+
+</body>
+</html>

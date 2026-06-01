@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JC Electrónica — Gestión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-hover: #263348;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+      --accent: #06b6d4;
+      --accent-glow: rgba(6,182,212,0.15);
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --border: rgba(255,255,255,0.08);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --max-width: 1400px;
+      --transition: 0.2s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- LOGIN --- */
+    .login-screen {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 2rem;
+      background: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+    }
+    .login-card {
+      background: var(--bg-card); border-radius: var(--radius);
+      padding: 2.5rem; width: 100%; max-width: 380px;
+      border: 1px solid var(--border); text-align: center;
+    }
+    .login-card h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .login-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .login-card input {
+      width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+      background: var(--bg); border: 1.5px solid var(--border);
+      color: var(--text); font-size: 1rem; text-align: center;
+      outline: none; transition: border var(--transition);
+    }
+    .login-card input:focus { border-color: var(--accent); }
+    .login-card .error { color: var(--red); font-size: 0.8rem; margin-top: 0.5rem; display: none; }
+    .login-card button {
+      width: 100%; padding: 12px; margin-top: 1rem;
+      border-radius: var(--radius-sm); border: none;
+      background: linear-gradient(135deg, var(--accent), #3b82f6);
+      color: #fff; font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: opacity var(--transition);
+    }
+    .login-card button:hover { opacity: 0.9; }
+
+    .app { display: none; }
+
+    /* --- HEADER --- */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+      background: rgba(15,23,42,0.9); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100; gap: 1rem; flex-wrap: wrap;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .header-left h1 { font-size: 1.15rem; font-weight: 700; }
+    .header-left h1 span { color: var(--accent); }
+    .header-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .header-right .badge {
+      font-size: 0.78rem; color: var(--text-muted);
+      background: var(--bg-card); padding: 4px 12px;
+      border-radius: 50px; border: 1px solid var(--border);
+    }
+    .header-right button {
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: var(--bg-card);
+      color: var(--text-muted); font-size: 0.8rem; cursor: pointer;
+      transition: all var(--transition);
+    }
+    .header-right button:hover { background: var(--bg-hover); color: var(--text); }
+
+    /* --- TABS --- */
+    .tabs {
+      max-width: var(--max-width); margin: 1.5rem auto 0;
+      padding: 0 2rem; display: flex; gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-btn {
+      padding: 12px 24px; background: none; border: none;
+      color: var(--text-muted); font-size: 0.9rem; font-weight: 500;
+      cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all var(--transition); font-family: inherit;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--accent); border-bottom-color: var(--accent);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* --- STATS --- */
+    .stats {
+      max-width: var(--max-width); margin: 1rem auto 0;
+      padding: 0 2rem; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+    .stat-card {
+      background: var(--bg-card); border-radius: var(--radius);
+      padding: 1rem 1.25rem; border: 1px solid var(--border);
+    }
+    .stat-card .stat-label { font-size: 0.7rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.3px; }
+    .stat-card .stat-value { font-size: 1.5rem; font-weight: 800; margin-top: 2px; }
+    .stat-card .stat-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .stat-card.accent .stat-value { color: var(--accent); }
+    .stat-card.green .stat-value { color: var(--green); }
+    .stat-card.yellow .stat-value { color: var(--yellow); }
+    .stat-card.red .stat-value { color: var(--red); }
+
+    /* --- TOOLBAR --- */
+    .toolbar {
+      max-width: var(--max-width); margin: 1rem auto 0;
+      padding: 0 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .toolbar input, .toolbar select {
+      padding: 10px 14px; border-radius: var(--radius-sm);
+      background: var(--bg-card); border: 1.5px solid var(--border);
+      color: var(--text); font-size: 0.85rem; outline: none;
+      transition: border var(--transition);
+    }
+    .toolbar input:focus, .toolbar select:focus { border-color: var(--accent); }
+    .toolbar input { flex: 1; min-width: 200px; }
+
+    /* --- TABLE --- */
+    .table-wrap {
+      max-width: var(--max-width); margin: 1rem auto 2rem;
+      padding: 0 2rem; overflow-x: auto;
+    }
+    table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      font-size: 0.82rem;
+    }
+    thead th {
+      background: var(--bg-card); color: var(--text-light);
+      font-weight: 600; font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.3px; padding: 10px 10px; text-align: left;
+      border-bottom: 2px solid var(--border); white-space: nowrap;
+    }
+    thead th.sortable { cursor: pointer; user-select: none; }
+    thead th.sortable:hover { color: var(--accent); }
+    thead th .sort-icon { margin-left: 4px; opacity: 0.5; }
+
+    tbody tr { transition: background var(--transition); }
+    tbody tr:hover { background: var(--bg-hover); }
+    tbody td {
+      padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.03);
+      vertical-align: top;
+    }
+
+    /* Editable inputs */
+    .editable-input, .editable-select {
+      width: 100%; padding: 4px 6px; border-radius: 4px;
+      background: transparent; border: 1px solid transparent;
+      color: var(--text); font-size: 0.82rem; font-family: inherit;
+      transition: all var(--transition);
+    }
+    .editable-input:hover, .editable-select:hover { border-color: var(--border); }
+    .editable-input:focus, .editable-select:focus {
+      outline: none; border-color: var(--accent);
+      background: rgba(6,182,212,0.05);
+    }
+    .editable-select option { background: var(--bg-card); color: var(--text); }
+    .tipo-select option.tipo-propio { color: #2ecc71; font-weight: 600; }
+    .tipo-select option.tipo-consignacion { color: #f39c12; font-weight: 600; }
+
+    /* Toolbar filter */
+    #prodFilterTipo option[value="propio"] { color: #2ecc71; font-weight: 600; }
+    #prodFilterTipo option[value="consignacion"] { color: #f39c12; font-weight: 600; }
+
+    .estado-badge {
+      display: inline-block; padding: 2px 10px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 600;
+    }
+    .estado-badge.disponible { background: rgba(34,197,94,0.15); color: var(--green); }
+    .estado-badge.reservado { background: rgba(234,179,8,0.15); color: var(--yellow); }
+    .estado-badge.vendido { background: rgba(239,68,68,0.15); color: var(--red); }
+
+    .ganancia-positiva { color: var(--green); }
+    .ganancia-negativa { color: var(--red); }
+
+    .table-footer {
+      padding: 1rem 0; text-align: center;
+      font-size: 0.8rem; color: var(--text-light);
+    }
+
+    /* --- SAVE BAR --- */
+    .save-bar {
+      max-width: var(--max-width); margin: 0.5rem auto 0;
+      padding: 0 2rem; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+    .save-bar .save-info { font-size: 0.78rem; color: var(--text-muted); }
+    .save-bar .save-btn {
+      padding: 10px 24px; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent), #3b82f6);
+      color: #fff; font-weight: 600; font-size: 0.88rem;
+      border: none; cursor: pointer; transition: opacity var(--transition);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .save-bar .save-btn:hover { opacity: 0.9; }
+    .save-bar .save-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .save-bar .save-msg {
+      font-size: 0.8rem; padding: 6px 14px; border-radius: 50px;
+    }
+    .save-bar .save-msg.success { background: rgba(34,197,94,0.15); color: var(--green); }
+    .save-bar .save-msg.error { background: rgba(239,68,68,0.15); color: var(--red); }
+    .save-bar .save-msg.saving { background: rgba(6,182,212,0.15); color: var(--accent); }
+
+    /* --- ADD ROW --- */
+    .add-row-btn {
+      padding: 6px 16px; border-radius: var(--radius-sm);
+      background: transparent; border: 1.5px dashed var(--border);
+      color: var(--text-muted); font-size: 0.78rem; cursor: pointer;
+      transition: all var(--transition); font-family: inherit;
+      margin-top: 0.5rem; width: 100%; text-align: center;
+    }
+    .add-row-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .delete-btn {
+      padding: 4px 8px; border-radius: 4px;
+      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
+      color: var(--red); font-size: 0.72rem; cursor: pointer;
+      transition: all var(--transition); font-family: inherit;
+      white-space: nowrap;
+    }
+    .delete-btn:hover { background: rgba(239,68,68,0.2); }
+    .preview-btn {
+      padding: 4px 6px; border-radius: 4px;
+      background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2);
+      color: var(--accent); font-size: 0.85rem; cursor: pointer;
+      transition: all var(--transition); font-family: inherit;
+    }
+    .preview-btn:hover { background: rgba(6,182,212,0.25); }
+
+    .img-btn {
+      padding: 2px 6px; border-radius: 4px;
+      background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2);
+      color: var(--accent); font-size: 0.85rem; cursor: pointer;
+      transition: all var(--transition); font-family: inherit;
+      margin-left: 4px;
+    }
+    .img-btn:hover { background: rgba(6,182,212,0.25); }
+
+    .img-thumb-wrap {
+      display: inline-flex; flex-direction: column; align-items: center;
+      margin: 2px; position: relative;
+    }
+    .img-thumb-wrap:hover { z-index: 10; }
+    /* Sacamos el hover que agrandaba la imagen — queda siempre del tamaño chico */
+    .img-thumb {
+      width: 72px; height: 54px; object-fit: contain; border-radius: 4px;
+      border: 1px solid var(--border); background: var(--bg);
+      transition: all 0.15s ease; cursor: pointer;
+    }
+    .img-ctrl-group {
+      display: flex; gap: 2px; margin-top: 2px;
+    }
+    .img-ctrl {
+      padding: 0 4px; border-radius: 3px; border: none;
+      background: rgba(255,255,255,0.1); color: var(--text-muted);
+      font-size: 0.6rem; cursor: pointer; line-height: 1.2;
+      font-family: inherit;
+    }
+    .img-ctrl:hover { background: rgba(255,255,255,0.2); color: var(--text); }
+    .img-ctrl-del {
+      background: rgba(239,68,68,0.2) !important;
+      color: var(--red) !important;
+      font-weight: 700;
+      font-size: 0.75rem !important;
+      padding: 2px 8px !important;
+    }
+    .img-ctrl-del:hover { background: rgba(239,68,68,0.4) !important; color: #fff !important; }
+
+    /* --- LOADING / ERROR --- */
+    .loading {
+      text-align: center; padding: 3rem; color: var(--text-muted);
+    }
+    .loading .spinner {
+      width: 40px; height: 40px; border: 3px solid var(--border);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-msg {
+      text-align: center; padding: 2rem; color: var(--red);
+    }
+    .error-msg code {
+      display: block; margin-top: 0.5rem; font-size: 0.78rem;
+      color: var(--text-muted); word-break: break-all;
+    }
+
+    /* ============================================
+       CONDICIONES MODAL
+    ============================================ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 3000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 12px; padding: 24px;
+      max-width: 480px; width: 90%; max-height: 80vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .dark-mode .modal-box { background: #1e293b; color: #f1f5f9; }
+    .cond-item {
+      display: flex; align-items: center; gap: 6px;
+      padding: 4px 8px; margin: 2px 0; border-radius: 6px;
+      font-size: 0.85rem; background: #f1f5f9;
+    }
+    .dark-mode .cond-item { background: #0f172a; }
+    .cond-item .cond-text { flex: 1; }
+    .cond-item .cond-del { cursor: pointer; opacity: 0.4; font-size: 1rem; }
+    .cond-item .cond-del:hover { opacity: 1; color: #ef4444; }
+    /* ============================================
+       PREVIEW MODAL
+    ============================================ */
+    .preview-modal {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+      padding: 1rem; overflow-y: auto;
+      justify-content: center; align-items: flex-start;
+    }
+    .preview-modal.open { display: flex; }
+    .preview-modal-inner {
+      background: #f1f5f9; border-radius: 16px;
+      max-width: 420px; width: 100%; margin: 2rem auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      position: relative; animation: previewIn 0.3s ease;
+      overflow: hidden;
+    }
+    @keyframes previewIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .preview-close {
+      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.5); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; cursor: pointer; border: none;
+      transition: background var(--transition);
+    }
+    .preview-close:hover { background: rgba(0,0,0,0.7); }
+    .preview-header {
+      padding: 0.75rem 1.25rem; background: #0f172a; color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.85rem; font-weight: 600;
+    }
+    .preview-header span { color: #94a3b8; font-weight: 400; font-size: 0.75rem; }
+    .preview-card {
+      background: #fff; border-radius: 0; overflow: hidden;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .preview-card-image {
+      position: relative; aspect-ratio: 4 / 3; background: #f1f5f9;
+      overflow: hidden;
+    }
+    .preview-card-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .preview-card-image .no-image {
+      width: 100%; height: 100%; display: flex; align-items: center;
+      justify-content: center; background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+      color: #64748b; font-size: 3rem; font-weight: 700;
+    }
+    .preview-badge {
+      position: absolute; top: 12px; left: 12px;
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.3px; z-index: 2;
+    }
+    .preview-badge.excelente { background: #dcfce7; color: #166534; }
+    .preview-badge.muy-bueno { background: #dbeafe; color: #1e40af; }
+    .preview-badge.bueno { background: #fef9c3; color: #854d0e; }
+    .preview-card-body {
+      padding: 1.25rem;
+    }
+    .preview-card-title {
+      font-size: 1.05rem; font-weight: 700; color: #1e293b;
+      margin-bottom: 0.35rem;
+    }
+    .preview-card-subtitle {
+      font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;
+    }
+    .preview-description {
+      font-size: 0.82rem; color: #475569; line-height: 1.6;
+      margin-bottom: 1rem; padding: 0.5rem 0;
+      border-top: 1px solid #e2e8f0;
+    }
+    .preview-modal.dark-mode .preview-description {
+      color: #94a3b8; border-color: rgba(255,255,255,0.08);
+    }
+    .preview-specs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+      margin-bottom: 1rem; padding: 0.75rem; background: #f1f5f9;
+      border-radius: 8px;
+    }
+    .preview-spec {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; color: #1e293b;
+    }
+    .preview-spec .spec-icon { font-size: 0.85rem; }
+    .preview-spec .spec-label { color: #94a3b8; }
+    .preview-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .preview-price {
+      font-size: 1.4rem; font-weight: 800; color: #0f172a;
+      line-height: 1;
+    }
+    .preview-price .currency { font-size: 0.8rem; font-weight: 600; color: #64748b; }
+    .preview-whatsapp-btn {
+      padding: 10px 20px; border-radius: 8px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: #fff; font-weight: 600; font-size: 0.82rem;
+      border: none; cursor: pointer; white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(6,182,212,0.25);
+      text-decoration: none; display: inline-flex; align-items: center;
+      gap: 6px; transition: opacity 0.2s;
+    }
+    .preview-whatsapp-btn:hover { opacity: 0.9; }
+
+    /* Preview en modo oscuro (gremio) */
+    .preview-modal.dark-mode .preview-modal-inner { background: #0f172a; }
+    .preview-modal.dark-mode .preview-card { background: #1e293b; border-color: rgba(255,255,255,0.08); }
+    .preview-modal.dark-mode .preview-card-title { color: #f1f5f9; }
+    .preview-modal.dark-mode .preview-card-subtitle { color: #94a3b8; }
+    .preview-modal.dark-mode .preview-specs { background: #0f172a; }
+    .preview-modal.dark-mode .preview-spec { color: #f1f5f9; }
+    .preview-modal.dark-mode .preview-price { color: #f1f5f9; }
+
+    .preview-actions {
+      padding: 1rem 1.25rem; display: flex; gap: 0.5rem;
+      background: #f8fafc; border-top: 1px solid #e2e8f0;
+    }
+    .preview-modal.dark-mode .preview-actions {
+      background: #1e293b; border-color: rgba(255,255,255,0.08);
+    }
+    .preview-actions .pv-btn {
+      flex: 1; padding: 8px 12px; border-radius: 6px; border: none;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: opacity 0.2s;
+    }
+    .preview-actions .pv-btn:hover { opacity: 0.85; }
+    .preview-actions .pv-btn-primary {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: #fff;
+    }
+    .preview-actions .pv-btn-secondary {
+      background: rgba(255,255,255,0.1); color: #64748b;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .preview-modal.dark-mode .pv-btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: #94a3b8;
+    }
+
+    /* --- RESPONSIVE --- */
+    /* --- TURNOS --- */
+    .turnos-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 0 2rem; margin-bottom: 1rem; }
+    .turnos-toolbar input, .turnos-toolbar select {
+      padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+      background: var(--bg-hover); color: var(--text); font-size: 0.82rem;
+      font-family: inherit; outline: none;
+    }
+    .turnos-toolbar input:focus, .turnos-toolbar select:focus { border-color: var(--accent); }
+    .turnos-toolbar .turnos-count { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
+
+    /* Barra de resumen del día */
+    .turnos-resumen {
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+      padding: 10px 2rem; margin-bottom: 0.75rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); font-size: 0.82rem;
+    }
+    .turnos-resumen .tr-fecha { font-weight: 700; color: var(--text); }
+    .turnos-resumen .tr-item { display: inline-flex; align-items: center; gap: 4px; }
+    .turnos-resumen .tr-item .tr-num { font-weight: 700; font-size: 1rem; }
+    .turnos-resumen .tr-item.tr-confirmados .tr-num { color: #22c55e; }
+    .turnos-resumen .tr-item.tr-pendientes .tr-num { color: #eab308; }
+    .turnos-resumen .tr-item.tr-pagados .tr-num { color: #60a5fa; }
+    .turnos-resumen .tr-item.tr-total .tr-num { color: var(--text); }
+    .turnos-resumen .tr-vacio { color: var(--text-muted); font-style: italic; }
+    .turnos-config-toggle {
+      padding: 6px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+      background: transparent; color: var(--text-muted); font-size: 0.78rem;
+      cursor: pointer; font-family: inherit; transition: all var(--transition);
+    }
+    .turnos-config-toggle:hover { background: var(--bg-hover); color: var(--text); }
+    .turnos-btn-nuevo {
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      border: none; background: var(--accent); color: #fff;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: opacity 0.2s; white-space: nowrap;
+    }
+    .turnos-btn-nuevo:hover { opacity: 0.85; }
+    .turnos-btn-mostrar-todos {
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text-muted); font-size: 0.82rem; font-weight: 500;
+      cursor: pointer; font-family: inherit; transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .turnos-btn-mostrar-todos:hover { background: var(--bg-hover); color: var(--text); border-color: var(--accent); }
+    .turnos-btn-mostrar-todos.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Estado badges */
+    .estado-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .estado-badge.pendiente { background: rgba(234,179,8,0.15); color: #eab308; }
+    .estado-badge.pagado { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .estado-badge.confirmado { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .estado-badge.completado { background: rgba(100,116,139,0.15); color: #94a3b8; }
+    .estado-badge.cancelado { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+    /* Acciones en tabla */
+    .turnos-actions { display: flex; gap: 4px; flex-wrap: wrap; }
+    .turnos-actions button {
+      padding: 4px 10px; border-radius: 6px; border: none;
+      font-size: 0.7rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: opacity 0.2s; white-space: nowrap;
+    }
+    .turnos-actions button:hover { opacity: 0.85; }
+    .turnos-actions .ta-pagar { background: rgba(59,130,246,0.2); color: #60a5fa; }
+    .turnos-actions .ta-confirmar { background: rgba(34,197,94,0.2); color: #22c55e; }
+    .turnos-actions .ta-completar { background: rgba(100,116,139,0.2); color: #94a3b8; }
+    .turnos-actions .ta-cancelar { background: rgba(239,68,68,0.2); color: #ef4444; }
+
+    /* Checkbox "Pagado" inline (sin confirm) */
+    .ta-check-pagar {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: transparent;
+      font-size: 0.75rem; cursor: pointer; user-select: none;
+      transition: all 0.15s; color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .ta-check-pagar:hover { border-color: var(--green); color: var(--green); background: rgba(34,197,94,0.08); }
+    .ta-check-input {
+      width: 14px; height: 14px; accent-color: var(--green);
+      cursor: pointer; margin: 0;
+    }
+    .turnos-actions .ta-whatsapp { background: rgba(37,211,102,0.15); color: #25D366; }
+    .turnos-whatsapp-link { color: #60a5fa; text-decoration: none; font-size: 0.78rem; }
+    .turnos-whatsapp-link:hover { text-decoration: underline; }
+
+    /* Config horarios */
+    .turnos-config-panel {
+      display: none; margin-bottom: 1.5rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .turnos-config-panel.open { display: block; }
+    .turnos-config-panel h3 { font-size: 1rem; margin-bottom: 1rem; color: var(--text); }
+    .config-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .config-field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .config-field label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+    .config-field input {
+      padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+      background: var(--bg-hover); color: var(--text); font-size: 0.85rem;
+      font-family: inherit; outline: none;
+    }
+    .config-field input:focus { border-color: var(--accent); }
+    .config-save-btn {
+      padding: 10px 24px; border-radius: var(--radius-sm); border: none;
+      background: var(--accent); color: #fff; font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+      margin-top: 1rem;
+    }
+    .config-save-btn:hover { opacity: 0.85; }
+    .config-msg { font-size: 0.78rem; color: var(--green); margin-top: 0.5rem; min-height: 1.2em; }
+
+    /* ========== NUEVO TURNO MODAL ========== */
+    .turno-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 3000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .turno-modal-overlay.open { display: flex; }
+    .turno-modal-box {
+      background: var(--bg-card); border-radius: 12px; padding: 28px;
+      max-width: 560px; width: 95%; max-height: 85vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .turno-modal-box h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text); }
+    .turno-modal-box .tm-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.85rem; }
+    .turno-modal-box .tm-field label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .turno-modal-box .tm-field input,
+    .turno-modal-box .tm-field select,
+    .turno-modal-box .tm-field textarea {
+      padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--bg-hover); color: var(--text); font-size: 0.85rem;
+      font-family: inherit; outline: none;
+    }
+    .turno-modal-box .tm-field input:focus,
+    .turno-modal-box .tm-field select:focus,
+    .turno-modal-box .tm-field textarea:focus { border-color: var(--accent); }
+    .turno-modal-box .tm-field textarea { min-height: 60px; resize: vertical; }
+    .turno-modal-box .tm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .turno-modal-actions { display: flex; gap: 10px; margin-top: 1.25rem; justify-content: flex-end; }
+    .turno-modal-actions button {
+      padding: 10px 24px; border-radius: 8px; border: none;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: opacity 0.2s;
+    }
+    .turno-modal-actions button:hover { opacity: 0.85; }
+    .tm-btn-save { background: var(--accent); color: #fff; }
+    .tm-btn-cancel { background: var(--bg-hover); color: var(--text-muted); }
+
+    /* ========== BUSCADOR ========== */
+    .turnos-search {
+      padding: 8px 12px 8px 32px;
+      border-radius: var(--radius-sm); border: 1px solid var(--border);
+      background: var(--bg-hover); color: var(--text); font-size: 0.82rem;
+      font-family: inherit; outline: none; width: 200px;
+    }
+    .turnos-search:focus { border-color: var(--accent); }
+    .turnos-search-wrap { position: relative; display: inline-block; }
+    .turnos-search-wrap::before {
+      content: '🔍'; position: absolute; left: 8px; top: 50%;
+      transform: translateY(-50%); font-size: 0.8rem; opacity: 0.5;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .header { padding: 0.75rem 1rem; }
+      .header-left h1 { font-size: 1rem; }
+      .stats { padding: 0 1rem; grid-template-columns: 1fr 1fr; }
+      .stat-card .stat-value { font-size: 1.2rem; }
+      .tabs { padding: 0 1rem; overflow-x: auto; }
+      .tab-btn { padding: 10px 14px; font-size: 0.8rem; white-space: nowrap; }
+      .toolbar { padding: 0 1rem; flex-direction: column; }
+      .table-wrap { padding: 0 1rem; }
+      thead th, tbody td { padding: 6px 6px; font-size: 0.7rem; }
+      .save-bar { padding: 0 1rem; flex-direction: column; }
+      .turnos-toolbar { padding: 0 1rem; }
+      .turnos-resumen { padding: 10px 1rem; gap: 10px; font-size: 0.75rem; }
+      .config-grid { grid-template-columns: 1fr 1fr; }
+      .turnos-config-panel { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== BANNER FILE:// ==================== -->
+  <div id="fileProtocolBanner" style="display:none;background:#ef4444;color:#fff;text-align:center;padding:12px 20px;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;line-height:1.5;">
+    ⚠️ <strong>Modo archivo local</strong> — Cloudinary no funciona con <code>file://</code>.
+    Hacé doble clic en <strong>servir.bat</strong> o ejecutá
+    <code style="background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:4px;display:inline-block;margin:4px 0;">node server.js</code>
+    y abrí <strong>http://localhost:3000/gestion.html</strong>
+  </div>
+
+  <!-- ==================== LOGIN ==================== -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <h1>🔐 JC Electrónica</h1>
+      <p>Panel de gestión — ingresá tu clave</p>
+      <input type="password" id="loginPass" placeholder="Contraseña" onkeydown="if(event.key==='Enter')checkLogin()">
+      <div class="error" id="loginError">Clave incorrecta</div>
+      <button onclick="checkLogin()">Ingresar</button>
+    </div>
+  </div>
+
+  <!-- ==================== APP ==================== -->
+  <div class="app" id="app">
+    <div class="header">
+      <div class="header-left">
+        <h1>📊 JC Electrónica <span>Gestión</span></h1>
+        <span class="badge" id="sourceBadge">—</span>
+      </div>
+      <div class="header-right">
+        <span class="badge" id="countBadge">0</span>
+        <button onclick="refreshData()">⟳ Recargar</button>
+        <button onclick="logout()">Salir</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="productos" onclick="switchTab('productos')">📦 Productos</button>
+      <button class="tab-btn" data-tab="servicios" onclick="switchTab('servicios')">🔧 Servicios</button>
+      <button class="tab-btn" data-tab="condiciones" onclick="switchTab('condiciones')">📋 Condiciones</button>
+      <button class="tab-btn" data-tab="turnos" onclick="switchTab('turnos')">📅 Turnos</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats" id="statsRow"></div>
+
+    <!-- ==================== TAB: PRODUCTOS ==================== -->
+    <div class="tab-content active" id="tab-productos">
+      <div class="toolbar">
+        <input type="text" id="prodSearch" placeholder="🔍 Buscar producto..." oninput="renderProductos()">
+        <select id="prodFilterEstado" onchange="renderProductos()">
+          <option value="all">Todos los estados</option>
+          <option value="disponible">Disponible</option>
+          <option value="reservado">Reservado</option>
+          <option value="vendido">Vendido</option>
+        </select>
+        <select id="prodFilterTipo" onchange="renderProductos()">
+          <option value="all">Todos los tipos</option>
+          <option value="propio">● Propio</option>
+          <option value="consignacion">● Consignación</option>
+        </select>
+      </div>
+
+      <div class="save-bar" id="prodSaveBar">
+        <span class="save-info" id="prodSaveInfo">Los cambios se guardan localmente</span>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="save-msg" id="prodSaveMsg"></span>
+          <button class="save-btn" id="prodSaveBtn" onclick="guardarProductos()">💾 Guardar en Sheets</button>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="prodTableContainer"></div>
+    </div>
+
+    <!-- ==================== TAB: SERVICIOS ==================== -->
+    <div class="tab-content" id="tab-servicios">
+      <div class="toolbar">
+        <input type="text" id="svcSearch" placeholder="🔍 Buscar servicio..." oninput="renderServicios()">
+          <select id="svcFilterCat" onchange="renderServicios()">
+            <option value="all">Todas las categorías</option>
+            <option value="diagnostico">Diagnóstico</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+            <option value="mantenimiento">Mantenimiento</option>
+            <option value="otros">Otros</option>
+          </select>
+        </div>
+
+      <div class="save-bar" id="svcSaveBar">
+        <span class="save-info" id="svcSaveInfo">Los cambios se guardan localmente</span>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="save-msg" id="svcSaveMsg"></span>
+          <button class="save-btn" id="svcSaveBtn" onclick="guardarServicios()">💾 Guardar en Sheets</button>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="svcTableContainer"></div>
+    </div>
+
+    <!-- ==================== TAB: CONDICIONES ==================== -->
+    <div class="tab-content" id="tab-condiciones">
+      <div class="toolbar">
+        <span style="color:var(--text-light);font-size:0.85rem;">Las condiciones se muestran al final de la página de Servicios</span>
+      </div>
+
+      <div class="save-bar" id="condSaveBar">
+        <span class="save-info" id="condSaveInfo">Los cambios se guardan localmente</span>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="save-msg" id="condSaveMsg"></span>
+          <button class="save-btn" id="condSaveBtn" onclick="guardarCondiciones()">💾 Guardar en Sheets</button>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="condTableContainer"></div>
+    </div>
+
+    <!-- ==================== TAB: TURNOS ==================== -->
+    <div class="tab-content" id="tab-turnos">
+      <!-- Barra de resumen del día -->
+      <div class="turnos-resumen" id="turnosResumen"></div>
+      <div class="turnos-toolbar">
+        <div class="turnos-search-wrap">
+          <input type="text" class="turnos-search" id="turnoBusqueda" placeholder="Buscar nombre, DNI..." oninput="filtrarTurnos()">
+        </div>
+        <input type="date" id="turnoFiltroFecha" onchange="filtrarTurnos()">
+        <select id="turnoFiltroEstado" onchange="filtrarTurnos()">
+          <option value="pendiente">⏳ Pendiente</option>
+          <option value="all">Todos los estados</option>
+          <option value="pagado">💵 Pagado</option>
+          <option value="confirmado">✅ Confirmado</option>
+          <option value="completado">✔️ Completado</option>
+          <option value="cancelado">❌ Cancelado</option>
+        </select>
+        <button class="turnos-btn-nuevo" onclick="nuevoTurno()">➕ Nuevo turno</button>
+        <button class="turnos-btn-mostrar-todos" onclick="mostrarTodosLosTurnos()">📋 Todos</button>
+        <button onclick="recargarTurnos()" style="padding:8px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:0.82rem;cursor:pointer;font-family:inherit;">⟳ Recargar</button>
+        <button class="turnos-config-toggle" onclick="toggleConfigHorarios()">⚙️ Configurar horarios</button>
+        <span class="turnos-count" id="turnosCount">0 turnos</span>
+      </div>
+
+      <!-- Config horarios -->
+      <div class="turnos-config-panel" id="turnosConfigPanel">
+        <h3>⚙️ Configuración horaria</h3>
+        <div class="config-grid">
+          <div class="config-field">
+            <label>Horario inicio</label>
+            <input type="time" id="cfgHoraInicio" value="09:00">
+          </div>
+          <div class="config-field">
+            <label>Horario fin</label>
+            <input type="time" id="cfgHoraFin" value="20:00">
+          </div>
+          <div class="config-field">
+            <label>Intervalo (min)</label>
+            <input type="number" id="cfgIntervalo" value="30" min="15" max="120" step="15">
+          </div>
+          <div class="config-field">
+            <label>Pausa 1 — inicio</label>
+            <input type="time" id="cfgPausa1Inicio" value="12:30">
+          </div>
+          <div class="config-field">
+            <label>Pausa 1 — fin</label>
+            <input type="time" id="cfgPausa1Fin" value="13:30">
+          </div>
+          <div class="config-field">
+            <label>Pausa 2 — inicio</label>
+            <input type="time" id="cfgPausa2Inicio" value="16:30">
+          </div>
+          <div class="config-field">
+            <label>Pausa 2 — fin</label>
+            <input type="time" id="cfgPausa2Fin" value="18:00">
+          </div>
+          <div class="config-field">
+            <label>Días laborales</label>
+            <select id="cfgDiasLaborales">
+              <option value="1,2,3,4,5,6">Lun - Sáb</option>
+              <option value="1,2,3,4,5">Lun - Vie</option>
+              <option value="1,2,3,4,5,6,7">Todos los días</option>
+              <option value="1,2,3,4">Lun - Jue</option>
+            </select>
+          </div>
+        </div>
+        <button class="config-save-btn" onclick="guardarConfigHorarios()">💾 Guardar configuración</button>
+        <div class="config-msg" id="configMsg"></div>
+      </div>
+
+      <div class="table-wrap" id="turnosTableContainer">
+        <div style="text-align:center;padding:3rem;color:var(--text-muted);font-size:0.9rem;">
+          Cargando turnos...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NUEVO TURNO MODAL ==================== -->
+  <div class="turno-modal-overlay" id="turnoModal">
+    <div class="turno-modal-box">
+      <h2>➕ Nuevo turno</h2>
+      <div class="tm-row">
+        <div class="tm-field">
+          <label>Nombre y Apellido</label>
+          <input type="text" id="tmNombre" placeholder="Juan Pérez">
+        </div>
+        <div class="tm-field">
+          <label>DNI</label>
+          <input type="text" id="tmDni" placeholder="12.345.678">
+        </div>
+      </div>
+      <div class="tm-row">
+        <div class="tm-field">
+          <label>WhatsApp</label>
+          <input type="text" id="tmWhatsapp" placeholder="5491153348030">
+        </div>
+        <div class="tm-field">
+          <label>Código Postal</label>
+          <input type="text" id="tmCp" placeholder="1718">
+        </div>
+      </div>
+      <div class="tm-row">
+        <div class="tm-field">
+          <label>Ciudad</label>
+          <input type="text" id="tmCiudad" placeholder="Merlo">
+        </div>
+        <div class="tm-field">
+          <label>Domicilio</label>
+          <input type="text" id="tmDomicilio" placeholder="Av. del Libertador 1234">
+        </div>
+      </div>
+      <div class="tm-row">
+        <div class="tm-field">
+          <label>Tipo de equipo</label>
+          <select id="tmEquipo">
+            <option value="notebooks">💻 Notebook</option>
+            <option value="pc">🖥️ PC</option>
+            <option value="celulares">📱 Celular</option>
+            <option value="consolas">🎮 Consola</option>
+            <option value="tv">📺 TV / Monitor</option>
+            <option value="parlantes">🔊 Parlante</option>
+            <option value="electronica">🔧 Rep. Electrónica</option>
+            <option value="otro">❓ Otro</option>
+          </select>
+        </div>
+        <div class="tm-field">
+          <label>Cantidad de equipos</label>
+          <input type="number" id="tmCantidad" value="1" min="1" max="10">
+        </div>
+      </div>
+      <div class="tm-row">
+        <div class="tm-field">
+          <label>Tipo de reparación</label>
+          <select id="tmReparacion">
+            <option value="diagnostico">🔬 Diagnóstico</option>
+            <option value="hardware">🔧 Hardware</option>
+            <option value="software">💻 Software</option>
+            <option value="mantenimiento">🧹 Mantenimiento</option>
+            <option value="upgrade">⬆️ Upgrade</option>
+            <option value="otro">❓ Otro</option>
+          </select>
+        </div>
+        <div class="tm-field">
+          <label>Fecha del turno</label>
+          <input type="date" id="tmFecha">
+        </div>
+      </div>
+      <div class="tm-field">
+        <label>Descripción de la falla</label>
+        <textarea id="tmFalla" placeholder="Describí qué le pasa al equipo..."></textarea>
+      </div>
+      <div class="turno-modal-actions">
+        <button class="tm-btn-cancel" onclick="cerrarNuevoTurnoModal()">Cancelar</button>
+        <button class="tm-btn-save" onclick="guardarNuevoTurno()">💾 Guardar turno</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PREVIEW MODAL ==================== -->
+  <div class="preview-modal" id="previewModal">
+    <div class="preview-modal-inner">
+      <button class="preview-close" onclick="cerrarPreview()">&times;</button>
+      <div class="preview-header">
+        Vista previa <span id="previewMode">Modo público</span>
+      </div>
+      <div class="preview-card" id="previewCard"></div>
+      <div class="preview-actions">
+        <button class="pv-btn pv-btn-primary" id="previewEditBtn">✏️ Editar este producto</button>
+        <button class="pv-btn pv-btn-secondary" onclick="cerrarPreview()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    // =============================================
+    //  CONFIGURACIÓN (importada + específica)
+    // =============================================
+    const APP_PASSWORD = ADMIN_PASSWORD;         // ← usa la misma que config.js
+    const SAVE_PASSWORD = ADMIN_PASSWORD;        // ← misma que en apps-script.js (dopost)
+    const CLOUD_NAME = 'dlpt115ea';
+    const UPLOAD_PRESET = 'catalogo';
+
+    // =============================================
+    //  ESTADO
+    // =============================================
+    let productosData = [];
+    let serviciosData = [];
+    let condicionesData = [];
+    let turnosData = [];
+    let turnosFiltered = [];
+    let currentTab = 'productos';
+    let prodSortField = 'id', prodSortDir = 'asc';
+    let svcSortField = 'id', svcSortDir = 'asc';
+
+    // =============================================
+    //  LOGIN
+    // =============================================
+    async function checkLogin() {
+      const pass = document.getElementById('loginPass').value;
+      if (!pass) return;
+
+      // 1️⃣ Intentar login vía API (seguro — la pass nunca está en el código)
+      if (API_AUTH_URL) {
+        try {
+          const btn = document.querySelector('#loginScreen button');
+          if (btn) { btn.disabled = true; btn.textContent = '⏳ Verificando...'; }
+
+          const resp = await fetch(`${API_AUTH_URL}?action=verifyAdmin&password=${encodeURIComponent(pass)}`);
+          const json = await resp.json();
+
+          if (json.success) {
+            grantAccess();
+            return;
+          }
+        } catch (e) {
+          // Si falla la conexión, seguimos con el fallback local
+          console.warn('⚠️ API de autenticación no disponible, usando fallback local');
+        } finally {
+          const btn = document.querySelector('#loginScreen button');
+          if (btn) { btn.disabled = false; btn.textContent = 'Ingresar'; }
+        }
+      }
+
+      // 2️⃣ Fallback local (por si no hay API o falló la conexión)
+      if (pass === APP_PASSWORD) {
+        grantAccess();
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    }
+
+    function grantAccess() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      document.getElementById('loginError').style.display = 'none';
+      document.getElementById('loginPass').value = '';
+      loadData();
+    }
+    function logout() {
+      sessionStorage.removeItem('adminToken');
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('app').style.display = 'none';
+    }
+    // Auto-login desde landing (admin modal)
+    if (sessionStorage.getItem('adminToken')) {
+      setTimeout(() => {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        loadData();
+      }, 100);
+    }
+
+    // =============================================
+    //  CARGA INICIAL
+    // =============================================
+    async function loadData() {
+      if (!API_URL || API_URL === 'URL_DE_TU_SCRIPT') {
+        productosData = getDemoProductos();
+        serviciosData = getDemoServicios();
+        condicionesData = getDemoCondiciones();
+        turnosData = [];
+        document.getElementById('sourceBadge').textContent = '📦 Demo';
+        afterLoad();
+        return;
+      }
+
+      document.getElementById('sourceBadge').textContent = '☁️ Cargando...';
+
+      try {
+        // Cargar productos, servicios y condiciones juntos
+        const [prodResp, svcResp, condResp] = await Promise.all([
+          fetch(API_URL),
+          fetch(API_URL + '?sheet=servicios'),
+          fetch(API_URL + '?sheet=condiciones')
+        ]);
+        const prodJson = await prodResp.json();
+        const svcJson = await svcResp.json();
+        const condJson = await condResp.json();
+
+        if (prodJson.success) productosData = prodJson.data;
+        if (svcJson.success) serviciosData = svcJson.data;
+        if (condJson.success) condicionesData = condJson.data;
+
+        document.getElementById('sourceBadge').textContent = '☁️ Sheets';
+      } catch (err) {
+        console.warn('Error al cargar, usando demo:', err);
+        productosData = getDemoProductos();
+        serviciosData = getDemoServicios();
+        condicionesData = getDemoCondiciones();
+        document.getElementById('sourceBadge').textContent = '⚠️ Fallback demo';
+      }
+
+      // Cargar turnos por separado (no bloquea el resto si el API deployado no responde)
+      afterLoad();
+      recargarTurnos();
+    }
+
+    function refreshData() { loadData(); }
+
+    function afterLoad() {
+      document.getElementById('countBadge').textContent =
+      document.getElementById('countBadge').textContent =
+        productosData.length + ' prod · ' + serviciosData.length + ' svc · ' + condicionesData.length + ' cond · ' +
+        (turnosData || []).length + ' turnos';
+      renderProductos();
+      renderServicios();
+      renderCondiciones();
+      // Por defecto: filtrar pendientes sin restricción de fecha
+      renderTurnos();
+      renderStats();
+    }
+
+    // =============================================
+    //  STATS
+    // =============================================
+    function renderStats() {
+      const disponibles = productosData.filter(p => p.estado === 'disponible');
+      const propios = productosData.filter(p => p.tipo === 'propio');
+      const consignacion = productosData.filter(p => p.tipo === 'consignacion');
+      const dispPropios = disponibles.filter(p => p.tipo === 'propio');
+      const dispConsig = disponibles.filter(p => p.tipo === 'consignacion');
+
+      // Inversión: solo productos propios
+      const totalInv = propios.reduce((s, p) => s + (p.cost || 0), 0);
+      // Ganancia propios: precio - costo
+      const ganPropios = dispPropios.reduce((s, p) => s + ((p.price_public || 0) - (p.cost || 0)), 0);
+      // Ganancia consignación: precio completo (no hay costo)
+      const ganConsig = dispConsig.reduce((s, p) => s + (p.price_public || 0), 0);
+      const totalGan = ganPropios + ganConsig;
+      const margen = totalInv > 0 ? (ganPropios / totalInv * 100) : 0;
+      const f = n => '$ ' + (n || 0).toLocaleString('es-AR');
+
+      const totalServ = serviciosData.reduce((s, p) => s + (p.price || 0), 0);
+      const gratis = serviciosData.filter(s => s.price === 0).length;
+
+      document.getElementById('statsRow').innerHTML = `
+        <div class="stat-card green">
+          <div class="stat-label">En stock</div>
+          <div class="stat-value">${disponibles.length}</div>
+          <div class="stat-sub">${propios.length} propios · ${consignacion.length} consignación</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Inversión total</div>
+          <div class="stat-value">${f(totalInv)}</div>
+          <div class="stat-sub">${propios.length} equipos propios (consignación no suma)</div>
+        </div>
+        <div class="stat-card ${margen > 25 ? 'green' : 'yellow'}">
+          <div class="stat-label">Ganancia potencial</div>
+          <div class="stat-value">${f(totalGan)}</div>
+          <div class="stat-sub">${margen.toFixed(0)}% margen propio · ${f(ganConsig)} consignación</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-label">Servicios</div>
+          <div class="stat-value">${serviciosData.length}</div>
+          <div class="stat-sub">${gratis} gratis · ${f(totalServ)} cartera</div>
+        </div>
+      `;
+    }
+
+    // =============================================
+    //  TABS
+    // =============================================
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + tab));
+      if (tab === 'condiciones') renderCondiciones();
+      if (tab === 'turnos') renderTurnos();
+    }
+
+    // =============================================
+    //  TABLA: PRODUCTOS
+    // =============================================
+    function renderProductos() {
+      const search = document.getElementById('prodSearch').value.toLowerCase().trim();
+      const filterEstado = document.getElementById('prodFilterEstado').value;
+      const filterTipo = document.getElementById('prodFilterTipo').value;
+
+      let filtered = productosData.filter(p => {
+        if (filterEstado !== 'all' && p.estado !== filterEstado) return false;
+        if (filterTipo !== 'all' && p.tipo !== filterTipo) return false;
+        if (search) {
+          const txt = (p.name + ' ' + (p.brand || '') + ' ' + (p.subtitle || '')).toLowerCase();
+          if (!txt.includes(search)) return false;
+        }
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        let va = a[prodSortField], vb = b[prodSortField];
+        if (typeof va === 'string') va = va.toLowerCase();
+        if (typeof vb === 'string') vb = vb.toLowerCase();
+        return (va < vb ? -1 : va > vb ? 1 : 0) * (prodSortDir === 'asc' ? 1 : -1);
+      });
+
+      const f = n => (n || 0).toLocaleString('es-AR');
+
+      document.getElementById('prodTableContainer').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th class="sortable" onclick="prodSort('id')">ID ${prodSortIcon('id')}</th>
+              <th class="sortable" onclick="prodSort('name')">Nombre ${prodSortIcon('name')}</th>
+              <th>Subtítulo</th>
+              <th>Descripción</th>
+              <th>Marca</th>
+              <th>RAM</th>
+              <th>ALM</th>
+              <th>CPU</th>
+              <th>GPU</th>
+              <th>Estado</th>
+              <th>Cond.</th>
+              <th class="sortable" onclick="prodSort('cost')">Costo ${prodSortIcon('cost')}</th>
+              <th class="sortable" onclick="prodSort('price_gremio')">Gremio ${prodSortIcon('price_gremio')}</th>
+              <th class="sortable" onclick="prodSort('price_public')">Público ${prodSortIcon('price_public')}</th>
+              <th>Gan</th>
+              <th>Imgs</th>
+              <th>Dest</th>
+              <th class="sortable" onclick="prodSort('tipo')">Tipo ${prodSortIcon('tipo')}</th>
+              <th style="width:48px;">Pre.</th>
+              <th style="width:42px;">✕</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filtered.map(p => {
+              const gan = (p.price_public || 0) - (p.cost || 0);
+              const mg = p.cost > 0 ? (gan / p.cost * 100).toFixed(0) : 0;
+              return `<tr>
+                <td>${edInput(p, 'id', 3, 'number')}</td>
+                <td>${edInput(p, 'name', 12)}</td>
+                <td>${edInput(p, 'subtitle', 12)}</td>
+                <td>${edInput(p, 'description', 18)}</td>
+                <td>${edInput(p, 'brand', 8)}</td>
+                <td>${edInput(p, 'specs.ram', 7)}</td>
+                <td>${edInput(p, 'specs.storage', 7)}</td>
+                <td>${edInput(p, 'specs.cpu', 8)}</td>
+                <td>${edInput(p, 'specs.gpu', 8)}</td>
+                <td>${edSelect(p, 'estado', ['disponible','reservado','vendido'])}</td>
+                <td>${edSelect(p, 'condition', ['excelente','muy-bueno','bueno'])}</td>
+                <td>${edInput(p, 'cost', 8, 'number')}</td>
+                <td>${edInput(p, 'price_gremio', 8, 'number')}</td>
+                <td>${edInput(p, 'price_public', 8, 'number')}</td>
+                <td class="${gan >= 0 ? 'ganancia-positiva' : 'ganancia-negativa'}" style="font-size:0.75rem;white-space:nowrap">
+                  $${f(gan)}<br><span style="opacity:0.6">${mg}%</span>
+                </td>
+                <td style="white-space:nowrap">
+                  ${renderImgCell(p)}
+                </td>
+                <td style="text-align:center">
+                  <input type="checkbox" ${p.featured?'checked':''} onchange="editCell(${p.id},'featured',this.checked)">
+                </td>
+                <td class="tipo-cell">${edTipoSelect(p)}</td>
+                <td><button class="preview-btn" onclick="previewProducto(${p.id})" title="Vista previa">👁</button></td>
+                <td><button class="delete-btn" onclick="eliminarProducto(${p.id})" title="Eliminar">✕</button></td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addProductoRow()">+ Agregar producto</button>
+        <div class="table-footer">${filtered.length} de ${productosData.length} productos</div>
+      `;
+    }
+
+    function prodSort(field) {
+      if (prodSortField === field) prodSortDir = prodSortDir === 'asc' ? 'desc' : 'asc';
+      else { prodSortField = field; prodSortDir = 'asc'; }
+      renderProductos();
+    }
+    function prodSortIcon(field) {
+      if (prodSortField !== field) return '↕';
+      return prodSortDir === 'asc' ? '↑' : '↓';
+    }
+
+    function addProductoRow() {
+      const maxId = productosData.reduce((m, p) => Math.max(m, p.id || 0), 0);
+      productosData.push({
+        id: maxId + 1, name: '', subtitle: '', brand: '',
+        specs: { ram: '', storage: '', cpu: '', gpu: '' },
+        price_public: 0, price_gremio: 0, cost: 0,
+        condition: 'bueno', estado: 'disponible', featured: false,
+        description: '', images: [], whatsapp: '',
+        tipo: 'propio'
+      });
+      renderProductos();
+      renderStats();
+    }
+
+    // =============================================
+    //  TABLA: SERVICIOS
+    // =============================================
+    function renderServicios() {
+      const search = document.getElementById('svcSearch').value.toLowerCase().trim();
+      const filterCat = document.getElementById('svcFilterCat').value;
+
+      let filtered = serviciosData.filter(s => {
+        if (filterCat !== 'all' && s.category !== filterCat) return false;
+        if (search) {
+          const txt = (s.name + ' ' + (s.desc || '') + ' ' + (s.category || '')).toLowerCase();
+          if (!txt.includes(search)) return false;
+        }
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        let va = a[svcSortField], vb = b[svcSortField];
+        if (typeof va === 'string') va = va.toLowerCase();
+        if (typeof vb === 'string') vb = vb.toLowerCase();
+        return (va < vb ? -1 : va > vb ? 1 : 0) * (svcSortDir === 'asc' ? 1 : -1);
+      });
+
+      const f = n => (n || 0).toLocaleString('es-AR');
+
+      document.getElementById('svcTableContainer').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th class="sortable" onclick="svcSort('id')">ID ${svcSortIcon('id')}</th>
+              <th class="sortable" onclick="svcSort('name')">Nombre ${svcSortIcon('name')}</th>
+              <th>Descripción</th>
+              <th class="sortable" onclick="svcSort('price')">Precio ${svcSortIcon('price')}</th>
+              <th class="sortable" onclick="svcSort('price_gremio')">Gremio ${svcSortIcon('price_gremio')}</th>
+              <th>Nota</th>
+              <th>Icono</th>
+              <th class="sortable" onclick="svcSort('category')">Categoría ${svcSortIcon('category')}</th>
+              <th>Equipo</th>
+              <th style="width:50px;">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filtered.map(s => `<tr>
+              <td>${edInput(s, 'id', 3)}</td>
+              <td>${edInput(s, 'name')}</td>
+              <td>${edInput(s, 'desc')}</td>
+              <td>${edInput(s, 'price', 8, 'number')}</td>
+              <td>${edInput(s, 'price_gremio', 8, 'number')}</td>
+              <td>${edInput(s, 'note', 12)}</td>
+              <td>${edInput(s, 'icon', 4)}</td>
+              <td>${edSelect(s, 'category', ['diagnostico','hardware','software','mantenimiento','otros'])}</td>
+              <td>${edSelect(s, 'equipo', ['todas','notebooks','pc','celulares','tv','parlantes'])}</td>
+              <td><button class="delete-btn" onclick="eliminarServicio(${s.id})">✕ Eliminar</button></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addServicioRow()">+ Agregar servicio</button>
+        <div class="table-footer">${filtered.length} de ${serviciosData.length} servicios</div>
+      `;
+    }
+
+    function svcSort(field) {
+      if (svcSortField === field) svcSortDir = svcSortDir === 'asc' ? 'desc' : 'asc';
+      else { svcSortField = field; svcSortDir = 'asc'; }
+      renderServicios();
+    }
+    function svcSortIcon(field) {
+      if (svcSortField !== field) return '↕';
+      return svcSortDir === 'asc' ? '↑' : '↓';
+    }
+
+    function addServicioRow() {
+      const maxId = serviciosData.reduce((m, s) => Math.max(m, s.id || 0), 0);
+      serviciosData.push({ id: maxId + 1, name: '', desc: '', price: 0, price_gremio: 0, note: '', icon: '•', category: 'otros', equipo: 'todas' });
+      renderServicios();
+      renderStats();
+    }
+
+    // =============================================
+    //  ELIMINAR
+    // =============================================
+    function eliminarProducto(id) {
+      if (!confirm('¿Eliminar este producto?\nNo se borra de Google Sheets hasta que guardés.')) return;
+      const idx = productosData.findIndex(p => p.id === id);
+      if (idx === -1) return;
+      productosData.splice(idx, 1);
+      renderProductos();
+      renderStats();
+      document.getElementById('prodSaveMsg').className = 'save-msg';
+      document.getElementById('prodSaveMsg').textContent = '⚠️ Producto eliminado — guardá para confirmar';
+      setTimeout(() => document.getElementById('prodSaveMsg').textContent = '', 4000);
+    }
+
+    function eliminarServicio(id) {
+      if (!confirm('¿Eliminar este servicio?\nNo se borra de Google Sheets hasta que guardés.')) return;
+      const idx = serviciosData.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      serviciosData.splice(idx, 1);
+      renderServicios();
+      renderStats();
+      document.getElementById('svcSaveMsg').className = 'save-msg';
+      document.getElementById('svcSaveMsg').textContent = '⚠️ Servicio eliminado — guardá para confirmar';
+      setTimeout(() => document.getElementById('svcSaveMsg').textContent = '', 4000);
+    }
+
+    // =============================================
+    //  HELPERS: INPUTS EDITABLES
+    // =============================================
+    function edInput(obj, field, width, type) {
+      const keys = field.split('.');
+      let val = obj;
+      keys.forEach(k => { val = val !== undefined && val !== null ? val[k] : undefined; });
+      val = val !== undefined && val !== null ? val : '';
+      const w = width ? 'width:' + width + 'em;' : '';
+      const t = type || 'text';
+      return `<input class="editable-input" type="${t}" value="${escHtml(String(val))}" style="${w}"
+        onfocus="this._old=this.value" onchange="editCell(${obj.id},'${field}',this.value,'${t}')">`;
+    }
+
+    function edSelect(obj, field, options) {
+      const val = obj[field] || options[0];
+      return `<select class="editable-select" onchange="editCell(${obj.id},'${field}',this.value)">
+        ${options.map(o => `<option value="${o}" ${o === val ? 'selected' : ''}>${o}</option>`).join('')}
+      </select>`;
+    }
+
+    function edTipoSelect(obj) {
+      const val = obj.tipo || 'propio';
+      const opts = {
+        propio: { label: '● Propio', value: 'propio', cls: 'tipo-propio' },
+        consignacion: { label: '● Consignación', value: 'consignacion', cls: 'tipo-consignacion' }
+      };
+      return `<select class="editable-select tipo-select" onchange="editCell(${obj.id},'tipo',this.value)">
+        ${Object.values(opts).map(o => `<option value="${o.value}" class="${o.cls}" ${o.value === val ? 'selected' : ''}>${o.label}</option>`).join('')}
+      </select>`;
+    }
+
+    function editCell(id, field, value, type) {
+      let arr;
+      if (currentTab === 'productos') arr = productosData;
+      else if (currentTab === 'condiciones') arr = condicionesData;
+      else arr = serviciosData;
+      const item = arr.find(d => d.id === id);
+      if (!item) return;
+
+      if (type === 'number') value = Number(value) || 0;
+
+      // Soporte para notación de punto: specs.ram
+      const keys = field.split('.');
+      let obj = item;
+      keys.slice(0, -1).forEach(k => { obj = obj[k] = obj[k] || {}; });
+      obj[keys[keys.length - 1]] = value;
+
+      renderStats();
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // =============================================
+    //  SUBIR IMAGEN A CLOUDINARY
+    // =============================================
+    function subirImagenCloudinary(producto) {
+      // Verificar que Cloudinary Widget esté cargado
+      if (typeof cloudinary === 'undefined' || !cloudinary) {
+        alert('❌ El servicio de Cloudinary no está disponible.\n\n' +
+          'Probablemente el script de Cloudinary no se cargó.\n' +
+          'Verificá:\n' +
+          '1️⃣ Que no tengas un bloqueador de anuncios activo\n' +
+          '2️⃣ Que tengas conexión a internet\n' +
+          '3️⃣ O intentá con otro navegador');
+        console.error('❌ Cloudinary no está definido. Revisá que el script cargue bien:', 
+          document.querySelector('script[src*="cloudinary"]') ? 'script presente' : 'script FALTANTE');
+        return;
+      }
+
+      try {
+        const widget = cloudinary.openUploadWidget(
+          {
+            cloudName: CLOUD_NAME,
+            uploadPreset: UPLOAD_PRESET,
+            sources: ['local', 'camera', 'url'],
+            folder: 'catalogo',
+            clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
+            maxFileSize: 5000000, // 5MB
+            multiple: true,
+            showPoweredBy: false,
+            styles: {
+              palette: { window: '#0f172a', windowBorder: '#1e293b', tabIcon: '#06b6d4', menuIcons: '#94a3b8',
+                textDark: '#0f172a', textLight: '#f1f5f9', link: '#06b6d4', action: '#22c55e',
+                inactiveTabIcon: '#64748b', error: '#ef4444', inProgress: '#06b6d4',
+                complete: '#22c55e', sourceBg: '#1e293b' }
+            }
+          },
+          (error, result) => {
+            if (error) {
+              console.error('❌ Error de Cloudinary:', error);
+              alert('Error al subir la imagen: ' + (error.statusText || error.message || 'desconocido'));
+              return;
+            }
+
+            if (result.event === 'success') {
+              const url = result.info.secure_url;
+              if (!producto.images) producto.images = [];
+              producto.images.push(url);
+              renderProductos();
+              renderStats();
+              console.log('✅ Imagen subida correctamente:', url);
+            } else if (result.event === 'close') {
+              console.log('👋 Widget cerrado sin subir imágenes');
+            }
+          }
+        );
+        widget.open();
+      } catch (err) {
+        console.error('❌ Error al abrir widget Cloudinary:', err);
+        alert('No se pudo abrir el selector de imágenes.\n\n' +
+          'Error: ' + err.message + '\n\n' +
+          'Posibles causas:\n' +
+          '🔸 El upload preset "' + UPLOAD_PRESET + '" no existe en Cloudinary\n' +
+          '🔸 El cloud name "' + CLOUD_NAME + '" es incorrecto\n' +
+          '🔸 Hay un bloqueador de anuncios activo');
+      }
+    }
+
+    // =============================================
+    //  RENDER IMG CELL — miniaturas + controles
+    // =============================================
+    function renderImgCell(prod) {
+      const imgs = Array.isArray(prod.images) ? prod.images :
+        (prod.images ? prod.images.split(',').map(s=>s.trim()).filter(s=>s) : []);
+      const id = prod.id;
+      let html = '';
+
+      // Miniaturas
+      imgs.forEach((url, i) => {
+        html += `<div class="img-thumb-wrap">
+          <img src="${escHtml(url)}" class="img-thumb" onerror="this.style.display='none'">
+          <div class="img-ctrl-group">
+            <button class="img-ctrl" onclick="moverImagen(${id},${i},-1)" title="Mover izquierda">◀</button>
+            <button class="img-ctrl" onclick="moverImagen(${id},${i},1)" title="Mover derecha">▶</button>
+            <button class="img-ctrl img-ctrl-del" onclick="eliminarImagen(${id},${i})" title="Eliminar esta imagen">✕</button>
+          </div>
+        </div>`;
+      });
+
+      // Botón agregar
+      html += `<button class="img-btn" onclick="subirImagenCloudinary(productosData.find(x=>x.id===${id}))" title="Subir imágenes">📷</button>`;
+
+      return html;
+    }
+
+    // =============================================
+    //  MOVER / ELIMINAR IMAGEN
+    // =============================================
+    function eliminarImagen(id, index) {
+      const prod = productosData.find(p => p.id === id);
+      if (!prod) return;
+      const imgs = Array.isArray(prod.images) ? prod.images :
+        (prod.images ? prod.images.split(',').map(s=>s.trim()).filter(s=>s) : []);
+      imgs.splice(index, 1);
+      prod.images = imgs;
+      renderProductos();
+      renderStats();
+    }
+
+    function moverImagen(id, index, dir) {
+      const prod = productosData.find(p => p.id === id);
+      if (!prod) return;
+      const imgs = Array.isArray(prod.images) ? prod.images :
+        (prod.images ? prod.images.split(',').map(s=>s.trim()).filter(s=>s) : []);
+      const newIndex = index + dir;
+      if (newIndex < 0 || newIndex >= imgs.length) return;
+      [imgs[index], imgs[newIndex]] = [imgs[newIndex], imgs[index]];
+      prod.images = imgs;
+      renderProductos();
+      renderStats();
+    }
+
+    // =============================================
+    //  VISTA PREVIA — cómo se ve en el catálogo
+    // =============================================
+    const previewCondLabels = {
+      'excelente': 'Excelente',
+      'muy-bueno': 'Muy Bueno',
+      'bueno': 'Bueno'
+    };
+    const previewSpecIcons = {
+      ram: '💾', storage: '💿', cpu: '⚡', gpu: '🎮'
+    };
+    const previewSpecLabels = {
+      ram: 'RAM', storage: 'Almac.', cpu: 'Procesador', gpu: 'Gráficos'
+    };
+
+    function previewProducto(id) {
+      const prod = productosData.find(p => p.id === id);
+      if (!prod) { alert('Producto no encontrado'); return; }
+
+      const modal = document.getElementById('previewModal');
+      const card = document.getElementById('previewCard');
+      const modeLabel = document.getElementById('previewMode');
+
+      // Detectar si está en modo gremio (por si el admin quiere ver precio gremial)
+      // Por defecto mostramos precio público, pero se puede togglear
+      const showGremio = false;
+      modeLabel.textContent = 'Modo público';
+
+      // Precio
+      const price = showGremio && prod.price_gremio > 0 ? prod.price_gremio : prod.price_public;
+      const priceFormatted = (price || 0).toLocaleString('es-AR');
+
+      // Imagen
+      const images = Array.isArray(prod.images) ? prod.images :
+        (prod.images ? prod.images.split(',').map(s=>s.trim()).filter(s=>s) : []);
+      const imgSrc = images.length > 0 ? images[0] : '';
+      const firstLetter = (prod.name || '?').charAt(0).toUpperCase();
+
+      // Condición
+      const condClass = prod.condition || 'bueno';
+      const condLabel = previewCondLabels[condClass] || condClass;
+
+      // Specs
+      const specs = prod.specs || {};
+      const specsHTML = Object.entries(specs).filter(([k,v]) => v).map(([key, value]) => `
+        <div class="preview-spec">
+          <span class="spec-icon">${previewSpecIcons[key] || '•'}</span>
+          <span>${value}</span>
+        </div>
+      `).join('');
+
+      // Tipo indicator
+      const esPropio = prod.tipo === 'propio';
+      const tipoLabel = esPropio ? '● Propio' : '● Consignación';
+
+      // WhatsApp link
+      const wsLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        WHATSAPP_MESSAGE + '\n📦 ' + prod.name + '\n🆔 ID: ' + prod.id + '\n💰 $' + priceFormatted
+      )}`;
+
+      // Render card
+      card.innerHTML = `
+        <div class="preview-card-image">
+          ${imgSrc
+            ? `<img src="${imgSrc}" alt="${prod.name}" onerror="this.outerHTML='<div class=\\'no-image\\'>${firstLetter}</div>'">`
+            : `<div class="no-image">${firstLetter}</div>`
+          }
+          <span class="preview-badge ${condClass}">${condLabel}</span>
+        </div>
+        <div class="preview-card-body">
+          <div class="preview-card-title">${prod.name || 'Sin nombre'}</div>
+          <div class="preview-card-subtitle">${prod.subtitle || ''}</div>
+          ${specsHTML ? `<div class="preview-specs">${specsHTML}</div>` : ''}
+          ${prod.description ? `<div class="preview-description">${prod.description.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\|/g,'<br>')}</div>` : ''}
+          <div class="preview-tipo" style="padding:0.35rem 0;font-size:0.8rem;color:${esPropio ? '#2ecc71' : '#f39c12'};font-weight:600;">${tipoLabel}</div>
+          <div class="preview-cost" style="padding:0.5rem 0;font-size:0.82rem;color:var(--text-muted);border-top:1px solid var(--border);margin-top:0.5rem;">
+            ${esPropio
+              ? `<span>📊 <strong>Costo:</strong> $${(prod.cost || 0).toLocaleString('es-AR')}</span>`
+              : `<span>💰 <strong>Consignación</strong> — sin costo propio</span>`
+            }
+          </div>
+          <div class="preview-footer">
+            <div class="preview-price">
+              <span class="currency">$</span>${priceFormatted}
+            </div>
+            <a href="${wsLink}" target="_blank" rel="noopener" class="preview-whatsapp-btn">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Botón de editar
+      document.getElementById('previewEditBtn').onclick = () => {
+        cerrarPreview();
+        // Cambiar a tab productos y scrollear a la fila (opcional, salta a la primera página)
+        switchTab('productos');
+      };
+
+      modal.classList.add('open');
+    }
+
+    function cerrarPreview() {
+      document.getElementById('previewModal').classList.remove('open');
+    }
+
+    // Cerrar preview con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarPreview();
+    });
+
+    // Cerrar preview clickeando fuera
+    document.getElementById('previewModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) cerrarPreview();
+    });
+
+    // =============================================
+    //  GUARDAR EN GOOGLE SHEETS
+    // =============================================
+    async function guardarProductos() {
+      await guardar('productos', productosData, 'prodSaveBtn', 'prodSaveMsg');
+    }
+
+    async function guardarServicios() {
+      await guardar('servicios', serviciosData, 'svcSaveBtn', 'svcSaveMsg');
+    }
+
+    async function guardarCondiciones() {
+      await guardar('condiciones', condicionesData, 'condSaveBtn', 'condSaveMsg');
+    }
+
+    // =============================================
+    //  TABLA: CONDICIONES
+    // =============================================
+    function renderCondiciones() {
+      const container = document.getElementById('condTableContainer');
+      if (!container) return;
+
+      const sorted = [...condicionesData].sort((a, b) => (a.orden || 0) - (b.orden || 0) || a.id - b.id);
+
+      container.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th style="width:40px;">ID</th>
+              <th>Texto</th>
+              <th style="width:120px;">Ámbito</th>
+              <th style="width:60px;">Orden</th>
+              <th style="width:50px;">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.map(c => `<tr>
+              <td>${edInput(c, 'id', 3)}</td>
+              <td>${edInput(c, 'texto')}</td>
+              <td>${edSelect(c, 'ambito', ['publico', 'gremio', 'ambos'])}</td>
+              <td>${edInput(c, 'orden', 4, 'number')}</td>
+              <td><button class="delete-btn" onclick="eliminarCondicion(${c.id})">✕ Eliminar</button></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addCondicionRow()">+ Agregar condición</button>
+        <div class="table-footer">${condicionesData.length} condiciones</div>
+      `;
+    }
+
+    function addCondicionRow() {
+      const maxId = condicionesData.reduce((m, c) => Math.max(m, c.id || 0), 0);
+      const maxOrden = condicionesData.reduce((m, c) => Math.max(m, c.orden || 0), 0);
+      condicionesData.push({ id: maxId + 1, texto: '', ambito: 'publico', orden: maxOrden + 1 });
+      renderCondiciones();
+    }
+
+    function eliminarCondicion(id) {
+      condicionesData = condicionesData.filter(c => c.id !== id);
+      renderCondiciones();
+    }
+
+    async function guardar(sheet, data, btnId, msgId) {
+      const btn = document.getElementById(btnId);
+      const msg = document.getElementById(msgId);
+
+      if (!API_URL || API_URL === 'URL_DE_TU_SCRIPT') {
+        msg.className = 'save-msg error';
+        msg.textContent = '❌ Configurá API_URL primero';
+        setTimeout(() => msg.textContent = '', 4000);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '⏳ Guardando...';
+      msg.className = 'save-msg saving';
+      msg.textContent = 'Enviando a Google Sheets...';
+
+      try {
+        // Aplanar specs (specs.ram → specs_ram) para que coincida con las columnas del sheet
+        const flatData = data.map(item => {
+          const flat = { ...item };
+          if (item.specs) {
+            flat.specs_ram = item.specs.ram || '';
+            flat.specs_storage = item.specs.storage || '';
+            flat.specs_cpu = item.specs.cpu || '';
+            flat.specs_gpu = item.specs.gpu || '';
+          }
+          delete flat.specs;
+          return flat;
+        });
+
+        // Usamos GET en vez de POST para evitar problemas de CORS con Apps Script
+        const params = new URLSearchParams({
+          action: 'save',
+          sheet: sheet,
+          password: SAVE_PASSWORD,
+          data: JSON.stringify(flatData)
+        });
+
+        const resp = await fetch(API_URL + '?' + params.toString());
+        const json = await resp.json();
+
+        if (json.success) {
+          msg.className = 'save-msg success';
+          msg.textContent = '✅ ' + json.message + ' (' + json.total + ' registros)';
+        } else {
+          msg.className = 'save-msg error';
+          msg.textContent = '❌ ' + (json.error || 'Error al guardar');
+        }
+      } catch (err) {
+        msg.className = 'save-msg error';
+        msg.textContent = '❌ Error de conexión: ' + err.message;
+      }
+
+      btn.disabled = false;
+      btn.textContent = '💾 Guardar en Sheets';
+      setTimeout(() => { msg.textContent = ''; }, 6000);
+    }
+
+    // =============================================
+    //  DATOS DE DEMO
+    // =============================================
+    function getDemoProductos() {
+      return [
+        { id: 1, name: 'Dell XPS 15 9520', subtitle: 'Potencia y diseño premium', brand: 'Dell', specs: { ram: '16GB', storage: '512GB SSD', cpu: 'i7-12700H', gpu: 'RTX 3050' }, price_public: 720000, price_gremio: 580000, cost: 450000, condition: 'excelente', estado: 'disponible', featured: true, description: '', images: [], whatsapp: '', tipo: 'propio' },
+        { id: 2, name: 'MacBook Pro 14" M3 Pro', subtitle: 'La mejor experiencia profesional', brand: 'Apple', specs: { ram: '18GB', storage: '512GB SSD', cpu: 'M3 Pro', gpu: 'Integrada 18 núcleos' }, price_public: 1450000, price_gremio: 1150000, cost: 980000, condition: 'excelente', estado: 'reservado', featured: true, description: '', images: [], whatsapp: '', tipo: 'propio' },
+        { id: 3, name: 'HP Pavilion 15', subtitle: 'Ideal para estudio y uso diario', brand: 'HP', specs: { ram: '8GB', storage: '256GB SSD', cpu: 'i5-1235U', gpu: 'Integrada' }, price_public: 380000, price_gremio: 310000, cost: 0, condition: 'muy-bueno', estado: 'disponible', featured: false, description: '', images: [], whatsapp: '', tipo: 'consignacion' },
+        { id: 4, name: 'Lenovo ThinkPad X1 Carbon Gen 10', subtitle: 'La referencia corporativa', brand: 'Lenovo', specs: { ram: '16GB', storage: '512GB SSD', cpu: 'i7-1260P', gpu: 'Integrada' }, price_public: 680000, price_gremio: 540000, cost: 420000, condition: 'excelente', estado: 'vendido', featured: true, description: '', images: [], whatsapp: '', tipo: 'propio' }
+      ];
+    }
+
+    function getDemoServicios() {
+      return [
+        { id: 1, name: 'Diagnóstico completo', desc: 'Revisión general del equipo', price: 0, price_gremio: 0, note: 'Sin cargo', icon: '🔬', category: 'diagnostico', equipo: 'todas' },
+        { id: 2, name: 'Diagnóstico avanzado', desc: 'Análisis con herramientas especializadas', price: 5000, price_gremio: 3500, note: 'Se descuenta si reparás', icon: '🖥️', category: 'diagnostico', equipo: 'todas' },
+        { id: 3, name: 'Reparación de pantalla', desc: 'Cambio de display o flex cable', price: 25000, price_gremio: 18000, note: 'Desde', icon: '🖥️', category: 'hardware', equipo: 'notebooks' },
+        { id: 4, name: 'Cambio de teclado', desc: 'Reemplazo de teclado dañado', price: 8000, price_gremio: 5500, note: 'Más valor teclado', icon: '⌨️', category: 'hardware', equipo: 'notebooks' },
+        { id: 5, name: 'Formateo e instalación', desc: 'Instalación de Windows/Linux', price: 8000, price_gremio: 5500, note: 'Incluye backup básico', icon: '💿', category: 'software', equipo: 'todas' },
+        { id: 6, name: 'Mantenimiento preventivo', desc: 'Limpieza y cambio de pasta térmica', price: 10000, price_gremio: 7000, note: '', icon: '🧹', category: 'mantenimiento', equipo: 'todas' },
+        { id: 7, name: 'Asesoría técnica', desc: 'Consulta sobre qué comprar', price: 0, price_gremio: 0, note: 'Sin cargo', icon: '💡', category: 'otros', equipo: 'todas' }
+      ];
+    }
+
+    function getDemoCondiciones() {
+      return [
+        { id: 1, texto: 'Presupuesto sin cargo — válido por 30 días', ambito: 'publico', orden: 1 },
+        { id: 2, texto: 'Se descuenta del presupuesto si reparás con nosotros', ambito: 'publico', orden: 2 },
+        { id: 3, texto: 'Todos los trabajos tienen garantía por escrito', ambito: 'ambos', orden: 3 },
+        { id: 4, texto: 'Precio bonificado exclusivo para revendedores', ambito: 'gremio', orden: 1 },
+        { id: 5, texto: 'Mínimo 2 equipos por mes para mantener precio gremial', ambito: 'gremio', orden: 2 },
+        { id: 6, texto: 'Forma de pago: efectivo / transferencia / Mercado Pago', ambito: 'ambos', orden: 4 }
+      ];
+    }
+
+    // =============================================
+    //  TURNOS — RENDER
+    // =============================================
+    function renderTurnos() {
+      const container = document.getElementById('turnosTableContainer');
+      if (!container) return;
+
+      // Siempre limpiar el estado de carga
+      container.innerHTML = '';
+
+      const safeTurnos = turnosData || [];
+      const estado = document.getElementById('turnoFiltroEstado')?.value || 'pendiente';
+      const fecha = document.getElementById('turnoFiltroFecha')?.value || '';
+      const busqueda = (document.getElementById('turnoBusqueda')?.value || '').toLowerCase().trim();
+
+      // Filtrar
+      turnosFiltered = safeTurnos.filter(t => {
+        if (estado !== 'all' && t.estado !== estado) return false;
+        if (fecha && t.fecha !== fecha) return false;
+        if (busqueda) {
+          const nombre = (t.nombre || '').toLowerCase();
+          const dni = (t.dni || '').toLowerCase();
+          const whatsapp = (t.whatsapp || '').toLowerCase();
+          if (!nombre.includes(busqueda) && !dni.includes(busqueda) && !whatsapp.includes(busqueda)) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      // Ordenar por fecha descendente y luego hora ascendente
+      turnosFiltered.sort((a, b) => {
+        if (a.fecha !== b.fecha) return b.fecha.localeCompare(a.fecha);
+        return a.hora.localeCompare(b.hora);
+      });
+
+      // ========== BARRA DE RESUMEN DEL DÍA ==========
+      try {
+        const resumenEl = document.getElementById('turnosResumen');
+        if (resumenEl) {
+          const today = new Date();
+          const y = today.getFullYear();
+          const m = String(today.getMonth() + 1).padStart(2,'0');
+          const d = String(today.getDate()).padStart(2,'0');
+          const hoy = y + '-' + m + '-' + d;
+          const hoyDisp = today.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+          // Formatear fecha del turno a YYYY-MM-DD para comparar (banea Date object)
+          const fechaStr = t => {
+            if (!t.fecha) return '';
+            if (typeof t.fecha === 'object' && t.fecha instanceof Date && !isNaN(t.fecha.getTime())) {
+              return t.fecha.getFullYear() + '-' + String(t.fecha.getMonth()+1).padStart(2,'0') + '-' + String(t.fecha.getDate()).padStart(2,'0');
+            }
+            return String(t.fecha).split('T')[0];
+          };
+
+          const turnosHoy = safeTurnos.filter(t => fechaStr(t) === hoy);
+          const confirmados = turnosHoy.filter(t => t.estado === 'confirmado').length;
+          const pendientes = turnosHoy.filter(t => t.estado === 'pendiente').length;
+          const pagados = turnosHoy.filter(t => t.estado === 'pagado').length;
+          const total = turnosHoy.length;
+
+          if (total > 0) {
+            resumenEl.innerHTML = `
+              <span class="tr-fecha">📊 ${hoyDisp}</span>
+              <span class="tr-item tr-confirmados"><span class="tr-num">${confirmados}</span> confirmados</span>
+              <span class="tr-item tr-pendientes"><span class="tr-num">${pendientes}</span> pendientes</span>
+              <span class="tr-item tr-pagados"><span class="tr-num">${pagados}</span> pagados</span>
+              <span class="tr-item tr-total"><span class="tr-num">${total}</span> total</span>
+            `;
+          } else {
+            resumenEl.innerHTML = `<span class="tr-vacio">📊 ${hoyDisp} — sin turnos</span>`;
+          }
+        }
+      } catch (e) {}
+
+      // Contador
+      const countEl = document.getElementById('turnosCount');
+      if (countEl) {
+        countEl.textContent = turnosFiltered.length + ' de ' + safeTurnos.length + ' turnos';
+      }
+
+      if (turnosFiltered.length === 0) {
+        container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-muted);font-size:0.9rem;">📅 No se encontraron turnos con esos filtros</div>';
+        return;
+      }
+
+      const estadoLabels = {
+        pendiente: '⏳ Pendiente',
+        pagado: '💵 Pagado',
+        confirmado: '✅ Confirmado',
+        completado: '✔️ Completado',
+        cancelado: '❌ Cancelado'
+      };
+
+      const equipoIcons = {
+        notebooks: '💻', consolas: '🎮', pc: '🖥️',
+        celulares: '📱', tv: '📺', parlantes: '🔊',
+        electronica: '🔧', otro: '❓'
+      };
+
+      let html = `<table><thead><tr>
+        <th>#</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Cliente</th>
+        <th>WhatsApp</th>
+        <th>DNI</th>
+        <th>Equipo</th>
+        <th>Reparación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr></thead><tbody>`;
+
+      turnosFiltered.forEach(t => {
+        const eqIcon = equipoIcons[t.equipo] || '❓';
+        const estadoLabel = estadoLabels[t.estado] || t.estado;
+
+        // Formatear fecha para mostrar (banea Date object del sheet O string)
+        let fechaDisplay = t.fecha;
+        try {
+          let d;
+          if (typeof t.fecha === 'object' && t.fecha instanceof Date && !isNaN(t.fecha.getTime())) {
+            d = t.fecha;
+          } else if (t.fecha) {
+            d = new Date(t.fecha + 'T12:00:00');
+          }
+          if (d && !isNaN(d.getTime())) {
+            fechaDisplay = d.toLocaleDateString('es-AR', { day: 'numeric', month: 'numeric' });
+          }
+        } catch (e) {}
+
+        // Formatear hora (banea Date object del sheet)
+        let horaDisplay = t.hora;
+        if (typeof t.hora === 'object' && t.hora instanceof Date && !isNaN(t.hora.getTime())) {
+          horaDisplay = String(t.hora.getHours()).padStart(2,'0') + ':' + String(t.hora.getMinutes()).padStart(2,'0');
+        }
+
+        // Checkbox Pagado: pre-checkeado si pago_link es true/'true'
+        const pagadoChecked = (t.pago_link === true || t.pago_link === 'true' || t.pago_link === 'TRUE') ? 'checked' : '';
+
+        let actionsHtml = '';
+        if (t.estado === 'pendiente' || t.estado === 'pagado') {
+          actionsHtml = `
+            <label class="ta-check-pagar" onclick="event.stopPropagation();togglePagoLink(${t.id})" title="Marcar / desmarcar pagado">
+              <input type="checkbox" class="ta-check-input" ${pagadoChecked}> <span>💵 Pagado</span>
+            </label>
+            <button class="ta-confirmar" onclick="confirmarTurno(${t.id})">✅ Confirmar</button>
+            <button class="ta-cancelar" onclick="cambiarEstadoTurno(${t.id},'cancelado')">❌ Cancelar</button>
+          `;
+        } else if (t.estado === 'confirmado') {
+          actionsHtml = `
+            <button class="ta-completar" onclick="cambiarEstadoTurno(${t.id},'completado')">✔️ Completar</button>
+            <button class="ta-cancelar" onclick="cambiarEstadoTurno(${t.id},'cancelado')">❌ Cancelar</button>
+          `;
+        } else {
+          actionsHtml = `<span style="color:var(--text-muted);font-size:0.7rem;">—</span>`;
+        }
+
+        // WhatsApp link
+        const wsLink = t.whatsapp
+          ? `<a href="https://wa.me/${String(t.whatsapp).replace(/\s/g,'')}" target="_blank" class="turnos-whatsapp-link">💬 ${t.whatsapp}</a>`
+          : '<span style="color:var(--text-muted);font-size:0.7rem;">—</span>';
+
+        const reparacionLabels = {
+          diagnostico: '🔬 Diagnóstico', hardware: '🔧 Hardware',
+          software: '💻 Software', mantenimiento: '🧹 Mantenimiento',
+          upgrade: '⬆️ Upgrade', otro: '❓ Otro'
+        };
+        const repLabel = reparacionLabels[t.tipo_reparacion] || t.tipo_reparacion || '—';
+
+        html += `<tr>
+          <td>${t.id}</td>
+          <td>${fechaDisplay}</td>
+          <td><strong>${horaDisplay}</strong></td>
+          <td>${escHtml(t.nombre)}</td>
+          <td>${wsLink}</td>
+          <td style="font-size:0.75rem;color:var(--text-muted);">${escHtml(t.dni) || '—'}</td>
+          <td>${eqIcon} ${t.equipo ? escHtml(t.equipo) : '—'}</td>
+          <td style="font-size:0.75rem;">${repLabel}</td>
+          <td><span class="estado-badge ${t.estado}">${estadoLabel}</span></td>
+          <td><div class="turnos-actions">${actionsHtml}</div></td>
+        </tr>`;
+      });
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    function filtrarTurnos() {
+      // Sacar active del botón "Todos" cuando usan filtros manuales
+      document.querySelector('.turnos-btn-mostrar-todos')?.classList.remove('active');
+      renderTurnos();
+    }
+
+    function mostrarTodosLosTurnos() {
+      const fechaInput = document.getElementById('turnoFiltroFecha');
+      const estadoSelect = document.getElementById('turnoFiltroEstado');
+      const busquedaInput = document.getElementById('turnoBusqueda');
+      if (fechaInput) fechaInput.value = '';
+      if (estadoSelect) estadoSelect.value = 'all';
+      if (busquedaInput) busquedaInput.value = '';
+      document.querySelector('.turnos-btn-mostrar-todos')?.classList.add('active');
+      renderTurnos();
+    }
+
+    function recargarTurnos() {
+      if (!API_URL || API_URL === 'URL_DE_TU_SCRIPT') return;
+
+      const container = document.getElementById('turnosTableContainer');
+      if (container) {
+        container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted);font-size:0.85rem;">☁️ Cargando turnos...</div>';
+      }
+
+      const url = API_URL + '?sheet=turnos';
+      console.log('📡 Fetching turnos:', url);
+
+      fetch(url)
+        .then(r => r.json())
+        .then(json => {
+          console.log('📦 Respuesta turnos:', JSON.stringify(json).slice(0, 500));
+          if (json.success && Array.isArray(json.data)) {
+            const sample = json.data[0];
+            if (sample && (sample.nombre || sample.fecha || sample.estado)) {
+              turnosData = json.data;
+              console.log('✅ Turnos cargados:', turnosData.length);
+            } else {
+              turnosData = [];
+              console.warn('❌ API devolvió datos que no parecen turnos. Keys del primer item:', Object.keys(sample || {}).join(', '));
+            }
+          } else {
+            turnosData = [];
+            console.warn('❌ API rechazó turnos:', json.error || 'success=false');
+          }
+          renderTurnos();
+          actualizarBadgeTurnos();
+        })
+        .catch(err => {
+          console.warn('Error al cargar turnos:', err);
+          turnosData = [];
+          renderTurnos();
+          actualizarBadgeTurnos();
+        });
+    }
+
+    function actualizarBadgeTurnos() {
+      const badge = document.getElementById('countBadge');
+      if (!badge) return;
+      badge.textContent =
+        (productosData || []).length + ' prod · ' +
+        (serviciosData || []).length + ' svc · ' +
+        (condicionesData || []).length + ' cond · ' +
+        (turnosData || []).length + ' turnos';
+    }
+
+    // =============================================
+    //  TURNOS — NUEVO TURNO MANUAL
+    // =============================================
+    function nuevoTurno() {
+      // Set fecha default = today + 1 (mañana)
+      const tmrw = new Date();
+      tmrw.setDate(tmrw.getDate() + 1);
+      const y = tmrw.getFullYear();
+      const m = String(tmrw.getMonth() + 1).padStart(2,'0');
+      const d = String(tmrw.getDate()).padStart(2,'0');
+      document.getElementById('tmFecha').value = y + '-' + m + '-' + d;
+      document.getElementById('turnoModal').classList.add('open');
+    }
+
+    function cerrarNuevoTurnoModal() {
+      document.getElementById('turnoModal').classList.remove('open');
+    }
+
+    async function guardarNuevoTurno() {
+      const nombre = document.getElementById('tmNombre').value.trim();
+      const dni = document.getElementById('tmDni').value.trim();
+      const whatsapp = document.getElementById('tmWhatsapp').value.trim();
+      const cp = document.getElementById('tmCp').value.trim();
+      const ciudad = document.getElementById('tmCiudad').value.trim();
+      const domicilio = document.getElementById('tmDomicilio').value.trim();
+      const equipo = document.getElementById('tmEquipo').value;
+      const cantidad = document.getElementById('tmCantidad').value;
+      const reparacion = document.getElementById('tmReparacion').value;
+      const falla = document.getElementById('tmFalla').value.trim();
+      const fecha = document.getElementById('tmFecha').value;
+
+      if (!nombre || !whatsapp || !fecha) {
+        alert('Completá al menos nombre, WhatsApp y fecha.');
+        return;
+      }
+
+      const turnoData = {
+        nombre, dni, whatsapp: whatsapp.replace(/\s/g,''),
+        codigo_postal: cp || '', ciudad, domicilio,
+        cantidad_equipos: Number(cantidad) || 1,
+        equipo, tipo_reparacion: reparacion, falla,
+        fecha, hora: '10:00' // hora por defecto, el admin la ajusta después
+      };
+
+      try {
+        const resp = await fetch(API_URL + '?action=saveTurno&data=' + encodeURIComponent(JSON.stringify(turnoData)));
+        const json = await resp.json();
+        if (json.success) {
+          cerrarNuevoTurnoModal();
+          recargarTurnos();
+          alert('✅ Turno creado correctamente');
+        } else {
+          alert('Error: ' + (json.error || 'No se pudo guardar'));
+        }
+      } catch (err) {
+        alert('Error de conexión al guardar el turno');
+      }
+    }
+
+    // =============================================
+    //  TURNOS — TOGGLE PAGO_LINK (checkbox)
+    // =============================================
+    async function togglePagoLink(id) {
+      const turno = turnosData.find(t => t.id === id);
+      if (!turno) return;
+
+      // Toggle: si estaba pagado(true) → pasa a false; si no → true
+      const yaPagado = (turno.pago_link === true || turno.pago_link === 'true' || turno.pago_link === 'TRUE');
+      const nuevoPagoLink = yaPagado ? false : true;
+
+      turno.pago_link = nuevoPagoLink;
+      turno.estado = nuevoPagoLink ? 'pagado' : 'pendiente';
+
+      const url = API_URL + '?action=save&sheet=turnos&password=' + encodeURIComponent(SAVE_PASSWORD)
+        + '&data=' + encodeURIComponent(JSON.stringify(turnosData));
+
+      try {
+        const resp = await fetch(url);
+        const json = await resp.json();
+        if (json.success) {
+          renderTurnos();
+        } else {
+          turno.pago_link = !nuevoPagoLink; // revertir
+          turno.estado = turno.pago_link ? 'pagado' : 'pendiente';
+          alert('Error: ' + (json.error || 'No se pudo actualizar'));
+        }
+      } catch (err) {
+        turno.pago_link = !nuevoPagoLink;
+        turno.estado = turno.pago_link ? 'pagado' : 'pendiente';
+        alert('Error de conexión');
+      }
+    }
+
+    // =============================================
+    //  TURNOS — CAMBIAR ESTADO
+    // =============================================
+    async function cambiarEstadoTurno(id, nuevoEstado, silent) {
+      if (!silent && !confirm(`¿Cambiar turno #${id} a "${nuevoEstado}"?`)) return;
+
+      const turno = turnosData.find(t => t.id === id);
+      if (!turno) return;
+
+      turno.estado = nuevoEstado;
+
+      const url = API_URL + '?action=save&sheet=turnos&password=' + encodeURIComponent(SAVE_PASSWORD)
+        + '&data=' + encodeURIComponent(JSON.stringify(turnosData));
+
+      try {
+        const resp = await fetch(url);
+        const json = await resp.json();
+        if (json.success) {
+          renderTurnos();
+        } else {
+          turno.estado = turno.estado; // revertir
+          alert('Error: ' + (json.error || 'No se pudo actualizar'));
+        }
+      } catch (err) {
+        alert('Error de conexión');
+      }
+    }
+
+    // =============================================
+    //  TURNOS — CONFIRMAR + WHATSAPP
+    // =============================================
+    async function confirmarTurno(id) {
+      const turno = turnosData.find(t => t.id === id);
+      if (!turno) return;
+
+      if (!confirm(`¿Confirmar turno de ${turno.nombre} para el ${turno.fecha} a las ${turno.hora}?\n\nSe abrirá WhatsApp para notificarle.`)) return;
+
+      // Cambiar estado a confirmado
+      turno.estado = 'confirmado';
+
+      const url = API_URL + '?action=save&sheet=turnos&password=' + encodeURIComponent(SAVE_PASSWORD)
+        + '&data=' + encodeURIComponent(JSON.stringify(turnosData));
+
+      try {
+        const resp = await fetch(url);
+        const json = await resp.json();
+        if (!json.success) {
+          turno.estado = 'pendiente'; // revertir
+          alert('Error: ' + (json.error || 'No se pudo actualizar'));
+          return;
+        }
+      } catch (err) {
+        turno.estado = 'pendiente';
+        alert('Error de conexión');
+        return;
+      }
+
+      renderTurnos();
+
+      // Abrir WhatsApp con mensaje de confirmación
+      let dateObj;
+      if (typeof turno.fecha === 'object' && turno.fecha instanceof Date && !isNaN(turno.fecha.getTime())) {
+        dateObj = turno.fecha;
+      } else if (turno.fecha) {
+        dateObj = new Date(turno.fecha + 'T12:00:00');
+      } else {
+        dateObj = new Date();
+      }
+      const dateStr = dateObj.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+      const wsMsg = `Hola ${turno.nombre}! 👋\n\nTe confirmamos tu turno en JC Electrónica:\n\n📅 ${dateStr}\n⏰ ${turno.hora}\n📍 De Colon 2270, Pontevedra, Merlo\n\nTe esperamos! Si tenés alguna duda, respondé este mensaje.\n\nGracias por confiar en nosotros 🧡`;
+
+      const wsNumber = turno.whatsapp ? String(turno.whatsapp).replace(/\s/g, '') : WHATSAPP_NUMBER;
+      window.open(`https://wa.me/${wsNumber}?text=${encodeURIComponent(wsMsg)}`, '_blank');
+    }
+
+    // =============================================
+    //  TURNOS — CONFIG HORARIOS
+    // =============================================
+    function toggleConfigHorarios() {
+      const panel = document.getElementById('turnosConfigPanel');
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open')) {
+        cargarConfigHorarios();
+      }
+    }
+
+    async function cargarConfigHorarios() {
+      try {
+        const resp = await fetch(API_URL + '?action=getHorarios');
+        const json = await resp.json();
+        if (json.success && json.data) {
+          const h = json.data;
+          document.getElementById('cfgHoraInicio').value = h.horario_inicio || '09:00';
+          document.getElementById('cfgHoraFin').value = h.horario_fin || '20:00';
+          document.getElementById('cfgIntervalo').value = h.intervalo || 30;
+          document.getElementById('cfgPausa1Inicio').value = h.pausa_1_inicio || '12:30';
+          document.getElementById('cfgPausa1Fin').value = h.pausa_1_fin || '13:30';
+          document.getElementById('cfgPausa2Inicio').value = h.pausa_2_inicio || '16:30';
+          document.getElementById('cfgPausa2Fin').value = h.pausa_2_fin || '18:00';
+
+          const diasSelect = document.getElementById('cfgDiasLaborales');
+          const currentDias = h.dias_laborales || '1,2,3,4,5,6';
+          if ([...diasSelect.options].some(o => o.value === currentDias)) {
+            diasSelect.value = currentDias;
+          }
+        }
+      } catch (e) {
+        console.warn('No se pudo cargar config horaria');
+      }
+    }
+
+    async function guardarConfigHorarios() {
+      const data = {
+        horario_inicio: document.getElementById('cfgHoraInicio').value,
+        horario_fin: document.getElementById('cfgHoraFin').value,
+        intervalo: Number(document.getElementById('cfgIntervalo').value),
+        pausa_1_inicio: document.getElementById('cfgPausa1Inicio').value,
+        pausa_1_fin: document.getElementById('cfgPausa1Fin').value,
+        pausa_2_inicio: document.getElementById('cfgPausa2Inicio').value,
+        pausa_2_fin: document.getElementById('cfgPausa2Fin').value,
+        dias_laborales: document.getElementById('cfgDiasLaborales').value
+      };
+
+      const msg = document.getElementById('configMsg');
+      msg.textContent = '⏳ Guardando...';
+
+      try {
+        const url = API_URL + '?action=saveHorarios&password=' + encodeURIComponent(SAVE_PASSWORD)
+          + '&data=' + encodeURIComponent(JSON.stringify(data));
+        const resp = await fetch(url);
+        const json = await resp.json();
+        if (json.success) {
+          msg.textContent = '✅ Configuración guardada correctamente';
+          setTimeout(() => { msg.textContent = ''; }, 4000);
+        } else {
+          msg.textContent = '❌ ' + (json.error || 'Error al guardar');
+        }
+      } catch (err) {
+        msg.textContent = '❌ Error de conexión';
+      }
+    }
+
+    // =============================================
+    //  DETECTAR MODO FILE://
+    // =============================================
+    if (window.location.protocol === 'file:') {
+      document.getElementById('fileProtocolBanner').style.display = 'block';
+      console.warn('⚠️ Página abierta con file:// — Cloudinary y Google Sheets NO funcionarán');
+      console.warn('💡 Ejecutá "node server.js" en la carpeta y abrí http://localhost:3000/gestion.html');
+    }
+
+    console.log('📊 JC Electrónica — Gestión v2');
+    console.log('API: ' + (API_URL !== 'URL_DE_TU_SCRIPT' ? '✅ Configurada' : '❌ Sin configurar (modo demo)'));
+
+    // Verificar Cloudinary
+    if (typeof cloudinary === 'undefined' || !cloudinary) {
+      console.warn('⚠️ Cloudinary no disponible — las subidas de imágenes no funcionarán');
+    } else {
+      console.log('✅ Cloudinary Widget disponible');
+    }
+  </script>
+</body>
+</html>

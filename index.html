@@ -1,542 +1,1280 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Servicio técnico profesional de notebooks, PC, celulares y consolas en Merlo, Buenos Aires. Reparación express, diagnóstico gratis y garantía en todas las reparaciones.">
-    
-    <!--Links-->
-    <link rel="stylesheet" href="configuracion.css">
-    <link rel="icon" href="./img/logo.jpg">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="./responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JC Electrónica - Servicio técnico profesional de notebooks, PC, celulares y consolas en Merlo. Venta de notebooks usadas con garantía. Diagnóstico gratis.">
+  <meta name="keywords" content="servicio técnico, notebooks, PC, consolas, Merlo, reparación, catálogo notebooks">
+  <meta name="author" content="JC Electrónica">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="JC Electrónica | Servicio Técnico y Catálogo de Notebooks">
+  <meta property="og:description" content="Servicio técnico profesional + venta de notebooks usadas verificadas con garantía en Merlo, Buenos Aires.">
+  <meta property="og:image" content="./img/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
 
-    <title>JC Electrónica | Servicio Técnico Profesional en Merlo</title>
+  <!-- Links -->
+  <link rel="stylesheet" href="configuracion.css">
+  <link rel="icon" href="./img/logo.jpg">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./responsive.css">
+
+  <title>JC Electrónica | Servicio Técnico y Catálogo de Notebooks en Merlo</title>
+
+  <style>
+    /* ============================================
+       FEATURED PRODUCTS — preview en landing page
+    ============================================ */
+    .featured {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .featured h2 {
+      font-size: var(--titulo2);
+      font-weight: var(--text-supergrueso);
+      color: var(--color3);
+      margin-bottom: 0.75rem;
+    }
+    .featured > p {
+      color: var(--color4);
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .featured-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-align: left;
+    }
+    .featured-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      border-color: rgba(255,128,0,0.15);
+      transform: translateY(-2px);
+    }
+    .featured-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background: #f1f5f9;
+    }
+    .featured-card-body {
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .featured-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color2);
+      margin-bottom: 0.25rem;
+    }
+    .featured-card-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color3);
+    }
+    .featured-card-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin: 0.5rem 0;
+    }
+    .featured-card-spec {
+      font-size: 0.7rem;
+      color: var(--color4);
+      background: var(--color1);
+      padding: 2px 8px;
+      border-radius: 5rem;
+      border: 1px solid #e2e8f0;
+    }
+    .featured-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 5rem;
+      background: var(--color3);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .featured-cta:hover {
+      background: #e67300;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(255,128,0,0.25);
+    }
+
+    /* ========== FEATURED SLIDER ========== */
+    .featured-slider-wrap {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto 2rem;
+      overflow: hidden;
+      padding: 0 0.5rem;
+    }
+    .featured-slider {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .featured-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 0.25rem;
+      box-sizing: border-box;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color2);
+      transition: all 0.3s;
+      z-index: 5;
+      opacity: 0;
+    }
+    .featured-slider-wrap:hover .slider-btn {
+      opacity: 1;
+    }
+    .slider-btn:hover {
+      background: var(--color1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .slider-btn:disabled {
+      opacity: 0.2;
+      cursor: default;
+      transform: translateY(-50%) scale(1);
+    }
+    .slider-btn-prev { left: -4px; }
+    .slider-btn-next { right: -4px; }
+    .slider-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d1d5db;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0;
+    }
+    .slider-dot.active {
+      background: var(--color3);
+      border-color: rgba(255,128,0,0.2);
+      width: 24px;
+      border-radius: 5rem;
+    }
+    .slider-dot:hover {
+      background: var(--color4);
+    }
+
+    /* ========== ADMIN MODAL ========== */
+    .admin-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .admin-modal.open { display: flex; }
+    .admin-modal-inner {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 50px -12px rgba(0,0,0,0.25);
+      text-align: center;
+      position: relative;
+      animation: adminModalIn 0.25s ease-out;
+    }
+    @keyframes adminModalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .admin-modal-close {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,0.06);
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color4);
+      transition: all 0.3s;
+    }
+    .admin-modal-close:hover { background: rgba(0,0,0,0.12); }
+    .admin-modal-inner h3 {
+      font-size: 1.3rem;
+      color: var(--color2);
+      margin-bottom: 0.5rem;
+    }
+    .admin-modal-inner p {
+      font-size: 0.9rem;
+      color: var(--color4);
+      margin-bottom: 1.5rem;
+    }
+    .admin-modal-inner input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .admin-modal-inner input:focus {
+      border-color: var(--color3);
+      box-shadow: 0 0 0 3px rgba(255,128,0,0.1);
+    }
+    .admin-login-btn {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--color3);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+    .admin-login-btn:hover {
+      background: #e67300;
+      transform: translateY(-1px);
+    }
+    .admin-error {
+      font-size: 0.8rem;
+      color: #ef4444;
+      margin-top: 0.75rem;
+      min-height: 1.2em;
+    }
+
+    /* ========== WHATSAPP FLOTANTE ========== */
+    .whatsapp-flotante {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: all 0.3s;
+      animation: wsPulse 2s ease-in-out infinite;
+    }
+    .whatsapp-flotante:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+      background: #128C7E;
+    }
+    .whatsapp-flotante img {
+      width: 24px;
+      height: 24px;
+    }
+    .whatsapp-flotante span {
+      display: none;
+    }
+    @keyframes wsPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
+    }
+    @media (min-width: 480px) {
+      .whatsapp-flotante span { display: inline; }
+    }
+
+    /* ========== HERO ENTRANCE ANIMATION ========== */
+    .hero {
+      animation: heroFadeIn 0.8s ease-out;
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-benefit {
+      animation: fadeInUp 0.5s ease-out both;
+    }
+    .hero-benefit:nth-child(1) { animation-delay: 0.1s; }
+    .hero-benefit:nth-child(2) { animation-delay: 0.2s; }
+    .hero-benefit:nth-child(3) { animation-delay: 0.3s; }
+    .hero-benefit:nth-child(4) { animation-delay: 0.4s; }
+
+    /* ========== SCROLL SMOOTH ========== */
+    html { scroll-behavior: smooth; }
+
+    /* ========== BADGES ANIMATION ========== */
+    .badges-grid {
+      animation: fadeInUp 0.6s ease-out both;
+      animation-delay: 0.5s;
+    }
+    .badge-item {
+      transition: all 0.3s;
+    }
+    .badge-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .featured-slide { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .featured-slide { grid-template-columns: 1fr; }
+      .slider-btn { display: none; }
+    }
+    @media (max-width: 768px) {
+      .featured { padding: 3rem 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="whatsapp-flotante">
-        <img src="./img/whatsapp.png" alt="WhatsApp">
-        <span>¡Escríbenos!</span>
-    </a>
 
-    <header>
-        <!--Logo de la página-->
-        <div class="logo">
-            <a href="#hero">
-                <img src="./img/logo.jpg" alt="logo JC Electrónica">
-            </a>
+  <!-- ==========================================
+       BANNER FILE://
+  ========================================== -->
+  <div id="fileProtocolBanner" style="display:none;background:#ef4444;color:#fff;text-align:center;padding:12px 20px;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;line-height:1.5;position:fixed;top:0;left:0;right:0;z-index:9999;">
+    ⚠️ <strong>Modo archivo local</strong> — algunas funciones no funcionan con <code>file://</code>.
+    Hacé doble clic en <strong>servir.bat</strong> o ejecutá <code style="background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:4px;">node server.js</code>
+    y abrí <strong>http://localhost:3000</strong>
+  </div>
+
+  <!-- ==========================================
+       WHATSAPP FLOTANTE
+  ========================================== -->
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="whatsapp-flotante">
+    <img src="./img/whatsapp.png" alt="WhatsApp">
+    <span>¡Escríbenos!</span>
+  </a>
+
+  <!-- ==========================================
+       HEADER / NAV
+  ========================================== -->
+  <header>
+    <div class="logo">
+      <a href="#hero">
+        <img src="./img/logo.jpg" alt="JC Electrónica">
+      </a>
+    </div>
+
+    <nav class="navbar">
+      <input type="checkbox" id="menu-responsive">
+      <label for="menu-responsive" class="label-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="contenedor-menu">
+        <div class="menu">
+          <ul class="menu-lista">
+            <li class="lista-links">
+              <a href="#hero" class="link active">Inicio</a>
+              <a href="catalogo.html" class="link">Catálogo</a>
+              <a href="servicios.html" class="link">Servicios</a>
+              <a href="turnos.html" class="link">Turnos</a>
+              <a href="#testimonios" class="link">Reseñas</a>
+              <a href="#contacto" class="link">Contacto</a>
+            </li>
+          </ul>
         </div>
+        <div class="menu-cta">
+          <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-whatsapp-menu">
+            <img src="./img/whatsapp.png" alt="WhatsApp">
+            <span>WhatsApp</span>
+          </a>
+          <a href="#" onclick="openAdminModal(); return false;" class="btn-whatsapp-menu" style="background:var(--color2);margin-left:0.5rem;">
+            <span>🔐 Admin</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-        <!--Menu responsivo-->
-        <nav class="navbar">
-        
-        <input type="checkbox" id="menu-responsive">
-        <label for="menu-responsive" class="label-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+  <main>
 
-            <div class="contenedor-menu">
-                <!--Menú de navegación-->
-                <div class="menu">
-                    <ul class="menu-lista">
-                        <li class="lista-links">
-                            <a href="#hero" class="link">Inicio</a>
-                            <a href="#servicios" class="link">Servicios</a>
-                            <a href="#testimonios" class="link">Reseñas</a>
-                            <a href="#nosotros" class="link">Nosotros</a>
-                            <a href="#contacto" class="link">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!--CTA del menú-->
-                <div class="menu-cta">
-                    <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-whatsapp-menu">
-                        <img src="./img/whatsapp.png" alt="WhatsApp">
-                        <span>WhatsApp</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        
-    </header>
-
-    <!--HERO-->
+    <!-- ==========================================
+         HERO
+    ========================================== -->
     <section class="hero" id="hero">
-        <div class="hero-badge">
-            <span class="badge-icon">🎯</span>
-            <span>+10 años de experiencia</span>
-        </div>
-        
-        <h1>Servicio Técnico Profesional</h1>
-        <h2>Reparación express de notebooks, PC, celulares y consolas</h2>
-        
-        <div class="hero-cta">
-            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-hero-principal">
-                <img src="./img/whatsapp.png" alt="WhatsApp">
-                <span>Solicitar Presupuesto Gratis</span>
-            </a>
-            <a href="#servicios" class="btn-hero-secundario">Ver Servicios</a>
-        </div>
+      <div class="hero-badge">
+        <span class="badge-icon">🎯</span>
+        <span>+10 años de experiencia</span>
+      </div>
 
-        <div class="hero-benefits">
-            <div class="hero-benefit">
-                <span class="check">✓</span>
-                <span>Diagnóstico Gratis</span>
-            </div>
-            <div class="hero-benefit">
-                <span class="check">✓</span>
-                <span>Garantía en Reparaciones</span>
-            </div>
-            <div class="hero-benefit">
-                <span class="check">✓</span>
-                <span>Reparación Express</span>
-            </div>
-        </div>
+      <h1>Servicio Técnico Profesional</h1>
+      <h2>Reparación express de notebooks, PC, celulares y consolas</h2>
 
-        <div class="redes-hero">
-            <a href="https://instagram.com/jcelectronica321" target="_blank" class="red-hero">
-                <img src="./img/instagram.png" alt="Instagram">
-            </a>
-            <a href="https://wa.me/5491153348030" target="_blank" class="red-hero">
-                <img src="./img/whatsapp.png" alt="WhatsApp">
-            </a>
-            <a href="#" target="_blank" class="red-hero">
-                <img src="./img/tik-tok.png" alt="TikTok">
-            </a>
+      <div class="hero-cta">
+        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-hero-principal">
+          <img src="./img/whatsapp.png" alt="WhatsApp">
+          <span>Solicitar Presupuesto Gratis</span>
+        </a>
+        <a href="turnos.html" class="btn-hero-secundario">📅 Reservar Turno</a>
+        <a href="catalogo.html" class="btn-hero-secundario">Ver Catálogo</a>
+      </div>
+
+      <div class="hero-benefits">
+        <div class="hero-benefit">
+          <span class="check">✓</span>
+          <span>Diagnóstico Gratis</span>
         </div>
+        <div class="hero-benefit">
+          <span class="check">✓</span>
+          <span>Garantía en Reparaciones</span>
+        </div>
+        <div class="hero-benefit">
+          <span class="check">✓</span>
+          <span>Reparación Express</span>
+        </div>
+      </div>
+
+      <div class="redes-hero">
+        <a href="https://instagram.com/jcelectronica321" target="_blank" class="red-hero">
+          <img src="./img/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://wa.me/5491153348030" target="_blank" class="red-hero">
+          <img src="./img/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="#" target="_blank" class="red-hero">
+          <img src="./img/tik-tok.png" alt="TikTok">
+        </a>
+      </div>
     </section>
 
-    <main>
-
-        <!-- Sección de Confianza/Badges -->
-        <section class="confianza" id="confianza">
-            <div class="badges-container">
-                <div class="badge">
-                    <div class="badge-icono">🔧</div>
-                    <div class="badge-texto">
-                        <strong>+2.500</strong>
-                        <span>Equipos Reparados</span>
-                    </div>
-                </div>
-                <div class="badge">
-                    <div class="badge-icono">⭐</div>
-                    <div class="badge-texto">
-                        <strong>4.9/5</strong>
-                        <span>Calificación Google</span>
-                    </div>
-                </div>
-                <div class="badge">
-                    <div class="badge-icono">⏱️</div>
-                    <div class="badge-texto">
-                        <strong>24-48hs</strong>
-                        <span>Tiempo Promedio</span>
-                    </div>
-                </div>
-                <div class="badge">
-                    <div class="badge-icono">🛡️</div>
-                    <div class="badge-texto">
-                        <strong>Garantía</strong>
-                        <span>En Todos los Servicios</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="servicios" id="servicios">
-            <div class="servicios-header">
-                <h2>Nuestros Servicios</h2>
-                <p>Soluciones especializadas para cada equipo</p>
-            </div>
-            
-            <div class="contenedor">
-                <!--Servicio N°1 - Notebooks -->
-                <div class="contenedor-servicios">
-                    <div class="thumb">
-                       <img src="./img/notebook.webp" alt="notebook"> 
-                    </div>
-                    
-                    <div class="info-servicio">
-                        <span class="servicio-tag">Más Solicitado</span>
-                        <h3>Notebooks</h3>
-                        <p>Reparamos tu notebook como si fuera nuestra. Diagnóstico rápido, repuestos originales y soluciones duraderas. Recuperá el rendimiento de tu equipo.</p>
-                        <ul class="servicio-lista">
-                            <li>✓ Pantallas y teclados</li>
-                            <li>✓ Placas y componentes</li>
-                            <li>✓ Limpieza y mantenimiento</li>
-                        </ul>
-                        <a href="servicio-notebook.html" class="btn-leer-mas">
-                            <span>Ver precios y servicios</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                        </a>
-                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20una%20notebook" target="_blank" class="btn-servicio">
-                            <img src="./img/whatsapp.png" alt="WhatsApp">
-                            <span>Consultar por WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Servicio N°2 - Consolas -->
-                <div class="contenedor-servicios">
-                    <div class="thumb">
-                        <img src="./img/consola.webp" alt="consola">
-                    </div>
-                    
-                    <div class="info-servicio">
-                        <span class="servicio-tag">Service Gamer</span>
-                        <h3>Consolas de Videojuegos</h3>
-                        <p>Servicio técnico especializado en PlayStation, Xbox y Nintendo. Fallas de encendido, sobrecalentamiento, lectura de discos, HDMI y más.</p>
-                        <ul class="servicio-lista">
-                            <li>✓ PS4 / PS5 / Xbox / Switch</li>
-                            <li>✓ Reparación HDMI</li>
-                            <li>✓ Cambio de pasta térmica</li>
-                        </ul>
-                        <a href="servicio-consolas.html" class="btn-leer-mas">
-                            <span>Ver precios y servicios</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                        </a>
-                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20consola" target="_blank" class="btn-servicio">
-                            <img src="./img/whatsapp.png" alt="WhatsApp">
-                            <span>Consultar por WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="contenedor-servicios">
-                    <div class="thumb">
-                        <img src="./img/pc.webp" alt="pc">
-                    </div>
-                    
-                    <div class="info-servicio">
-                        <h3>PC de Escritorio</h3>
-                        <p>Reparación, mantenimiento y actualización de hardware para gamers y profesionales. Rendimiento máximo garantizado.</p>
-                        <ul class="servicio-lista">
-                            <li>✓ Armado de PCs</li>
-                            <li>✓ Upgrades y reparaciones</li>
-                            <li>✓ Instalación de componentes</li>
-                        </ul>
-                        <a href="servicio-pc.html" class="btn-leer-mas">
-                            <span>Ver precios y servicios</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                        </a>
-                        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20PC" target="_blank" class="btn-servicio">
-                            <img src="./img/whatsapp.png" alt="WhatsApp">
-                            <span>Consultar por WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="servicios-urgencia">
-                <p>🔥 <strong>¿Urgente?</strong> Contactanos por WhatsApp y te respondemos en menos de 1 hora</p>
-            </div>
-        </section>
-
-        <!-- Sección de Testimonios -->
-        <section class="testimonios" id="testimonios">
-            <h2>Lo Que Dicen Nuestros Clientes</h2>
-            <p class="testimonios-subtitulo">Más de 200 reseñas positivas en Google</p>
-            
-            <div class="testimonios-grid">
-                <div class="testimonio-card">
-                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonio-texto">"Excelente servicio. Arreglaron mi notebook en 24hs y a un precio muy razonable. Totalmente recomendados."</p>
-                    <div class="testimonio-autor">
-                        <strong>María García</strong>
-                        <span>Cliente verificado Google</span>
-                    </div>
-                </div>
-                
-                <div class="testimonio-card">
-                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonio-texto">"Mi PS4 no encendía y pensaba que había que tirarla. En JC la dejaron como nueva. El técnico muy profesional."</p>
-                    <div class="testimonio-autor">
-                        <strong>Lucas Martínez</strong>
-                        <span>Cliente verificado Google</span>
-                    </div>
-                </div>
-                
-                <div class="testimonio-card">
-                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonio-texto">"Tuve un problema con mi celular y me lo arreglaron el mismo día.Muy buena atención y precio justo."</p>
-                    <div class="testimonio-autor">
-                        <strong>Carolina Rodríguez</strong>
-                        <span>Cliente verificado Google</span>
-                    </div>
-                </div>
-
-                <div class="testimonio-card">
-                    <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonio-texto">"Llevé mi PC gamer para hacerle un upgrade y quedé más que satisfecho. Me explicaron todo con paciencia."</p>
-                    <div class="testimonio-autor">
-                        <strong>Federico Pérez</strong>
-                        <span>Cliente verificado Google</span>
-                    </div>
-                </div>
-            </div>
-
-            <a href="https://g.page/r/jcelectronica/review" target="_blank" class="btn-google">
-                <span>Ver todas las reseñas en Google</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.94 12.162c0 .495-.041.963-.117 1.406H12v-2.656h5.91c-.253 1.305-1.002 2.41-2.121 3.141v1.875h3.43c1.98-1.82 3.118-4.504 3.118-7.566z"/>
-                </svg>
-            </a>
-        </section>
-
-        <!-- Sección Operatoria Mejorada -->
-        <section class="operatoria" id="operatoria">
-            <h2>¿Cómo Funciona?</h2>
-            <p class="operatoria-subtitulo">Proceso simple y transparente</p>
-            
-            <div class="contenedor-operatoria">
-                <div class="info-operatoria">
-                    <div class="operatoria-numero">1</div>
-                    <img src="./img/002-monitor.png" alt="diagnóstico"> 
-                    <div class="operatoria-texto">
-                        <h3>Consultanos</h3>
-                        <p>Envíanos fotos o describinos el problema por WhatsApp. Te damos un presupuesto sin compromiso.</p>
-                    </div>
-                </div>
-                <div class="info-operatoria">
-                    <div class="operatoria-numero">2</div>
-                    <img src="./img/001-edit.png" alt="diagnóstico">
-                    <div class="operatoria-texto">
-                        <h3>Diagnosticamos</h3>
-                        <p>Recibís una orden de reparación con el detalle del servicio y el tiempo estimado.</p>
-                    </div>
-                </div>
-                <div class="info-operatoria">
-                    <div class="operatoria-numero">3</div>
-                    <img src="./img/004-settings.png" alt="reparación">
-                    <div class="operatoria-texto">
-                        <h3>Reparamos</h3>
-                        <p>Tu equipo pasa por pruebas exhaustivas. Usamos repuestos de calidad con garantía.</p>
-                    </div>
-                </div>
-                <div class="info-operatoria">
-                    <div class="operatoria-numero">4</div>
-                    <img src="./img/003-like.png" alt="entrega">
-                    <div class="operatoria-texto">
-                        <h3>Lo Retirás</h3>
-                        <p>Te notificamos cuando esté listo. Podés retirarlo o solicitar envío por moto.</p>
-                    </div>
-                </div>
-            </div>
-
-            <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20saber%20más%20sobre%20sus%20servicios" target="_blank" class="btn-operatoria">
-                <img src="./img/whatsapp.png" alt="WhatsApp">
-                <span>Comenzar Ahora</span>
-            </a>
-        </section>
-
-        <section class="nosotros" id="nosotros">
-            <div class="nosotros-contenedor">
-                <h2>Sobre Nosotros</h2>
-                <p>
-                    Somos una empresa familiar con más de <strong>10 años de experiencia</strong> en servicio técnico electrónico. 
-                    Nuestra prioridad es que la experiencia del cliente sea la mejor desde el primer contacto.
-                </p>
-                <div class="nosotros-features">
-                    <div class="nosotros-feature">
-                        <span class="feature-icon">🎯</span>
-                        <span>Atención personalizada</span>
-                    </div>
-                    <div class="nosotros-feature">
-                        <span class="feature-icon">🔬</span>
-                        <span>Diagnóstico con herramientas profesionales</span>
-                    </div>
-                    <div class="nosotros-feature">
-                        <span class="feature-icon">🛡️</span>
-                        <span>Garantía en todas las reparaciones</span>
-                    </div>
-                    <div class="nosotros-feature">
-                        <span class="feature-icon">💡</span>
-                        <span>Técnicos especializados y actualizados</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <section class="contacto" id="contacto">
-        <h2>Contactanos</h2>
-        <div class="contenedor-contacto">
-            <div class="contacto-info">
-                <h3>¡Dale una oportunidad a tu equipo y reparalo con nosotros!</h3>
-                <p>Respondemos WhatsApp en menos de 1 hora durante horario comercial.</p>
-                
-                <div class="contacto-metodos">
-                    <a href="https://wa.me/5491153348030" target="_blank" class="contacto-metodo whatsapp-metodo">
-                        <img src="./img/whatsapp.png" alt="WhatsApp">
-                        <div>
-                            <strong>WhatsApp</strong>
-                            <span>+54 11 5334-8030</span>
-                        </div>
-                    </a>
-                    <a href="tel:+5491153348030" class="contacto-metodo">
-                        <img src="./img/llamar.png" alt="Teléfono">
-                        <div>
-                            <strong>Llamar</strong>
-                            <span>+54 11 5334-8030</span>
-                        </div>
-                    </a>
-                    <a href="mailto:jcelectronica321@gmail.com" class="contacto-metodo">
-                        <img src="./img/correo.png" alt="Email">
-                        <div>
-                            <strong>Email</strong>
-                            <span>jcelectronica321@gmail.com</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <form class="contacto-form" id="form-consulta" onsubmit="enviarPorWhatsApp(event)">
-            <fieldset>
-                <legend>Envianos tu consulta</legend>
-                <div class="inputs">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" placeholder="Tu nombre" id="nombre" name="nombre" required>
-                </div>
-                <div class="inputs">
-                    <label for="whatsapp">WhatsApp</label>
-                    <input type="tel" placeholder="11 1234-5678" id="whatsapp" name="whatsapp" required>
-                </div>
-                <div class="inputs">
-                    <label for="equipo">Equipo a reparar</label>
-                    <select id="equipo" name="equipo">
-                        <option value="">Seleccioná el tipo de equipo</option>
-                        <option value="Notebook">Notebook</option>
-                        <option value="PC de Escritorio">PC de Escritorio</option>
-                        <option value="Consola de Juegos">Consola de Juegos</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                </div>
-                <div class="inputs">
-                    <label for="texto">Mensaje</label>
-                    <textarea id="texto" name="mensaje" placeholder="Describí el problema de tu equipo..."></textarea>
-                </div>
-                <button type="submit" class="enviar">
-                    <img src="./img/whatsapp.png" alt="Enviar">
-                    Enviar por WhatsApp
-                </button>
-            </fieldset>
-        </form>
+    <!-- ==========================================
+         CONFIANZA / BADGES
+    ========================================== -->
+    <section class="confianza" id="confianza">
+      <div class="badges-container">
+        <div class="badge">
+          <div class="badge-icono">🔧</div>
+          <div class="badge-texto">
+            <strong>+2.500</strong>
+            <span>Equipos Reparados</span>
+          </div>
         </div>
-
-        <div class="ubicacion">
-            <div class="ubicacion-info">
-                <img src="./img/mapas-y-ubicacion.png" alt="Ubicación">
-                <div>
-                    <strong>Dirección</strong>
-                    <p>De Colon 2270, Potenvedra, Merlo, Buenos Aires, Argentina</p>
-                </div>
-            </div>
-            <div class="ubicacion-horario">
-                <img src="./img/reloj-circular.png" alt="Horario">
-                <div>
-                    <strong>Horario</strong>
-                    <p>Lunes a Sábado: 10:00 hs - 20:00 hs</p>
-                </div>
-            </div>
+        <div class="badge">
+          <div class="badge-icono">⭐</div>
+          <div class="badge-texto">
+            <strong>4.9/5</strong>
+            <span>Calificación Google</span>
+          </div>
         </div>
+        <div class="badge">
+          <div class="badge-icono">⏱️</div>
+          <div class="badge-texto">
+            <strong>24-48hs</strong>
+            <span>Tiempo Promedio</span>
+          </div>
+        </div>
+        <div class="badge">
+          <div class="badge-icono">🛡️</div>
+          <div class="badge-texto">
+            <strong>Garantía</strong>
+            <span>En Todos los Servicios</span>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <div class="union"></div>
 
-    <footer>
-        <div class="footer-contenido">
-            <div class="footer-nosotros">
-                <img src="./img/logo.jpg" alt="JC Electrónica" class="footer-logo">
-                <h3>JC Electrónica</h3>
-                <p>Servicio técnico profesional especializado en electrónica. Más de 10 años respaldando tu confianza.</p>
-                <div class="footer-iconos-redes">
-                    <a href="https://wa.me/5491153348030" target="_blank"><img src="./img/whatsapp negro(1).png" alt="WhatsApp"></a>
-                    <a href="https://instagram.com/jcelectronica321" target="_blank"><img src="./img/instagram (1) negro .png" alt="Instagram"></a>
-                    <a href="#" target="_blank"><img src="./img/tik-tok (1) negro.png" alt="TikTok"></a>
-                </div>
-            </div>
-            
-            <div class="links">
-                <h3>Enlaces</h3>
-                <a href="#hero">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#testimonios">Reseñas</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-            
-            <div class="footer-contacto">
-                <h3>Contacto</h3>
-                <div class="footer-iconos-contacto">
-                    <img src="./img/mapas-y-ubicacion.png" alt="Dirección">
-                    <p>De Colon 2270, Potenvedra, Merlo</p>
-                </div>
-                <div class="footer-iconos-contacto">
-                    <img src="./img/llamar.png" alt="Teléfono">
-                    <p>(+54) 11 5334-8030</p>
-                </div>
-                <div class="footer-iconos-contacto">
-                    <img src="./img/correo.png" alt="Email">
-                    <p>jcelectronica321@gmail.com</p>
-                </div>
-                <div class="footer-iconos-contacto">
-                    <img src="./img/reloj-circular.png" alt="Horario">
-                    <p>Lu - Sá: 10:00 - 20:00</p>
-                </div>
-            </div>
-            
-            <div class="footer-cta">
-                <h3>¿Necesitás ayuda?</h3>
-                <p>Escribinos por WhatsApp y te respondemos al instante.</p>
-                <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" class="btn-footer-whatsapp">
-                    <img src="./img/whatsapp.png" alt="WhatsApp">
-                    <span>Contactar por WhatsApp</span>
-                </a>
-            </div>
+    <!-- ==========================================
+         PRODUCTOS DESTACADOS
+    ========================================== -->
+    <section class="featured" id="featured">
+      <h2>🔥 Productos Destacados</h2>
+      <p>Notebooks verificadas, listas para usar con garantía</p>
+
+      <div class="featured-slider-wrap">
+        <button class="slider-btn slider-btn-prev" id="sliderPrev" aria-label="Anterior">‹</button>
+        <div class="featured-slider" id="featuredSlider"></div>
+        <button class="slider-btn slider-btn-next" id="sliderNext" aria-label="Siguiente">›</button>
+      </div>
+
+      <div class="slider-dots" id="sliderDots"></div>
+
+      <a href="catalogo.html" class="featured-cta">
+        Ver Catálogo Completo →
+      </a>
+    </section>
+
+    <!-- ==========================================
+         SERVICIOS TÉCNICOS
+    ========================================== -->
+    <section class="servicios" id="servicios">
+      <div class="servicios-header">
+        <h2>Nuestros Servicios</h2>
+        <p>Soluciones especializadas para cada equipo</p>
+      </div>
+
+      <div class="contenedor">
+        <div class="contenedor-servicios">
+          <div class="thumb">
+            <img src="./img/notebook.webp" alt="notebook">
+          </div>
+          <div class="info-servicio">
+            <span class="servicio-tag">Más Solicitado</span>
+            <h3>Notebooks</h3>
+            <p>Reparamos tu notebook como si fuera nuestra. Diagnóstico rápido, repuestos originales y soluciones duraderas.</p>
+            <ul class="servicio-lista">
+              <li>Pantallas y teclados</li>
+              <li>Placas y componentes</li>
+              <li>Limpieza y mantenimiento</li>
+            </ul>
+            <a href="servicios.html?equipo=notebooks" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20una%20notebook" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2024 JC Electrónica. Todos los derechos reservados.</p>
+        <div class="contenedor-servicios">
+          <div class="thumb">
+            <img src="./img/consola.webp" alt="consola">
+          </div>
+          <div class="info-servicio">
+            <span class="servicio-tag">Service Gamer</span>
+            <h3>Consolas de Videojuegos</h3>
+            <p>Servicio técnico especializado en PlayStation, Xbox y Nintendo. Fallas de encendido, sobrecalentamiento, HDMI y más.</p>
+            <ul class="servicio-lista">
+              <li>PS4 / PS5 / Xbox / Switch</li>
+              <li>Reparación HDMI</li>
+              <li>Cambio de pasta térmica</li>
+            </ul>
+            <a href="servicios.html?equipo=consolas" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20consola" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        function enviarPorWhatsApp(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const equipo = document.getElementById('equipo').value;
-            const mensaje = document.getElementById('texto').value;
-            
-            // Validar campos requeridos
-            if (!nombre || !whatsapp) {
-                alert('Por favor completá tu nombre y WhatsApp');
-                return;
-            }
-            
-            // Armar el mensaje
-            let textoWhatsApp = `*CONSULTA DESDE LA WEB*\n\n`;
-            textoWhatsApp += `*Nombre:* ${nombre}\n`;
-            textoWhatsApp += `*WhatsApp:* ${whatsapp}\n`;
-            if (equipo) {
-                textoWhatsApp += `*Equipo:* ${equipo}\n`;
-            }
-            if (mensaje) {
-                textoWhatsApp += `*Mensaje:* ${mensaje}`;
-            }
-            
-            // Codificar para URL
-            const textoCodificado = encodeURIComponent(textoWhatsApp);
-            
-            // Abrir WhatsApp
-            window.open(`https://wa.me/5491153348030?text=${textoCodificado}`, '_blank');
+        <div class="contenedor-servicios">
+          <div class="thumb">
+            <img src="./img/pc.webp" alt="pc">
+          </div>
+          <div class="info-servicio">
+            <h3>PC de Escritorio</h3>
+            <p>Reparación, mantenimiento y actualización de hardware para gamers y profesionales. Rendimiento máximo garantizado.</p>
+            <ul class="servicio-lista">
+              <li>Armado de PCs</li>
+              <li>Upgrades y reparaciones</li>
+              <li>Instalación de componentes</li>
+            </ul>
+            <a href="servicios.html?equipo=pc" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20PC" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contenedor-servicios">
+          <div class="thumb" style="background:var(--color1);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:5rem;">📱</span>
+          </div>
+          <div class="info-servicio">
+            <span class="servicio-tag">Reparación Rápida</span>
+            <h3>Celulares</h3>
+            <p>Reparamos tu smartphone con repuestos de calidad. Diagnóstico express y solución en el día para la mayoría de los modelos.</p>
+            <ul class="servicio-lista">
+              <li>Cambio de pantalla y batería</li>
+              <li>Pin de carga y audio</li>
+              <li>Diagnóstico sin cargo</li>
+            </ul>
+            <a href="servicios.html?equipo=celulares" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20celular" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contenedor-servicios">
+          <div class="thumb" style="background:var(--color1);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:5rem;">📺</span>
+          </div>
+          <div class="info-servicio">
+            <span class="servicio-tag">Pantallas</span>
+            <h3>TV y Monitores</h3>
+            <p>Servicio técnico para televisores LED, LCD, Smart TV y monitores. Fallas de imagen, alimentación, HDMI y más.</p>
+            <ul class="servicio-lista">
+              <li>Fallas de imagen / sin video</li>
+              <li>Fuente y placa principal</li>
+              <li>Smart TV / WiFi / HDMI</li>
+            </ul>
+            <a href="servicios.html?equipo=tv" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20TV" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contenedor-servicios">
+          <div class="thumb" style="background:var(--color1);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:5rem;">🔊</span>
+          </div>
+          <div class="info-servicio">
+            <span class="servicio-tag">Audio</span>
+            <h3>Parlantes Portátiles</h3>
+            <p>Reparación de parlantes Bluetooth, equipos de música portátiles y barras de sonido. Fallas de batería, carga y audio.</p>
+            <ul class="servicio-lista">
+              <li>Batería y puerto de carga</li>
+              <li>Parlantes dañados / distorsión</li>
+              <li>Bluetooth y conectividad</li>
+            </ul>
+            <a href="servicios.html?equipo=parlantes" class="btn-leer-mas">
+              <span>Ver precios y servicios</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mis%20parlantes" target="_blank" class="btn-servicio">
+              <img src="./img/whatsapp.png" alt="WhatsApp">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="servicios-urgencia">
+        <p>🔥 <strong>¿Urgente?</strong> Contactanos por WhatsApp y te respondemos en menos de 1 hora</p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CTA — RESERVAR TURNO
+    ========================================== -->
+    <section class="servicios" id="turnos-cta" style="padding-top:0;margin-top:-3rem;">
+      <div style="max-width:700px;margin:0 auto;text-align:center;background:linear-gradient(135deg,var(--color4) 0%,var(--color2) 100%);padding:4rem 2rem;border-radius:2rem;position:relative;overflow:hidden;">
+        <div style="position:relative;z-index:1;">
+          <div style="font-size:3rem;margin-bottom:1rem;">📅</div>
+          <h2 style="font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:0.75rem;">¿Preferís venir <span style="color:var(--color3);">al taller</span>?</h2>
+          <p style="color:rgba(255,255,255,0.7);font-size:1.1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;">
+            Reservá tu turno online. Elegí el día y horario que mejor te quede, 
+            y nosotros te confirmamos por WhatsApp.
+          </p>
+          <a href="turnos.html" style="display:inline-flex;align-items:center;gap:10px;padding:1rem 2.5rem;border-radius:50px;background:var(--color3);color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 30px rgba(255,128,0,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(255,128,0,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 30px rgba(255,128,0,0.3)'">
+            📅 Reservar turno
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIOS
+    ========================================== -->
+    <section class="testimonios" id="testimonios">
+      <h2>Lo Que Dicen Nuestros Clientes</h2>
+      <p class="testimonios-subtitulo">Más de 200 reseñas positivas en Google</p>
+
+      <div class="testimonios-grid">
+        <div class="testimonio-card">
+          <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+          <p class="testimonio-texto">"Excelente servicio. Arreglaron mi notebook en 24hs y a un precio muy razonable. Totalmente recomendados."</p>
+          <div class="testimonio-autor">
+            <strong>María García</strong>
+            <span>Cliente verificado Google</span>
+          </div>
+        </div>
+        <div class="testimonio-card">
+          <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+          <p class="testimonio-texto">"Mi PS4 no encendía y pensaba que había que tirarla. En JC la dejaron como nueva. El técnico muy profesional."</p>
+          <div class="testimonio-autor">
+            <strong>Lucas Martínez</strong>
+            <span>Cliente verificado Google</span>
+          </div>
+        </div>
+        <div class="testimonio-card">
+          <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+          <p class="testimonio-texto">"Tuve un problema con mi celular y me lo arreglaron el mismo día. Muy buena atención y precio justo."</p>
+          <div class="testimonio-autor">
+            <strong>Carolina Rodríguez</strong>
+            <span>Cliente verificado Google</span>
+          </div>
+        </div>
+        <div class="testimonio-card">
+          <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
+          <p class="testimonio-texto">"Llevé mi PC gamer para hacerle un upgrade y quedé más que satisfecho. Me explicaron todo con paciencia."</p>
+          <div class="testimonio-autor">
+            <strong>Federico Pérez</strong>
+            <span>Cliente verificado Google</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://g.page/r/jcelectronica/review" target="_blank" class="btn-google">
+        <span>Ver todas las reseñas en Google</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.94 12.162c0 .495-.041.963-.117 1.406H12v-2.656h5.91c-.253 1.305-1.002 2.41-2.121 3.141v1.875h3.43c1.98-1.82 3.118-4.504 3.118-7.566z"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         OPERATORIA
+    ========================================== -->
+    <section class="operatoria" id="operatoria">
+      <h2>¿Cómo Funciona?</h2>
+      <p class="operatoria-subtitulo">Proceso simple y transparente</p>
+
+      <div class="contenedor-operatoria">
+        <div class="info-operatoria">
+          <div class="operatoria-numero">1</div>
+          <img src="./img/002-monitor.png" alt="diagnóstico">
+          <div class="operatoria-texto">
+            <h3>Consultanos</h3>
+            <p>Envíanos fotos o describinos el problema por WhatsApp. Te damos un presupuesto sin compromiso.</p>
+          </div>
+        </div>
+        <div class="info-operatoria">
+          <div class="operatoria-numero">2</div>
+          <img src="./img/001-edit.png" alt="diagnóstico">
+          <div class="operatoria-texto">
+            <h3>Diagnosticamos</h3>
+            <p>Recibís una orden de reparación con el detalle del servicio y el tiempo estimado.</p>
+          </div>
+        </div>
+        <div class="info-operatoria">
+          <div class="operatoria-numero">3</div>
+          <img src="./img/004-settings.png" alt="reparación">
+          <div class="operatoria-texto">
+            <h3>Reparamos</h3>
+            <p>Tu equipo pasa por pruebas exhaustivas. Usamos repuestos de calidad con garantía.</p>
+          </div>
+        </div>
+        <div class="info-operatoria">
+          <div class="operatoria-numero">4</div>
+          <img src="./img/003-like.png" alt="entrega">
+          <div class="operatoria-texto">
+            <h3>Lo Retirás</h3>
+            <p>Te notificamos cuando esté listo. Podés retirarlo o solicitar envío por moto.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20saber%20más%20sobre%20sus%20servicios" target="_blank" class="btn-operatoria">
+        <img src="./img/whatsapp.png" alt="WhatsApp">
+        <span>Comenzar Ahora</span>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         NOSOTROS
+    ========================================== -->
+    <section class="nosotros" id="nosotros">
+      <div class="nosotros-contenedor">
+        <h2>Sobre Nosotros</h2>
+        <p>
+          Somos una empresa familiar con más de <strong>10 años de experiencia</strong> en servicio técnico electrónico.
+          Nuestra prioridad es que la experiencia del cliente sea la mejor desde el primer contacto.
+        </p>
+        <div class="nosotros-features">
+          <div class="nosotros-feature">
+            <span class="feature-icon">🎯</span>
+            <span>Atención personalizada</span>
+          </div>
+          <div class="nosotros-feature">
+            <span class="feature-icon">🔬</span>
+            <span>Diagnóstico con herramientas profesionales</span>
+          </div>
+          <div class="nosotros-feature">
+            <span class="feature-icon">🛡️</span>
+            <span>Garantía en todas las reparaciones</span>
+          </div>
+          <div class="nosotros-feature">
+            <span class="feature-icon">💡</span>
+            <span>Técnicos especializados y actualizados</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       CONTACTO
+  ========================================== -->
+  <section class="contacto" id="contacto">
+    <h2>Contactanos</h2>
+    <div class="contenedor-contacto">
+      <div class="contacto-info">
+        <h3>¡Dale una oportunidad a tu equipo y reparalo con nosotros!</h3>
+        <p>Respondemos WhatsApp en menos de 1 hora durante horario comercial.</p>
+
+        <div class="contacto-metodos">
+          <a href="https://wa.me/5491153348030" target="_blank" class="contacto-metodo whatsapp-metodo">
+            <img src="./img/whatsapp.png" alt="WhatsApp">
+            <div>
+              <strong>WhatsApp</strong>
+              <span>+54 11 5334-8030</span>
+            </div>
+          </a>
+          <a href="tel:+5491153348030" class="contacto-metodo">
+            <img src="./img/llamar.png" alt="Teléfono">
+            <div>
+              <strong>Llamar</strong>
+              <span>+54 11 5334-8030</span>
+            </div>
+          </a>
+          <a href="mailto:jcelectronica321@gmail.com" class="contacto-metodo">
+            <img src="./img/correo.png" alt="Email">
+            <div>
+              <strong>Email</strong>
+              <span>jcelectronica321@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contacto-form" id="form-consulta" onsubmit="enviarPorWhatsApp(event)">
+        <fieldset>
+          <div class="form-legend">Envíanos tu consulta</div>
+          <div class="fieldset-body">
+            <div class="inputs">
+              <label for="nombre">Nombre</label>
+              <input type="text" placeholder="Tu nombre" id="nombre" name="nombre" required>
+            </div>
+            <div class="inputs">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" placeholder="11 1234-5678" id="whatsapp" name="whatsapp" required>
+            </div>
+            <div class="inputs">
+              <label for="equipo">Equipo a reparar</label>
+              <select id="equipo" name="equipo">
+                <option value="">Seleccioná el tipo de equipo</option>
+                <option value="Notebook">Notebook</option>
+                <option value="PC de Escritorio">PC de Escritorio</option>
+                <option value="Consola de Juegos">Consola de Juegos</option>
+                <option value="Catálogo">Catálogo de notebooks</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="inputs">
+              <label for="texto">Mensaje</label>
+              <textarea id="texto" name="mensaje" placeholder="Describí el problema de tu equipo..."></textarea>
+            </div>
+            <button type="submit" class="enviar">
+              <img src="./img/whatsapp.png" alt="Enviar">
+              Enviar por WhatsApp
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="ubicacion">
+      <div class="ubicacion-info">
+        <img src="./img/mapas-y-ubicacion.png" alt="Ubicación">
+        <div>
+          <strong>Dirección</strong>
+          <p>De Colon 2270, Pontevedra, Merlo, Buenos Aires, Argentina</p>
+        </div>
+      </div>
+      <div class="ubicacion-horario">
+        <img src="./img/reloj-circular.png" alt="Horario">
+        <div>
+          <strong>Horario</strong>
+          <p>Lunes a Sábado: 10:00 hs - 20:00 hs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="union"></div>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-nosotros">
+        <img src="./img/logo.jpg" alt="JC Electrónica" class="footer-logo">
+        <h3>JC Electrónica</h3>
+        <p>Servicio técnico profesional especializado en electrónica. Más de 10 años respaldando tu confianza.</p>
+        <div class="footer-iconos-redes">
+          <a href="https://wa.me/5491153348030" target="_blank"><img src="./img/whatsapp%20negro(1).png" alt="WhatsApp"></a>
+          <a href="https://instagram.com/jcelectronica321" target="_blank"><img src="./img/instagram%20(1)%20negro%20.png" alt="Instagram"></a>
+          <a href="#" target="_blank"><img src="./img/tik-tok%20(1)%20negro.png" alt="TikTok"></a>
+        </div>
+      </div>
+
+      <div class="links">
+        <h3>Enlaces</h3>
+        <a href="#hero">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="turnos.html">Turnos</a>
+        <a href="#testimonios">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#" onclick="openAdminModal(); return false;">Admin</a>
+      </div>
+
+      <div class="footer-contacto">
+        <h3>Contacto</h3>
+        <div class="footer-iconos-contacto">
+          <img src="./img/mapas-y-ubicacion.png" alt="Dirección">
+          <p>De Colon 2270, Pontevedra, Merlo</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/llamar.png" alt="Teléfono">
+          <p>(+54) 11 5334-8030</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/correo.png" alt="Email">
+          <p>jcelectronica321@gmail.com</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/reloj-circular.png" alt="Horario">
+          <p>Lu - Sá: 10:00 - 20:00</p>
+        </div>
+      </div>
+
+      <div class="footer-cta">
+        <h3>¿Necesitás ayuda?</h3>
+        <p>Escribinos por WhatsApp y te respondemos al instante.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" class="btn-footer-whatsapp">
+          <img src="./img/whatsapp.png" alt="WhatsApp">
+          <span>Contactar por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 JC Electrónica. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- El WhatsApp flotante está arriba en el header -->
+
+  <!-- ==========================================
+       ADMIN LOGIN MODAL
+  ========================================== -->
+  <div class="admin-modal" id="adminModal">
+    <div class="admin-modal-inner">
+      <button class="admin-modal-close" onclick="closeAdminModal()">&times;</button>
+      <h3>🔐 Acceso Administrativo</h3>
+      <p>Ingresá la contraseña de administrador para gestionar el catálogo</p>
+      <input type="password" id="adminPasswordInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="admin-login-btn" id="adminLoginBtn" onclick="adminLogin()">Ingresar</button>
+      <div class="admin-error" id="adminError"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script src="config.js"></script>
+  <script>
+    /* =============================================
+       FILE:// DETECTION
+    ============================================= */
+    if (window.location.protocol === 'file:') {
+      document.getElementById('fileProtocolBanner').style.display = 'block';
+    }
+
+    /* =============================================
+       FEATURED PRODUCTS — desde API con fallback local
+    ============================================= */
+    let featuredProducts = [
+      { name: 'Dell XPS 15 9520', price: 720000, img: 'img/dell-xps-15.jpg', specs: ['i7-12700H','16GB','512GB SSD'], cat: '💻 Notebook' },
+      { name: 'MacBook Pro 14" M3 Pro', price: 1450000, img: 'img/macbook-pro-14.jpg', specs: ['M3 Pro','18GB','512GB SSD'], cat: '💻 Notebook' },
+      { name: 'Lenovo ThinkPad X1 Carbon', price: 680000, img: 'img/thinkpad-x1.jpg', specs: ['i7-1260P','16GB','512GB SSD'], cat: '💻 Notebook' },
+      { name: 'MacBook Air M1', price: 560000, img: 'img/macbook-air-m1.jpg', specs: ['M1','8GB','256GB SSD'], cat: '💻 Notebook' }
+    ];
+
+    async function fetchFeaturedFromAPI() {
+      if (!API_URL) return false;
+      try {
+        const resp = await fetch(API_URL);
+        const json = await resp.json();
+        if (!json.success || !json.data) return false;
+        const featured = json.data
+          .filter(item => item.featured === true && item.estado !== 'vendido')
+          .slice(0, 8)
+          .map(item => ({
+            name: item.name || '',
+            price: item.price_public || item.price_gremio || 0,
+            img: (item.images && Array.isArray(item.images) && item.images.length > 0) ? item.images[0] : '',
+            specs: item.specs ? Object.values(item.specs).filter(Boolean) : [],
+            cat: item.category === 'notebooks' ? '💻 Notebook'
+              : item.category === 'cargadores' ? '🔌 Cargador'
+              : item.category === 'cables' ? '🔗 Cable'
+              : item.category === 'accesorios' ? '🎧 Accesorio'
+              : '📦 Producto'
+          }));
+        if (featured.length > 0) {
+          featuredProducts = featured;
+          return true;
         }
-    </script>
+        return false;
+      } catch (e) { return false; }
+    }
+
+    /* =============================================
+       SLIDER — productos destacados
+    ============================================= */
+    let currentSlide = 0;
+    let slideCount = 0;
+    let autoplayTimer = null;
+
+    function renderFeatured() {
+      const slider = document.getElementById('featuredSlider');
+      const dots = document.getElementById('sliderDots');
+      if (!slider) return;
+
+      const itemsPerSlide = window.innerWidth <= 540 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+      const slides = [];
+      for (let i = 0; i < featuredProducts.length; i += itemsPerSlide) {
+        slides.push(featuredProducts.slice(i, i + itemsPerSlide));
+      }
+      slideCount = slides.length;
+
+      slider.innerHTML = slides.map(slide => `
+        <div class="featured-slide">
+          ${slide.map(p => `
+            <div class="featured-card" style="animation:fadeInUp 0.4s ease-out both;">
+              <img class="featured-card-img" src="${p.img}" alt="${p.name}" loading="lazy"
+                onerror="this.outerHTML='<div class=\\'featured-card-img\\' style=\\'display:flex;align-items:center;justify-content:center;background:#f1f5f9;color:#94a3b8;font-size:2rem;\\'>${p.name.charAt(0)}</div>'">
+              <div class="featured-card-body">
+                <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:2px;">${p.cat}</div>
+                <div class="featured-card-title">${p.name}</div>
+                <div class="featured-card-specs">
+                  ${p.specs.map(s => `<span class="featured-card-spec">${s}</span>`).join('')}
+                </div>
+                <div class="featured-card-price">$${p.price.toLocaleString('es-AR')}</div>
+                <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola! Quiero consultar por: ' + p.name)}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;padding:8px 16px;border-radius:8px;background:#25D366;color:#fff;font-size:0.8rem;font-weight:600;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">💬 Consultar</a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+
+      dots.innerHTML = slides.map((_, i) =>
+        `<button class="slider-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Slide ${i + 1}"></button>`
+      ).join('');
+
+      currentSlide = 0;
+      updateSlider();
+      startAutoplay();
+    }
+
+    function updateSlider() {
+      const slider = document.getElementById('featuredSlider');
+      if (!slider) return;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+
+      const prevBtn = document.getElementById('sliderPrev');
+      const nextBtn = document.getElementById('sliderNext');
+      if (prevBtn) prevBtn.disabled = currentSlide === 0;
+      if (nextBtn) nextBtn.disabled = currentSlide >= slideCount - 1;
+    }
+
+    function goToSlide(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentSlide = index;
+      updateSlider();
+      resetAutoplay();
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (slideCount <= 1) return;
+      autoplayTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    }
+
+    function resetAutoplay() { stopAutoplay(); startAutoplay(); }
+
+    function initSliderEvents() {
+      const prevBtn = document.getElementById('sliderPrev');
+      const nextBtn = document.getElementById('sliderNext');
+      const dots = document.getElementById('sliderDots');
+      const wrap = document.querySelector('.featured-slider-wrap');
+
+      if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+      if (dots) dots.addEventListener('click', (e) => {
+        const dot = e.target.closest('.slider-dot');
+        if (dot) goToSlide(parseInt(dot.dataset.slide));
+      });
+      if (wrap) {
+        wrap.addEventListener('mouseenter', stopAutoplay);
+        wrap.addEventListener('mouseleave', startAutoplay);
+      }
+
+      let rt;
+      window.addEventListener('resize', () => {
+        clearTimeout(rt);
+        rt = setTimeout(() => { const saved = [...featuredProducts]; featuredProducts = saved; renderFeatured(); }, 300);
+      });
+    }
+
+    fetchFeaturedFromAPI().then(ok => {
+      if (!ok) console.log('📦 Usando productos destacados locales');
+      renderFeatured();
+      initSliderEvents();
+    });
+
+    /* =============================================
+       ADMIN LOGIN — API mode con fallback local
+    ============================================= */
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.add('open');
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('adminError').textContent = '';
+      document.getElementById('adminLoginBtn').disabled = false;
+      document.getElementById('adminLoginBtn').textContent = 'Ingresar';
+      setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+    }
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('open');
+    }
+    function redirectGestion() {
+      sessionStorage.setItem('adminToken', Date.now().toString());
+      window.open('gestion.html', '_blank');
+      closeAdminModal();
+    }
+
+    async function adminLogin() {
+      const pass = document.getElementById('adminPasswordInput').value;
+      if (!pass) {
+        document.getElementById('adminError').textContent = '❌ Ingresá la contraseña';
+        return;
+      }
+
+      const btn = document.getElementById('adminLoginBtn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Verificando...';
+
+      try {
+        // 1️⃣ Intentar con API de autenticación (segura)
+        if (API_AUTH_URL) {
+          const resp = await fetch(`${API_AUTH_URL}?action=verifyAdmin&password=${encodeURIComponent(pass)}`);
+          const json = await resp.json();
+          if (json.success && json.token) {
+            redirectGestion();
+            return;
+          }
+        }
+        // 2️⃣ Fallback: verificar contra Google Sheets API (existente)
+        if (API_URL) {
+          const resp = await fetch(`${API_URL}?action=verifyAdmin&password=${encodeURIComponent(pass)}`);
+          const json = await resp.json();
+          if (json.success && json.token) {
+            redirectGestion();
+            return;
+          }
+        }
+        if (pass === ADMIN_PASSWORD) {
+          redirectGestion();
+        } else {
+          document.getElementById('adminError').textContent = '❌ Contraseña incorrecta';
+        }
+      } catch (err) {
+        if (pass === ADMIN_PASSWORD) {
+          redirectGestion();
+        } else {
+          document.getElementById('adminError').textContent = '❌ Error de conexión. Verificá localmente.';
+        }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Ingresar';
+      }
+    }
+    document.getElementById('adminModal').addEventListener('click', function(e) {
+      if (e.target === this) closeAdminModal();
+    });
+
+    /* =============================================
+       WHATSAPP FORM
+    ============================================= */
+    function enviarPorWhatsApp(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const equipo = document.getElementById('equipo').value;
+      const mensaje = document.getElementById('texto').value;
+      if (!nombre || !whatsapp) {
+        alert('Por favor completá tu nombre y WhatsApp');
+        return;
+      }
+      let textoWhatsApp = `*CONSULTA DESDE LA WEB*\n\n`;
+      textoWhatsApp += `*Nombre:* ${nombre}\n`;
+      textoWhatsApp += `*WhatsApp:* ${whatsapp}\n`;
+      if (equipo) textoWhatsApp += `*Equipo:* ${equipo}\n`;
+      if (mensaje) textoWhatsApp += `*Mensaje:* ${mensaje}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
+    }
+  </script>
 
 </body>
 </html>

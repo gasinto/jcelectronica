@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de notebooks, cargadores y accesorios en Merlo. Equipos verificados con garantía. Precios para público y gremio.">
+  <meta name="keywords" content="catálogo, notebooks, computadoras, accesorios, cargadores, Merlo, electrodomésticos">
+  <meta name="author" content="JC Electrónica">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Catálogo de Productos | JC Electrónica">
+  <meta property="og:description" content="Explorá nuestro catálogo completo de notebooks y accesorios. Todos verificados con garantía.">
+  <meta property="og:image" content="./img/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="stylesheet" href="configuracion.css">
+  <link rel="icon" href="./img/logo.jpg">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./responsive.css">
+
+  <title>Catálogo de Productos | JC Electrónica — Merlo</title>
+
+  <style>
+    /* ============================================
+       CATÁLOGO — Estilos para la sección de productos
+    ============================================ */
+    :root {
+      --radius: 16px;
+      --radius-sm: 8px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --accent: var(--color3);
+      --primary: var(--color2);
+      --bg-card: #ffffff;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.06);
+      --shadow-xl: 0 20px 50px -12px rgba(0,0,0,0.25);
+    }
+
+    /* ========== PAGE WRAPPER ========== */
+    .cat-page {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 8rem;
+    }
+
+    /* ========== HERO CATÁLOGO ========== */
+    .cat-hero {
+      background: linear-gradient(135deg, var(--color4) 0%, var(--color2) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 2rem 3rem;
+      border-radius: 2rem;
+    }
+    .cat-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(255,128,0,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(255,128,0,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cat-hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cat-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .cat-hero h1 span { color: var(--color3); }
+    .cat-hero p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.6);
+      max-width: 540px; margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ========== CATÁLOGO SECTION ========== */
+    .catalogo {
+      scroll-margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .catalogo-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .catalogo-header h2 {
+      font-size: var(--titulo2);
+      font-weight: var(--text-supergrueso);
+      color: var(--color3);
+      margin: 0;
+    }
+    .catalogo-header p {
+      color: var(--color4);
+      font-size: 1.4rem;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    /* ========== BADGE GREMIO ========== */
+    .gremio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,128,0,0.08);
+      border: 1px solid rgba(255,128,0,0.2);
+      color: var(--color4);
+      cursor: pointer;
+      transition: all var(--transition);
+      user-select: none;
+    }
+    .gremio-badge:hover {
+      background: rgba(255,128,0,0.15);
+    }
+    .gremio-badge.gremio-active {
+      background: rgba(34,197,94,0.1);
+      border-color: rgba(34,197,94,0.3);
+      color: #22c55e;
+    }
+
+    /* ========== FILTERS ========== */
+    .catalogo-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: end;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 2rem;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .filter-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color4);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .filter-group.search-box {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      bottom: 10px;
+      font-size: 1rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .filter-group input,
+    .filter-group select {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #fff;
+      color: var(--color2);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .filter-group.search-box input {
+      padding-left: 2.5rem;
+    }
+    .filter-group input:focus,
+    .filter-group select:focus {
+      border-color: var(--color3);
+      box-shadow: 0 0 0 3px rgba(255,128,0,0.1);
+    }
+    .filter-clear {
+      padding: 0.7rem 1.2rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--color4);
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      align-self: end;
+    }
+    .filter-clear:hover {
+      border-color: var(--color3);
+      color: var(--color3);
+      background: rgba(255,128,0,0.04);
+    }
+
+    .results-count {
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color4);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* ========== PRODUCT GRID ========== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .products-grid.empty-state {
+      display: flex;
+      justify-content: center;
+    }
+    .products-grid.empty-state > * {
+      max-width: 400px;
+    }
+
+    .empty-state-card {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .empty-state-card h3 {
+      font-size: 1.3rem;
+      color: var(--color2);
+      margin-bottom: 0.5rem;
+    }
+    .empty-state-card p {
+      color: var(--color4);
+      font-size: 0.9rem;
+    }
+
+    /* ========== PRODUCT CARD ========== */
+    .product-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255,128,0,0.15);
+      transform: translateY(-2px);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    }
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.03);
+    }
+    .product-img-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+      z-index: 2;
+      color: var(--color2);
+    }
+    .product-card:hover .product-img-btn {
+      opacity: 1;
+    }
+    .product-img-btn:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      padding: 3px 10px;
+      border-radius: 5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      z-index: 2;
+    }
+    .product-badge.excelente { background: rgba(34,197,94,0.15); color: #16a34a; }
+    .product-badge.muy-bueno { background: rgba(59,130,246,0.15); color: #2563eb; }
+    .product-badge.bueno { background: rgba(234,179,8,0.15); color: #ca8a04; }
+
+    .product-body {
+      padding: 1rem 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      flex: 1;
+    }
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color2);
+      line-height: 1.3;
+    }
+    .product-subtitle {
+      font-size: 0.8rem;
+      color: var(--color4);
+      line-height: 1.3;
+    }
+    .product-ref {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .product-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin: 0.4rem 0;
+    }
+    .product-spec {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.7rem;
+      color: var(--color4);
+      background: var(--color1);
+      padding: 2px 8px;
+      border-radius: 5rem;
+      border: 1px solid #e2e8f0;
+    }
+    .spec-icon {
+      font-size: 0.65rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .price-currency {
+      font-size: 0.85rem;
+      color: var(--color4);
+    }
+    .product-price .price-gremio-badge {
+      font-size: 0.6rem;
+      padding: 2px 6px;
+      border-radius: 5rem;
+      background: rgba(34,197,94,0.12);
+      color: #16a34a;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+    .product-price > span:not(.price-currency):not(.price-gremio-badge) {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color3);
+    }
+    .product-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: var(--color3);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .product-btn:hover {
+      background: #e67300;
+      transform: scale(1.02);
+    }
+
+    /* ========== CATEGORY TAG IN CARD ========== */
+    .product-category-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 3px 10px;
+      border-radius: 5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ========== DETAIL MODAL ========== */
+    .detail-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      padding: 2rem;
+      overflow-y: auto;
+      align-items: center;
+      justify-content: center;
+    }
+    .detail-modal.open {
+      display: flex;
+    }
+    .detail-modal-inner {
+      background: #fff;
+      border-radius: var(--radius);
+      max-width: 720px;
+      width: 100%;
+      position: relative;
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      animation: modalIn 0.25s ease-out;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .detail-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,0.08);
+      cursor: pointer;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color2);
+      transition: all var(--transition);
+      z-index: 10;
+    }
+    .detail-close:hover {
+      background: rgba(0,0,0,0.15);
+      transform: rotate(90deg);
+    }
+
+    /* Gallery */
+    .detail-gallery { position: relative; }
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+    .gallery-main img.zoomed {
+      transform: scale(1.8);
+      cursor: zoom-out;
+    }
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 800;
+      color: #94a3b8;
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    }
+    .gallery-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color2);
+      transition: all var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      z-index: 5;
+    }
+    .gallery-nav-btn:hover { background: #fff; }
+    .gallery-nav-btn.prev { left: 12px; }
+    .gallery-nav-btn.next { right: 12px; }
+    .gallery-thumbs {
+      display: flex;
+      gap: 6px;
+      padding: 8px 12px;
+      overflow-x: auto;
+      background: #f8fafc;
+    }
+    .gallery-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      flex-shrink: 0;
+      background: #e2e8f0;
+    }
+    .gallery-thumb.active { border-color: var(--color3); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 700; color: #94a3b8;
+      background: #f1f5f9;
+    }
+    .gallery-counter {
+      position: absolute;
+      bottom: 60px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 5rem;
+      z-index: 5;
+    }
+
+    /* Detail Info */
+    .detail-info {
+      padding: 1.5rem 2rem 2rem;
+    }
+    .detail-brand-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 5rem;
+      background: rgba(255,128,0,0.12);
+      color: var(--color3);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .detail-info h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color2);
+      margin: 0 0 0.25rem;
+    }
+    .detail-subtitle {
+      font-size: 0.9rem;
+      color: var(--color4);
+      margin-bottom: 0.75rem;
+    }
+    .detail-condition {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 5rem;
+      margin-right: 6px;
+    }
+    .detail-condition.excelente { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .detail-condition.muy-bueno { background: rgba(59,130,246,0.12); color: #2563eb; }
+    .detail-condition.bueno { background: rgba(234,179,8,0.12); color: #ca8a04; }
+    .detail-ref {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .detail-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      background: var(--color1);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+    .detail-spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .detail-spec-item .spec-label {
+      font-size: 0.7rem;
+      color: var(--color4);
+      font-weight: 500;
+    }
+    .detail-spec-item .spec-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color2);
+    }
+    .detail-description {
+      font-size: 0.9rem;
+      color: var(--color4);
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    .detail-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid #e2e8f0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .detail-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .detail-price .price-label {
+      font-size: 0.75rem;
+      color: var(--color4);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .detail-price .price-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color3);
+      line-height: 1.2;
+    }
+    .detail-price .price-note {
+      font-size: 0.75rem;
+      color: var(--color4);
+    }
+    .detail-whatsapp-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .detail-whatsapp-btn:hover {
+      background: #128C7E;
+      transform: translateY(-1px);
+    }
+
+    /* ========== ADMIN MODAL ========== */
+    .admin-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .admin-modal.open {
+      display: flex;
+    }
+    .admin-modal-inner {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+      animation: modalIn 0.25s ease-out;
+    }
+    .admin-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,0.06);
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color4);
+    }
+    .admin-modal-close:hover {
+      background: rgba(0,0,0,0.12);
+    }
+    .admin-modal-inner h3 {
+      font-size: 1.3rem;
+      color: var(--color2);
+      margin-bottom: 0.5rem;
+    }
+    .admin-modal-inner p {
+      font-size: 0.9rem;
+      color: var(--color4);
+      margin-bottom: 1.5rem;
+    }
+    .admin-modal-inner input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color var(--transition);
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .admin-modal-inner input:focus {
+      border-color: var(--color3);
+      box-shadow: 0 0 0 3px rgba(255,128,0,0.1);
+    }
+    .admin-modal-inner .admin-login-btn {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--color3);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: inherit;
+    }
+    .admin-modal-inner .admin-login-btn:hover {
+      background: #e67300;
+      transform: translateY(-1px);
+    }
+    .admin-error {
+      font-size: 0.8rem;
+      color: #ef4444;
+      margin-top: 0.75rem;
+      min-height: 1.2em;
+    }
+
+    /* ========== CATÁLOGO RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .cat-page { padding-top: 7rem; }
+      .cat-hero { margin: 0 1rem 2rem; padding: 3rem 1.5rem; }
+      .catalogo { padding: 0 1rem 3rem; }
+      .catalogo-filters { flex-direction: column; }
+      .filter-group.search-box { min-width: auto; width: 100%; }
+      .products-grid { grid-template-columns: 1fr; }
+      .detail-modal { padding: 1rem; }
+      .detail-info { padding: 1.25rem; }
+      .detail-specs-grid { grid-template-columns: 1fr; }
+      .detail-footer { flex-direction: column; }
+      .detail-whatsapp-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .cat-hero { padding: 2rem 1rem; }
+      .catalogo-header h2 { font-size: 1.6rem; }
+    }
+
+    /* ========== ANIMACIONES CATÁLOGO ========== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .product-card {
+      animation: fadeInUp 0.4s ease-out both;
+    }
+    .product-card:nth-child(1) { animation-delay: 0.02s; }
+    .product-card:nth-child(2) { animation-delay: 0.04s; }
+    .product-card:nth-child(3) { animation-delay: 0.06s; }
+
+    /* ========== WHATSAPP FLOTANTE ========== */
+    .whatsapp-flotante {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: all 0.3s;
+      animation: wsPulse 2s ease-in-out infinite;
+    }
+    .whatsapp-flotante:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+      background: #128C7E;
+    }
+    .whatsapp-flotante img {
+      width: 24px;
+      height: 24px;
+    }
+    .whatsapp-flotante span {
+      display: none;
+    }
+    @keyframes wsPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
+    }
+    @media (min-width: 480px) {
+      .whatsapp-flotante span { display: inline; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       BANNER file://
+  ========================================== -->
+  <div class="alert" id="fileProtocolBanner" style="display:none;background:#dc2626;color:#fff;text-align:center;padding:1rem;font-weight:600;">
+    ⚠️ Estás abriendo con file:// — La carga de imágenes desde Cloudinary no funciona.
+    Usá <strong>http://localhost:3000</strong> con <code>node server.js</code>
+  </div>
+
+  <!-- ==========================================
+       HEADER + NAV
+  ========================================== -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="./img/logo.jpg" alt="JC Electrónica">
+      </a>
+    </div>
+
+    <nav class="navbar">
+      <input type="checkbox" id="menu-responsive">
+      <label for="menu-responsive" class="label-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="contenedor-menu">
+        <div class="menu">
+          <ul class="menu-lista">
+            <li class="lista-links">
+              <a href="index.html" class="link">Inicio</a>
+              <a href="catalogo.html" class="link active">Catálogo</a>
+              <a href="servicios.html" class="link">Servicios</a>
+              <a href="turnos.html" class="link">Turnos</a>
+              <a href="index.html#testimonios" class="link">Reseñas</a>
+              <a href="#contacto" class="link">Contacto</a>
+              <button id="gremioToggle" class="gremio-btn-nav" onclick="toggleGremioMode()">👤 Público</button>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-cta">
+          <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="btn-whatsapp-menu">
+            <img src="./img/whatsapp.png" alt="WhatsApp">
+            <span>WhatsApp</span>
+          </a>
+          <a href="#" onclick="openAdminModal(); return false;" class="btn-whatsapp-menu" style="background:var(--color2);margin-left:0.5rem;">
+            <span>🔐 Admin</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       ADMIN LOGIN MODAL
+  ========================================== -->
+  <div class="admin-modal" id="adminModal">
+    <div class="admin-modal-inner" style="position:relative;">
+      <button class="admin-modal-close" onclick="closeAdminModal()">&times;</button>
+      <h3>🔐 Acceso Administrativo</h3>
+      <p>Ingresá la contraseña de administrador para gestionar el catálogo</p>
+      <input type="password" id="adminPasswordInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="admin-login-btn" id="adminLoginBtn" onclick="adminLogin()">Ingresar</button>
+      <div class="admin-error" id="adminError"></div>
+    </div>
+  </div>
+
+  <main class="cat-page">
+
+    <!-- ==========================================
+         HERO CATÁLOGO
+    ========================================== -->
+    <section class="cat-hero">
+      <div class="cat-hero-content">
+        <h1>📦 <span>Catálogo</span> de Productos</h1>
+        <p>Notebooks verificadas, accesorios originales y todo lo que necesitás para tu equipo, con garantía y el mejor precio.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CATÁLOGO DE PRODUCTOS
+    ========================================== -->
+    <section class="catalogo" id="catalogo">
+      <div class="catalogo-header">
+        <h2>Productos Disponibles</h2>
+        <p>Equipos verificados, con garantía y el mejor precio</p>
+        <div class="gremio-badge" id="gremioBadge" onclick="toggleGremioMode()">
+          👤 Modo Público
+        </div>
+      </div>
+
+      <div class="catalogo-filters">
+        <div class="filter-group search-box">
+          <span class="search-icon">🔍</span>
+          <label for="searchInput">Buscar</label>
+          <input type="text" id="searchInput" placeholder="Buscá por marca, modelo o specs..." autocomplete="off">
+        </div>
+
+        <div class="filter-group">
+          <label for="categoryFilter">Categoría</label>
+          <select id="categoryFilter">
+            <option value="all">Todas</option>
+            <option value="notebooks">💻 Notebooks</option>
+            <option value="cargadores">🔌 Cargadores</option>
+            <option value="cables">🔗 Cables</option>
+            <option value="accesorios">🎧 Accesorios</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="brandFilter">Marca</label>
+          <select id="brandFilter">
+            <option value="all">Todas</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="sortFilter">Ordenar</label>
+          <select id="sortFilter">
+            <option value="default">Por defecto</option>
+            <option value="price-asc">Menor precio</option>
+            <option value="price-desc">Mayor precio</option>
+            <option value="name-asc">A-Z</option>
+            <option value="name-desc">Z-A</option>
+          </select>
+        </div>
+
+        <button class="filter-clear" id="clearFilters">✕ Limpiar</button>
+
+        <div class="results-count" id="resultsCount">Mostrando 0 productos</div>
+      </div>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       DETAIL MODAL
+  ========================================== -->
+  <div class="detail-modal" id="detailModal">
+    <div class="detail-modal-inner">
+      <button class="detail-close" id="detailClose">&times;</button>
+
+      <div class="detail-gallery" id="detailGallery">
+        <div class="gallery-main" id="galleryMain">
+          <div class="gallery-placeholder" id="galleryPlaceholder">?</div>
+          <img id="galleryMainImg" src="" alt="" style="display:none;">
+          <button class="gallery-nav-btn prev" id="galleryPrev">‹</button>
+          <button class="gallery-nav-btn next" id="galleryNext">›</button>
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+        <div class="gallery-counter" id="galleryCounter"></div>
+      </div>
+
+      <div class="detail-info" id="detailInfo">
+        <span class="detail-brand-badge" id="detailBrand"></span>
+        <h2 id="detailName"></h2>
+        <p class="detail-subtitle" id="detailSubtitle"></p>
+        <span class="detail-condition" id="detailCondition"></span>
+        <span class="detail-ref" id="detailRef"></span>
+
+        <div class="detail-specs-grid" id="detailSpecs"></div>
+        <p class="detail-description" id="detailDescription"></p>
+
+        <div class="detail-footer">
+          <div class="detail-price">
+            <span class="price-label" id="detailPriceLabel">Precio</span>
+            <span class="price-value" id="detailPrice"></span>
+            <span class="price-note" id="detailPriceNote"></span>
+          </div>
+          <a href="#" target="_blank" rel="noopener" class="detail-whatsapp-btn" id="detailWhatsAppBtn">
+            💬 Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-nosotros">
+        <img src="./img/logo.jpg" alt="JC Electrónica" class="footer-logo">
+        <h3>JC Electrónica</h3>
+        <p>Servicio técnico profesional especializado en electrónica. Más de 10 años respaldando tu confianza.</p>
+        <div class="footer-iconos-redes">
+          <a href="https://wa.me/5491153348030" target="_blank"><img src="./img/whatsapp%20negro(1).png" alt="WhatsApp"></a>
+          <a href="https://instagram.com/jcelectronica321" target="_blank"><img src="./img/instagram%20(1)%20negro%20.png" alt="Instagram"></a>
+          <a href="#" target="_blank"><img src="./img/tik-tok%20(1)%20negro.png" alt="TikTok"></a>
+        </div>
+      </div>
+
+      <div class="links">
+        <h3>Enlaces</h3>
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="turnos.html">Turnos</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="#" onclick="openAdminModal(); return false;">Admin</a>
+      </div>
+
+      <div class="footer-contacto">
+        <h3>Contacto</h3>
+        <div class="footer-iconos-contacto">
+          <img src="./img/mapas-y-ubicacion.png" alt="Dirección">
+          <p>De Colon 2270, Pontevedra, Merlo</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/llamar.png" alt="Teléfono">
+          <p>(+54) 11 5334-8030</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/correo.png" alt="Email">
+          <p>jcelectronica321@gmail.com</p>
+        </div>
+        <div class="footer-iconos-contacto">
+          <img src="./img/reloj-circular.png" alt="Horario">
+          <p>Lu - Sá: 10:00 - 20:00</p>
+        </div>
+      </div>
+
+      <div class="footer-cta">
+        <h3>¿Necesitás ayuda?</h3>
+        <p>Escribinos por WhatsApp y te respondemos al instante.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" class="btn-footer-whatsapp">
+          <img src="./img/whatsapp.png" alt="WhatsApp">
+          <span>Contactar por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 JC Electrónica. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script src="config.js"></script>
+  <script>
+    /* =============================================
+       FILE:// DETECTION
+    ============================================= */
+    if (window.location.protocol === 'file:') {
+      document.getElementById('fileProtocolBanner').style.display = 'block';
+    }
+
+    /* =============================================
+       DATA — PRODUCTOS
+    ============================================= */
+    const products = [
+      {
+        id: 1, category: 'notebooks',
+        name: 'Dell XPS 15 9520',
+        subtitle: 'Potencia y diseño premium en un cuerpo ultradelgado',
+        images: ['img/dell-xps-15.jpg', 'img/dell-xps-15-2.jpg', 'img/dell-xps-15-3.jpg'],
+        brand: 'Dell',
+        specs: { ram: '16GB', storage: '512GB SSD', cpu: 'i7-12700H', gpu: 'RTX 3050' },
+        price: 720000, price_gremio: 580000,
+        condition: 'excelente',
+        description: 'La Dell XPS 15 es una de las notebooks más galardonadas del mercado. Con su pantalla InfinityEdge, rendimiento de primera y acabado premium en aluminio mecanizado, es la elección ideal para profesionales que no hacen concesiones.',
+        featured: true
+      },
+      {
+        id: 2, category: 'notebooks',
+        name: 'MacBook Pro 14" M3 Pro',
+        subtitle: 'La mejor experiencia para profesionales creativos',
+        images: ['img/macbook-pro-14.jpg'],
+        brand: 'Apple',
+        specs: { ram: '18GB', storage: '512GB SSD', cpu: 'M3 Pro', gpu: 'Integrada 18 núcleos' },
+        price: 1450000, price_gremio: 1150000,
+        condition: 'excelente',
+        description: 'La MacBook Pro con chip M3 Pro lleva el rendimiento y la eficiencia al siguiente nivel. Perfecta para edición de video, desarrollo, diseño gráfico y cualquier tarea exigente.',
+        featured: true
+      },
+      {
+        id: 3, category: 'notebooks', name: 'HP Pavilion 15', subtitle: 'Ideal para estudio y uso diario',
+        images: ['img/hp-pavilion-15.jpg'], brand: 'HP',
+        specs: { ram: '8GB', storage: '256GB SSD', cpu: 'i5-1235U', gpu: 'Integrada' },
+        price: 380000, price_gremio: 310000, condition: 'muy-bueno',
+        description: 'Una notebook equilibrada para el día a día. Rendimiento sólido para tareas de oficina, estudio y navegación.'
+      },
+      {
+        id: 4, category: 'notebooks',
+        name: 'Lenovo ThinkPad X1 Carbon Gen 10',
+        subtitle: 'La referencia en notebooks corporativas',
+        images: ['img/thinkpad-x1.jpg', 'img/thinkpad-x1-2.jpg'], brand: 'Lenovo',
+        specs: { ram: '16GB', storage: '512GB SSD', cpu: 'i7-1260P', gpu: 'Integrada' },
+        price: 680000, price_gremio: 540000, condition: 'excelente',
+        description: 'El ThinkPad X1 Carbon es la notebook corporativa por excelencia. Ultraligera, resistente y con el teclado legendario de Lenovo.',
+        featured: true
+      },
+      {
+        id: 5, category: 'notebooks', name: 'Asus ZenBook 14 OLED',
+        subtitle: 'Pantalla OLED vibrante y ultraportátil',
+        images: ['img/zenbook-14.jpg'], brand: 'Asus',
+        specs: { ram: '16GB', storage: '512GB SSD', cpu: 'Ryzen 7 5800H', gpu: 'Integrada' },
+        price: 520000, price_gremio: 420000, condition: 'muy-bueno',
+        description: 'La ZenBook 14 OLED combina un diseño ultraportátil con una pantalla OLED de calidad excepcional.'
+      },
+      {
+        id: 6, category: 'notebooks', name: 'Acer Aspire 5', subtitle: 'Buena relación precio-rendimiento',
+        images: ['img/acer-aspire-5.jpg'], brand: 'Acer',
+        specs: { ram: '8GB', storage: '256GB SSD', cpu: 'i3-1215U', gpu: 'Integrada' },
+        price: 290000, price_gremio: 240000, condition: 'bueno',
+        description: 'La entrada perfecta al mundo de las notebooks. Ideal para navegación, office y clases virtuales.'
+      },
+      {
+        id: 7, category: 'notebooks',
+        name: 'Apple MacBook Air M1',
+        subtitle: 'Silenciosa, eficiente y con batería eterna',
+        images: ['img/macbook-air-m1.jpg', 'img/macbook-air-m1-2.jpg'], brand: 'Apple',
+        specs: { ram: '8GB', storage: '256GB SSD', cpu: 'M1', gpu: 'Integrada 7 núcleos' },
+        price: 560000, price_gremio: 450000, condition: 'muy-bueno',
+        description: 'La MacBook Air con M1 revolucionó el mercado. Sin ventilador, completamente silenciosa.'
+      },
+      {
+        id: 8, category: 'notebooks',
+        name: 'Dell Inspiron 16',
+        subtitle: 'Pantalla grande para máxima productividad',
+        images: ['img/dell-inspiron-16.jpg'], brand: 'Dell',
+        specs: { ram: '16GB', storage: '1TB SSD', cpu: 'i7-1255U', gpu: 'Integrada' },
+        price: 490000, price_gremio: 390000, condition: 'excelente',
+        description: 'La Inspiron 16 te da el espacio que necesitás para ser productivo. 16 pulgadas, 1TB de almacenamiento y 16GB de RAM.'
+      }
+    ];
+
+    /* Configuración importada desde config.js */
+    let gremioMode = localStorage.getItem('gremioMode') === 'true';
+
+    /* =============================================
+       GREMIO MODE
+    ============================================= */
+    function toggleGremioMode() {
+      if (gremioMode) {
+        gremioMode = false;
+        localStorage.setItem('gremioMode', 'false');
+        updateGremioUI();
+        applyFilters();
+        return;
+      }
+      const pass = prompt('Ingresá la clave de acceso gremial:');
+      if (pass === GREMIO_PASSWORD) {
+        gremioMode = true;
+        localStorage.setItem('gremioMode', 'true');
+        updateGremioUI();
+        applyFilters();
+      } else if (pass !== null) {
+        alert('Clave incorrecta');
+      }
+    }
+
+    function updateGremioUI() {
+      const btn = document.getElementById('gremioToggle');
+      const badge = document.getElementById('gremioBadge');
+      if (btn) {
+        btn.textContent = gremioMode ? '🔧 Gremio' : '👤 Público';
+        btn.classList.toggle('gremio-active', gremioMode);
+      }
+      if (badge) {
+        badge.innerHTML = gremioMode ? '🔧 Modo Gremio' : '👤 Modo Público';
+        badge.classList.toggle('gremio-active', gremioMode);
+      }
+    }
+
+    /* =============================================
+       ADMIN LOGIN — API mode con fallback local
+    ============================================= */
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.add('open');
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('adminError').textContent = '';
+      document.getElementById('adminLoginBtn').disabled = false;
+      document.getElementById('adminLoginBtn').textContent = 'Ingresar';
+      setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+    }
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('open');
+    }
+    function redirectGestion() {
+      sessionStorage.setItem('adminToken', Date.now().toString());
+      window.open('gestion.html', '_blank');
+      closeAdminModal();
+    }
+
+    async function adminLogin() {
+      const pass = document.getElementById('adminPasswordInput').value;
+      if (!pass) {
+        document.getElementById('adminError').textContent = '❌ Ingresá la contraseña';
+        return;
+      }
+      const btn = document.getElementById('adminLoginBtn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Verificando...';
+      try {
+        if (ADMIN_API_URL) {
+          const resp = await fetch(`${ADMIN_API_URL}?action=verifyAdmin&password=${encodeURIComponent(pass)}`);
+          const json = await resp.json();
+          if (json.success && json.token) {
+            redirectGestion();
+            return;
+          }
+        }
+        if (pass === ADMIN_PASSWORD) {
+          redirectGestion();
+        } else {
+          document.getElementById('adminError').textContent = '❌ Contraseña incorrecta';
+        }
+      } catch (err) {
+        if (pass === ADMIN_PASSWORD) {
+          redirectGestion();
+        } else {
+          document.getElementById('adminError').textContent = '❌ Error de conexión. Verificá localmente.';
+        }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Ingresar';
+      }
+    }
+    document.getElementById('adminModal').addEventListener('click', function(e) {
+      if (e.target === this) closeAdminModal();
+    });
+
+    /* =============================================
+       PRODUCT HELPERS
+    ============================================= */
+    function getProductPrice(product) {
+      if (gremioMode && product.price_gremio > 0) return product.price_gremio;
+      return product.price;
+    }
+
+    const conditionLabels = {
+      excelente: 'Excelente', 'muy-bueno': 'Muy Bueno', bueno: 'Bueno'
+    };
+
+    function getProductImages(product) {
+      if (product.images && Array.isArray(product.images) && product.images.length > 0) return product.images;
+      if (product.image) return [product.image];
+      return [];
+    }
+
+    const specIcons = { ram: '💾', storage: '💿', cpu: '⚡', gpu: '🎮' };
+    const specLabels = { ram: 'RAM', storage: 'Almac.', cpu: 'Procesador', gpu: 'Gráficos' };
+
+    /* =============================================
+       DOM REFS
+    ============================================= */
+    const grid = document.getElementById('productsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const brandFilter = document.getElementById('brandFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const clearBtn = document.getElementById('clearFilters');
+    const resultsCount = document.getElementById('resultsCount');
+    const detailModal = document.getElementById('detailModal');
+    const detailClose = document.getElementById('detailClose');
+    const detailName = document.getElementById('detailName');
+    const detailSubtitle = document.getElementById('detailSubtitle');
+    const detailBrand = document.getElementById('detailBrand');
+    const detailRef = document.getElementById('detailRef');
+    const detailCondition = document.getElementById('detailCondition');
+    const detailSpecs = document.getElementById('detailSpecs');
+    const detailDescription = document.getElementById('detailDescription');
+    const detailPrice = document.getElementById('detailPrice');
+    const detailPriceNote = document.getElementById('detailPriceNote');
+    const detailWhatsAppBtn = document.getElementById('detailWhatsAppBtn');
+    const galleryMainImg = document.getElementById('galleryMainImg');
+    const galleryPlaceholder = document.getElementById('galleryPlaceholder');
+    const galleryThumbs = document.getElementById('galleryThumbs');
+    const galleryCounter = document.getElementById('galleryCounter');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+
+    let currentDetailProduct = null;
+    let currentGalleryIndex = 0;
+    let filteredProducts = [...products];
+
+    /* =============================================
+       RENDER
+    ============================================= */
+    function renderProducts(productsArray) {
+      if (!productsArray || productsArray.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state-card">
+            <div class="empty-icon">🔍</div>
+            <h3>No encontramos resultados</h3>
+            <p>Probá con otros filtros o revisá de nuevo más tarde</p>
+          </div>`;
+        grid.classList.add('empty-state');
+        resultsCount.textContent = '0 productos encontrados';
+        return;
+      }
+      grid.classList.remove('empty-state');
+
+      const sorted = [...productsArray].sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+      });
+
+      grid.innerHTML = sorted.map(product => {
+        const condClass = product.condition || 'bueno';
+        const condLabel = conditionLabels[condClass] || condClass;
+        const specsHTML = Object.entries(product.specs).map(([key, value]) =>
+          `<div class="product-spec" title="${specLabels[key] || key}: ${value}">
+            <span class="spec-icon">${specIcons[key] || '•'}</span>
+            <span>${value}</span>
+          </div>`
+        ).join('');
+
+        const productImages = getProductImages(product);
+        const imgSrc = productImages.length > 0 ? productImages[0] : '';
+        const imgTag = imgSrc
+          ? `<img src="${imgSrc}" alt="${product.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e2e8f0,#cbd5e1);color:#64748b;font-size:2.5rem;font-weight:700;\\'>${product.name.charAt(0)}</div>'">`
+          : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e2e8f0,#cbd5e1);color:#64748b;font-size:2.5rem;font-weight:700;">${product.name.charAt(0)}</div>`;
+
+        const priceFormatted = getProductPrice(product).toLocaleString('es-AR');
+        const wsLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          WHATSAPP_MESSAGE + '\n📦 ' + product.name + '\n🆔 ID: ' + product.id + '\n💰 $' + priceFormatted
+        )}`;
+        const multiImage = productImages.length > 1
+          ? `<div style="position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.6);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;z-index:2;">1/${productImages.length}</div>`
+          : '';
+
+        const catLabels = { notebooks:'💻', cargadores:'🔌', cables:'🔗', accesorios:'🎧' };
+        const catTag = product.category && catLabels[product.category]
+          ? `<div class="product-category-tag">${catLabels[product.category]} ${product.category}</div>`
+          : '';
+
+        return `
+          <div class="product-card" onclick="openProductDetail(${product.id})">
+            <div class="product-image-wrap">
+              ${imgTag}${multiImage}
+              ${catTag}
+              <span class="product-badge ${condClass}">${condLabel}</span>
+              <button class="product-img-btn" onclick="event.stopPropagation();openProductDetail(${product.id})" title="Ver detalle">🔍</button>
+            </div>
+            <div class="product-body">
+              <div class="product-title">${product.name}</div>
+              <div class="product-subtitle">${product.subtitle || ''}</div>
+              <div class="product-ref">Ref: #${product.id}</div>
+              <div class="product-specs">${specsHTML}</div>
+              <div class="product-footer">
+                <div class="product-price">
+                  <span class="price-currency">$</span>${priceFormatted}
+                  ${gremioMode ? '<span class="price-gremio-badge">Gremio</span>' : ''}
+                </div>
+                <a href="${wsLink}" target="_blank" rel="noopener" class="product-btn" onclick="event.stopPropagation();">Consultar</a>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      resultsCount.textContent = `${productsArray.length} producto${productsArray.length !== 1 ? 's' : ''} encontrado${productsArray.length !== 1 ? 's' : ''}`;
+    }
+
+    /* =============================================
+       FILTERS
+    ============================================= */
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const category = categoryFilter.value;
+      const brand = brandFilter.value;
+      const sort = sortFilter.value;
+
+      let result = products.filter(product => {
+        if (searchTerm) {
+          const searchable = `${product.name} ${product.subtitle} ${product.brand} ${Object.values(product.specs).join(' ')}`.toLowerCase();
+          if (!searchable.includes(searchTerm)) return false;
+        }
+        if (category !== 'all' && product.category !== category) return false;
+        if (brand !== 'all' && product.brand !== brand) return false;
+        return true;
+      });
+
+      switch (sort) {
+        case 'price-asc': result.sort((a, b) => getProductPrice(a) - getProductPrice(b)); break;
+        case 'price-desc': result.sort((a, b) => getProductPrice(b) - getProductPrice(a)); break;
+        case 'name-asc': result.sort((a, b) => a.name.localeCompare(b.name)); break;
+        case 'name-desc': result.sort((a, b) => b.name.localeCompare(a.name)); break;
+      }
+
+      filteredProducts = result;
+      renderProducts(result);
+    }
+
+    function populateBrandFilter() {
+      const brands = [...new Set(products.map(p => p.brand))].sort();
+      brandFilter.innerHTML = '<option value="all">Todas</option>' +
+        brands.map(b => `<option value="${b}">${b}</option>`).join('');
+    }
+
+    function clearFilters() {
+      searchInput.value = '';
+      categoryFilter.value = 'all';
+      brandFilter.value = 'all';
+      sortFilter.value = 'default';
+      applyFilters();
+    }
+
+    /* =============================================
+       DETAIL MODAL
+    ============================================= */
+    function openProductDetail(productId) {
+      let product = filteredProducts.find(p => p.id === productId);
+      if (!product) product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      currentDetailProduct = product;
+      currentGalleryIndex = 0;
+
+      detailName.textContent = product.name;
+      detailSubtitle.textContent = product.subtitle || '';
+      detailBrand.textContent = product.brand;
+
+      const condClass = product.condition || 'bueno';
+      const condLabel = conditionLabels[condClass] || condClass;
+      detailCondition.textContent = '★ ' + condLabel;
+      detailCondition.className = 'detail-condition ' + condClass;
+      detailRef.textContent = 'Ref: #' + product.id;
+
+      detailSpecs.innerHTML = Object.entries(product.specs).map(([key, value]) =>
+        `<div class="detail-spec-item">
+          <span class="spec-label">${specIcons[key] || '•'} ${specLabels[key] || key}</span>
+          <span class="spec-value">${value}</span>
+        </div>`
+      ).join('');
+
+      const rawDesc = product.description || '';
+      detailDescription.innerHTML = rawDesc
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\|/g, '<br>');
+
+      const priceFormatted = getProductPrice(product).toLocaleString('es-AR');
+      detailPrice.textContent = '$ ' + priceFormatted;
+      document.getElementById('detailPriceLabel').textContent = gremioMode ? 'Precio Gremial' : 'Precio';
+      detailPriceNote.textContent = gremioMode
+        ? 'Precio gremial — válido para revendedores'
+        : 'Consultá por financiación';
+
+      const wsMsg = `${WHATSAPP_MESSAGE}\n📦 ${product.name}\n🆔 ID: ${product.id}\n💰 $${priceFormatted}`;
+      detailWhatsAppBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(wsMsg)}`;
+
+      renderGallery(product);
+      detailModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductDetail() {
+      detailModal.classList.remove('open');
+      document.body.style.overflow = '';
+      currentDetailProduct = null;
+    }
+
+    function renderGallery(product) {
+      const images = getProductImages(product);
+      if (images.length === 0) {
+        galleryMainImg.style.display = 'none';
+        galleryPlaceholder.style.display = 'flex';
+        galleryPlaceholder.textContent = product.name.charAt(0);
+        galleryThumbs.innerHTML = '';
+        galleryCounter.textContent = '';
+        galleryPrev.style.display = 'none';
+        galleryNext.style.display = 'none';
+        return;
+      }
+      galleryPrev.style.display = 'flex';
+      galleryNext.style.display = 'flex';
+      galleryPlaceholder.style.display = 'none';
+      galleryMainImg.style.display = 'block';
+
+      showGalleryImage(0, images);
+      galleryThumbs.innerHTML = images.map((src, i) => {
+        const initial = product.name.charAt(0);
+        return `<div class="gallery-thumb ${i === 0 ? 'active' : ''}" onclick="showGalleryImage(${i})" data-index="${i}">
+          <img src="${src}" alt="" loading="lazy"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'thumb-placeholder\\'>${initial}</div>'">
+        </div>`;
+      }).join('');
+      galleryCounter.textContent = `1 de ${images.length}`;
+    }
+
+    function showGalleryImage(index, imagesArray) {
+      const product = currentDetailProduct;
+      if (!product) return;
+      const images = imagesArray || getProductImages(product);
+      if (images.length === 0) return;
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentGalleryIndex = index;
+
+      galleryMainImg.src = images[index];
+      galleryMainImg.alt = product.name + ' - imagen ' + (index + 1);
+      galleryMainImg.style.display = 'block';
+      galleryMainImg.classList.remove('zoomed');
+      galleryPlaceholder.style.display = 'none';
+
+      document.querySelectorAll('.gallery-thumb').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+      });
+      galleryCounter.textContent = `${index + 1} de ${images.length}`;
+    }
+
+    function galleryPrevImage() {
+      const product = currentDetailProduct;
+      if (!product) return;
+      const images = getProductImages(product);
+      if (images.length <= 1) return;
+      showGalleryImage(currentGalleryIndex - 1, images);
+    }
+
+    function galleryNextImage() {
+      const product = currentDetailProduct;
+      if (!product) return;
+      const images = getProductImages(product);
+      if (images.length <= 1) return;
+      showGalleryImage(currentGalleryIndex + 1, images);
+    }
+
+    function toggleGalleryZoom() {
+      galleryMainImg.classList.toggle('zoomed');
+    }
+
+    /* =============================================
+       EVENTOS
+    ============================================= */
+    searchInput.addEventListener('input', applyFilters);
+    categoryFilter.addEventListener('change', applyFilters);
+    brandFilter.addEventListener('change', applyFilters);
+    sortFilter.addEventListener('change', applyFilters);
+    clearBtn.addEventListener('click', clearFilters);
+
+    detailClose.addEventListener('click', closeProductDetail);
+    galleryPrev.addEventListener('click', galleryPrevImage);
+    galleryNext.addEventListener('click', galleryNextImage);
+    galleryMainImg.addEventListener('click', toggleGalleryZoom);
+
+    document.addEventListener('keydown', (e) => {
+      if (!detailModal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeProductDetail();
+      if (e.key === 'ArrowLeft') galleryPrevImage();
+      if (e.key === 'ArrowRight') galleryNextImage();
+    });
+
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) closeProductDetail();
+    });
+
+    /* =============================================
+       WHATSAPP FORM
+    ============================================= */
+    function enviarPorWhatsApp(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const equipo = document.getElementById('equipo').value;
+      const mensaje = document.getElementById('texto').value;
+      if (!nombre || !whatsapp) {
+        alert('Por favor completá tu nombre y WhatsApp');
+        return;
+      }
+      let textoWhatsApp = `*CONSULTA DESDE LA WEB*\n\n`;
+      textoWhatsApp += `*Nombre:* ${nombre}\n`;
+      textoWhatsApp += `*WhatsApp:* ${whatsapp}\n`;
+      if (equipo) textoWhatsApp += `*Equipo:* ${equipo}\n`;
+      if (mensaje) textoWhatsApp += `*Mensaje:* ${mensaje}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
+    }
+
+    /* =============================================
+       API — carga desde Google Sheets (opcional)
+    ============================================= */
+    async function fetchProductsFromAPI() {
+      if (!API_URL) return false;
+      try {
+        const resp = await fetch(API_URL);
+        const json = await resp.json();
+        if (!json.success || !json.data || json.data.length === 0) return false;
+        const apiData = json.data
+          .filter(item => item.estado !== 'vendido' && item.estado !== 'reservado')
+          .map(item => ({
+          id: item.id, name: item.name || '', subtitle: item.subtitle || '',
+          category: item.category || 'notebooks',
+          images: item.images || [], brand: item.brand || '',
+          specs: item.specs || { ram: '', storage: '', cpu: '', gpu: '' },
+          price: item.price_public || 0, price_gremio: item.price_gremio || 0,
+          condition: item.condition || 'bueno', description: item.description || '',
+          featured: item.featured || false, estado: item.estado || 'disponible'
+        }));
+        products.length = 0;
+        products.push(...apiData);
+        return true;
+      } catch (e) { return false; }
+    }
+
+    async function initCatalog() {
+      if (API_URL) {
+        const ok = await fetchProductsFromAPI();
+        if (ok) console.log('☁️ Productos cargados desde Google Sheets');
+        else console.warn('⚠️ Usando datos locales');
+      } else {
+        console.log('📦 Usando datos locales');
+      }
+      filteredProducts = [...products];
+      populateBrandFilter();
+      applyFilters();
+      updateGremioUI();
+      if (API_URL) {
+        setInterval(async () => {
+          const ok = await fetchProductsFromAPI();
+          if (ok) { filteredProducts = [...products]; applyFilters(); }
+        }, 3 * 60 * 1000);
+      }
+    }
+
+    initCatalog();
+  </script>
+
+  <!-- ========== WHATSAPP FLOTANTE ========== -->
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20presupuesto%20para%20reparar%20mi%20equipo" target="_blank" class="whatsapp-flotante">
+    <img src="./img/whatsapp.png" alt="WhatsApp">
+    <span>¡Escríbenos!</span>
+  </a>
+
+</body>
+</html>
