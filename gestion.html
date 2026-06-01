@@ -1944,24 +1944,38 @@
         const eqIcon = equipoIcons[t.equipo] || '❓';
         const estadoLabel = estadoLabels[t.estado] || t.estado;
 
-        // Formatear fecha para mostrar (banea Date object del sheet O string)
+        // Formatear fecha para mostrar (banea Date object, ISO string O string YYYY-MM-DD)
         let fechaDisplay = t.fecha;
         try {
           let d;
-          if (typeof t.fecha === 'object' && t.fecha instanceof Date && !isNaN(t.fecha.getTime())) {
+          if (!t.fecha) {
+            // vacío, se deja como está
+          } else if (typeof t.fecha === 'object' && t.fecha instanceof Date) {
             d = t.fecha;
-          } else if (t.fecha) {
+          } else if (typeof t.fecha === 'string' && t.fecha.includes('T')) {
+            d = new Date(t.fecha);
+          } else if (typeof t.fecha === 'string') {
             d = new Date(t.fecha + 'T12:00:00');
           }
           if (d && !isNaN(d.getTime())) {
-            fechaDisplay = d.toLocaleDateString('es-AR', { day: 'numeric', month: 'numeric' });
+            const dd = String(d.getDate()).padStart(2,'0');
+            const mm = String(d.getMonth() + 1).padStart(2,'0');
+            const yyyy = d.getFullYear();
+            fechaDisplay = dd + '/' + mm + '/' + yyyy;
           }
         } catch (e) {}
 
-        // Formatear hora (banea Date object del sheet)
+        // Formatear hora (banea Date object O ISO string)
         let horaDisplay = t.hora;
-        if (typeof t.hora === 'object' && t.hora instanceof Date && !isNaN(t.hora.getTime())) {
+        if (!t.hora) {
+          // vacío
+        } else if (typeof t.hora === 'object' && t.hora instanceof Date && !isNaN(t.hora.getTime())) {
           horaDisplay = String(t.hora.getHours()).padStart(2,'0') + ':' + String(t.hora.getMinutes()).padStart(2,'0');
+        } else if (typeof t.hora === 'string' && t.hora.includes('T')) {
+          const hd = new Date(t.hora);
+          if (!isNaN(hd.getTime())) {
+            horaDisplay = String(hd.getHours()).padStart(2,'0') + ':' + String(hd.getMinutes()).padStart(2,'0');
+          }
         }
 
         // Checkbox Pagado: pre-checkeado si pago_link es true/'true'
@@ -2237,6 +2251,8 @@
       let dateObj;
       if (typeof turno.fecha === 'object' && turno.fecha instanceof Date && !isNaN(turno.fecha.getTime())) {
         dateObj = turno.fecha;
+      } else if (typeof turno.fecha === 'string' && turno.fecha.includes('T')) {
+        dateObj = new Date(turno.fecha);
       } else if (turno.fecha) {
         dateObj = new Date(turno.fecha + 'T12:00:00');
       } else {
