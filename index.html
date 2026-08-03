@@ -22,7 +22,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ElectronicsStore",
+    "@type": ["ElectronicsStore", "ComputerRepair"],
     "name": "JC Electrónica",
     "description": "Servicio técnico de notebooks, PC y consolas con revisión (se descuenta de la reparación), presupuesto sin compromiso y garantía. Venta de notebooks usadas en Merlo, Buenos Aires.",
     "url": "https://jcelectronica.com.ar/",
@@ -68,6 +68,54 @@
       "target": "https://jcelectronica.com.ar/catalogo.html?search={search_term_string}",
       "query-input": "required name=search_term_string"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda el diagnóstico?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El diagnóstico se hace en 24 a 48 horas hábiles. Te decimos qué tiene el equipo y cuánto cuesta antes de autorizar la reparación." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no apruebo el presupuesto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Solo se cobra el costo de revisión. Si aprobás la reparación, ese costo se descuenta del total. Si no reparás, te devolvemos el equipo sin ningún cargo adicional." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Los repuestos son originales?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos con repuestos originales y alternativos de calidad. Antes de instalar cualquier repuesto te lo informamos y lo autorizás vos." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tienen garantía los trabajos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Todas las reparaciones tienen garantía: 90 días en reparación de placa y 30 días en pantalla y teclado." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan MacBook con Apple Silicon (M1, M2)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos notebooks y MacBook de todas las marcas y generaciones, incluidos los modelos con Apple Silicon." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan con empresas que tienen muchos equipos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Ofrecemos servicio para empresas: mantenimiento, reparación por lotes y atención prioritaria. Consultanos por WhatsApp." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay que pedir turno para llevar el equipo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, es indispensable tener turno previo para traer o enviar tu equipo. Reservalo por WhatsApp o desde la página de turnos." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cobra la revisión?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La revisión tiene un costo único para todos los equipos, que se descuenta del total si aprobás la reparación. El monto figura en nuestras condiciones de trabajo." }
+      }
+    ]
   }
   </script>
 </head>
@@ -268,6 +316,96 @@
         <div class="col-span-full flex items-center justify-center py-8 text-gray-400">
           <i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando opiniones...
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALLAS COMUNES -->
+  <section id="fallas" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Las Fallas Que Más Vemos</h2>
+      <p class="text-gray-500 mt-2">Si tu equipo tiene alguno de estos problemas, probablemente tenga solución.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🔌</div>
+        <h3 class="font-semibold text-gray-900">No carga / No enciende</h3>
+        <p class="text-sm text-gray-500 mt-1">Problemas de jack de carga, batería o placa. Es una de las fallas más comunes en notebooks.</p>
+        <a href="servicio-notebook.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🖥️</div>
+        <h3 class="font-semibold text-gray-900">Pantalla rota o con líneas</h3>
+        <p class="text-sm text-gray-500 mt-1">Cambio de pantalla y reparación de flex de video. Trabajamos con repuestos originales.</p>
+        <a href="servicio-notebook.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🐌</div>
+        <h3 class="font-semibold text-gray-900">Lenta o se traba</h3>
+        <p class="text-sm text-gray-500 mt-1">Formateo, cambio a disco SSD y limpieza interna. La dejamos como nueva.</p>
+        <a href="servicio-notebook.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🌡️</div>
+        <h3 class="font-semibold text-gray-900">Se calienta y se apaga</h3>
+        <p class="text-sm text-gray-500 mt-1">Limpieza del sistema de refrigeración y cambio de pasta térmica.</p>
+        <a href="servicio-notebook.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🔇</div>
+        <h3 class="font-semibold text-gray-900">No tiene sonido</h3>
+        <p class="text-sm text-gray-500 mt-1">Reparación de audio en notebooks, parlantes y consolas.</p>
+        <a href="servicio-parlantes.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <div class="text-3xl mb-3">🎮</div>
+        <h3 class="font-semibold text-gray-900">Consola que falla</h3>
+        <p class="text-sm text-gray-500 mt-1">Fallas de encendido, HDMI o lectora en PlayStation, Xbox y Switch.</p>
+        <a href="servicio-consolas.html" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3 hover:text-indigo-700 transition-colors">Ver servicio <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-white py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+        <p class="text-gray-500 mt-2">Las dudas que más nos consultan.</p>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda el diagnóstico?</summary>
+          <p class="text-sm text-gray-600 mt-2">El diagnóstico se hace en 24 a 48 horas hábiles. Te decimos qué tiene el equipo y cuánto cuesta antes de autorizar la reparación.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué pasa si no apruebo el presupuesto?</summary>
+          <p class="text-sm text-gray-600 mt-2">Solo se cobra el costo de revisión. Si aprobás la reparación, ese costo se descuenta del total. Si no reparás, te devolvemos el equipo sin ningún cargo adicional.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto cobra la revisión?</summary>
+          <p class="text-sm text-gray-600 mt-2">La revisión tiene un costo único para todos los equipos, que se descuenta del total si aprobás la reparación. El monto figura en nuestras condiciones de trabajo.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Los repuestos son originales?</summary>
+          <p class="text-sm text-gray-600 mt-2">Trabajamos con repuestos originales y alternativos de calidad. Antes de instalar cualquier repuesto te lo informamos y lo autorizás vos.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Tienen garantía los trabajos?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Todas las reparaciones tienen garantía: 90 días en reparación de placa y 30 días en pantalla y teclado.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan MacBook con Apple Silicon (M1, M2)?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos notebooks y MacBook de todas las marcas y generaciones, incluidos los modelos con Apple Silicon.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Trabajan con empresas?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Ofrecemos servicio para empresas: mantenimiento, reparación por lotes y atención prioritaria. Consultanos por WhatsApp.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Hay que pedir turno para llevar el equipo?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, es indispensable tener turno previo para traer o enviar tu equipo. Reservalo por WhatsApp o desde la página de turnos.</p>
+        </details>
       </div>
     </div>
   </section>
