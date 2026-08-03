@@ -38,6 +38,29 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Están recibiendo TV?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Por reformas en el taller, temporalmente no estamos recibiendo TV. Seguimos trabajando normal con notebooks, PC, consolas, celulares y parlantes." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan TV LED/LCD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos TV LED y LCD: fallas de imagen, backlight, placa principal y fuente de alimentación. Cuando retomemos la recepción de TV, te avisamos." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan monitores?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos monitores de PC: fallas de imagen, líneas, backlight y fuente." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="tv">
 
@@ -138,6 +161,28 @@
       </div>
       <p class="text-xs text-gray-400 mt-3">*No incluimos IVA en los precios publicados.</p>
     </section>
+    <!-- FAQ específico del equipo -->
+  <section id="faq" class="bg-white py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Están recibiendo TV?</summary>
+          <p class="text-sm text-gray-600 mt-2">Por reformas en el taller, temporalmente no estamos recibiendo TV. Seguimos trabajando normal con notebooks, PC, consolas, celulares y parlantes.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan TV LED/LCD?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos TV LED y LCD: fallas de imagen, backlight, placa principal y fuente de alimentación. Cuando retomemos la recepción de TV, te avisamos.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan monitores?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos monitores de PC: fallas de imagen, líneas, backlight y fuente.</p>
+        </details>
+      </div>
+    </div>
+  </section>
   </main>
 
   <!-- Footer -->

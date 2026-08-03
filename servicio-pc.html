@@ -38,6 +38,34 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Armás PC a medida?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, armamos PC de escritorio según lo que necesites: gaming, trabajo, diseño o uso general. Te asesoramos con las mejores opciones según tu presupuesto." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen upgrades (RAM, SSD, placa de video)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, instalamos memorias RAM, discos SSD, placas de video y fuentes. Te decimos qué upgrade le conviene a tu PC según su placa madre." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan PC que no encienden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de encendido: fuente, placa madre, memoria o placa de video. El diagnóstico se hace en 24-48 hs." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo llevar mi PC al taller?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, podés traerla o enviarla. Es indispensable tener turno previo." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="pc">
 
@@ -127,6 +155,32 @@
       </div>
       <p class="text-xs text-gray-400 mt-3">*No incluimos IVA en los precios publicados.</p>
     </section>
+    <!-- FAQ específico del equipo -->
+  <section id="faq" class="bg-white py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Armás PC a medida?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, armamos PC de escritorio según lo que necesites: gaming, trabajo, diseño o uso general. Te asesoramos con las mejores opciones según tu presupuesto.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Hacen upgrades (RAM, SSD, placa de video)?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, instalamos memorias RAM, discos SSD, placas de video y fuentes. Te decimos qué upgrade le conviene a tu PC según su placa madre.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan PC que no encienden?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de encendido: fuente, placa madre, memoria o placa de video. El diagnóstico se hace en 24-48 hs.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Puedo llevar mi PC al taller?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, podés traerla o enviarla. Es indispensable tener turno previo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
   </main>
 
   <!-- Footer -->

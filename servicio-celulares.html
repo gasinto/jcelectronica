@@ -38,6 +38,34 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cambian pantallas de celulares?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, cambiamos pantallas de celulares de todas las marcas, con repuestos de calidad y garantía." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cambian baterías?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reemplazamos baterías de celulares. La batería se carga al precio del repuesto más mano de obra." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan el conector de carga?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos conectores de carga sueltos o dañados." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan celulares que no encienden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de encendido en 24-48 hs." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="celulares">
 
@@ -127,6 +155,32 @@
       </div>
       <p class="text-xs text-gray-400 mt-3">*No incluimos IVA en los precios publicados.</p>
     </section>
+    <!-- FAQ específico del equipo -->
+  <section id="faq" class="bg-white py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cambian pantallas de celulares?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, cambiamos pantallas de celulares de todas las marcas, con repuestos de calidad y garantía.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cambian baterías?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reemplazamos baterías de celulares. La batería se carga al precio del repuesto más mano de obra.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan el conector de carga?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos conectores de carga sueltos o dañados.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan celulares que no encienden?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de encendido en 24-48 hs.</p>
+        </details>
+      </div>
+    </div>
+  </section>
   </main>
 
   <!-- Footer -->

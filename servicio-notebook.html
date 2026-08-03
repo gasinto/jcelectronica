@@ -38,6 +38,34 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Reparan notebooks de todas las marcas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos notebooks de Dell, HP, Lenovo, Asus, Acer, Samsung, Toshiba, Sony Vaio y más." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta el cambio de pantalla?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El cambio de pantalla se presupuesta según el modelo. El precio figura en la lista de servicios con formato 'desde' y el presupuesto exacto se confirma después del diagnóstico." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se puede recuperar información de un disco dañado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, hacemos recuperación de datos en discos HDD y SSD. El costo depende del estado del disco y se cotiza antes de empezar." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen limpieza y cambio de pasta térmica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. La limpieza interna completa y el cambio de pasta térmica mejoran la temperatura y el rendimiento de tu notebook." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="notebook">
 
@@ -127,6 +155,32 @@
       </div>
       <p class="text-xs text-gray-400 mt-3">*No incluimos IVA en los precios publicados.</p>
     </section>
+    <!-- FAQ específico del equipo -->
+  <section id="faq" class="bg-white py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan notebooks de todas las marcas?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos notebooks de Dell, HP, Lenovo, Asus, Acer, Samsung, Toshiba, Sony Vaio y más.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto cuesta el cambio de pantalla?</summary>
+          <p class="text-sm text-gray-600 mt-2">El cambio de pantalla se presupuesta según el modelo. El precio figura en la lista de servicios con formato 'desde' y el presupuesto exacto se confirma después del diagnóstico.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Se puede recuperar información de un disco dañado?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, hacemos recuperación de datos en discos HDD y SSD. El costo depende del estado del disco y se cotiza antes de empezar.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Hacen limpieza y cambio de pasta térmica?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. La limpieza interna completa y el cambio de pasta térmica mejoran la temperatura y el rendimiento de tu notebook.</p>
+        </details>
+      </div>
+    </div>
+  </section>
   </main>
 
   <!-- Footer -->
