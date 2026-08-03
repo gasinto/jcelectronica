@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JC Electrónica — Servicio Técnico y Notebooks en Merlo, Buenos Aires</title>
+  <meta name="description" content="Servicio técnico profesional de notebooks, PC y consolas en Merlo. Diagnóstico gratis, reparación con garantía y venta de notebooks usadas. Turnos por WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcelectronica.com.ar/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JC Electrónica — Servicio Técnico y Notebooks en Merlo">
+  <meta property="og:description" content="Servicio técnico profesional de notebooks, PC y consolas en Merlo. Diagnóstico gratis, reparación con garantía y venta de notebooks usadas.">
+  <meta property="og:image" content="/img/logo.jpg">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="JC Electrónica">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/jpeg" href="/img/logo.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ElectronicsStore",
+    "name": "JC Electrónica",
+    "description": "Servicio técnico de notebooks, PC y consolas con diagnóstico gratis, reparación con garantía y venta de notebooks usadas en Merlo, Buenos Aires.",
+    "url": "https://jcelectronica.com.ar/",
+    "logo": "https://jcelectronica.com.ar/img/logo.jpg",
+    "image": "https://jcelectronica.com.ar/img/logo.jpg",
+    "telephone": "+5491153348030",
+    "email": "info@jcelectronica.com.ar",
+    "priceRange": "$$",
+    "currenciesAccepted": "ARS",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "De Colón 2270, Pontevedra",
+      "addressLocality": "Merlo",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -34.6553, "longitude": -58.7358 },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+5491153348030",
+      "contactType": "customer service",
+      "availableLanguage": ["Spanish"]
+    },
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "JC Electrónica",
+    "url": "https://jcelectronica.com.ar/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://jcelectronica.com.ar/catalogo.html?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors shrink-0">
+          <i class="fa-solid fa-microchip"></i>
+          <span class="hidden sm:inline">JC Electrónica</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="text-indigo-600">Inicio</a>
+          <a href="catalogo.html" class="hover:text-indigo-600 transition-colors">Productos</a>
+          <a href="servicios.html" class="hover:text-indigo-600 transition-colors">Servicios</a>
+          <a href="turnos.html" class="hover:text-indigo-600 transition-colors">Turnos</a>
+          <button id="cart-icon-btn" class="relative p-2 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span id="cart-badge-header" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+          </button>
+        </nav>
+        <div class="flex items-center gap-1 md:hidden">
+          <button id="cart-icon-mobile" class="relative p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span id="cart-badge-mobile-float" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+          </button>
+          <button id="mobile-menu-btn" class="p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+      <div class="px-4 py-3 space-y-1 text-sm font-medium text-gray-600">
+        <a href="/" class="block py-3 text-indigo-600">Inicio</a>
+        <a href="catalogo.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Productos</a>
+        <a href="servicios.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Servicios</a>
+        <a href="turnos.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Turnos</a>
+        <hr class="my-2 border-gray-100">
+        <button id="cart-icon-btn-mobile" class="w-full flex items-center gap-2 py-3 text-gray-600 hover:text-indigo-600 transition-colors touch-target">
+          <i class="fa-solid fa-cart-shopping"></i> Carrito
+          <span id="cart-badge-mobile" class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-block bg-white/10 backdrop-blur text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full mb-4">Servicio técnico en Merlo, Buenos Aires</span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Reparamos tu notebook, <span class="text-amber-300">PC o consola</span> con garantía</h1>
+        <p class="mt-4 text-indigo-100 text-base sm:text-lg max-w-lg">Diagnóstico gratis y presupuesto sin compromiso. Compramos y vendemos notebooks usadas. Atención por WhatsApp y turnos previos.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20equipo" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target">
+            <i class="fa-brands fa-whatsapp text-xl"></i> Consultar por WhatsApp
+          </a>
+          <a href="turnos.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target">
+            <i class="fa-regular fa-calendar-check"></i> Sacar turno
+          </a>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-4 text-sm text-indigo-100">
+          <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-amber-300"></i> Diagnóstico sin cargo</span>
+          <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-amber-300"></i> Garantía 90 días</span>
+          <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-amber-300"></i> Presupuesto sin compromiso</span>
+        </div>
+      </div>
+      <div class="hidden lg:flex justify-center">
+        <img src="img/notebook.webp" alt="Notebook reparada por JC Electrónica" class="max-h-80 drop-shadow-2xl rounded-2xl" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Nuestros Servicios</h2>
+      <p class="text-gray-500 mt-2">Reparación de notebooks, PC, consolas, celulares y más</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="servicio-notebook.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-laptop"></i></div>
+        <h3 class="font-semibold text-gray-900">Notebooks</h3>
+        <p class="text-sm text-gray-500 mt-1">Reparación de placa, pantalla, teclado, batería y más.</p>
+      </a>
+      <a href="servicio-pc.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-computer"></i></div>
+        <h3 class="font-semibold text-gray-900">PC de Escritorio</h3>
+        <p class="text-sm text-gray-500 mt-1">Armado, upgrade y reparación de PC de escritorio.</p>
+      </a>
+      <a href="servicio-consolas.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-gamepad"></i></div>
+        <h3 class="font-semibold text-gray-900">Consolas</h3>
+        <p class="text-sm text-gray-500 mt-1">Reparación de consolas de videojuegos.</p>
+      </a>
+      <a href="servicio-celulares.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3 class="font-semibold text-gray-900">Celulares</h3>
+        <p class="text-sm text-gray-500 mt-1">Pantallas, baterías y reparación de celulares.</p>
+      </a>
+      <a href="servicio-tv.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-tv"></i></div>
+        <h3 class="font-semibold text-gray-900">TV y Monitores</h3>
+        <p class="text-sm text-gray-500 mt-1">Reparación de TV y monitores LED/LCD.</p>
+      </a>
+      <a href="servicio-parlantes.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-volume-high"></i></div>
+        <h3 class="font-semibold text-gray-900">Parlantes Portátiles</h3>
+        <p class="text-sm text-gray-500 mt-1">Reparación de parlantes y audio portátil.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS (tienda) -->
+  <section id="productos" class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Productos en Venta</h2>
+          <p class="text-gray-500 mt-2">Notebooks usadas y accesorios — stock actualizado desde nuestra plataforma</p>
+        </div>
+        <a href="catalogo.html" class="hidden sm:inline-flex items-center gap-1.5 text-indigo-600 font-medium hover:text-indigo-700 transition-colors">Ver todo <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-h-[200px]">
+        <div class="col-span-full flex items-center justify-center py-12 text-gray-400">
+          <i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando productos...
+        </div>
+      </div>
+      <div class="mt-8 text-center sm:hidden">
+        <a href="catalogo.html" class="inline-flex items-center gap-1.5 text-indigo-600 font-medium">Ver todo el catálogo <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">¿Cómo Funciona?</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center">
+        <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-3">1</div>
+        <h3 class="font-semibold text-gray-900">Consultanos</h3>
+        <p class="text-sm text-gray-500 mt-1">Escribinos por WhatsApp o sacá un turno.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-3">2</div>
+        <h3 class="font-semibold text-gray-900">Diagnosticamos</h3>
+        <p class="text-sm text-gray-500 mt-1">Revisamos tu equipo y te damos presupuesto sin cargo.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-3">3</div>
+        <h3 class="font-semibold text-gray-900">Reparamos</h3>
+        <p class="text-sm text-gray-500 mt-1">Arreglamos tu equipo con garantía de hasta 90 días.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-3">4</div>
+        <h3 class="font-semibold text-gray-900">Lo Retirás</h3>
+        <p class="text-sm text-gray-500 mt-1">Te avisamos cuando está listo. Retirá o enviamos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS (dinamicos desde API) -->
+  <section id="testimonios" class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Lo Que Dicen Nuestros Clientes</h2>
+      </div>
+      <div id="testimonios-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="col-span-full flex items-center justify-center py-8 text-gray-400">
+          <i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando opiniones...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-12 text-white grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold">¿Tenés un equipo con problemas?</h2>
+        <p class="text-gray-300 mt-3">Dale una oportunidad a tu equipo y reparalo con nosotros. Turnos previos por WhatsApp.</p>
+        <div class="mt-6 space-y-3 text-sm">
+          <p class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-green-400 text-lg"></i> +54 9 11 5334-8030</p>
+          <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-indigo-400 text-lg"></i> De Colón 2270, Pontevedra, Merlo, Buenos Aires</p>
+          <p class="flex items-center gap-3"><i class="fa-regular fa-clock text-indigo-400 text-lg"></i> Lu a Sá: 10:00 - 20:00</p>
+          <p class="flex items-center gap-3"><i class="fa-regular fa-envelope text-indigo-400 text-lg"></i> info@jcelectronica.com.ar</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20reparar%20mi%20equipo" target="_blank" rel="noopener" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-xl transition-colors text-center touch-target">
+          <i class="fa-brands fa-whatsapp mr-2"></i> Escribinos por WhatsApp
+        </a>
+        <a href="turnos.html" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold py-4 rounded-xl transition-colors text-center touch-target">
+          <i class="fa-regular fa-calendar-check mr-2"></i> Sacar turno en el taller
+        </a>
+        <a href="catalogo.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 rounded-xl transition-colors text-center touch-target">
+          <i class="fa-solid fa-cart-shopping mr-2"></i> Ver productos en venta
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> JC Electrónica</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Servicio técnico especializado en notebooks, PC, consolas y venta de equipos nuevos y usados en Merlo, Buenos Aires.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Navegación</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a></li>
+            <li><a href="catalogo.html" class="hover:text-indigo-400 transition-colors">Productos</a></li>
+            <li><a href="servicios.html" class="hover:text-indigo-400 transition-colors">Servicios</a></li>
+            <li><a href="turnos.html" class="hover:text-indigo-400 transition-colors">Turnos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Contacto</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="hover:text-indigo-400 transition-colors">11-5334-8030</a></li>
+            <li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-gray-400"></i> <a href="mailto:info@jcelectronica.com.ar" class="hover:text-indigo-400 transition-colors">info@jcelectronica.com.ar</a></li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gray-400"></i> <span>De Colón 2270, Pontevedra, Merlo</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">&copy; 2026 JC Electrónica. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 hidden transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:max-w-md bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0 min-h-[60px]">
+      <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-indigo-600"></i> Tu Carrito <span id="cart-count-header" class="text-sm font-normal text-gray-400 hidden">(0)</span></h2>
+      <button id="cart-close" class="p-2.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors touch-target" aria-label="Cerrar carrito"><i class="fa-solid fa-xmark text-xl"></i></button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+      <div id="cart-empty" class="flex flex-col items-center justify-center py-16 text-center">
+        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-cart-plus text-3xl text-gray-300"></i></div>
+        <p class="text-gray-500 font-medium">Tu carrito está vacío</p>
+        <p class="text-gray-400 text-sm mt-1">Agregá productos desde el catálogo</p>
+        <a href="catalogo.html" class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors touch-target"><i class="fa-solid fa-arrow-left"></i> Ver productos</a>
+      </div>
+      <div id="cart-items-list" class="hidden space-y-4"></div>
+    </div>
+    <div id="cart-footer" class="hidden border-t border-gray-100 px-5 py-4 space-y-3 shrink-0 bg-white">
+      <div class="flex items-center justify-between text-sm"><span class="text-gray-500">Subtotal</span><span id="cart-subtotal" class="font-semibold text-gray-800">$0</span></div>
+      <div class="flex items-center justify-between"><span class="text-base font-semibold text-gray-800">Total</span><span id="cart-total" class="text-xl font-bold text-indigo-600">$0</span></div>
+      <button id="cart-checkout-btn" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm touch-target"><i class="fa-brands fa-whatsapp"></i> Finalizar por WhatsApp</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-backdrop" class="fixed inset-0 bg-black/50 hidden z-50"></div>
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold text-gray-900">Finalizar pedido</h3>
+        <button id="checkout-close" class="p-2 text-gray-400 hover:text-gray-600 rounded-lg touch-target"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="text-sm text-gray-500 mb-4">Nos enviamos tu pedido por WhatsApp. Te contactamos para coordinar la entrega.</p>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Tu nombre</label>
+      <input id="checkout-name" type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nombre y apellido">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Tu WhatsApp</label>
+      <input id="checkout-whatsapp" type="tel" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="11 5555-5555">
+      <div id="checkout-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-3"><i class="fa-solid fa-circle-exclamation mr-1"></i> <span id="checkout-error-text"></span></div>
+      <button id="checkout-submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 touch-target">
+        <span id="checkout-spinner" class="hidden"><i class="fa-solid fa-spinner fa-spin"></i></span>
+        <span id="checkout-submit-text">Enviar pedido por WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

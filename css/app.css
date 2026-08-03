@@ -1,0 +1,306 @@
+/**
+ * JC Electrónica — Custom Styles
+ *
+ * Tailwind v4 supplement: overrides, animations, responsive utilities.
+ *
+ * ═══════════════════════════════════════════════════════════════════════════
+ * Z-INDEX HIERARCHY (from lowest to highest)
+ * ═══════════════════════════════════════════════════════════════════════════
+ *   header / nav:       z-40
+ *   whatsapp float:     z-[45]
+ *   cart-overlay:       z-[46]
+ *   cart-drawer:        z-[47]
+ *   filter-overlay:     z-[48]
+ *   filter-drawer:      z-[49]
+ *   product-modal:      z-[50]
+ *   conditions-modal:   z-[50]
+ *   checkout-modal:     z-[60]
+ *   toasts:             z-[70]
+ *   admin sidebar:      z-40
+ *   admin overlay:      z-30
+ *   admin save-bar:     z-30
+ */
+
+/* ─── Base / Reset ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow on all viewports */
+body {
+  overflow-x: hidden;
+}
+
+/* ─── Mobile menu ───────────────────────────────────────────────────────────── */
+#mobile-menu {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+/* ─── WhatsApp floating button ──────────────────────────────────────────────── */
+#whatsapp-float {
+  animation: whatsapp-pulse 2s infinite;
+  z-index: 45;
+}
+
+/* Static-site variant: circular floating button */
+.whatsapp-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 45;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  animation: whatsapp-pulse 2s infinite;
+  transition: transform 0.2s ease;
+}
+.whatsapp-flotante:hover {
+  transform: scale(1.08);
+  color: #fff;
+}
+
+@keyframes whatsapp-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* ─── Form input fix ────────────────────────────────────────────────────────── */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* iOS zoom prevention: inputs need min 16px on mobile */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── Touch targets (minimum 44×44) ────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .touch-target-sm {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}
+
+/* ─── Line clamp ────────────────────────────────────────────────────────────── */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Product card image ────────────────────────────────────────────────────── */
+.product-card img {
+  transition: transform 0.3s ease;
+}
+
+/* ─── Filter drawer (mobile bottom sheet) ──────────────────────────────────── */
+#filter-drawer {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#filter-overlay { z-index: 48; }
+#filter-drawer  { z-index: 49; }
+
+#filter-drawer::-webkit-scrollbar { width: 4px; }
+#filter-drawer::-webkit-scrollbar-track { background: transparent; }
+#filter-drawer::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+
+/* ─── Product detail modal ──────────────────────────────────────────────────── */
+#product-modal {
+  z-index: 50;
+  animation: modal-fade-in 0.2s ease;
+}
+#product-modal > div:last-child {
+  animation: modal-slide-up 0.25s ease;
+}
+
+/* ─── Conditions modal ──────────────────────────────────────────────────────── */
+#conditions-modal {
+  z-index: 50;
+}
+
+/* ─── Shared modal animations ───────────────────────────────────────────────── */
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modal-slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ─── Toast notifications ──────────────────────────────────────────────────── */
+.toast-container {
+  z-index: 70;
+}
+
+/* ─── Skeleton shimmer ──────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Cart Drawer ────────────────────────────────────────────────────────────── */
+#cart-drawer {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+}
+#cart-overlay { z-index: 46; }
+#cart-drawer  { z-index: 47; }
+
+/* Full-screen cart drawer on small screens (< 640px) */
+@media (max-width: 639px) {
+  #cart-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Cart item */
+.cart-item { animation: cart-item-fade 0.2s ease; }
+@keyframes cart-item-fade {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.cart-qty-btn:active { transform: scale(0.95); }
+
+/* ─── Checkout modal ────────────────────────────────────────────────────────── */
+#checkout-modal {
+  z-index: 60;
+  animation: modal-fade-in 0.15s ease;
+}
+#checkout-modal > div:last-child {
+  animation: modal-slide-up 0.2s ease;
+}
+
+/* ─── Cart badge ────────────────────────────────────────────────────────────── */
+@keyframes badge-pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+#cart-badge:not(.hidden) { animation: badge-pop 0.3s ease; }
+
+/* ─── Mobile cart icon (always visible) ─────────────────────────────────────── */
+#cart-icon-mobile {
+  z-index: 41; /* above header */
+}
+
+/* ─── Responsive pricing tables (services) ──────────────────────────────────── */
+@media (max-width: 639px) {
+  .pricing-table-mobile-card {
+    display: block;
+  }
+  .pricing-table-desktop-row {
+    display: none;
+  }
+}
+@media (min-width: 640px) {
+  .pricing-table-mobile-card {
+    display: none;
+  }
+  .pricing-table-desktop-row {
+    display: table-row;
+  }
+}
+
+/* ─── Admin responsive overrides ────────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .admin-table th,
+  .admin-table td {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  .admin-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
+  .admin-table td:not(:first-child):not(:nth-child(2)):not(:last-child) {
+    display: none;
+  }
+}
+
+/* ─── Product grid safe min-width ───────────────────────────────────────────── */
+@media (max-width: 374px) {
+  .product-grid-safe {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Hero full-width override ──────────────────────────────────────────────── */
+.hero-full {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  max-width: 100vw;
+}
+
+/* ─── Price text responsive ─────────────────────────────────────────────────── */
+.price-responsive {
+  font-size: clamp(0.875rem, 4vw, 1.25rem);
+}
+
+/* ─── Category tabs horizontal scroll (mobile) ──────────────────────────────── */
+.tabs-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs-scroll-x::-webkit-scrollbar { display: none; }
+
+/* ─── Slot grid responsive ──────────────────────────────────────────────────── */
+@media (max-width: 374px) {
+  #slots-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ─── Service detail process steps ──────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .process-steps-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ─── Fix filter-close button touch target ──────────────────────────────────── */
+#filter-close {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
