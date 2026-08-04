@@ -175,13 +175,15 @@
 
       var disabledAttr = p.estado !== 'disponible' ? 'disabled' : '';
       var estadoBadge = (estadoColors[p.estado] || 'bg-gray-100 text-gray-600');
-      var conditionBadge = (conditionColors[p.condition] || 'bg-gray-100 text-gray-600 border-gray-200');
+      var conditionBadge = p.condition
+        ? '<span class="absolute top-2 right-2 text-xs font-medium px-2 py-0.5 rounded border ' + (conditionColors[p.condition] || 'bg-gray-100 text-gray-600 border-gray-200') + ' bg-white/90 backdrop-blur-sm">' + p.condition.replace('-', ' ') + '</span>'
+        : '';
 
       return '<div class="product-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 flex flex-col cursor-pointer" data-product-id="' + p.id + '" data-price="' + p.price_public + '" data-price-guild="' + (p.price_gremio || '') + '" data-name="' + p.name.replace(/'/g, "\\'") + '">'
         + '<div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">'
         + imageHtml
         + '<span class="absolute top-2 left-2 text-xs font-semibold px-2.5 py-1 rounded-full ' + estadoBadge + '">' + p.estado + '</span>'
-        + '<span class="absolute top-2 right-2 text-xs font-medium px-2 py-0.5 rounded border ' + conditionBadge + ' bg-white/90 backdrop-blur-sm">' + p.condition.replace('-', ' ') + '</span>'
+        + conditionBadge
         + '</div>'
         + '<div class="p-4 flex flex-col flex-1">'
         + '<h3 class="font-semibold text-gray-800 text-sm leading-tight line-clamp-2">' + p.name + '</h3>'
@@ -267,7 +269,6 @@
 
     // Basic info
     document.getElementById('modal-title').textContent = product.name;
-    document.getElementById('modal-name').textContent = product.name;
     document.getElementById('modal-subtitle').textContent = product.subtitle || '';
     document.getElementById('modal-subtitle').style.display = product.subtitle ? '' : 'none';
 
@@ -278,9 +279,14 @@
     estadoBadge.className = 'text-xs font-semibold px-3 py-1 rounded-full ' + (estadoColors[product.estado] || 'bg-gray-100 text-gray-600');
 
     var condBadge = document.getElementById('modal-condition');
-    var condColors = { excelente: 'bg-green-100 text-green-700 border-green-200', 'muy-bueno': 'bg-blue-100 text-blue-700 border-blue-200', bueno: 'bg-yellow-100 text-yellow-700 border-yellow-200' };
-    condBadge.textContent = product.condition.replace('-', ' ');
-    condBadge.className = 'text-xs font-medium px-3 py-1 rounded border ' + (condColors[product.condition] || 'bg-gray-100 text-gray-600 border-gray-200');
+    if (product.condition) {
+      var condColors = { excelente: 'bg-green-100 text-green-700 border-green-200', 'muy-bueno': 'bg-blue-100 text-blue-700 border-blue-200', bueno: 'bg-yellow-100 text-yellow-700 border-yellow-200' };
+      condBadge.textContent = product.condition.replace('-', ' ');
+      condBadge.className = 'text-xs font-medium px-3 py-0.5 rounded border ' + (condColors[product.condition] || 'bg-gray-100 text-gray-600 border-gray-200');
+      condBadge.classList.remove('hidden');
+    } else {
+      condBadge.classList.add('hidden');
+    }
 
     document.getElementById('modal-tipo').textContent = product.tipo;
     var brandEl = document.getElementById('modal-brand');
