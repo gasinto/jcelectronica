@@ -384,3 +384,13 @@ textarea:focus {
   background-color: var(--jce-naranja) !important;
 }
 
+/* ─── Aviso de revisión (turnos) — marca naranja ── */
+.fee-notice {
+  background-color: #fff5ea;
+  border: 1px solid var(--jce-naranja);
+  color: var(--jce-naranja-oscuro);
+}
+.fee-notice strong {
+  color: var(--jce-naranja-oscuro);
+}
+

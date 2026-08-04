@@ -61,7 +61,7 @@
         <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"><i class="fa-solid fa-circle-check"></i></div>
         <h2 class="text-xl font-bold text-green-800">¡Turno solicitado!</h2>
         <p class="text-green-700 mt-2 text-sm" id="success-msg">Te contactamos por WhatsApp para confirmar.</p>
-        <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp</a>
+        <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" id="success-whatsapp" class="mt-4 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp</a>
       </div>
 
       <div id="error-state" class="hidden bg-red-50 border border-red-200 rounded-2xl p-5 mb-6 text-red-700 text-sm"><i class="fa-solid fa-circle-exclamation mr-1"></i> <span id="error-msg"></span></div>
@@ -137,6 +137,11 @@
             </div>
             <input type="hidden" id="hora">
           </div>
+        </div>
+
+        <div id="fee-notice" class="hidden mt-6 rounded-xl px-4 py-3 text-sm font-medium flex items-center gap-3 fee-notice">
+          <i class="fa-solid fa-money-bill-wave text-lg shrink-0"></i>
+          <span>Revisión: <strong id="fee-amount"></strong> <span class="opacity-80">(se descuenta de la reparación)</span></span>
         </div>
 
         <button type="submit" id="btn-submit" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 touch-target">

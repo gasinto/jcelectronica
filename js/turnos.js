@@ -1,6 +1,7 @@
 /**
  * JC Electrónica — Turnos (appointment booking).
- * Uses the JC Plataforma public API: GET /turnos/horarios?fecha= and POST /turnos.
+ * Uses the JC Plataforma public API: GET /turnos/horarios?fecha=, GET /turnos/fee
+ * and POST /turnos (con pago de revisión vía Mercado Pago cuando está disponible).
  */
 (function () {
   'use strict';
@@ -15,6 +16,10 @@
   var successState = document.getElementById('success-state');
   var errorState = document.getElementById('error-state');
   var errorMsg = document.getElementById('error-msg');
+  var feeNotice = document.getElementById('fee-notice');
+  var feeAmount = document.getElementById('fee-amount');
+  var successMsg = document.getElementById('success-msg');
+  var successWhatsapp = document.getElementById('success-whatsapp');
 
   function showError(msg) {
     errorMsg.textContent = msg;
@@ -25,6 +30,27 @@
   function hideError() {
     errorState.classList.add('hidden');
   }
+
+  function formatFee(monto) {
+    var n = Number(monto);
+    if (isNaN(n)) return null;
+    return '$' + n.toLocaleString('es-AR', { maximumFractionDigits: 2 });
+  }
+
+  // Carga el costo de revisión (pago vía Mercado Pago) al abrir la página.
+  // Si el endpoint falla o el monto no es válido, el aviso queda oculto.
+  (async function loadFee() {
+    try {
+      var res = await fetch(API + '/turnos/fee');
+      var data = await res.json();
+      if (data && data.ok && typeof data.fee === 'number' && data.fee > 0 && feeAmount) {
+        feeAmount.textContent = formatFee(data.fee);
+        if (feeNotice) feeNotice.classList.remove('hidden');
+      }
+    } catch (err) {
+      console.warn('[TURNOS] Revisión fee no disponible:', err);
+    }
+  })();
 
   // Min date = tomorrow
   (function () {
@@ -117,7 +143,18 @@
       if (json.ok) {
         form.classList.add('hidden');
         successState.classList.remove('hidden');
-        successState.scrollIntoView({ behavior: 'smooth' });
+
+        if (json.init_point) {
+          // Pago iniciado: redirigimos al checkout de Mercado Pago
+          successMsg.textContent = 'Te redirigimos a Mercado Pago para abonar la revisión.';
+          if (successWhatsapp) successWhatsapp.classList.add('hidden');
+          window.location.href = json.init_point;
+        } else {
+          // Sin preferencia de pago (fallback): confirmación por WhatsApp
+          successMsg.textContent = 'Te contactamos por WhatsApp para confirmar.';
+          if (successWhatsapp) successWhatsapp.classList.remove('hidden');
+          successState.scrollIntoView({ behavior: 'smooth' });
+        }
       } else {
         showError(json.error || 'Error al solicitar el turno. Intentá de nuevo.');
         submitBtn.disabled = false;
