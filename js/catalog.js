@@ -558,6 +558,10 @@
       } catch (e) {
         console.error('[CATALOG] Failed to fetch product data:', e);
       }
+    } else if (grid) {
+      // Página estática sin productos renderizados por el server:
+      // hacer el fetch inicial para salir del estado "Cargando...".
+      await applyFilters();
     }
 
     // Sync search clear button state
