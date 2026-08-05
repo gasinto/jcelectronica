@@ -50,8 +50,23 @@
       },
       {
         "@type": "Question",
+        "name": "¿Cuánto tarda el diagnóstico?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El diagnóstico se hace en 24 a 48 horas hábiles. Te decimos qué tiene el equipo y cuánto cuesta la reparación antes de autorizar nada." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no apruebo el presupuesto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Solo se cobra el costo de revisión. Si no aprobás la reparación, te devolvemos el equipo sin ningún cargo adicional." }
+      },
+      {
+        "@type": "Question",
         "name": "¿Cuánto cuesta el cambio de pantalla?",
         "acceptedAnswer": { "@type": "Answer", "text": "El cambio de pantalla se presupuesta según el modelo. El precio figura en la lista de servicios con formato 'desde' y el presupuesto exacto se confirma después del diagnóstico." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis datos al reparar?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hay que formatear, hacemos el respaldo previo." }
       },
       {
         "@type": "Question",
@@ -62,6 +77,21 @@
         "@type": "Question",
         "name": "¿Hacen limpieza y cambio de pasta térmica?",
         "acceptedAnswer": { "@type": "Answer", "text": "Sí. La limpieza interna completa y el cambio de pasta térmica mejoran la temperatura y el rendimiento de tu notebook." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda el cambio de pantalla?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Si hay stock de la pantalla, el cambio se hace en el día (entre 2 y 4 horas). Si hay que pedirla, te lo informamos y te damos el plazo." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo enviar mi notebook desde otra ciudad?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Coordinamos el envío al interior: te guiamos con el embalaje, trabajamos con correo seguro y te devolvemos el equipo por el mismo medio. Consultanos por WhatsApp." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué garantía tienen las reparaciones?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Todas las reparaciones tienen garantía escrita: 90 días en reparación de placa y 30 días en pantalla y teclado." }
       }
     ]
   }
@@ -139,6 +169,79 @@
       </div>
     </section>
 
+    <!-- Fallas que resolvemos -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-2">¿Qué falla tiene tu notebook?</h2>
+      <p class="text-center text-gray-500 max-w-2xl mx-auto mb-8">Si tenés alguno de estos síntomas, probablemente tenga solución. Consultanos y coordinamos un turno.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">🔌</span> No carga o no enciende</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Suele ser el jack de carga, la batería o un problema de placa madre. Lo diagnosticamos sin compromiso.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20no%20carga%20o%20no%20enciende.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">🖥️</span> Pantalla negra o con líneas</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Puede ser pantalla, flex de video o placa. Hacemos la prueba del monitor externo para saber exactamente qué es.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20tiene%20pantalla%20negra%20o%20con%20lineas.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">🐌</span> Muy lenta o se traba</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Formateo, cambio a disco SSD y limpieza interna. En muchos casos la dejamos como nueva.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20esta%20muy%20lenta%20o%20se%20traba.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">🌡️</span> Se calienta y se apaga</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Limpieza del sistema de refrigeración y cambio de pasta térmica. Evita daños mayores en la placa.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20se%20calienta%20y%20se%20apaga.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">⌨️</span> Teclas que no responden</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Teclas pegadas, que escriben mal o no funcionan. Puede ser el teclado, el flex o la placa.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Las%20teclas%20de%20mi%20notebook%20no%20responden.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 text-sm flex items-center gap-2"><span class="text-xl">🔊</span> No tiene sonido</h3>
+          <p class="text-xs text-gray-500 mt-1.5">Falla de audio por drivers o por el hardware. Lo revisamos y te decimos exactamente qué es.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20no%20tiene%20sonido.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-xs font-medium mt-2.5 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="bg-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">¿Qué incluye el servicio?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🔍</div><h3 class="font-semibold text-gray-900 text-sm">Diagnóstico completo</h3><p class="text-xs text-gray-500 mt-1">Revisión del equipo y detección de la falla real antes de tocar nada.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">📋</div><h3 class="font-semibold text-gray-900 text-sm">Presupuesto sin sorpresas</h3><p class="text-xs text-gray-500 mt-1">Te avisamos el costo exacto y lo autorizás vos. No hay cargos ocultos al retirar.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🔧</div><h3 class="font-semibold text-gray-900 text-sm">Reparación profesional</h3><p class="text-xs text-gray-500 mt-1">Repuestos de calidad y herramientas adecuadas. El valor de la revisión se descuenta.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🛡️</div><h3 class="font-semibold text-gray-900 text-sm">Garantía</h3><p class="text-xs text-gray-500 mt-1">90 días en placa y 30 días en pantalla y teclado. Escrita y sin vueltas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tiempos y mejora -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Tiempos de entrega</h2>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Diagnóstico:</strong> 24 a 48 horas hábiles.</span></li>
+            <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Cambio de pantalla:</strong> en el día, entre 2 y 4 horas si hay stock.</span></li>
+            <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Cambio de batería:</strong> 48 a 72 horas.</span></li>
+            <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Limpieza y pasta térmica:</strong> 24 horas hábiles.</span></li>
+            <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Placa madre:</strong> depende del repuesto; te lo informamos en el diagnóstico.</span></li>
+          </ul>
+        </div>
+        <div class="bg-purple-50 border border-purple-100 rounded-2xl p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">💡 ¿Tu notebook está lenta?</h2>
+          <p class="text-sm text-gray-600">El combo más recomendado: <strong>cambio a disco SSD + ampliación de memoria RAM + limpieza</strong>. Recuperás velocidad de arranque y respuesta general sin cambiar de equipo.</p>
+          <p class="text-sm text-gray-600 mt-3">Reparar es más económico que comprar una notebook nueva y extiende la vida útil varios años.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20presupuesto%20para%20SSD%20y%20memoria%20RAM%20para%20mi%20notebook." target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp"></i> Pedir presupuesto del combo</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Precios desde API -->
     <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">Servicios y Precios</h2>
@@ -169,8 +272,20 @@
           <p class="text-sm text-gray-600 mt-2">Sí, reparamos notebooks de Dell, HP, Lenovo, Asus, Acer, Samsung, Toshiba, Sony Vaio y más.</p>
         </details>
         <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda el diagnóstico?</summary>
+          <p class="text-sm text-gray-600 mt-2">El diagnóstico se hace en 24 a 48 horas hábiles. Te decimos qué tiene el equipo y cuánto cuesta la reparación antes de autorizar nada.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué pasa si no apruebo el presupuesto?</summary>
+          <p class="text-sm text-gray-600 mt-2">Solo se cobra el costo de revisión. Si no aprobás la reparación, te devolvemos el equipo sin ningún cargo adicional.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
           <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto cuesta el cambio de pantalla?</summary>
           <p class="text-sm text-gray-600 mt-2">El cambio de pantalla se presupuesta según el modelo. El precio figura en la lista de servicios con formato 'desde' y el presupuesto exacto se confirma después del diagnóstico.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis datos al reparar?</summary>
+          <p class="text-sm text-gray-600 mt-2">No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hay que formatear, hacemos el respaldo previo.</p>
         </details>
         <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
           <summary class="font-semibold text-gray-900 cursor-pointer">¿Se puede recuperar información de un disco dañado?</summary>
@@ -179,6 +294,18 @@
         <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
           <summary class="font-semibold text-gray-900 cursor-pointer">¿Hacen limpieza y cambio de pasta térmica?</summary>
           <p class="text-sm text-gray-600 mt-2">Sí. La limpieza interna completa y el cambio de pasta térmica mejoran la temperatura y el rendimiento de tu notebook.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda el cambio de pantalla?</summary>
+          <p class="text-sm text-gray-600 mt-2">Si hay stock de la pantalla, el cambio se hace en el día (entre 2 y 4 horas). Si hay que pedirla, te lo informamos y te damos el plazo.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Puedo enviar mi notebook desde otra ciudad?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Coordinamos el envío al interior: te guiamos con el embalaje, trabajamos con correo seguro y te devolvemos el equipo por el mismo medio. Consultanos por WhatsApp.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué garantía tienen las reparaciones?</summary>
+          <p class="text-sm text-gray-600 mt-2">Todas las reparaciones tienen garantía escrita: 90 días en reparación de placa y 30 días en pantalla y teclado.</p>
         </details>
       </div>
     </div>
