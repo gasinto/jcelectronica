@@ -93,10 +93,15 @@
       var res = await fetch(API + '/testimonios?empresa_id=' + empresaId);
       var data = await res.json();
 
-      // Hide section entirely when there are no real testimonials
+      // Fallback: nunca ocultar la sección — mostrar CTA si no hay reviews reales
       if (!Array.isArray(data) || data.length === 0) {
-        var section = grid.closest('section');
-        if (section) section.style.display = 'none';
+        grid.innerHTML =
+          '<div class="col-span-full bg-gray-50 rounded-2xl p-8 text-center border border-gray-100">'
+          + '<div class="text-4xl mb-3">⭐</div>'
+          + '<p class="font-semibold text-gray-800">¿Trabajamos con tu equipo?</p>'
+          + '<p class="text-sm text-gray-500 mt-1 max-w-md mx-auto">Todavía no hay opiniones publicadas. Si te ayudamos con tu equipo, nos encantaría saber tu experiencia.</p>'
+          + '<a href="https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola! Quiero dejar una reseña sobre mi experiencia con JC Electrónica.') + '" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"><i class="fa-brands fa-whatsapp"></i> Dejá tu opinión</a>'
+          + '</div>';
         return;
       }
 
@@ -115,8 +120,13 @@
       }).join('');
     } catch (err) {
       console.error('[HOME] Testimonios error:', err);
-      var section = grid.closest('section');
-      if (section) section.style.display = 'none';
+      grid.innerHTML =
+        '<div class="col-span-full bg-gray-50 rounded-2xl p-8 text-center border border-gray-100">'
+        + '<div class="text-4xl mb-3">⭐</div>'
+        + '<p class="font-semibold text-gray-800">¿Trabajamos con tu equipo?</p>'
+        + '<p class="text-sm text-gray-500 mt-1 max-w-md mx-auto">Si te ayudamos con tu equipo, nos encantaría saber tu experiencia.</p>'
+        + '<a href="https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola! Quiero dejar una reseña sobre mi experiencia con JC Electrónica.') + '" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"><i class="fa-brands fa-whatsapp"></i> Dejá tu opinión</a>'
+        + '</div>';
     }
   }
 
