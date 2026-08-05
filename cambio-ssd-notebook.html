@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambio a Disco SSD en Notebook — Solución para Computadora Lenta | JC Electrónica</title>
+  <meta name="description" content="¿Tu notebook está lenta? Cambio a disco SSD en Merlo con clonación de disco: no perdés nada y arranca mucho más rápido. SATA o NVMe, te asesoramos con el modelo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcelectronica.com.ar/cambio-ssd-notebook.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cambio a Disco SSD en Notebook — JC Electrónica">
+  <meta property="og:description" content="La notebook anda lenta? Cambio a SSD con clonación: no perdés nada y arranca hasta 12 veces más rápido.">
+  <meta property="og:image" content="/img/notebook.webp">
+  <meta property="og:locale" content="es_AR">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/png" href="/img/logo sin fondo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Cambio a disco SSD de notebook",
+    "provider": { "@type": "ElectronicsStore", "name": "JC Electrónica", "url": "https://jcelectronica.com.ar/", "telephone": "+5491153348030" },
+    "areaServed": "Merlo, Buenos Aires",
+    "url": "https://jcelectronica.com.ar/cambio-ssd-notebook.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué tipo de SSD necesita mi notebook, SATA o NVMe?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Existen dos tipos: SATA (formato 2.5\", hasta 550 MB/s, compatible con la mayoría de notebooks 2008-2020) y NVMe (formato M.2, hasta 7000 MB/s, notebooks 2015 en adelante). No son intercambiables: te confirmamos cuál acepta tu modelo exacto." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Pierdo mis archivos al cambiar el disco a SSD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, si elegís la opción de clonación no perdés nada: copia todo el contenido del disco original al SSD nuevo (Windows, programas, archivos, configuraciones). Al encender con el SSD, todo está igual pero mucho más rápido." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto más rápido queda mi notebook?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Un SSD SATA es unas 5 veces más rápido que un disco mecánico HDD; un SSD NVMe hasta 12 veces. El arranque de Windows pasa de minutos a segundos." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo conviene instalación limpia en vez de clonación?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cuando el Windows actual tiene problemas (errores, malware, actualizaciones rotas) o si la notebook tiene años de programas acumulados que ya no usás. Una instalación limpia deja el equipo como nuevo." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors shrink-0"><img src="img/logo sin fondo.png" alt="JC Electrónica" class="h-12 w-auto"><span class="hidden sm:inline">JC Electrónica</span></a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-indigo-600 transition-colors">Inicio</a>
+          <a href="catalogo.html" class="hover:text-indigo-600 transition-colors">Productos</a>
+          <a href="servicios.html" class="text-indigo-600">Servicios</a>
+          <a href="turnos.html" class="hover:text-indigo-600 transition-colors">Turnos</a>
+          <a href="envios.html" class="hover:text-indigo-600 transition-colors">Envíos</a>
+          <a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-600 transition-colors">Seguimiento</a>
+          <button id="cart-icon-btn" class="relative p-2 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-header" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+        </nav>
+        <div class="flex items-center gap-1 md:hidden">
+          <button id="cart-icon-mobile" class="relative p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-mobile-float" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+          <button id="mobile-menu-btn" class="p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir menú"><i class="fa-solid fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+      <div class="px-4 py-3 space-y-1 text-sm font-medium text-gray-600">
+        <a href="/" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Inicio</a>
+        <a href="catalogo.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Productos</a>
+        <a href="servicios.html" class="block py-3 text-indigo-600">Servicios</a>
+        <a href="turnos.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Turnos</a>
+        <a href="envios.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Envíos</a>
+        <a href="https://jc-plataforma-production.up.railway.app/consultar" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Seguimiento</a>
+        <hr class="my-2 border-gray-100">
+        <button id="cart-icon-btn-mobile" class="w-full flex items-center gap-2 py-3 text-gray-600 hover:text-indigo-600 transition-colors touch-target"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="cart-badge-mobile" class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-700 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="inline-block bg-white/10 backdrop-blur text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full mb-4">Clonación de disco incluida</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold">Cambio a Disco SSD — Solución para Computadora Lenta</h1>
+          <p class="mt-3 text-indigo-100">¿Tu notebook tarda una eternidad en prender y abrir programas? El cambio a un disco SSD es la mejora más grande que podés hacerle. No perdés nada: clonamos tu disco y el equipo arranca hasta 12 veces más rápido.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20cambiar%20mi%20notebook%20a%20disco%20SSD" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Síntomas -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Tu computadora anda lenta?</h2>
+      <p class="text-center text-gray-500 max-w-3xl mx-auto mb-10">Si tu notebook tiene disco mecánico (HDD), estos síntomas se resuelven casi siempre con un SSD:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">⏳</span> Tarda minutos en prender</h3>
+          <p class="text-sm text-gray-500 mt-2">Con un HDD el arranque de Windows puede tardar 2-5 minutos. Con un SSD, pasa a segundos.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🔄</span> Se traba al abrir programas</h3>
+          <p class="text-sm text-gray-500 mt-2">El disco mecánico se convierte en el cuello de botella cuando Windows necesita leer y escribir constantemente.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🔊</span> Hace ruido el disco</h3>
+          <p class="text-sm text-gray-500 mt-2">El clásico "clac clac" del HDD al leer. El SSD no tiene partes móviles: es silencioso y más resistente.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">📁</span> Carga archivos muy lento</h3>
+          <p class="text-sm text-gray-500 mt-2">Abrir fotos, documentos o programas pesados se vuelve inmediato con un SSD.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SATA vs NVMe -->
+    <section class="bg-white py-14">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿SATA o NVMe?</h2>
+        <p class="text-center text-gray-500 max-w-2xl mx-auto mb-8">Existen dos tipos de SSD y no son intercambiables. Te confirmamos cuál acepta tu modelo exacto.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <h3 class="font-semibold text-gray-900">SSD SATA (formato 2.5")</h3>
+            <ul class="text-xs text-gray-500 mt-2 space-y-1.5">
+              <li>• Velocidad: hasta 550 MB/s — unas 5 veces más rápido que un HDD</li>
+              <li>• Compatible con la mayoría de notebooks 2008-2020</li>
+              <li>• Es el reemplazo directo del disco rígido mecánico</li>
+            </ul>
+          </div>
+          <div class="bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+            <h3 class="font-semibold text-gray-900">SSD NVMe (formato M.2)</h3>
+            <ul class="text-xs text-gray-500 mt-2 space-y-1.5">
+              <li>• Velocidad: desde 1.500 hasta 7.000 MB/s (PCIe Gen3/Gen4)</li>
+              <li>• Hasta 12 veces más rápido que un SATA</li>
+              <li>• Compatible con notebooks 2015 en adelante; muchas modernas solo aceptan NVMe</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-6 bg-indigo-50 border border-indigo-100 rounded-2xl p-5 flex gap-3">
+          <div class="text-2xl">💡</div>
+          <p class="text-sm text-gray-600"><strong>No hace falta que abras el equipo:</strong> escribinos con la marca y modelo y te confirmamos qué tipo de SSD acepta, qué formato M.2 usa (2242 o 2280) y si tiene ranura libre para un segundo disco.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clonación -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Pierdo mis archivos?</h2>
+      <p class="text-sm text-gray-600 text-center max-w-2xl mx-auto">No, si elegís la opción de <strong>clonación de disco</strong> no perdés nada. La clonación copia todo el contenido del disco original al SSD nuevo: Windows, programas instalados, archivos, fotos, documentos, configuraciones y contraseñas guardadas. Al encender la notebook con el SSD nuevo, todo está exactamente igual que antes, pero mucho más rápido.</p>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-green-50 rounded-2xl p-5 border border-green-100"><h3 class="font-semibold text-gray-900 text-sm">✅ Clonación: cuándo conviene</h3><p class="text-xs text-gray-500 mt-1">Tu Windows funciona bien pero es lento por el disco. Copia exacta, sector por sector, del disco original al SSD.</p></div>
+        <div class="bg-amber-50 rounded-2xl p-5 border border-amber-100"><h3 class="font-semibold text-gray-900 text-sm">🆕 Instalación limpia: cuándo conviene</h3><p class="text-xs text-gray-500 mt-1">El Windows actual tiene problemas (errores, malware) o la notebook tiene años de programas acumulados que ya no usás. Deja el equipo como nuevo.</p></div>
+      </div>
+    </section>
+
+    <!-- Tiempos -->
+    <section class="bg-indigo-50 py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Tiempos de entrega</h2>
+        <ul class="space-y-3 text-sm text-gray-600 max-w-2xl mx-auto">
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Con SSD en stock:</strong> 24 horas hábiles (incluye clonación e instalación).</span></li>
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Pedido del SSD:</strong> 48 a 72 horas según disponibilidad.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-10 text-center text-white">
+        <h2 class="text-2xl font-bold">¿Tu notebook está insoportablemente lenta?</h2>
+        <p class="text-gray-300 mt-2 text-sm">Escribinos con la marca y modelo. Te confirmamos qué SSD le va y coordinamos un turno. El valor de la revisión se descuenta si reparás con nosotros.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20Mi%20notebook%20est%C3%A1%20muy%20lenta.%20Quiero%20presupuesto%20para%20un%20SSD." target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Pedir presupuesto</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-white py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué tipo de SSD necesita mi notebook, SATA o NVMe?</summary>
+            <p class="text-sm text-gray-600 mt-2">Existen dos tipos: SATA (formato 2.5", hasta 550 MB/s, compatible con la mayoría de notebooks 2008-2020) y NVMe (formato M.2, hasta 7000 MB/s, notebooks 2015 en adelante). No son intercambiables: te confirmamos cuál acepta tu modelo exacto.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Pierdo mis archivos al cambiar el disco a SSD?</summary>
+            <p class="text-sm text-gray-600 mt-2">No, si elegís la opción de clonación no perdés nada: copia todo el contenido del disco original al SSD nuevo (Windows, programas, archivos, configuraciones). Al encender con el SSD, todo está igual pero mucho más rápido.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto más rápido queda mi notebook?</summary>
+            <p class="text-sm text-gray-600 mt-2">Un SSD SATA es unas 5 veces más rápido que un disco mecánico HDD; un SSD NVMe hasta 12 veces. El arranque de Windows pasa de minutos a segundos.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuándo conviene instalación limpia en vez de clonación?</summary>
+            <p class="text-sm text-gray-600 mt-2">Cuando el Windows actual tiene problemas (errores, malware, actualizaciones rotas) o si la notebook tiene años de programas acumulados que ya no usás. Una instalación limpia deja el equipo como nuevo.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Y si mi notebook ya tiene SSD y sigue lenta?</summary>
+            <p class="text-sm text-gray-600 mt-2">El problema probablemente sea la memoria RAM (poca cantidad o módulo fallado), un problema de software, o en casos más serios, una falla en la placa madre. Lo diagnosticamos y te orientamos.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div><h3 class="text-white font-semibold text-lg mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> JC Electrónica</h3><p class="text-sm text-gray-400 leading-relaxed">Servicio técnico especializado en notebooks, PC, consolas y venta de equipos nuevos y usados en Merlo, Buenos Aires. Envíos a todo el país.</p></div>
+        <div><h4 class="text-white font-semibold mb-3">Navegación</h4><ul class="space-y-2 text-sm"><li><a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a></li><li><a href="catalogo.html" class="hover:text-indigo-400 transition-colors">Productos</a></li><li><a href="servicios.html" class="hover:text-indigo-400 transition-colors">Servicios</a></li><li><a href="turnos.html" class="hover:text-indigo-400 transition-colors">Turnos</a></li><li><a href="envios.html" class="hover:text-indigo-400 transition-colors">Envíos</a></li><li><a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-400 transition-colors">Seguimiento</a></li></ul></div>
+        <div><h4 class="text-white font-semibold mb-3">Contacto</h4><ul class="space-y-2 text-sm"><li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="hover:text-indigo-400 transition-colors">11-5334-8030</a></li><li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-gray-400"></i> <a href="mailto:info@jcelectronica.com.ar" class="hover:text-indigo-400 transition-colors">info@jcelectronica.com.ar</a></li><li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gray-400"></i> <span>De Colón 2270, Pontevedra, Merlo</span></li></ul></div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">&copy; 2026 JC Electrónica. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

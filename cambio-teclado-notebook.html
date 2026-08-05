@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambio de Teclado de Notebook en Merlo — JC Electrónica</title>
+  <meta name="description" content="Cambio de teclado de notebook en Merlo: teclas que no responden, pegadas o en inglés. Repuesto OEM o Grado A, instalación y prueba de todas las teclas. Garantía escrita.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcelectronica.com.ar/cambio-teclado-notebook.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cambio de Teclado de Notebook en Merlo — JC Electrónica">
+  <meta property="og:description" content="Teclas que no responden o escriben mal? Cambiamos el teclado de tu notebook en 48-72 horas con stock.">
+  <meta property="og:image" content="/img/notebook.webp">
+  <meta property="og:locale" content="es_AR">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/png" href="/img/logo sin fondo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Cambio de teclado de notebook",
+    "provider": { "@type": "ElectronicsStore", "name": "JC Electrónica", "url": "https://jcelectronica.com.ar/", "telephone": "+5491153348030" },
+    "areaServed": "Merlo, Buenos Aires",
+    "url": "https://jcelectronica.com.ar/cambio-teclado-notebook.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Por qué se cambia el teclado completo y no se repara?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En las notebooks el teclado es una sola pieza con una membrana de circuitos que conecta todas las teclas. No se puede reparar un sector sin reemplazar la pieza entera." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda el cambio de teclado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Con stock disponible (modelos comunes de Lenovo, HP, Dell, Asus y Acer): 48 a 72 horas. Para modelos importados o discontinuados: pedido especial, te informamos el plazo antes de aprobar." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Pueden instalar un teclado en español si el mío está en inglés?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Si tu notebook se compró en el exterior y trae teclado en inglés, instalamos un teclado en español latinoamericano con ñ y tildes." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis datos al cambiar el teclado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. El teclado es independiente del disco: tus datos no se tocan en ningún momento." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors shrink-0"><img src="img/logo sin fondo.png" alt="JC Electrónica" class="h-12 w-auto"><span class="hidden sm:inline">JC Electrónica</span></a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-indigo-600 transition-colors">Inicio</a>
+          <a href="catalogo.html" class="hover:text-indigo-600 transition-colors">Productos</a>
+          <a href="servicios.html" class="text-indigo-600">Servicios</a>
+          <a href="turnos.html" class="hover:text-indigo-600 transition-colors">Turnos</a>
+          <a href="envios.html" class="hover:text-indigo-600 transition-colors">Envíos</a>
+          <a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-600 transition-colors">Seguimiento</a>
+          <button id="cart-icon-btn" class="relative p-2 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-header" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+        </nav>
+        <div class="flex items-center gap-1 md:hidden">
+          <button id="cart-icon-mobile" class="relative p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-mobile-float" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+          <button id="mobile-menu-btn" class="p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir menú"><i class="fa-solid fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+      <div class="px-4 py-3 space-y-1 text-sm font-medium text-gray-600">
+        <a href="/" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Inicio</a>
+        <a href="catalogo.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Productos</a>
+        <a href="servicios.html" class="block py-3 text-indigo-600">Servicios</a>
+        <a href="turnos.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Turnos</a>
+        <a href="envios.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Envíos</a>
+        <a href="https://jc-plataforma-production.up.railway.app/consultar" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Seguimiento</a>
+        <hr class="my-2 border-gray-100">
+        <button id="cart-icon-btn-mobile" class="w-full flex items-center gap-2 py-3 text-gray-600 hover:text-indigo-600 transition-colors touch-target"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="cart-badge-mobile" class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-700 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="inline-block bg-white/10 backdrop-blur text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full mb-4">Repuesto OEM o Grado A</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold">Cambio de Teclado de Notebook</h1>
+          <p class="mt-3 text-indigo-100">Teclas que no responden, pegadas, con caracteres incorrectos o en inglés? Cambiamos el teclado completo y probamos todas las teclas una por una. Tus datos no se tocan.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20cambiar%20el%20teclado%20de%20mi%20notebook" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Síntomas -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Tu teclado no funciona bien?</h2>
+      <p class="text-center text-gray-500 max-w-3xl mx-auto mb-10">Estos son los síntomas más comunes. Si reconocés alguno, el teclado probablemente necesite cambio completo.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">⌨️</span> Teclas que no responden</h3>
+          <p class="text-sm text-gray-500 mt-2">No escriben o funcionan de forma intermitente. Puede ser una tecla o un grupo en la misma zona.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🔒</span> Teclas pegadas o duras</h3>
+          <p class="text-sm text-gray-500 mt-2">No rebotan después de pulsarlas o necesitan más fuerza de lo normal. Causa habitual: líquidos o suciedad.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🔤</span> Caracteres incorrectos</h3>
+          <p class="text-sm text-gray-500 mt-2">Escribís una letra y aparece otra, o se activan funciones sin tocar nada. La membrana interna tiene un cortocircuito.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">💧</span> Daño por líquidos</h3>
+          <p class="text-sm text-gray-500 mt-2">Si cayó café, agua, mate o gaseosa, puede funcionar unos días más pero el daño por oxidación avanza internamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Por qué se cambia completo -->
+    <section class="bg-white py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Por qué se cambia el teclado completo?</h2>
+        <p class="text-sm text-gray-600 text-center max-w-2xl mx-auto">En las notebooks el teclado es una sola pieza con una membrana de circuitos integrados que conecta todas las teclas. No se puede reparar un sector sin reemplazar la pieza entera. El cambio completo garantiza sensibilidad uniforme, estética pareja y vida útil extendida.</p>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">1. Diagnóstico previo</h3><p class="text-xs text-gray-500 mt-1">Confirmamos que el problema sea el teclado y no un driver o configuración de software. Si es otra cosa, te lo decimos antes de avanzar.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">2. Teclado compatible</h3><p class="text-xs text-gray-500 mt-1">Repuesto original OEM o Grado A compatible con tu modelo exacto. Verificamos conector, formato y distribución antes de instalar.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">3. Instalación y prueba</h3><p class="text-xs text-gray-500 mt-1">Reemplazamos el teclado completo y probamos todas las teclas una por una antes de cerrar el equipo y entregarte.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">4. Garantía escrita</h3><p class="text-xs text-gray-500 mt-1">Cubre defectos de fabricación del repuesto y fallas de instalación. Documentada en la orden de trabajo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tiempos -->
+    <section class="bg-indigo-50 py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Tiempos de entrega</h2>
+        <ul class="space-y-3 text-sm text-gray-600 max-w-2xl mx-auto">
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Con stock disponible:</strong> 48 a 72 horas para modelos comunes de Lenovo, HP, Dell, Asus y Acer. Incluye instalación y prueba de todas las teclas.</span></li>
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Pedido especial:</strong> para modelos importados, poco comunes o discontinuados. Te informamos el plazo exacto antes de que apruebes el presupuesto.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-10 text-center text-white">
+        <h2 class="text-2xl font-bold">¿El teclado de tu notebook no funciona bien?</h2>
+        <p class="text-gray-300 mt-2 text-sm">Escribinos con la marca y modelo. Te confirmamos si hay stock y coordinamos un turno. Presupuesto todo inclusivo, sin sorpresas.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20El%20teclado%20de%20mi%20notebook%20no%20funciona%20bien.%20Quiero%20un%20turno." target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Consultar mi caso</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-white py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Por qué se cambia el teclado completo y no se repara?</summary>
+            <p class="text-sm text-gray-600 mt-2">En las notebooks el teclado es una sola pieza con una membrana de circuitos que conecta todas las teclas. No se puede reparar un sector sin reemplazar la pieza entera.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda el cambio de teclado?</summary>
+            <p class="text-sm text-gray-600 mt-2">Con stock disponible (modelos comunes de Lenovo, HP, Dell, Asus y Acer): 48 a 72 horas. Para modelos importados o discontinuados: pedido especial, te informamos el plazo antes de aprobar.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Pueden instalar un teclado en español si el mío está en inglés?</summary>
+            <p class="text-sm text-gray-600 mt-2">Sí. Si tu notebook se compró en el exterior y trae teclado en inglés, instalamos un teclado en español latinoamericano con ñ y tildes.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis datos al cambiar el teclado?</summary>
+            <p class="text-sm text-gray-600 mt-2">No. El teclado es independiente del disco: tus datos no se tocan en ningún momento.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué garantía tiene el cambio de teclado?</summary>
+            <p class="text-sm text-gray-600 mt-2">Cubre defectos de fabricación del repuesto y fallas de instalación, documentada en la orden de trabajo al momento de la entrega.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div><h3 class="text-white font-semibold text-lg mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> JC Electrónica</h3><p class="text-sm text-gray-400 leading-relaxed">Servicio técnico especializado en notebooks, PC, consolas y venta de equipos nuevos y usados en Merlo, Buenos Aires. Envíos a todo el país.</p></div>
+        <div><h4 class="text-white font-semibold mb-3">Navegación</h4><ul class="space-y-2 text-sm"><li><a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a></li><li><a href="catalogo.html" class="hover:text-indigo-400 transition-colors">Productos</a></li><li><a href="servicios.html" class="hover:text-indigo-400 transition-colors">Servicios</a></li><li><a href="turnos.html" class="hover:text-indigo-400 transition-colors">Turnos</a></li><li><a href="envios.html" class="hover:text-indigo-400 transition-colors">Envíos</a></li><li><a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-400 transition-colors">Seguimiento</a></li></ul></div>
+        <div><h4 class="text-white font-semibold mb-3">Contacto</h4><ul class="space-y-2 text-sm"><li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="hover:text-indigo-400 transition-colors">11-5334-8030</a></li><li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-gray-400"></i> <a href="mailto:info@jcelectronica.com.ar" class="hover:text-indigo-400 transition-colors">info@jcelectronica.com.ar</a></li><li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gray-400"></i> <span>De Colón 2270, Pontevedra, Merlo</span></li></ul></div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">&copy; 2026 JC Electrónica. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

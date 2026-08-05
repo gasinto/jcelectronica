@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpieza y Cambio de Pasta Térmica de Notebook en Merlo — JC Electrónica</title>
+  <meta name="description" content="Limpieza interna y cambio de pasta térmica de notebook en Merlo. El ventilador hace ruido o la notebook se calienta? Limpieza profunda en 24 horas hábiles.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcelectronica.com.ar/limpieza-pasta-termica.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Limpieza y Cambio de Pasta Térmica de Notebook — JC Electrónica">
+  <meta property="og:description" content="Notebook que se calienta, hace ruido o se traba? Limpieza interna y cambio de pasta térmica en 24 horas.">
+  <meta property="og:image" content="/img/notebook.webp">
+  <meta property="og:locale" content="es_AR">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/png" href="/img/logo sin fondo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Limpieza y cambio de pasta térmica de notebook",
+    "provider": { "@type": "ElectronicsStore", "name": "JC Electrónica", "url": "https://jcelectronica.com.ar/", "telephone": "+5491153348030" },
+    "areaServed": "Merlo, Buenos Aires",
+    "url": "https://jcelectronica.com.ar/limpieza-pasta-termica.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cada cuánto hay que hacer limpieza y cambio de pasta térmica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Recomendamos hacerla cada 1 a 2 años, o antes si el ventilador hace ruido, el equipo se calienta o empieza a trabarse." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿La limpieza resuelve el problema del ruido del ventilador?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En la gran mayoría de los casos sí. La limpieza profunda del ventilador, el disipador y las rejillas, más el cambio de pasta térmica, hace que el ventilador vuelva a girar solo cuando es necesario." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda la limpieza y cambio de pasta térmica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El servicio completo se hace en 24 horas hábiles. Incluye limpieza profunda, cambio de pasta térmica y medición de temperaturas antes y después." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis datos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. La limpieza no toca el disco: tus datos quedan intactos." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors shrink-0"><img src="img/logo sin fondo.png" alt="JC Electrónica" class="h-12 w-auto"><span class="hidden sm:inline">JC Electrónica</span></a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-indigo-600 transition-colors">Inicio</a>
+          <a href="catalogo.html" class="hover:text-indigo-600 transition-colors">Productos</a>
+          <a href="servicios.html" class="text-indigo-600">Servicios</a>
+          <a href="turnos.html" class="hover:text-indigo-600 transition-colors">Turnos</a>
+          <a href="envios.html" class="hover:text-indigo-600 transition-colors">Envíos</a>
+          <a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-600 transition-colors">Seguimiento</a>
+          <button id="cart-icon-btn" class="relative p-2 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-header" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+        </nav>
+        <div class="flex items-center gap-1 md:hidden">
+          <button id="cart-icon-mobile" class="relative p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-mobile-float" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+          <button id="mobile-menu-btn" class="p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir menú"><i class="fa-solid fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+      <div class="px-4 py-3 space-y-1 text-sm font-medium text-gray-600">
+        <a href="/" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Inicio</a>
+        <a href="catalogo.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Productos</a>
+        <a href="servicios.html" class="block py-3 text-indigo-600">Servicios</a>
+        <a href="turnos.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Turnos</a>
+        <a href="envios.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Envíos</a>
+        <a href="https://jc-plataforma-production.up.railway.app/consultar" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Seguimiento</a>
+        <hr class="my-2 border-gray-100">
+        <button id="cart-icon-btn-mobile" class="w-full flex items-center gap-2 py-3 text-gray-600 hover:text-indigo-600 transition-colors touch-target"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="cart-badge-mobile" class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-700 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="inline-block bg-white/10 backdrop-blur text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full mb-4">Prevención que alarga la vida del equipo</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold">Limpieza y Cambio de Pasta Térmica</h1>
+          <p class="mt-3 text-indigo-100">¿Tu notebook se calienta, el ventilador hace mucho ruido o se traba? La limpieza interna completa y el cambio de pasta térmica resuelven el problema y evitan daños mayores en la placa madre.</p>
+          <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20hacerle%20limpieza%20y%20cambio%20de%20pasta%20t%C3%A9rmica%20a%20mi%20notebook" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Síntomas -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Tu notebook muestra estos síntomas?</h2>
+      <p class="text-center text-gray-500 max-w-3xl mx-auto mb-10">El sistema de refrigeración obstruido es una de las causas más comunes de rendimiento pobre y fallas prematuras.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🌀</span> El ventilador hace mucho ruido o está siempre al máximo</h3>
+          <p class="text-sm text-gray-500 mt-2">No es normal ni algo para ignorar: indica que el sistema de refrigeración está obstruido y el equipo trabaja bajo estrés térmico constante.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🌡️</span> Se calienta mucho al usarla</h3>
+          <p class="text-sm text-gray-500 mt-2">Polvo en el disipador y pasta térmica seca reducen drásticamente la transferencia de calor del procesador.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🐌</span> Se traba o va lenta de golpe</h3>
+          <p class="text-sm text-gray-500 mt-2">El procesador activa el Thermal Throttling y reduce su velocidad para protegerse del calor, lo que se nota como lentitud.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-xl">🔋</span> La batería dura menos que antes</h3>
+          <p class="text-sm text-gray-500 mt-2">Las temperaturas elevadas sostenidas acortan la vida útil de la batería y de la placa madre.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="bg-white py-14">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-3">¿Qué incluye el servicio?</h2>
+        <p class="text-center text-gray-500 max-w-2xl mx-auto mb-8">La limpieza resuelve el problema en la gran mayoría de los casos:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🧹</div><h3 class="font-semibold text-gray-900 text-sm">Limpieza profunda</h3><p class="text-xs text-gray-500 mt-1">Del ventilador, el disipador y todas las rejillas de ventilación.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🫙</div><h3 class="font-semibold text-gray-900 text-sm">Pasta térmica nueva</h3><p class="text-xs text-gray-500 mt-1">Retiro de la pasta vieja y aplicación de pasta de calidad.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">🔧</div><h3 class="font-semibold text-gray-900 text-sm">Verificación del ventilador</h3><p class="text-xs text-gray-500 mt-1">Confirmamos que gira correctamente y sin ruidos mecánicos.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100"><div class="text-2xl mb-2">📊</div><h3 class="font-semibold text-gray-900 text-sm">Medición de temperaturas</h3><p class="text-xs text-gray-500 mt-1">Medimos antes y después del servicio para confirmar la mejora.</p></div>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-6">Después del servicio, el ventilador vuelve a girar solo cuando es necesario y a velocidades normales. El equipo recupera el silencio y la velocidad.</p>
+      </div>
+    </section>
+
+    <!-- Prevención -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">¿Cada cuánto conviene hacerla?</h2>
+      <p class="text-sm text-gray-600 text-center max-w-2xl mx-auto">Recomendamos limpieza y cambio de pasta térmica <strong>cada 1 a 2 años</strong>, o antes si notás alguno de los síntomas. Es el mantenimiento más económico para evitar daños caros en la placa madre a la larga.</p>
+      <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-3">
+        <div class="text-2xl">⚠️</div>
+        <p class="text-sm text-amber-700"><strong>No uses la notebook sobre superficies blandas</strong> (cama, almohadón): bloquean las rejillas de entrada de aire y aceleran el recalentamiento.</p>
+      </div>
+    </section>
+
+    <!-- Tiempos -->
+    <section class="bg-indigo-50 py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Tiempos de entrega</h2>
+        <ul class="space-y-3 text-sm text-gray-600 max-w-2xl mx-auto">
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Limpieza y cambio de pasta térmica:</strong> 24 horas hábiles.</span></li>
+          <li class="flex items-start gap-2.5"><i class="fa-regular fa-clock text-indigo-500 mt-0.5"></i><span><strong>Con reemplazo de ventilador</strong> (si está dañado): 48 a 72 horas si hay stock.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-10 text-center text-white">
+        <h2 class="text-2xl font-bold">¿Tu notebook se calienta o hace ruido?</h2>
+        <p class="text-gray-300 mt-2 text-sm">Coordiná un turno para la limpieza. Es el mantenimiento más económico que le podés hacer a tu equipo.</p>
+        <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20turno%20para%20limpieza%20y%20cambio%20de%20pasta%20t%C3%A9rmica%20de%20mi%20notebook." target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp text-xl"></i> Pedir turno</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-white py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Cada cuánto hay que hacer limpieza y cambio de pasta térmica?</summary>
+            <p class="text-sm text-gray-600 mt-2">Recomendamos hacerla cada 1 a 2 años, o antes si el ventilador hace ruido, el equipo se calienta o empieza a trabarse.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿La limpieza resuelve el problema del ruido del ventilador?</summary>
+            <p class="text-sm text-gray-600 mt-2">En la gran mayoría de los casos sí. La limpieza profunda del ventilador, el disipador y las rejillas, más el cambio de pasta térmica, hace que el ventilador vuelva a girar solo cuando es necesario.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda la limpieza y cambio de pasta térmica?</summary>
+            <p class="text-sm text-gray-600 mt-2">El servicio completo se hace en 24 horas hábiles. Incluye limpieza profunda, cambio de pasta térmica y medición de temperaturas antes y después.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis datos?</summary>
+            <p class="text-sm text-gray-600 mt-2">No. La limpieza no toca el disco: tus datos quedan intactos.</p>
+          </details>
+          <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+            <summary class="font-semibold text-gray-900 cursor-pointer">¿Es peligroso que el ventilador esté siempre al máximo?</summary>
+            <p class="text-sm text-gray-600 mt-2">Sí. El ventilador tiene vida útil limitada, el procesador reduce su velocidad para protegerse (equipo lento) y las temperaturas elevadas acortan la vida de la placa y la batería.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div><h3 class="text-white font-semibold text-lg mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> JC Electrónica</h3><p class="text-sm text-gray-400 leading-relaxed">Servicio técnico especializado en notebooks, PC, consolas y venta de equipos nuevos y usados en Merlo, Buenos Aires. Envíos a todo el país.</p></div>
+        <div><h4 class="text-white font-semibold mb-3">Navegación</h4><ul class="space-y-2 text-sm"><li><a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a></li><li><a href="catalogo.html" class="hover:text-indigo-400 transition-colors">Productos</a></li><li><a href="servicios.html" class="hover:text-indigo-400 transition-colors">Servicios</a></li><li><a href="turnos.html" class="hover:text-indigo-400 transition-colors">Turnos</a></li><li><a href="envios.html" class="hover:text-indigo-400 transition-colors">Envíos</a></li><li><a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-400 transition-colors">Seguimiento</a></li></ul></div>
+        <div><h4 class="text-white font-semibold mb-3">Contacto</h4><ul class="space-y-2 text-sm"><li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="hover:text-indigo-400 transition-colors">11-5334-8030</a></li><li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-gray-400"></i> <a href="mailto:info@jcelectronica.com.ar" class="hover:text-indigo-400 transition-colors">info@jcelectronica.com.ar</a></li><li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gray-400"></i> <span>De Colón 2270, Pontevedra, Merlo</span></li></ul></div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">&copy; 2026 JC Electrónica. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
