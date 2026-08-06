@@ -37,6 +37,16 @@
       var data = await res.json();
       if (!Array.isArray(data) || data.length === 0) return; // fallback: HTML estático
 
+      // Red de seguridad: deduplicar por título (evita copias repetidas
+      // si la API llegara a devolver seeds duplicados).
+      var vistos = {};
+      data = data.filter(function (f) {
+        var key = (f.titulo || '').toLowerCase().trim();
+        if (!key || vistos[key]) return false;
+        vistos[key] = true;
+        return true;
+      });
+
       var cards = data.map(function (f) {
         var waText = f.whatsapp_texto || ('Quiero un turno por: ' + (f.titulo || ''));
         var link = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola! ' + waText);
