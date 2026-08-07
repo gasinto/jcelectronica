@@ -88,24 +88,34 @@
       }).join('');
       list.innerHTML = items;
 
-      // Regenerar JSON-LD FAQPage (para mantener consistencia con el HTML visible)
+      // Regenerar JSON-LD FAQPage (para mantener consistencia con el HTML visible).
+      // Si no existe ningún script FAQPage en la página, se CREA uno (las páginas
+      // ya no llevan FAQ hardcodeado; todo vive en la API de la plataforma).
+      var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.map(function (f) {
+          return {
+            '@type': 'Question',
+            name: f.pregunta,
+            acceptedAnswer: { '@type': 'Answer', text: f.respuesta }
+          };
+        })
+      };
       var scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      var reemplazado = false;
       for (var i = 0; i < scripts.length; i++) {
         var raw = scripts[i].textContent || '';
         if (raw.indexOf('FAQPage') === -1) continue;
-        var schema = {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: data.map(function (f) {
-            return {
-              '@type': 'Question',
-              name: f.pregunta,
-              acceptedAnswer: { '@type': 'Answer', text: f.respuesta }
-            };
-          })
-        };
         scripts[i].textContent = JSON.stringify(schema);
+        reemplazado = true;
         break;
+      }
+      if (!reemplazado) {
+        var nuevo = document.createElement('script');
+        nuevo.type = 'application/ld+json';
+        nuevo.textContent = JSON.stringify(schema);
+        document.head.appendChild(nuevo);
       }
     } catch (err) {
       console.error('[CONTENT] FAQ error:', err);
