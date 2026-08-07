@@ -57,7 +57,7 @@
   }
   </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-faq-bloque="cambio-ssd-notebook">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-40">
@@ -196,7 +196,7 @@
         <div class="text-center mb-8">
           <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
         </div>
-        <div class="space-y-3">
+        <div class="space-y-3" id="faq-list">
           <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
             <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué tipo de SSD necesita mi notebook, SATA o NVMe?</summary>
             <p class="text-sm text-gray-600 mt-2">Existen dos tipos: SATA (formato 2.5", hasta 550 MB/s, compatible con la mayoría de notebooks 2008-2020) y NVMe (formato M.2, hasta 7000 MB/s, notebooks 2015 en adelante). No son intercambiables: te confirmamos cuál acepta tu modelo exacto.</p>
@@ -239,5 +239,6 @@
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/content.js"></script>
 </body>
 </html>

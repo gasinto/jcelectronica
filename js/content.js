@@ -70,8 +70,13 @@
     var list = document.getElementById('faq-list');
     if (!list) return;
 
+    // Cada página declara su bloque de FAQ con data-faq-bloque en <body>.
+    // Sin atributo → bloque general (''), que es el FAQ de la home.
+    var bloque = document.body.getAttribute('data-faq-bloque') || '';
+    var qs = bloque ? '?bloque=' + encodeURIComponent(bloque) : '';
+
     try {
-      var res = await fetch(API + '/faq');
+      var res = await fetch(API + '/faq' + qs);
       var data = await res.json();
       if (!Array.isArray(data) || data.length === 0) return; // fallback: HTML estático
 
