@@ -38,9 +38,51 @@
     }
   }
   </script>
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Reparan parlantes bluetooth?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos parlantes bluetooth y audio portátil: problemas de carga, encendido, batería y sonido." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cambian baterías de parlantes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reemplazamos baterías de parlantes portátiles." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan parlantes que no cargan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de carga y encendido en 24-48 hs." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda una reparación de parlante?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El diagnóstico se hace en 24 a 48 horas hábiles. Los cambios de batería o parlante se hacen en 24 a 48 horas si hay stock." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan fallas de bluetooth?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Si tu parlante no conecta, se corta o no empareja por bluetooth, reparamos la placa o el módulo correspondiente." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no apruebo el presupuesto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Solo se cobra el costo de revisión. Si no aprobás la reparación, te devolvemos el equipo sin ningún cargo adicional." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tienen garantía las reparaciones?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Todas las reparaciones tienen garantía escrita según el tipo de trabajo realizado." }
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="parlantes" data-faq-bloque="servicio-parlantes">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="parlantes">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-40">
@@ -208,6 +250,34 @@
         <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
       </div>
       <div class="space-y-3" id="faq-list">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan parlantes bluetooth?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos parlantes bluetooth y audio portátil: problemas de carga, encendido, batería y sonido.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cambian baterías de parlantes?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reemplazamos baterías de parlantes portátiles.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan parlantes que no cargan?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de carga y encendido en 24-48 hs.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda una reparación de parlante?</summary>
+          <p class="text-sm text-gray-600 mt-2">El diagnóstico se hace en 24 a 48 horas hábiles. Los cambios de batería o parlante se hacen en 24 a 48 horas si hay stock.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan fallas de bluetooth?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Si tu parlante no conecta, se corta o no empareja por bluetooth, reparamos la placa o el módulo correspondiente.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué pasa si no apruebo el presupuesto?</summary>
+          <p class="text-sm text-gray-600 mt-2">Solo se cobra el costo de revisión. Si no aprobás la reparación, te devolvemos el equipo sin ningún cargo adicional.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Tienen garantía las reparaciones?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Todas las reparaciones tienen garantía escrita según el tipo de trabajo realizado.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -229,6 +299,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/content.js"></script>
 </body>
 </html>

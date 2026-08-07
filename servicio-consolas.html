@@ -38,9 +38,51 @@
     }
   }
   </script>
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué consolas reparan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Reparamos PlayStation, Xbox y Nintendo Switch, de todas las generaciones." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan fallas de HDMI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, la falta de imagen por HDMI es una de las reparaciones más comunes: se reemplaza el puerto o se reballa el conector." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen mantenimiento y limpieza de consolas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, hacemos limpieza interna, cambio de pasta térmica y revisión del sistema de refrigeración." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan consolas que no encienden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de encendido en 24-48 hs y te pasamos un presupuesto claro y transparente." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis partidas o datos al reparar?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes de hacer nada." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda una limpieza?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La limpieza interna y el cambio de pasta térmica se hacen en 24 horas hábiles." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo enviar mi consola desde otra ciudad?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Coordinamos el envío al interior con embalaje seguro y te la devolvemos por el mismo medio. Consultanos por WhatsApp." }
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="consolas" data-faq-bloque="servicio-consolas">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="consolas">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-40">
@@ -209,6 +251,34 @@
         <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
       </div>
       <div class="space-y-3" id="faq-list">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué consolas reparan?</summary>
+          <p class="text-sm text-gray-600 mt-2">Reparamos PlayStation, Xbox y Nintendo Switch, de todas las generaciones.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan fallas de HDMI?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, la falta de imagen por HDMI es una de las reparaciones más comunes: se reemplaza el puerto o se reballa el conector.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Hacen mantenimiento y limpieza de consolas?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, hacemos limpieza interna, cambio de pasta térmica y revisión del sistema de refrigeración.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan consolas que no encienden?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de encendido en 24-48 hs y te pasamos un presupuesto claro y transparente.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis partidas o datos al reparar?</summary>
+          <p class="text-sm text-gray-600 mt-2">No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes de hacer nada.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda una limpieza?</summary>
+          <p class="text-sm text-gray-600 mt-2">La limpieza interna y el cambio de pasta térmica se hacen en 24 horas hábiles.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Puedo enviar mi consola desde otra ciudad?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Coordinamos el envío al interior con embalaje seguro y te la devolvemos por el mismo medio. Consultanos por WhatsApp.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -230,6 +300,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/content.js"></script>
 </body>
 </html>

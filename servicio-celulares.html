@@ -38,9 +38,51 @@
     }
   }
   </script>
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cambian pantallas de celulares?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, cambiamos pantallas de celulares de todas las marcas, con repuestos de calidad y garantía." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cambian baterías?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reemplazamos baterías de celulares. La batería se carga al precio del repuesto más mano de obra." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Arreglan el conector de carga?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, reparamos conectores de carga sueltos o dañados." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan celulares que no encienden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de encendido en 24-48 hs." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda un cambio de pantalla?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Si hay stock de la pantalla, el cambio se hace en el día (entre 1 y 2 horas). Si hay que pedirla, te lo informamos y te damos el plazo." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis fotos y datos al reparar?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hace falta, te ayudamos a respaldar la información." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan celulares que se mojaron?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Cuanto antes se atiende un equipo con daño por líquido, mejores son las chances de recuperarlo. No lo cargues ni lo prendas: traelo directo." }
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="celulares" data-faq-bloque="servicio-celulares">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="celulares">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-40">
@@ -209,6 +251,34 @@
         <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
       </div>
       <div class="space-y-3" id="faq-list">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cambian pantallas de celulares?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, cambiamos pantallas de celulares de todas las marcas, con repuestos de calidad y garantía.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cambian baterías?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reemplazamos baterías de celulares. La batería se carga al precio del repuesto más mano de obra.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Arreglan el conector de carga?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, reparamos conectores de carga sueltos o dañados.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan celulares que no encienden?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de encendido en 24-48 hs.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda un cambio de pantalla?</summary>
+          <p class="text-sm text-gray-600 mt-2">Si hay stock de la pantalla, el cambio se hace en el día (entre 1 y 2 horas). Si hay que pedirla, te lo informamos y te damos el plazo.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis fotos y datos al reparar?</summary>
+          <p class="text-sm text-gray-600 mt-2">No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hace falta, te ayudamos a respaldar la información.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan celulares que se mojaron?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Cuanto antes se atiende un equipo con daño por líquido, mejores son las chances de recuperarlo. No lo cargues ni lo prendas: traelo directo.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -230,6 +300,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/content.js"></script>
 </body>
 </html>

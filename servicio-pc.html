@@ -38,9 +38,51 @@
     }
   }
   </script>
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Armás PC a medida?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, armamos PC de escritorio según lo que necesites: gaming, trabajo, diseño o uso general. Te asesoramos con las mejores opciones según tu presupuesto." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen upgrades (RAM, SSD, placa de video)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, instalamos memorias RAM, discos SSD, placas de video y fuentes. Te decimos qué upgrade le conviene a tu PC según su placa madre." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reparan PC que no encienden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, diagnosticamos fallas de encendido: fuente, placa madre, memoria o placa de video. El diagnóstico se hace en 24-48 hs." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda un formateo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El formateo e instalación de Windows con drivers toma alrededor de 24 horas hábiles. Antes te respaldamos la información que quieras conservar." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se pierden mis datos al reparar?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hay que formatear, hacemos el respaldo previo." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan con juegos o equipos de diseño?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Armamos y optimizamos PC gamer y equipos para diseño/edición. Te recomendamos el balance ideal entre placa de video, procesador y memoria según tu uso." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo llevar mi PC al taller?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, podés traerla o enviarla. Es indispensable tener turno previo." }
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="pc" data-faq-bloque="servicio-pc">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden" data-tipo-equipo="pc">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-40">
@@ -209,6 +251,34 @@
         <h2 class="text-2xl font-bold text-gray-900">Preguntas Frecuentes</h2>
       </div>
       <div class="space-y-3" id="faq-list">
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Armás PC a medida?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, armamos PC de escritorio según lo que necesites: gaming, trabajo, diseño o uso general. Te asesoramos con las mejores opciones según tu presupuesto.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Hacen upgrades (RAM, SSD, placa de video)?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, instalamos memorias RAM, discos SSD, placas de video y fuentes. Te decimos qué upgrade le conviene a tu PC según su placa madre.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Reparan PC que no encienden?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, diagnosticamos fallas de encendido: fuente, placa madre, memoria o placa de video. El diagnóstico se hace en 24-48 hs.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda un formateo?</summary>
+          <p class="text-sm text-gray-600 mt-2">El formateo e instalación de Windows con drivers toma alrededor de 24 horas hábiles. Antes te respaldamos la información que quieras conservar.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Se pierden mis datos al reparar?</summary>
+          <p class="text-sm text-gray-600 mt-2">No. Tus datos no se tocan salvo que la reparación lo requiera, y en ese caso te avisamos antes. Si hay que formatear, hacemos el respaldo previo.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Trabajan con juegos o equipos de diseño?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Armamos y optimizamos PC gamer y equipos para diseño/edición. Te recomendamos el balance ideal entre placa de video, procesador y memoria según tu uso.</p>
+        </details>
+        <details class="bg-gray-50 rounded-xl border border-gray-100 p-5">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Puedo llevar mi PC al taller?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, podés traerla o enviarla. Es indispensable tener turno previo.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -230,6 +300,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/content.js"></script>
 </body>
 </html>
