@@ -1,10 +1,11 @@
 /**
- * JC Electrónica — Contenido dinámico (Fallas Comunes + FAQ)
+ * JC Electrónica — Contenido dinámico (FAQ)
  *
  * Carga secciones de contenido gestionadas desde "Mi Página" (JC Plataforma):
- *   - GET /fallas  → sección "Las Fallas Que Más Vemos" (home) y grids de
- *                    fallas por tipo de equipo en páginas de servicio.
  *   - GET /faq     → sección de Preguntas Frecuentes (visible + JSON-LD).
+ *
+ * Las FALLAS COMUNES son estáticas (decision 2026-08-07): viven en el HTML
+ * de cada página, no se cargan desde la API.
  *
  * Estrategia SEO-safe: si la API devuelve datos, se renderizan; si falla o
  * viene vacía, se DEJA el HTML estático existente (fallback). Así el sitio
@@ -22,47 +23,6 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
-  }
-
-  // ─── Fallas comunes ─────────────────────────────────────────────────────
-  async function loadFallas() {
-    var grid = document.getElementById('fallas-grid');
-    if (!grid) return;
-
-    var tipoEquipo = document.body.getAttribute('data-tipo-equipo') || '';
-    var qs = tipoEquipo ? '?tipo_equipo=' + encodeURIComponent(tipoEquipo) : '';
-
-    try {
-      var res = await fetch(API + '/fallas' + qs);
-      var data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) return; // fallback: HTML estático
-
-      // Red de seguridad: deduplicar por título (evita copias repetidas
-      // si la API llegara a devolver seeds duplicados).
-      var vistos = {};
-      data = data.filter(function (f) {
-        var key = (f.titulo || '').toLowerCase().trim();
-        if (!key || vistos[key]) return false;
-        vistos[key] = true;
-        return true;
-      });
-
-      var cards = data.map(function (f) {
-        var waText = f.whatsapp_texto || ('Quiero un turno por: ' + (f.titulo || ''));
-        var link = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola! ' + waText);
-        return '<div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">'
-          + '<div class="text-3xl mb-3">' + esc(f.icono || '🔧') + '</div>'
-          + '<h3 class="font-semibold text-gray-900">' + esc(f.titulo) + '</h3>'
-          + (f.descripcion ? '<p class="text-sm text-gray-500 mt-1">' + esc(f.descripcion) + '</p>' : '')
-          + '<a href="' + link + '" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-green-600 text-sm font-medium mt-3 hover:text-green-700 transition-colors"><i class="fa-brands fa-whatsapp"></i> Consultar por esta falla <i class="fa-solid fa-arrow-right"></i></a>'
-          + '</div>';
-      }).join('');
-
-      grid.innerHTML = cards;
-    } catch (err) {
-      console.error('[CONTENT] Fallas error:', err);
-      // fallback: no tocar el HTML estático
-    }
   }
 
   // ─── FAQ ────────────────────────────────────────────────────────────────
@@ -124,7 +84,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadFallas();
     loadFaq();
   });
 })();
