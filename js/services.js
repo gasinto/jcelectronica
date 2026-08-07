@@ -25,9 +25,15 @@
         return;
       }
       list.innerHTML = data.map(function (c) {
-        return '<div class="bg-gray-50 rounded-xl border border-gray-100 p-5">'
-          + '<h3 class="font-semibold text-gray-800 mb-1">' + (c.nombre || '') + '</h3>'
-          + '<p class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">' + (c.descripcion || '') + '</p>'
+        var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
+        return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
+          + '<div class="flex items-start gap-4">'
+          + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
+          + '<div class="min-w-0">'
+          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">' + (c.nombre || '') + '</h3>'
+          + '<div class="text-gray-700 leading-relaxed whitespace-pre-line" style="font-size:1rem;">' + (c.descripcion || '') + '</div>'
+          + '</div>'
+          + '</div>'
           + '</div>';
       }).join('');
     } catch (err) {

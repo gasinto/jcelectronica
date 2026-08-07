@@ -103,6 +103,56 @@
     }
   });
 
+  // ─── Verificación de DNI: precarga datos del cliente si ya está registrado ──
+  // El turno funciona como una precarga de la orden: si el DNI ya existe en
+  // el taller, se completan los datos del cliente automáticamente.
+  var dniInput = document.getElementById('dni');
+  var dniMsg = document.getElementById('dni-msg');
+  var dniTimer = null;
+
+  dniInput.addEventListener('input', function () {
+    clearTimeout(dniTimer);
+    var dni = dniInput.value.replace(/[^0-9]/g, '');
+    if (dni.length < 6) {
+      if (dniMsg) dniMsg.textContent = '';
+      return;
+    }
+    dniTimer = setTimeout(function () {
+      fetch(API + '/turnos/buscar-cliente?dni=' + encodeURIComponent(dni))
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.ok && d.encontrado && d.cliente) {
+            var c = d.cliente;
+            if (document.getElementById('nombre') && !document.getElementById('nombre').value) {
+              document.getElementById('nombre').value = c.nombre || '';
+            }
+            if (document.getElementById('apellido') && !document.getElementById('apellido').value) {
+              document.getElementById('apellido').value = c.apellido || '';
+            }
+            if (document.getElementById('whatsapp') && !document.getElementById('whatsapp').value) {
+              document.getElementById('whatsapp').value = c.telefono || '';
+            }
+            if (document.getElementById('email') && !document.getElementById('email').value) {
+              document.getElementById('email').value = c.email || '';
+            }
+            if (document.getElementById('direccion') && !document.getElementById('direccion').value) {
+              document.getElementById('direccion').value = c.direccion || '';
+            }
+            if (dniMsg) {
+              dniMsg.textContent = '✅ Cliente registrado: completamos tus datos.';
+              dniMsg.className = 'text-xs mt-1 text-green-600';
+            }
+          } else {
+            if (dniMsg) {
+              dniMsg.textContent = '';
+              dniMsg.className = 'text-xs mt-1';
+            }
+          }
+        })
+        .catch(function () {});
+    }, 500);
+  });
+
   // Submit
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -113,23 +163,36 @@
       return;
     }
 
+    var acepta = document.getElementById('acepta-terminos');
+    if (!acepta || !acepta.checked) {
+      showError('Debés aceptar los términos y condiciones para solicitar el turno.');
+      acepta.focus();
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
 
     var equipo = document.getElementById('equipo').value;
     var payload = {
-      dni: document.getElementById('dni').value.trim(),
+      dni: document.getElementById('dni').value.replace(/[^0-9]/g, ''),
       telefono: document.getElementById('whatsapp').value.replace(/[^0-9]/g, ''),
       email: document.getElementById('email').value.trim(),
       servicio: equipo, // API expects servicio; we send the equipo type
       fecha: fechaInput.value,
       hora: horaInput.value,
-      ciudad: document.getElementById('ciudad').value.trim(),
-      domicilio: document.getElementById('domicilio').value.trim(),
+      ciudad: '',
+      domicilio: document.getElementById('direccion').value.trim(),
       cantidad_equipos: parseInt(document.getElementById('cantidad_equipos').value, 10) || 1,
       tipo_reparacion: document.getElementById('tipo_reparacion').value,
       falla: document.getElementById('falla').value.trim(),
       nombre: document.getElementById('nombre').value.trim(),
+      apellido: document.getElementById('apellido').value.trim(),
+      marca: document.getElementById('marca').value.trim(),
+      modelo: document.getElementById('modelo').value.trim(),
+      numero_serie: document.getElementById('numero_serie').value.trim(),
+      accesorios: document.getElementById('accesorios').value.trim(),
+      acepta_terminos: acepta.checked,
     };
 
     try {
