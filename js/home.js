@@ -18,6 +18,15 @@
     return (window.JC_CONFIG && window.JC_CONFIG.DEFAULT_IMAGE) || '/img/logo.jpg';
   }
 
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // ─── Featured products ────────────────────────────────────────────────────
   async function loadFeatured() {
     var grid = document.getElementById('featured-grid');
@@ -105,17 +114,17 @@
         return;
       }
 
-      grid.innerHTML = data.slice(0, 3).map(function (t) {
+      grid.innerHTML = data.map(function (t) {
         return '<div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">'
           + '<div class="flex items-center justify-between mb-3">'
           + '<div class="flex items-center gap-3">'
-          + '<div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold">' + (t.cliente_nombre || 'C').charAt(0).toUpperCase() + '</div>'
-          + '<div><p class="font-semibold text-gray-800 text-sm">' + (t.cliente_nombre || 'Cliente') + '</p>'
-          + (t.cliente_empresa ? '<p class="text-xs text-gray-400">' + t.cliente_empresa + '</p>' : '')
+          + '<div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold">' + escapeHtml((t.cliente_nombre || 'C').charAt(0).toUpperCase()) + '</div>'
+          + '<div><p class="font-semibold text-gray-800 text-sm">' + escapeHtml(t.cliente_nombre || 'Cliente') + '</p>'
+          + (t.cliente_empresa ? '<p class="text-xs text-gray-400">' + escapeHtml(t.cliente_empresa) + '</p>' : '')
           + '</div></div>'
           + '<div class="text-xs">' + stars(t.calificacion) + '</div>'
           + '</div>'
-          + '<p class="text-sm text-gray-600 leading-relaxed">' + (t.texto || '') + '</p>'
+          + '<p class="text-sm text-gray-600 leading-relaxed">' + escapeHtml(t.texto || '') + '</p>'
           + '</div>';
       }).join('');
     } catch (err) {
