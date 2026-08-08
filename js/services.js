@@ -128,51 +128,9 @@
     }
   }
 
-  // ─── Precios gremio (gremio.html) ─────────────────────────────────────────
-  // Shows ONLY gremio prices (or standard with a gremio badge when missing).
-  async function loadGremioPrices() {
-    var container = document.getElementById('gremio-prices-list');
-    if (!container) return;
-
-    container.innerHTML = '<div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios del gremio...</div>';
-
-    try {
-      var res = await fetch(API + '/servicios?tipo_equipo=' + encodeURIComponent('gremio'));
-      var data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) {
-        // Fallback: todos los servicios, marcando gremio donde exista
-        var resAll = await fetch(API + '/servicios');
-        data = await resAll.json();
-        if (!Array.isArray(data) || data.length === 0) {
-          container.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">Consultá los precios por WhatsApp.</p>';
-          return;
-        }
-        data = data.filter(function (s) { return s.precio_gremio; });
-      }
-
-      container.innerHTML = data.map(function (s) {
-        var gremio = s.precio_gremio || s.precio_base;
-        return '<div class="flex items-center justify-between gap-4 py-3 border-b border-gray-100 last:border-0">'
-          + '<div class="min-w-0">'
-          + '<p class="font-medium text-gray-800 text-sm">' + (s.nombre || '') + '</p>'
-          + (s.descripcion ? '<p class="text-xs text-gray-500 mt-0.5">' + s.descripcion + '</p>' : '')
-          + '</div>'
-          + '<div class="text-right shrink-0">'
-          + '<p class="font-bold text-green-700 text-sm">' + formatPrice(gremio) + '</p>'
-          + (s.precio_gremio ? '<span class="text-xs text-gray-400">Gremio</span>' : '')
-          + '</div>'
-          + '</div>';
-      }).join('');
-    } catch (err) {
-      console.error('[SERVICES] Gremio error:', err);
-      container.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">No se pudieron cargar los precios.</p>';
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     loadCondiciones();
     loadServicePrices();
     loadAllServicePrices();
-    loadGremioPrices();
   });
 })();
