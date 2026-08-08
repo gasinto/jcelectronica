@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios de Reparación — JC Electrónica | Merlo</title>
+  <meta name="description" content="Precios actualizados de reparación de notebooks, PC, celulares, TV, consolas y parlantes en Merlo. Revisión con costo (se descuenta al reparar) y garantía.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcelectronica.com.ar/precios.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Precios de Reparación — JC Electrónica">
+  <meta property="og:description" content="Precios actualizados de reparación de notebooks, PC, celulares, TV, consolas y parlantes en Merlo.">
+  <meta property="og:image" content="/img/logo sin fondo.png">
+  <meta property="og:locale" content="es_AR">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/png" href="/img/logo sin fondo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Servicio técnico de notebooks, PC, consolas, celulares, TV y parlantes",
+    "provider": { "@type": "ElectronicsStore", "name": "JC Electrónica", "url": "https://jcelectronica.com.ar/", "telephone": "+5491153348030", "address": { "@type": "PostalAddress", "streetAddress": "De Colón 2270, Pontevedra", "addressLocality": "Merlo", "addressRegion": "Buenos Aires", "addressCountry": "AR" } },
+    "areaServed": "Merlo, Buenos Aires, Argentina",
+    "url": "https://jcelectronica.com.ar/precios.html",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Precios de reparación",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de notebooks" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de PC de escritorio" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de consolas" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de celulares" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de TV y monitores" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de parlantes portátiles" } }
+      ]
+    }
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors shrink-0">
+          <img src="img/logo sin fondo.png" alt="JC Electrónica" class="h-12 w-auto">
+          <span class="hidden sm:inline">JC Electrónica</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-indigo-600 transition-colors">Inicio</a>
+          <a href="catalogo.html" class="hover:text-indigo-600 transition-colors">Productos</a>
+          <a href="servicios.html" class="hover:text-indigo-600 transition-colors">Servicios</a>
+          <a href="precios.html" class="text-indigo-600">Precios</a>
+          <a href="turnos.html" class="hover:text-indigo-600 transition-colors">Turnos</a>
+          <a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-600 transition-colors">Seguimiento</a>
+          <button id="cart-icon-btn" class="relative p-2 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-header" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+        </nav>
+        <div class="flex items-center gap-1 md:hidden">
+          <button id="cart-icon-mobile" class="relative p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir carrito"><i class="fa-solid fa-cart-shopping text-lg"></i><span id="cart-badge-mobile-float" class="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span></button>
+          <button id="mobile-menu-btn" class="p-2.5 text-gray-500 hover:text-indigo-600 transition-colors touch-target" aria-label="Abrir menú"><i class="fa-solid fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+      <div class="px-4 py-3 space-y-1 text-sm font-medium text-gray-600">
+        <a href="/" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Inicio</a>
+        <a href="catalogo.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Productos</a>
+        <a href="servicios.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Servicios</a>
+        <a href="precios.html" class="block py-3 text-indigo-600">Precios</a>
+        <a href="turnos.html" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Turnos</a>
+        <a href="https://jc-plataforma-production.up.railway.app/consultar" class="block py-3 hover:text-indigo-600 transition-colors touch-target">Seguimiento</a>
+        <hr class="my-2 border-gray-100">
+        <button id="cart-icon-btn-mobile" class="w-full flex items-center gap-2 py-3 text-gray-600 hover:text-indigo-600 transition-colors touch-target"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="cart-badge-mobile" class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <h1 class="text-3xl sm:text-4xl font-extrabold">Precios de <span class="text-amber-300">Reparación</span></h1>
+      <p class="mt-3 text-indigo-100 max-w-2xl mx-auto">Precios de contado efectivo o transferencia. Consultar precio para otros medios de pago. El valor de la revisión se descuenta si reparás.</p>
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/5491153348030?text=Hola!%20Quiero%20consultar%20un%20precio%20de%20reparacion" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target"><i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp</a>
+        <a href="turnos.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-colors touch-target"><i class="fa-regular fa-calendar-check"></i> Sacar turno</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precios por equipo -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-bold text-gray-900">Servicios y Precios por Equipo</h2>
+      <p class="text-sm text-gray-500 mt-2">Elegí tu tipo de equipo para ver los precios actualizados.</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-2 mb-10" id="precios-tabs">
+      <a href="#notebook" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">💻 Notebooks</a>
+      <a href="#pc" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">🖥️ PC</a>
+      <a href="#celulares" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">📱 Celulares</a>
+      <a href="#tv" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">📺 TV y Monitores</a>
+      <a href="#consolas" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">🎮 Consolas</a>
+      <a href="#parlantes" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors touch-target">🔊 Parlantes</a>
+    </div>
+
+    <div class="space-y-10">
+      <div id="notebook" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">💻 Notebooks</h3>
+          <a href="servicio-notebook.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="notebook">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+
+      <div id="pc" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">🖥️ PC de Escritorio</h3>
+          <a href="servicio-pc.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="pc">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+
+      <div id="celulares" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">📱 Celulares</h3>
+          <a href="servicio-celulares.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="celulares">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+
+      <div id="tv" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">📺 TV y Monitores</h3>
+          <a href="servicio-tv.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="tv">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+
+      <div id="consolas" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">🎮 Consolas</h3>
+          <a href="servicio-consolas.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="consolas">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+
+      <div id="parlantes" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between gap-3">
+          <h3 class="text-lg font-bold text-gray-900">🔊 Parlantes Portátiles</h3>
+          <a href="servicio-parlantes.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Ver servicio →</a>
+        </div>
+        <div class="px-6 py-4" data-precios-tipo="parlantes">
+          <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-xs text-gray-400 mt-8 text-center">*No incluimos IVA en los precios publicados.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> JC Electrónica</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Servicio técnico especializado en notebooks, PC, consolas y venta de equipos nuevos y usados en Merlo, Buenos Aires.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Navegación</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a></li>
+            <li><a href="catalogo.html" class="hover:text-indigo-400 transition-colors">Productos</a></li>
+            <li><a href="servicios.html" class="hover:text-indigo-400 transition-colors">Servicios</a></li>
+            <li><a href="precios.html" class="hover:text-indigo-400 transition-colors">Precios</a></li>
+            <li><a href="turnos.html" class="hover:text-indigo-400 transition-colors">Turnos</a></li>
+            <li><a href="https://jc-plataforma-production.up.railway.app/consultar" class="hover:text-indigo-400 transition-colors">Seguimiento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Contacto</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> <a href="https://wa.me/5491153348030" target="_blank" rel="noopener" class="hover:text-indigo-400 transition-colors">11-5334-8030</a></li>
+            <li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-gray-400"></i> <a href="mailto:info@jcelectronica.com.ar" class="hover:text-indigo-400 transition-colors">info@jcelectronica.com.ar</a></li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gray-400"></i> <span>De Colón 2270, Pontevedra, Merlo</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500 flex flex-wrap items-center justify-center gap-4">
+        <span>&copy; 2026 JC Electrónica. Todos los derechos reservados.</span>
+        <a href="condiciones.html" class="hover:text-indigo-400 transition-colors">Condiciones de trabajo</a>
+        <a href="gremio.html" class="hover:text-indigo-400 transition-colors" rel="nofollow">Acceso gremio</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491153348030?text=Hola!%20Necesito%20ayuda%20con%20mi%20equipo" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
+
+  <script src="js/config.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
