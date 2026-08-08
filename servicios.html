@@ -95,76 +95,113 @@
   <!-- Servicios por tipo de equipo -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <a href="servicio-notebook.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/notebook.webp" alt="Reparación de notebooks" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">Notebooks</h2>
-          <p class="text-sm text-gray-500 mt-1">Reparación de placa, pantalla, teclado, batería y más.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="servicio-pc.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/pc.webp" alt="Reparación de PC de escritorio" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">PC de Escritorio</h2>
-          <p class="text-sm text-gray-500 mt-1">Armado, upgrade y reparación de PC.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="servicio-consolas.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/consola.webp" alt="Reparación de consolas" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">Consolas</h2>
-          <p class="text-sm text-gray-500 mt-1">Reparación de consolas de videojuegos.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="servicio-celulares.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/celulares.webp" alt="Reparación de celulares" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">Celulares</h2>
-          <p class="text-sm text-gray-500 mt-1">Pantallas, baterías y reparación general.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="servicio-tv.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/tv.webp" alt="Reparación de TV y monitores" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">TV y Monitores</h2>
-          <p class="text-sm text-gray-500 mt-1">Reparación de TV y monitores LED/LCD.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="servicio-parlantes.html" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all">
-        <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
-          <img src="img/parlantes.webp" alt="Reparación de parlantes portátiles" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h2 class="font-semibold text-gray-900">Parlantes Portátiles</h2>
-          <p class="text-sm text-gray-500 mt-1">Reparación de parlantes y audio.</p>
-          <span class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium mt-3">Ver precios <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </a>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-notebook.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/notebook.webp" alt="Reparación de notebooks" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">Notebooks</h2>
+            <p class="text-sm text-gray-500 mt-1">Reparación de placa, pantalla, teclado, batería y más.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#notebook" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-pc.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/pc.webp" alt="Reparación de PC de escritorio" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">PC de Escritorio</h2>
+            <p class="text-sm text-gray-500 mt-1">Armado, upgrade y reparación de PC.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#pc" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-consolas.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/consola.webp" alt="Reparación de consolas" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">Consolas</h2>
+            <p class="text-sm text-gray-500 mt-1">Reparación de consolas de videojuegos.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#consolas" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-celulares.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/celulares.webp" alt="Reparación de celulares" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">Celulares</h2>
+            <p class="text-sm text-gray-500 mt-1">Pantallas, baterías y reparación general.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#celulares" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-tv.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/tv.webp" alt="Reparación de TV y monitores" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">TV y Monitores</h2>
+            <p class="text-sm text-gray-500 mt-1">Reparación de TV y monitores LED/LCD.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#tv" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
+        <a href="servicio-parlantes.html" class="flex-1">
+          <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+            <img src="img/parlantes.webp" alt="Reparación de parlantes portátiles" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h2 class="font-semibold text-gray-900">Parlantes Portátiles</h2>
+            <p class="text-sm text-gray-500 mt-1">Reparación de parlantes y audio.</p>
+          </div>
+        </a>
+        <div class="px-5 pb-5 mt-auto"><a href="precios.html#parlantes" class="inline-flex items-center gap-1 text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors">Ver precios <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
     </div>
   </section>
 
-  <!-- Condiciones de trabajo (desde API) -->
-  <section id="condiciones" class="bg-gray-50 py-16">
+  <!-- FAQ general -->
+  <section id="faq" class="bg-gray-50 py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-4">Condiciones de Trabajo</h2>
-      <p class="text-center text-gray-500 mb-10">Conocé cómo trabajamos y qué garantía tienen tus reparaciones.</p>
-      <div id="condiciones-list" class="space-y-6">
-        <div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando...</div>
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+        <p class="text-gray-500 mt-2">Respondemos las dudas más comunes sobre nuestro servicio técnico.</p>
+      </div>
+      <div class="space-y-3">
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto cuesta la revisión?</summary>
+          <p class="text-sm text-gray-600 mt-2">La revisión tiene un costo único, que se descuenta del total si aprobás la reparación. Te pasamos el presupuesto antes de tocar nada.</p>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cuánto tarda el diagnóstico?</summary>
+          <p class="text-sm text-gray-600 mt-2">Entre 2 y 4 días hábiles según el tipo de equipo. Te decimos qué tiene y cuánto cuesta antes de autorizar la reparación.</p>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Tienen garantía los trabajos?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí. Todas las reparaciones tienen garantía: 90 días en reparación de placa y 30 días en reparaciones generales.</p>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Necesito turno previo?</summary>
+          <p class="text-sm text-gray-600 mt-2">Sí, es indispensable tener turno previo para traer o enviar tu equipo. Reservalo desde la página de turnos o por WhatsApp.</p>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Cómo funcionan los envíos al interior?</summary>
+          <p class="text-sm text-gray-600 mt-2">Coordinamos el envío con el correo de tu preferencia y te guiamos con el embalaje. Recibimos el equipo, lo diagnosticamos y te lo devolvemos reparado con seguro y seguimiento. <a href="envios.html" class="text-indigo-600 font-medium hover:text-indigo-700 transition-colors">Ver cómo funcionan los envíos →</a></p>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <summary class="font-semibold text-gray-900 cursor-pointer">¿Qué condiciones de trabajo tienen?</summary>
+          <p class="text-sm text-gray-600 mt-2">Todas nuestras condiciones de trabajo (revisión, presupuesto, garantías y entrega) están detalladas en nuestra <a href="condiciones.html" class="text-indigo-600 font-medium hover:text-indigo-700 transition-colors">página de condiciones</a>.</p>
+        </details>
       </div>
     </div>
   </section>
