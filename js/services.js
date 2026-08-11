@@ -13,6 +13,10 @@
     return '$' + Number(n).toLocaleString('es-AR');
   }
 
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
   // ─── Condiciones de trabajo ───────────────────────────────────────────────
   async function loadCondiciones() {
     var list = document.getElementById('condiciones-list');
@@ -128,9 +132,80 @@
     }
   }
 
+  // ─── Precios para el gremio (gremio.html) ──────────────────────────────────
+  // Renders into #gremio-prices-list. No-op when the container is not on the page.
+  async function loadGremioPrices() {
+    var list = document.getElementById('gremio-prices-list');
+    if (!list) return;
+    try {
+      var res = await fetch(API + '/servicios?solo_gremio=1');
+      var data = await res.json();
+      if (!Array.isArray(data)) {
+        list.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">No se pudieron cargar los precios.</p>';
+        return;
+      }
+
+      var items = data.filter(function (s) { return Number(s.precio_gremio) > 0; });
+
+      if (items.length === 0) {
+        list.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">Consultá los precios por WhatsApp.</p>';
+        return;
+      }
+
+      list.innerHTML = items.map(function (s) {
+        var publicoText = Number(s.precio_base) > 0 ? '<p class="text-xs text-gray-400 mt-0.5">Público: ' + formatPrice(s.precio_base) + '</p>' : '';
+        return '<div class="flex items-center justify-between gap-4 py-3 border-b border-gray-100 last:border-0">'
+          + '<div class="min-w-0">'
+          + '<p class="font-medium text-gray-800 text-sm">' + esc(s.nombre) + '</p>'
+          + (s.descripcion ? '<p class="text-xs text-gray-500 mt-0.5">' + esc(s.descripcion) + '</p>' : '')
+          + '</div>'
+          + '<div class="text-right shrink-0">'
+          + '<p class="font-bold text-green-600 text-sm">' + formatPrice(s.precio_gremio) + '</p>'
+          + publicoText
+          + '</div>'
+          + '</div>';
+      }).join('');
+    } catch (err) {
+      console.error('[SERVICES] Gremio precios error:', err);
+      list.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">No se pudieron cargar los precios.</p>';
+    }
+  }
+
+  // ─── Condiciones de trabajo para el gremio (gremio.html) ───────────────────
+  // Renders into #condiciones-gremio-list. No-op when the container is not on the page.
+  async function loadCondicionesGremio() {
+    var list = document.getElementById('condiciones-gremio-list');
+    if (!list) return;
+    try {
+      var res = await fetch(API + '/condiciones-gremio');
+      var data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        list.innerHTML = '<p class="text-center text-gray-400 text-sm">Próximamente.</p>';
+        return;
+      }
+      list.innerHTML = data.map(function (c) {
+        var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
+        return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
+          + '<div class="flex items-start gap-4">'
+          + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
+          + '<div class="min-w-0">'
+          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">' + esc(c.nombre) + '</h3>'
+          + '<div class="text-gray-700 leading-relaxed whitespace-pre-line" style="font-size:1rem;">' + esc(c.descripcion) + '</div>'
+          + '</div>'
+          + '</div>'
+          + '</div>';
+      }).join('');
+    } catch (err) {
+      console.error('[SERVICES] Condiciones gremio error:', err);
+      list.innerHTML = '<p class="text-center text-gray-400 text-sm">No se pudieron cargar las condiciones.</p>';
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     loadCondiciones();
     loadServicePrices();
     loadAllServicePrices();
+    loadGremioPrices();
+    loadCondicionesGremio();
   });
 })();
