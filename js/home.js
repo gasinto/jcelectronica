@@ -112,7 +112,7 @@
             ? '<button class="add-to-cart-btn flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-white bg-indigo-600 py-2 rounded-lg hover:bg-indigo-700 transition-colors" data-product-id="' + p.id + '" data-product-name="' + (p.nombre || '').replace(/'/g, "\\'") + '" data-product-price="' + (p.precio_publico || 0) + '" data-product-image="' + img + '"><i class="fa-solid fa-cart-plus"></i> Agregar</button>'
             : '')
           + '</div></div></div>';
-        return '<div class="snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[24%]">' + card + '</div>';
+        return '<div class="snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[50%]">' + card + '</div>';
       }).join('');
 
       initCarousel();
@@ -191,9 +191,8 @@
     // Actualizar el punto activo al hacer scroll (manual, dots o flechas)
     track.addEventListener('scroll', updateDots, { passive: true });
 
-    // Pausar al pasar el mouse o tocar; retomar al salir
-    track.addEventListener('mouseenter', stopAuto);
-    track.addEventListener('mouseleave', startAuto);
+    // Pausar solo al tocar (para permitir deslizar a mano); el auto-avance
+    // corre siempre, incluso con el mouse encima.
     track.addEventListener('touchstart', stopAuto, { passive: true });
     track.addEventListener('touchend', startAuto);
 
