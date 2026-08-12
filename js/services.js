@@ -59,7 +59,7 @@
     container.innerHTML = '<div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>';
 
     try {
-      var res = await fetch(API + '/servicios?tipo_equipo=' + encodeURIComponent(tipoEquipo));
+        var res = await fetch(API + '/mipagina/servicios?tipo_equipo=' + encodeURIComponent(tipoEquipo));
       var data = await res.json();
 
       if (!Array.isArray(data) || data.length === 0) {
@@ -103,7 +103,7 @@
       block.innerHTML = '<div class="flex items-center justify-center py-8 text-gray-400"><i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando precios...</div>';
 
       try {
-        var res = await fetch(API + '/servicios?tipo_equipo=' + encodeURIComponent(tipoEquipo));
+      var res = await fetch(API + '/mipagina/servicios?tipo_equipo=' + encodeURIComponent(tipoEquipo));
         var data = await res.json();
 
         if (!Array.isArray(data) || data.length === 0) {
@@ -138,7 +138,7 @@
     var list = document.getElementById('gremio-prices-list');
     if (!list) return;
     try {
-      var res = await fetch(API + '/servicios?solo_gremio=1');
+      var res = await fetch(API + '/mipagina/servicios?solo_gremio=1');
       var data = await res.json();
       if (!Array.isArray(data)) {
         list.innerHTML = '<p class="text-center text-gray-400 text-sm py-4">No se pudieron cargar los precios.</p>';
