@@ -597,16 +597,242 @@
         { value: '13', label: '13va Generación (Raptor Lake)',  equivIntel: 13 },
         { value: '14', label: '14va Generación (Raptor Lake-R)',equivIntel: 14 },
       ],
-      modelos: [
-        { value: 'celeron_baytrail', label: 'Celeron (Bay Trail)', nivel: 'basico_antiguo' },
-        { value: 'pentium_baytrail', label: 'Pentium (Bay Trail)', nivel: 'basico_antiguo' },
-        { value: 'celeron',          label: 'Celeron (moderno)',   nivel: 'basico' },
-        { value: 'pentium',          label: 'Pentium (moderno)',   nivel: 'basico' },
-        { value: 'i3',               label: 'Core i3',             nivel: 'medio' },
-        { value: 'i5',               label: 'Core i5',             nivel: 'medio' },
-        { value: 'i7',               label: 'Core i7',             nivel: 'alto' },
-        { value: 'i9',               label: 'Core i9',             nivel: 'alto' },
-      ]
+      modelosPorGen: {
+        '1': [
+          { value: 'i3-330M', label: 'i3-330M', nivel: 'medio' },
+          { value: 'i3-350M', label: 'i3-350M', nivel: 'medio' },
+          { value: 'i3-370M', label: 'i3-370M', nivel: 'medio' },
+          { value: 'i5-430M', label: 'i5-430M', nivel: 'medio' },
+          { value: 'i5-450M', label: 'i5-450M', nivel: 'medio' },
+          { value: 'i5-520M', label: 'i5-520M', nivel: 'medio' },
+          { value: 'i5-540M', label: 'i5-540M', nivel: 'medio' },
+          { value: 'i5-560M', label: 'i5-560M', nivel: 'medio' },
+          { value: 'i7-620M', label: 'i7-620M', nivel: 'alto' },
+          { value: 'i7-720QM', label: 'i7-720QM', nivel: 'alto' },
+          { value: 'i7-740QM', label: 'i7-740QM', nivel: 'alto' },
+          { value: 'i7-820QM', label: 'i7-820QM', nivel: 'alto' },
+        ],
+        '2': [
+          { value: 'i3-2310M', label: 'i3-2310M', nivel: 'medio' },
+          { value: 'i3-2350M', label: 'i3-2350M', nivel: 'medio' },
+          { value: 'i5-2410M', label: 'i5-2410M', nivel: 'medio' },
+          { value: 'i5-2430M', label: 'i5-2430M', nivel: 'medio' },
+          { value: 'i5-2450M', label: 'i5-2450M', nivel: 'medio' },
+          { value: 'i5-2520M', label: 'i5-2520M', nivel: 'medio' },
+          { value: 'i5-2500K', label: 'i5-2500K', nivel: 'medio' },
+          { value: 'i7-2630QM', label: 'i7-2630QM', nivel: 'alto' },
+          { value: 'i7-2670QM', label: 'i7-2670QM', nivel: 'alto' },
+          { value: 'i7-2720QM', label: 'i7-2720QM', nivel: 'alto' },
+          { value: 'i7-2760QM', label: 'i7-2760QM', nivel: 'alto' },
+          { value: 'i7-2600K', label: 'i7-2600K', nivel: 'alto' },
+        ],
+        '3': [
+          { value: 'i3-3110M', label: 'i3-3110M', nivel: 'medio' },
+          { value: 'i3-3120M', label: 'i3-3120M', nivel: 'medio' },
+          { value: 'i3-3210M', label: 'i3-3210M', nivel: 'medio' },
+          { value: 'i3-3225', label: 'i3-3225', nivel: 'medio' },
+          { value: 'i5-3210M', label: 'i5-3210M', nivel: 'medio' },
+          { value: 'i5-3317U', label: 'i5-3317U', nivel: 'medio' },
+          { value: 'i5-3320M', label: 'i5-3320M', nivel: 'medio' },
+          { value: 'i5-3337U', label: 'i5-3337U', nivel: 'medio' },
+          { value: 'i5-3340M', label: 'i5-3340M', nivel: 'medio' },
+          { value: 'i5-3360M', label: 'i5-3360M', nivel: 'medio' },
+          { value: 'i7-3520M', label: 'i7-3520M', nivel: 'alto' },
+          { value: 'i7-3537U', label: 'i7-3537U', nivel: 'alto' },
+          { value: 'i7-3610QM', label: 'i7-3610QM', nivel: 'alto' },
+          { value: 'i7-3630QM', label: 'i7-3630QM', nivel: 'alto' },
+          { value: 'i7-3720QM', label: 'i7-3720QM', nivel: 'alto' },
+          { value: 'i7-3840QM', label: 'i7-3840QM', nivel: 'alto' },
+        ],
+        '4': [
+          { value: 'i3-4005U', label: 'i3-4005U', nivel: 'medio' },
+          { value: 'i3-4010U', label: 'i3-4010U', nivel: 'medio' },
+          { value: 'i3-4025U', label: 'i3-4025U', nivel: 'medio' },
+          { value: 'i3-4100U', label: 'i3-4100U', nivel: 'medio' },
+          { value: 'i3-4150U', label: 'i3-4150U', nivel: 'medio' },
+          { value: 'i5-4200U', label: 'i5-4200U', nivel: 'medio' },
+          { value: 'i5-4210U', label: 'i5-4210U', nivel: 'medio' },
+          { value: 'i5-4250U', label: 'i5-4250U', nivel: 'medio' },
+          { value: 'i5-4260U', label: 'i5-4260U', nivel: 'medio' },
+          { value: 'i5-4300U', label: 'i5-4300U', nivel: 'medio' },
+          { value: 'i5-4330M', label: 'i5-4330M', nivel: 'medio' },
+          { value: 'i5-4460', label: 'i5-4460', nivel: 'medio' },
+          { value: 'i7-4500U', label: 'i7-4500U', nivel: 'alto' },
+          { value: 'i7-4510U', label: 'i7-4510U', nivel: 'alto' },
+          { value: 'i7-4550U', label: 'i7-4550U', nivel: 'alto' },
+          { value: 'i7-4600U', label: 'i7-4600U', nivel: 'alto' },
+          { value: 'i7-4700MQ', label: 'i7-4700MQ', nivel: 'alto' },
+          { value: 'i7-4700HQ', label: 'i7-4700HQ', nivel: 'alto' },
+          { value: 'i7-4710MQ', label: 'i7-4710MQ', nivel: 'alto' },
+          { value: 'i7-4720HQ', label: 'i7-4720HQ', nivel: 'alto' },
+          { value: 'i7-4810MQ', label: 'i7-4810MQ', nivel: 'alto' },
+        ],
+        '5': [
+          { value: 'i3-5005U', label: 'i3-5005U', nivel: 'medio' },
+          { value: 'i3-5010U', label: 'i3-5010U', nivel: 'medio' },
+          { value: 'i3-5020U', label: 'i3-5020U', nivel: 'medio' },
+          { value: 'i3-5157U', label: 'i3-5157U', nivel: 'medio' },
+          { value: 'i5-5200U', label: 'i5-5200U', nivel: 'medio' },
+          { value: 'i5-5250U', label: 'i5-5250U', nivel: 'medio' },
+          { value: 'i5-5257U', label: 'i5-5257U', nivel: 'medio' },
+          { value: 'i5-5287U', label: 'i5-5287U', nivel: 'medio' },
+          { value: 'i5-5300U', label: 'i5-5300U', nivel: 'medio' },
+          { value: 'i7-5500U', label: 'i7-5500U', nivel: 'alto' },
+          { value: 'i7-5550U', label: 'i7-5550U', nivel: 'alto' },
+          { value: 'i7-5557U', label: 'i7-5557U', nivel: 'alto' },
+          { value: 'i7-5600U', label: 'i7-5600U', nivel: 'alto' },
+          { value: 'i7-5650U', label: 'i7-5650U', nivel: 'alto' },
+        ],
+        '6': [
+          { value: 'i3-6006U', label: 'i3-6006U', nivel: 'medio' },
+          { value: 'i3-6100U', label: 'i3-6100U', nivel: 'medio' },
+          { value: 'i3-6157U', label: 'i3-6157U', nivel: 'medio' },
+          { value: 'i3-6300U', label: 'i3-6300U', nivel: 'medio' },
+          { value: 'i5-6200U', label: 'i5-6200U', nivel: 'medio' },
+          { value: 'i5-6260U', label: 'i5-6260U', nivel: 'medio' },
+          { value: 'i5-6300U', label: 'i5-6300U', nivel: 'medio' },
+          { value: 'i5-6300HQ', label: 'i5-6300HQ', nivel: 'medio' },
+          { value: 'i5-6440HQ', label: 'i5-6440HQ', nivel: 'medio' },
+          { value: 'i7-6500U', label: 'i7-6500U', nivel: 'alto' },
+          { value: 'i7-6600U', label: 'i7-6600U', nivel: 'alto' },
+          { value: 'i7-6650U', label: 'i7-6650U', nivel: 'alto' },
+          { value: 'i7-6700HQ', label: 'i7-6700HQ', nivel: 'alto' },
+          { value: 'i7-6700K', label: 'i7-6700K', nivel: 'alto' },
+        ],
+        '7': [
+          { value: 'i3-7100U', label: 'i3-7100U', nivel: 'medio' },
+          { value: 'i3-7130U', label: 'i3-7130U', nivel: 'medio' },
+          { value: 'i3-7167U', label: 'i3-7167U', nivel: 'medio' },
+          { value: 'i5-7200U', label: 'i5-7200U', nivel: 'medio' },
+          { value: 'i5-7260U', label: 'i5-7260U', nivel: 'medio' },
+          { value: 'i5-7267U', label: 'i5-7267U', nivel: 'medio' },
+          { value: 'i5-7300U', label: 'i5-7300U', nivel: 'medio' },
+          { value: 'i5-7300HQ', label: 'i5-7300HQ', nivel: 'medio' },
+          { value: 'i5-7500U', label: 'i5-7500U', nivel: 'medio' },
+          { value: 'i7-7500U', label: 'i7-7500U', nivel: 'alto' },
+          { value: 'i7-7560U', label: 'i7-7560U', nivel: 'alto' },
+          { value: 'i7-7567U', label: 'i7-7567U', nivel: 'alto' },
+          { value: 'i7-7600U', label: 'i7-7600U', nivel: 'alto' },
+          { value: 'i7-7700HQ', label: 'i7-7700HQ', nivel: 'alto' },
+          { value: 'i7-7700K', label: 'i7-7700K', nivel: 'alto' },
+        ],
+        '8': [
+          { value: 'i3-8100', label: 'i3-8100', nivel: 'medio' },
+          { value: 'i3-8130U', label: 'i3-8130U', nivel: 'medio' },
+          { value: 'i3-8145U', label: 'i3-8145U', nivel: 'medio' },
+          { value: 'i5-8250U', label: 'i5-8250U', nivel: 'medio' },
+          { value: 'i5-8265U', label: 'i5-8265U', nivel: 'medio' },
+          { value: 'i5-8300H', label: 'i5-8300H', nivel: 'medio' },
+          { value: 'i5-8350U', label: 'i5-8350U', nivel: 'medio' },
+          { value: 'i5-8400', label: 'i5-8400', nivel: 'medio' },
+          { value: 'i5-8500', label: 'i5-8500', nivel: 'medio' },
+          { value: 'i7-8550U', label: 'i7-8550U', nivel: 'alto' },
+          { value: 'i7-8650U', label: 'i7-8650U', nivel: 'alto' },
+          { value: 'i7-8565U', label: 'i7-8565U', nivel: 'alto' },
+          { value: 'i7-8750H', label: 'i7-8750H', nivel: 'alto' },
+          { value: 'i7-8850H', label: 'i7-8850H', nivel: 'alto' },
+          { value: 'i7-8700', label: 'i7-8700', nivel: 'alto' },
+          { value: 'i7-8700K', label: 'i7-8700K', nivel: 'alto' },
+        ],
+        '9': [
+          { value: 'i3-9100', label: 'i3-9100', nivel: 'medio' },
+          { value: 'i3-9100F', label: 'i3-9100F', nivel: 'medio' },
+          { value: 'i5-9300H', label: 'i5-9300H', nivel: 'medio' },
+          { value: 'i5-9400F', label: 'i5-9400F', nivel: 'medio' },
+          { value: 'i5-9500', label: 'i5-9500', nivel: 'medio' },
+          { value: 'i5-9600K', label: 'i5-9600K', nivel: 'medio' },
+          { value: 'i7-9750H', label: 'i7-9750H', nivel: 'alto' },
+          { value: 'i7-9850H', label: 'i7-9850H', nivel: 'alto' },
+          { value: 'i7-9700', label: 'i7-9700', nivel: 'alto' },
+          { value: 'i7-9700K', label: 'i7-9700K', nivel: 'alto' },
+          { value: 'i9-9880H', label: 'i9-9880H', nivel: 'alto' },
+          { value: 'i9-9980HK', label: 'i9-9980HK', nivel: 'alto' },
+          { value: 'i9-9900K', label: 'i9-9900K', nivel: 'alto' },
+        ],
+        '10': [
+          { value: 'i3-1005G1', label: 'i3-1005G1', nivel: 'medio' },
+          { value: 'i3-10110U', label: 'i3-10110U', nivel: 'medio' },
+          { value: 'i3-10100', label: 'i3-10100', nivel: 'medio' },
+          { value: 'i5-10210U', label: 'i5-10210U', nivel: 'medio' },
+          { value: 'i5-1035G1', label: 'i5-1035G1', nivel: 'medio' },
+          { value: 'i5-1035G4', label: 'i5-1035G4', nivel: 'medio' },
+          { value: 'i5-1035G7', label: 'i5-1035G7', nivel: 'medio' },
+          { value: 'i5-10300H', label: 'i5-10300H', nivel: 'medio' },
+          { value: 'i5-10400', label: 'i5-10400', nivel: 'medio' },
+          { value: 'i5-10600K', label: 'i5-10600K', nivel: 'medio' },
+          { value: 'i7-10510U', label: 'i7-10510U', nivel: 'alto' },
+          { value: 'i7-1065G7', label: 'i7-1065G7', nivel: 'alto' },
+          { value: 'i7-1068G7', label: 'i7-1068G7', nivel: 'alto' },
+          { value: 'i7-10750H', label: 'i7-10750H', nivel: 'alto' },
+          { value: 'i7-10700', label: 'i7-10700', nivel: 'alto' },
+          { value: 'i7-10700K', label: 'i7-10700K', nivel: 'alto' },
+          { value: 'i9-10850H', label: 'i9-10850H', nivel: 'alto' },
+          { value: 'i9-10980HK', label: 'i9-10980HK', nivel: 'alto' },
+          { value: 'i9-10900K', label: 'i9-10900K', nivel: 'alto' },
+        ],
+        '11': [
+          { value: 'i3-1115G4', label: 'i3-1115G4', nivel: 'medio' },
+          { value: 'i3-1125G4', label: 'i3-1125G4', nivel: 'medio' },
+          { value: 'i5-1135G7', label: 'i5-1135G7', nivel: 'medio' },
+          { value: 'i5-11300H', label: 'i5-11300H', nivel: 'medio' },
+          { value: 'i5-11400', label: 'i5-11400', nivel: 'medio' },
+          { value: 'i5-11600K', label: 'i5-11600K', nivel: 'medio' },
+          { value: 'i7-1165G7', label: 'i7-1165G7', nivel: 'alto' },
+          { value: 'i7-11800H', label: 'i7-11800H', nivel: 'alto' },
+          { value: 'i7-11700', label: 'i7-11700', nivel: 'alto' },
+          { value: 'i7-11700K', label: 'i7-11700K', nivel: 'alto' },
+          { value: 'i9-11950H', label: 'i9-11950H', nivel: 'alto' },
+          { value: 'i9-11900K', label: 'i9-11900K', nivel: 'alto' },
+        ],
+        '12': [
+          { value: 'i3-1215U', label: 'i3-1215U', nivel: 'medio' },
+          { value: 'i3-12100', label: 'i3-12100', nivel: 'medio' },
+          { value: 'i3-12100F', label: 'i3-12100F', nivel: 'medio' },
+          { value: 'i5-1235U', label: 'i5-1235U', nivel: 'medio' },
+          { value: 'i5-1240P', label: 'i5-1240P', nivel: 'medio' },
+          { value: 'i5-12500H', label: 'i5-12500H', nivel: 'medio' },
+          { value: 'i5-12400', label: 'i5-12400', nivel: 'medio' },
+          { value: 'i5-12600K', label: 'i5-12600K', nivel: 'medio' },
+          { value: 'i7-1260P', label: 'i7-1260P', nivel: 'alto' },
+          { value: 'i7-12700H', label: 'i7-12700H', nivel: 'alto' },
+          { value: 'i7-1280P', label: 'i7-1280P', nivel: 'alto' },
+          { value: 'i7-12700', label: 'i7-12700', nivel: 'alto' },
+          { value: 'i7-12700K', label: 'i7-12700K', nivel: 'alto' },
+          { value: 'i9-12900H', label: 'i9-12900H', nivel: 'alto' },
+          { value: 'i9-12900HK', label: 'i9-12900HK', nivel: 'alto' },
+          { value: 'i9-12900K', label: 'i9-12900K', nivel: 'alto' },
+        ],
+        '13': [
+          { value: 'i3-1315U', label: 'i3-1315U', nivel: 'medio' },
+          { value: 'i3-13100', label: 'i3-13100', nivel: 'medio' },
+          { value: 'i3-13100F', label: 'i3-13100F', nivel: 'medio' },
+          { value: 'i5-1335U', label: 'i5-1335U', nivel: 'medio' },
+          { value: 'i5-1340P', label: 'i5-1340P', nivel: 'medio' },
+          { value: 'i5-13500H', label: 'i5-13500H', nivel: 'medio' },
+          { value: 'i5-13400', label: 'i5-13400', nivel: 'medio' },
+          { value: 'i5-13600K', label: 'i5-13600K', nivel: 'medio' },
+          { value: 'i7-1355U', label: 'i7-1355U', nivel: 'alto' },
+          { value: 'i7-1360P', label: 'i7-1360P', nivel: 'alto' },
+          { value: 'i7-13700H', label: 'i7-13700H', nivel: 'alto' },
+          { value: 'i7-13700', label: 'i7-13700', nivel: 'alto' },
+          { value: 'i7-13700K', label: 'i7-13700K', nivel: 'alto' },
+          { value: 'i9-13900H', label: 'i9-13900H', nivel: 'alto' },
+          { value: 'i9-13980HX', label: 'i9-13980HX', nivel: 'alto' },
+          { value: 'i9-13900K', label: 'i9-13900K', nivel: 'alto' },
+        ],
+        '14': [
+          { value: 'i3-14100', label: 'i3-14100', nivel: 'medio' },
+          { value: 'i3-14100F', label: 'i3-14100F', nivel: 'medio' },
+          { value: 'i5-14500H', label: 'i5-14500H', nivel: 'medio' },
+          { value: 'i5-14400', label: 'i5-14400', nivel: 'medio' },
+          { value: 'i5-14600K', label: 'i5-14600K', nivel: 'medio' },
+          { value: 'i7-14700H', label: 'i7-14700H', nivel: 'alto' },
+          { value: 'i7-14700', label: 'i7-14700', nivel: 'alto' },
+          { value: 'i7-14700K', label: 'i7-14700K', nivel: 'alto' },
+          { value: 'i9-14900HX', label: 'i9-14900HX', nivel: 'alto' },
+          { value: 'i9-14900K', label: 'i9-14900K', nivel: 'alto' },
+        ],
+      }
     },
     amd: {
       generaciones: [
@@ -623,14 +849,111 @@
         { value: '8000', label: 'Ryzen 8000 (Zen 4/5)',  equivIntel: 13 },
         { value: '9000', label: 'Ryzen 9000 (Zen 5)',    equivIntel: 14 },
       ],
-      modelos: [
-        { value: 'athlon_viejo', label: 'Athlon (antiguo)', nivel: 'basico_antiguo' },
-        { value: 'athlon',       label: 'Athlon (moderno)', nivel: 'basico' },
-        { value: 'ryzen3', label: 'Ryzen 3', nivel: 'medio' },
-        { value: 'ryzen5', label: 'Ryzen 5', nivel: 'medio' },
-        { value: 'ryzen7', label: 'Ryzen 7', nivel: 'alto' },
-        { value: 'ryzen9', label: 'Ryzen 9', nivel: 'alto' },
-      ]
+      modelosPorGen: {
+        'phenom': [
+          { value: 'athlon2-250',   label: 'Athlon II X2 250',   nivel: 'basico' },
+          { value: 'athlon2-640',   label: 'Athlon II X4 640',   nivel: 'basico' },
+          { value: 'phenom2-955',   label: 'Phenom II X4 955',   nivel: 'medio' },
+          { value: 'phenom2-1055t', label: 'Phenom II X6 1055T', nivel: 'medio' },
+        ],
+        'aseries': [
+          { value: 'a6-5200',  label: 'A6-5200',  nivel: 'basico' },
+          { value: 'a8-4500m', label: 'A8-4500M', nivel: 'medio' },
+          { value: 'a10-4600m', label: 'A10-4600M', nivel: 'medio' },
+          { value: 'fx-6300',  label: 'FX-6300',  nivel: 'medio' },
+          { value: 'fx-8350',  label: 'FX-8350',  nivel: 'alto' },
+        ],
+        'aseries2': [
+          { value: 'a6-9220',  label: 'A6-9220',  nivel: 'basico' },
+          { value: 'a8-9600',  label: 'A8-9600',  nivel: 'medio' },
+          { value: 'a10-9620p', label: 'A10-9620P', nivel: 'medio' },
+          { value: 'a12-9720p', label: 'A12-9720P', nivel: 'alto' },
+        ],
+        '1000': [
+          { value: 'r3-1200',  label: 'Ryzen 3 1200',  nivel: 'medio' },
+          { value: 'r3-1300x', label: 'Ryzen 3 1300X', nivel: 'medio' },
+          { value: 'r5-1400',  label: 'Ryzen 5 1400',  nivel: 'medio' },
+          { value: 'r5-1500x', label: 'Ryzen 5 1500X', nivel: 'medio' },
+          { value: 'r5-1600',  label: 'Ryzen 5 1600',  nivel: 'medio' },
+          { value: 'r7-1700',  label: 'Ryzen 7 1700',  nivel: 'alto' },
+          { value: 'r7-1700x', label: 'Ryzen 7 1700X', nivel: 'alto' },
+          { value: 'r7-1800x', label: 'Ryzen 7 1800X', nivel: 'alto' },
+        ],
+        '2000': [
+          { value: 'r3-2200g', label: 'Ryzen 3 2200G', nivel: 'medio' },
+          { value: 'r3-2300x', label: 'Ryzen 3 2300X', nivel: 'medio' },
+          { value: 'r5-2400g', label: 'Ryzen 5 2400G', nivel: 'medio' },
+          { value: 'r5-2500x', label: 'Ryzen 5 2500X', nivel: 'medio' },
+          { value: 'r5-2600',  label: 'Ryzen 5 2600',  nivel: 'medio' },
+          { value: 'r5-2600x', label: 'Ryzen 5 2600X', nivel: 'medio' },
+          { value: 'r7-2700',  label: 'Ryzen 7 2700',  nivel: 'alto' },
+          { value: 'r7-2700x', label: 'Ryzen 7 2700X', nivel: 'alto' },
+        ],
+        '3000': [
+          { value: 'r3-3100',  label: 'Ryzen 3 3100',  nivel: 'medio' },
+          { value: 'r3-3200g', label: 'Ryzen 3 3200G', nivel: 'medio' },
+          { value: 'r5-3400g', label: 'Ryzen 5 3400G', nivel: 'medio' },
+          { value: 'r5-3500',  label: 'Ryzen 5 3500',  nivel: 'medio' },
+          { value: 'r5-3600',  label: 'Ryzen 5 3600',  nivel: 'medio' },
+          { value: 'r5-3600x', label: 'Ryzen 5 3600X', nivel: 'medio' },
+          { value: 'r7-3700x', label: 'Ryzen 7 3700X', nivel: 'alto' },
+          { value: 'r7-3800x', label: 'Ryzen 7 3800X', nivel: 'alto' },
+          { value: 'r9-3900x', label: 'Ryzen 9 3900X', nivel: 'alto' },
+          { value: 'r9-3950x', label: 'Ryzen 9 3950X', nivel: 'alto' },
+        ],
+        '4000': [
+          { value: 'r3-4300u', label: 'Ryzen 3 4300U', nivel: 'medio' },
+          { value: 'r5-4500u', label: 'Ryzen 5 4500U', nivel: 'medio' },
+          { value: 'r5-4600h', label: 'Ryzen 5 4600H', nivel: 'medio' },
+          { value: 'r7-4700u', label: 'Ryzen 7 4700U', nivel: 'alto' },
+          { value: 'r7-4800h', label: 'Ryzen 7 4800H', nivel: 'alto' },
+          { value: 'r9-4900h', label: 'Ryzen 9 4900H', nivel: 'alto' },
+          { value: 'r9-4900hs', label: 'Ryzen 9 4900HS', nivel: 'alto' },
+        ],
+        '5000': [
+          { value: 'r3-5300u', label: 'Ryzen 3 5300U', nivel: 'medio' },
+          { value: 'r3-5400u', label: 'Ryzen 3 5400U', nivel: 'medio' },
+          { value: 'r5-5500u', label: 'Ryzen 5 5500U', nivel: 'medio' },
+          { value: 'r5-5600u', label: 'Ryzen 5 5600U', nivel: 'medio' },
+ { value: 'r5-5600h', label: 'Ryzen 5 5600H', nivel: 'medio' },
+          { value: 'r5-5600x', label: 'Ryzen 5 5600X', nivel: 'medio' },
+          { value: 'r7-5700u', label: 'Ryzen 7 5700U', nivel: 'alto' },
+          { value: 'r7-5800h', label: 'Ryzen 7 5800H', nivel: 'alto' },
+          { value: 'r7-5800x', label: 'Ryzen 7 5800X', nivel: 'alto' },
+          { value: 'r9-5900hx', label: 'Ryzen 9 5900HX', nivel: 'alto' },
+          { value: 'r9-5950x', label: 'Ryzen 9 5950X', nivel: 'alto' },
+        ],
+        '6000': [
+          { value: 'r5-6600u', label: 'Ryzen 5 6600U', nivel: 'medio' },
+          { value: 'r5-6600h', label: 'Ryzen 5 6600H', nivel: 'medio' },
+          { value: 'r7-6800u', label: 'Ryzen 7 6800U', nivel: 'alto' },
+          { value: 'r7-6800h', label: 'Ryzen 7 6800H', nivel: 'alto' },
+          { value: 'r9-6900hx', label: 'Ryzen 9 6900HX', nivel: 'alto' },
+          { value: 'r9-6980hx', label: 'Ryzen 9 6980HX', nivel: 'alto' },
+        ],
+        '7000': [
+          { value: 'r3-7530u', label: 'Ryzen 3 7530U', nivel: 'medio' },
+          { value: 'r5-7600',  label: 'Ryzen 5 7600',  nivel: 'medio' },
+          { value: 'r5-7600x', label: 'Ryzen 5 7600X', nivel: 'medio' },
+          { value: 'r7-7730u', label: 'Ryzen 7 7730U', nivel: 'alto' },
+          { value: 'r7-7700x', label: 'Ryzen 7 7700X', nivel: 'alto' },
+          { value: 'r9-7900x', label: 'Ryzen 9 7900X', nivel: 'alto' },
+          { value: 'r9-7950x', label: 'Ryzen 9 7950X', nivel: 'alto' },
+        ],
+        '8000': [
+          { value: 'r5-8540u', label: 'Ryzen 5 8540U', nivel: 'medio' },
+          { value: 'r5-8600g', label: 'Ryzen 5 8600G', nivel: 'medio' },
+          { value: 'r7-8840u', label: 'Ryzen 7 8840U', nivel: 'alto' },
+          { value: 'r7-8700g', label: 'Ryzen 7 8700G', nivel: 'alto' },
+          { value: 'r9-8945h', label: 'Ryzen 9 8945H', nivel: 'alto' },
+        ],
+        '9000': [
+          { value: 'r5-9600x', label: 'Ryzen 5 9600X', nivel: 'medio' },
+          { value: 'r7-9700x', label: 'Ryzen 7 9700X', nivel: 'alto' },
+          { value: 'r9-9900x', label: 'Ryzen 9 9900X', nivel: 'alto' },
+          { value: 'r9-9950x', label: 'Ryzen 9 9950X', nivel: 'alto' },
+        ],
+      }
     }
   };
 
@@ -641,6 +964,58 @@
     9:'9na Gen Intel', 10:'10ma Gen Intel', 11:'11va Gen Intel',
     12:'12va Gen Intel', 13:'13va Gen Intel', 14:'14va Gen Intel'
   };
+
+  const modelosBasicosIntel = [
+    { value: 'celeron_baytrail', label: 'Celeron (Bay Trail)',           nivel: 'basico_antiguo' },
+    { value: 'pentium_baytrail', label: 'Pentium (Bay Trail)',           nivel: 'basico_antiguo' },
+    { value: 'celeron',          label: 'Celeron (moderno)',             nivel: 'basico' },
+    { value: 'pentium',          label: 'Pentium (moderno)',             nivel: 'basico' },
+    { value: 'intel_n',          label: 'Intel Processor N100/N200 (moderno)', nivel: 'basico' },
+  ];
+
+  const modelosBasicosAmd = [
+    { value: 'athlon_viejo', label: 'Athlon (antiguo)', nivel: 'basico_antiguo' },
+    { value: 'athlon',       label: 'Athlon (moderno)', nivel: 'basico' },
+  ];
+
+  const fallbacksPreRyzen = {
+    phenom:   [
+      { value: 'otro-phenom',  label: 'Otro Athlon II/Phenom II', nivel: 'medio' },
+      { value: 'otro-fx',      label: 'Otro FX/A-Series',         nivel: 'alto' },
+    ],
+    aseries:  [
+      { value: 'otro-aseries', label: 'Otro A-Series/FX',         nivel: 'medio' },
+      { value: 'otro-fx',      label: 'Otro FX/A-Series',         nivel: 'alto' },
+    ],
+    aseries2: [
+      { value: 'otro-aseries', label: 'Otro A-Series/FX',         nivel: 'medio' },
+      { value: 'otro-fx',      label: 'Otro FX/A-Series',         nivel: 'alto' },
+    ],
+  };
+
+  function getFallbacks(marca, genValue) {
+    if (marca === 'intel') {
+      const fb = [
+        { value: 'otro-i3', label: 'Otro i3 de esta generación', nivel: 'medio' },
+        { value: 'otro-i5', label: 'Otro i5 de esta generación', nivel: 'medio' },
+        { value: 'otro-i7', label: 'Otro i7 de esta generación', nivel: 'alto' },
+      ];
+      if (parseInt(genValue, 10) >= 9) {
+        fb.push({ value: 'otro-i9', label: 'Otro i9 de esta generación', nivel: 'alto' });
+      }
+      return fb;
+    }
+    if (fallbacksPreRyzen[genValue]) return fallbacksPreRyzen[genValue];
+    const fb = [
+      { value: 'otro-r3', label: 'Otro Ryzen 3', nivel: 'medio' },
+      { value: 'otro-r5', label: 'Otro Ryzen 5', nivel: 'medio' },
+      { value: 'otro-r7', label: 'Otro Ryzen 7', nivel: 'alto' },
+    ];
+    if (parseInt(genValue, 10) >= 3000) {
+      fb.push({ value: 'otro-r9', label: 'Otro Ryzen 9', nivel: 'alto' });
+    }
+    return fb;
+  }
 
   function onMarcaChange() {
     const marca = document.getElementById('marca').value;
@@ -664,16 +1039,15 @@
     });
     genSelect.disabled = false;
 
-    modSelect.innerHTML = '<option value="">Seleccionar...</option>';
-    data.modelos.forEach(m => {
-      modSelect.innerHTML += `<option value="${m.value}" data-nivel="${m.nivel}">${m.label}</option>`;
-    });
-    modSelect.disabled = false;
+    modSelect.innerHTML = '<option value="">Primero elegí generación</option>';
+    modSelect.disabled = true;
   }
 
   function onGenChange() {
     const marca = document.getElementById('marca').value;
-    const selected = document.getElementById('generacion').selectedOptions[0];
+    const genSelect = document.getElementById('generacion');
+    const modSelect = document.getElementById('modelo');
+    const selected = genSelect.selectedOptions[0];
     const hintEl = document.getElementById('equiv-hint');
 
     if (marca === 'amd' && selected && selected.dataset.equiv) {
@@ -681,6 +1055,28 @@
     } else {
       hintEl.innerHTML = '';
     }
+
+    modSelect.innerHTML = '';
+    if (marca && selected && selected.value) {
+      const basicos = marca === 'intel' ? modelosBasicosIntel : modelosBasicosAmd;
+      basicos.forEach(m => {
+        modSelect.innerHTML += `<option value="${m.value}" data-nivel="${m.nivel}">${m.label}</option>`;
+      });
+      const genData = dataPorMarca[marca].modelosPorGen[selected.value];
+      if (genData) {
+        genData.forEach(m => {
+          modSelect.innerHTML += `<option value="${m.value}" data-nivel="${m.nivel}">${m.label}</option>`;
+        });
+      }
+      getFallbacks(marca, selected.value).forEach(f => {
+        modSelect.innerHTML += `<option value="${f.value}" data-nivel="${f.nivel}">${f.label}</option>`;
+      });
+      modSelect.disabled = false;
+    } else {
+      modSelect.innerHTML = '<option value="">Primero elegí generación</option>';
+      modSelect.disabled = true;
+    }
+
     clasificar();
   }
 
