@@ -1,102 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jcelectronica.com.ar/</loc>
+    <loc>https://www.jcelectronica.com.ar/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/catalogo.html</loc>
+    <loc>https://www.jcelectronica.com.ar/catalogo.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicios.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicios.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/turnos.html</loc>
+    <loc>https://www.jcelectronica.com.ar/precios.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/envios.html</loc>
+    <loc>https://www.jcelectronica.com.ar/turnos.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jcelectronica.com.ar/envios.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/condiciones.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.jcelectronica.com.ar/servicio-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-pc.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicio-pc.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-consolas.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicio-consolas.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-celulares.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicio-celulares.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-tv.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicio-tv.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/servicio-parlantes.html</loc>
+    <loc>https://www.jcelectronica.com.ar/servicio-parlantes.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/que-gama-es-mi-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/que-gama-es-mi-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/reparacion-placa-madre.html</loc>
+    <loc>https://www.jcelectronica.com.ar/reparacion-placa-madre.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/reparacion-carcasa-bisagras.html</loc>
+    <loc>https://www.jcelectronica.com.ar/reparacion-carcasa-bisagras.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/cambio-pantalla-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/cambio-pantalla-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/cambio-teclado-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/cambio-teclado-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/cambio-bateria-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/cambio-bateria-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/cambio-ssd-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/cambio-ssd-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/limpieza-pasta-termica.html</loc>
+    <loc>https://www.jcelectronica.com.ar/limpieza-pasta-termica.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jcelectronica.com.ar/memoria-ram-notebook.html</loc>
+    <loc>https://www.jcelectronica.com.ar/memoria-ram-notebook.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
