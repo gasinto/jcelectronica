@@ -20,20 +20,23 @@
 <link rel="icon" type="image/png" href="/img/logo sin fondo.png">
 <style>
   :root {
-    --bg: #f5f7fa;
+    --bg: #f9fafb;
     --surface: #ffffff;
-    --surface-hover: #f0f2f5;
-    --border: #e2e5ea;
-    --border-active: #2563eb;
-    --text: #1a1d23;
+    --surface-hover: #f3f4f6;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --border-active: #4f46e5;
+    --text: #111827;
     --text-muted: #6b7280;
-    --accent: #2563eb;
-    --accent-glow: rgba(37, 99, 235, 0.1);
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-glow: rgba(79,70,229,0.1);
     --baja: #ea580c;
     --media: #ca8a04;
     --alta: #16a34a;
     --premium: #9333ea;
-    --radius: 12px;
+    --radius: 16px;
+    --radius-sm: 8px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,29 +49,15 @@
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
   .container {
     max-width: 900px;
     margin: 0 auto;
     padding: 40px 20px 60px;
-    position: relative;
-    z-index: 1;
   }
 
   .header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .logo {
@@ -85,20 +74,20 @@
     background: var(--accent-glow);
   }
 
-  .header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .header h1 { font-size: 30px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; margin-bottom: 8px; }
   .header p { color: var(--text-muted); font-size: 15px; }
 
   .card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
     margin-bottom: 24px;
     transition: border-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
-  .card:hover { border-color: #cdd1d8; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .card:hover { border-color: #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
   .card-title {
     font-family: 'Space Mono', monospace;
@@ -106,7 +95,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
   }
@@ -117,31 +106,30 @@
     gap: 20px;
   }
 
-  @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
-
   .field { display: flex; flex-direction: column; gap: 8px; }
   .field.full-width { grid-column: 1 / -1; }
 
   label { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; }
 
   select {
+    width: 100%;
     appearance: none;
-    background: var(--bg);
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     padding: 12px 40px 12px 14px;
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
   }
 
   select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
-  select:hover { border-color: #cdd1d8; }
+  select:hover { border-color: #d1d5db; }
   select:disabled { opacity: 0.4; cursor: not-allowed; }
 
   /* Toggles */
@@ -154,15 +142,15 @@
     align-items: center;
     gap: 10px;
     padding: 10px 16px;
-    background: var(--bg);
+    background: var(--surface-hover);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
   }
 
-  .toggle-btn:hover { border-color: #cdd1d8; background: var(--surface-hover); }
+  .toggle-btn:hover { border-color: #d1d5db; background: #eef0f4; }
 
   .toggle-btn.active { border-color: var(--accent); background: var(--accent-glow); }
   .toggle-btn.active-premium { border-color: var(--premium); background: rgba(147,51,234,0.08); }
@@ -203,7 +191,7 @@
 
   .result-row {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 0; border-bottom: 1px solid var(--border);
+    padding: 24px 0; border-bottom: 1px solid var(--border);
   }
 
   .result-row:last-child { border-bottom: none; }
@@ -235,7 +223,7 @@
 
   .detail-summary {
     margin-top: 16px; padding: 16px;
-    background: var(--bg); border-radius: var(--radius);
+    background: var(--bg); border-radius: var(--radius-sm);
     border: 1px solid var(--border);
   }
 
@@ -247,7 +235,7 @@
     padding: 4px 10px; font-size: 11px;
     font-family: 'Space Mono', monospace;
     color: var(--accent); background: var(--accent-glow);
-    border: 1px solid rgba(59,130,246,0.2);
+    border: 1px solid rgba(79,70,229,0.2);
     border-radius: 6px; letter-spacing: 0.5px;
   }
 
@@ -275,12 +263,12 @@
     display: inline-flex; align-items: center; gap: 6px;
     margin-top: 16px; padding: 10px 20px;
     background: transparent; border: 1px solid var(--border);
-    border-radius: var(--radius); color: var(--text-muted);
+    border-radius: var(--radius-sm); color: var(--text-muted);
     font-family: 'DM Sans', sans-serif; font-size: 13px;
     cursor: pointer; transition: all 0.2s;
   }
 
-  .btn-reset:hover { border-color: #cdd1d8; color: var(--text); }
+  .btn-reset:hover { border-color: #d1d5db; color: var(--text); }
 
   /* Tabla equivalencias */
   .equiv-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
@@ -306,32 +294,43 @@
     display: flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%; margin-top: 16px; padding: 12px;
     background: var(--bg); border: 1px solid var(--border);
-    border-radius: var(--radius); color: var(--text-muted);
+    border-radius: var(--radius-sm); color: var(--text-muted);
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
     cursor: pointer; user-select: none; transition: all 0.2s;
   }
-  .detail-toggle:hover { border-color: #cdd1d8; color: var(--text); }
+  .detail-toggle:hover { border-color: #d1d5db; color: var(--text); }
   .detail-toggle .arrow { transition: transform 0.3s; color: var(--text-muted); font-size: 14px; }
   .detail-toggle .arrow.open { transform: rotate(90deg); }
 
   .cta-final {
     text-align: center;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     padding: 32px;
     margin-top: 8px;
   }
-  .cta-final h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-  .cta-final p { font-size: 14px; opacity: 0.9; margin-bottom: 16px; }
+  .cta-final h2 { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .cta-final p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
   .cta-final a {
     display: inline-block;
     background: #22c55e; color: white;
     font-weight: 600; text-decoration: none;
-    padding: 14px 28px; border-radius: 12px;
+    padding: 14px 28px; border-radius: 1rem;
     transition: background 0.2s;
   }
   .cta-final a:hover { background: #16a34a; }
+
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; gap: 16px; }
+    select { width: 100%; }
+    .container { padding: 24px 16px 48px; }
+    .card { padding: 1.25rem; }
+    .header h1 { font-size: 26px; }
+    .result-row { padding: 20px 0; }
+    .cta-final { padding: 24px 16px; }
+  }
 </style>
 </head>
 <body>

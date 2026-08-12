@@ -30,12 +30,18 @@
       }
       list.innerHTML = data.map(function (c) {
         var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
+        var lineas = String(c.descripcion || '').split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+        var cuerpo = lineas.length > 0
+          ? '<ul class="space-y-2">' + lineas.map(function (l) {
+              return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + esc(l) + '</span></li>';
+            }).join('') + '</ul>'
+          : '<div class="text-gray-700 leading-relaxed">' + esc(c.descripcion || '') + '</div>';
         return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
           + '<div class="flex items-start gap-4">'
           + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
-          + '<div class="min-w-0">'
-          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">' + (c.nombre || '') + '</h3>'
-          + '<div class="text-gray-700 leading-relaxed whitespace-pre-line" style="font-size:1rem;">' + (c.descripcion || '') + '</div>'
+          + '<div class="min-w-0 flex-1">'
+          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3">' + esc(c.nombre) + '</h3>'
+          + cuerpo
           + '</div>'
           + '</div>'
           + '</div>';
@@ -185,12 +191,18 @@
       }
       list.innerHTML = data.map(function (c) {
         var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
+        var lineas = String(c.descripcion || '').split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+        var cuerpo = lineas.length > 0
+          ? '<ul class="space-y-2">' + lineas.map(function (l) {
+              return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + esc(l) + '</span></li>';
+            }).join('') + '</ul>'
+          : '<div class="text-gray-700 leading-relaxed">' + esc(c.descripcion || '') + '</div>';
         return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
           + '<div class="flex items-start gap-4">'
           + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
-          + '<div class="min-w-0">'
-          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">' + esc(c.nombre) + '</h3>'
-          + '<div class="text-gray-700 leading-relaxed whitespace-pre-line" style="font-size:1rem;">' + esc(c.descripcion) + '</div>'
+          + '<div class="min-w-0 flex-1">'
+          + '<h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3">' + esc(c.nombre) + '</h3>'
+          + cuerpo
           + '</div>'
           + '</div>'
           + '</div>';
