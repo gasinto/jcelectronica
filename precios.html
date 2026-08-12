@@ -126,8 +126,20 @@
               <h4 class="font-semibold text-gray-900 text-sm">¿No sabés qué gama es tu notebook?</h4>
               <p class="text-xs text-gray-600 mt-1">Clasificala según procesador, generación y placa de video para saber qué tipo de reparación y costo puede tener.</p>
             </div>
-            <a href="que-gama-es-mi-notebook.html" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors touch-target shrink-0">Clasificar mi notebook <i class="fa-solid fa-arrow-right"></i></a>
+            <button onclick="abrirClasificador()" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors touch-target shrink-0">Clasificar mi notebook <i class="fa-solid fa-arrow-right"></i></button>
           </div>
+        </div>
+      </div>
+
+      <!-- Modal Clasificador -->
+      <div id="clasificador-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60" onclick="cerrarClasificador()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl h-[85vh] flex flex-col overflow-hidden">
+          <div class="flex items-center justify-between px-5 py-3 border-b border-gray-100 shrink-0">
+            <h3 class="font-bold text-gray-900 text-sm sm:text-base"><i class="fa-solid fa-magnifying-glass-chart text-indigo-600 mr-2"></i>¿Qué gama es mi notebook?</h3>
+            <button onclick="cerrarClasificador()" class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors touch-target" aria-label="Cerrar"><i class="fa-solid fa-xmark text-xl"></i></button>
+          </div>
+          <iframe id="clasificador-iframe" src="que-gama-es-mi-notebook.html" class="flex-1 w-full border-0" title="Clasificador de gama de notebooks"></iframe>
         </div>
       </div>
 
@@ -226,5 +238,20 @@
   <script src="js/config.js"></script>
   <script src="js/services.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    function abrirClasificador() {
+      var modal = document.getElementById('clasificador-modal');
+      if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarClasificador() {
+      var modal = document.getElementById('clasificador-modal');
+      if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') cerrarClasificador();
+    });
+  </script>
 </body>
 </html>

@@ -123,6 +123,7 @@
         padding: 10px 24px; border-radius: 100px; border: 2px solid;
         white-space: nowrap;
       }
+      .gama-superbaja { color: #6b7280;    border-color: rgba(107,114,128,0.4); background-color: rgba(107,114,128,0.08); }
       .gama-baja    { color: #ea580c;    border-color: rgba(234,88,12,0.4);  background-color: rgba(234,88,12,0.08); }
       .gama-media   { color: #ca8a04;    border-color: rgba(202,138,4,0.4);  background-color: rgba(202,138,4,0.08); }
       .gama-alta    { color: #16a34a;    border-color: rgba(22,163,74,0.4);  background-color: rgba(22,163,74,0.08); }
@@ -222,20 +223,6 @@
             </div>
           </div>
 
-          <div>
-            <p class="text-xs font-semibold text-gray-500 mb-2">Origen del equipo</p>
-            <div class="flex flex-wrap gap-3">
-              <div class="gcl-toggle active" data-toggle="marca" id="gcl-btn-marca" onclick="gclToggleOrigen('marca')">
-                <div class="gcl-indicator"></div>
-                <span>Marca reconocida</span>
-              </div>
-              <div class="gcl-toggle" data-toggle="nacional" id="gcl-btn-nacional" onclick="gclToggleOrigen('nacional')">
-                <div class="gcl-indicator"></div>
-                <span>Ultrabook / Nacional (chino)</span>
-              </div>
-            </div>
-            <p class="gcl-hint mt-2" id="gcl-origen-hint" style="display:none;"></p>
-          </div>
         </div>
       </div>
 
@@ -243,21 +230,25 @@
       <div id="gcl-results" class="gcl-results bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 mb-8">
         <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6 pb-3 border-b border-gray-100">Resultado de clasificación</p>
 
-        <div class="flex items-center justify-between flex-wrap gap-4 py-6 border-b border-gray-100">
-          <span class="text-lg font-semibold text-gray-800"><span class="mr-2">⚙️</span>Placa Madre</span>
-          <span class="gama-badge gama-baja" id="gcl-gama-placa">—</span>
+        <div class="flex flex-col items-center text-center gap-3 py-6 border-b border-gray-100">
+          <span class="text-sm font-semibold text-gray-500"><span class="mr-2">💻</span>Equipo</span>
+          <span class="gama-badge gama-baja" id="gcl-gama-equipo">—</span>
+          <p class="text-sm font-semibold text-emerald-700" id="gcl-costo"></p>
+          <p id="gcl-descripcion" class="text-sm text-gray-600 leading-relaxed max-w-md"></p>
         </div>
 
-        <div class="flex items-center justify-between flex-wrap gap-4 py-6">
-          <span class="text-lg font-semibold text-gray-800"><span class="mr-2">💻</span>Carcasa</span>
-          <span class="gama-badge gama-baja" id="gcl-gama-carcasa">—</span>
+        <div class="mt-4">
+          <button type="button" onclick="gclToggleDetalle()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 text-sm text-gray-600 hover:text-gray-800 hover:border-gray-200 transition-colors cursor-pointer">
+            <span class="gcl-arrow text-gray-400 text-sm" id="gcl-arrow-detalle">▸</span>
+            <span class="font-semibold text-gray-700">Detalle técnico</span>
+          </button>
+          <div id="gcl-detalle-tecnico" class="gcl-collapsible-body">
+            <div class="mt-3 rounded-xl bg-gray-50 border border-gray-100 p-4">
+              <p id="gcl-detalle-text" class="text-sm text-gray-500 leading-relaxed"></p>
+            </div>
+            <div id="gcl-logic-explain"></div>
+          </div>
         </div>
-
-        <div class="mt-4 rounded-xl bg-gray-50 border border-gray-100 p-4">
-          <p id="gcl-detalle-text" class="text-sm text-gray-500 leading-relaxed"></p>
-        </div>
-
-        <div id="gcl-logic-explain"></div>
 
         <div class="text-center">
           <button onclick="gclResetear()" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-xl border border-gray-200 bg-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-800 transition-colors cursor-pointer">↺ Nueva clasificación</button>
@@ -277,7 +268,10 @@
                 <tr><th>AMD</th><th>≈ Intel</th><th>Procesadores</th></tr>
               </thead>
               <tbody>
-                <tr><td>Ryzen 1000 (Zen)</td><td>6ta Gen</td><td rowspan="9" style="vertical-align:middle;line-height:2;">Athlon ≈ Celeron/Pentium<br>Ryzen 3 ≈ i3<br>Ryzen 5 ≈ i5<br>Ryzen 7 ≈ i7<br>Ryzen 9 ≈ i9</td></tr>
+                <tr><td>Phenom / Athlon II (2008–2011)</td><td>2da Gen</td><td rowspan="12" style="vertical-align:middle;line-height:2;">Athlon ≈ Celeron/Pentium<br>Ryzen 3 ≈ i3<br>Ryzen 5 ≈ i5<br>Ryzen 7 ≈ i7<br>Ryzen 9 ≈ i9</td></tr>
+                <tr><td>A-Series / FX (2012–2014)</td><td>4ta Gen</td></tr>
+                <tr><td>A-Series Carrizo/Bristol (2015–2017)</td><td>6ta Gen</td></tr>
+                <tr><td>Ryzen 1000 (Zen)</td><td>6ta Gen</td></tr>
                 <tr><td>Ryzen 2000 (Zen+)</td><td>7ma Gen</td></tr>
                 <tr><td>Ryzen 3000 (Zen 2)</td><td>8va Gen</td></tr>
                 <tr><td>Ryzen 4000 (Zen 2)</td><td>9na Gen</td></tr>
@@ -292,12 +286,13 @@
           <div class="mt-5 p-4 rounded-xl bg-gray-50 border border-gray-100">
             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Reglas de clasificación</p>
             <p class="text-xs text-gray-500 leading-6">
-              <span style="color:#9333ea;">■</span> <strong class="text-gray-800">Gamer/Premium:</strong> Equipo Gamer + Gen 9na en adelante<br>
-              <span style="color:#16a34a;">■</span> <strong class="text-gray-800">Gama Alta:</strong> Equipo Gamer hasta Gen 8va · Video dedicado (no gamer) · i7/Ryzen7+ desde Gen 11va<br>
-              <span style="color:#ca8a04;">■</span> <strong class="text-gray-800">Gama Media:</strong> Gen 9na–10ma · i3-i5/Ryzen3-5 Gen 11va<br>
-              <span style="color:#ea580c;">■</span> <strong class="text-gray-800">Gama Baja:</strong> Gen 6ta a 8va sin video dedicado
+              <span style="color:#9333ea;">■</span> <strong class="text-gray-800">Gamer / Premium:</strong> 🎮 Equipo Gamer · Pantalla OLED · Táctil desde Gen 9na<br>
+              <span style="color:#16a34a;">■</span> <strong class="text-gray-800">Gama Alta:</strong> Gen 13va en adelante<br>
+              <span style="color:#ca8a04;">■</span> <strong class="text-gray-800">Gama Media:</strong> Gen 9na–12va<br>
+              <span style="color:#ea580c;">■</span> <strong class="text-gray-800">Gama Baja:</strong> Gen 4ta–8va<br>
+              <span style="color:#6b7280;">■</span> <strong class="text-gray-800">Super Baja:</strong> Gen 1ra–3ra · Celeron/Pentium (Bay Trail) · Athlon antiguo
             </p>
-            <p class="text-[11px] text-gray-400 mt-2">Carcasa: misma lógica + OLED y Táctil desde 9na → Premium · Táctil hasta 8va → Alta</p>
+            <p class="text-[11px] text-gray-400 mt-2">Celeron/Pentium/Athlon moderno: tope Gama Baja (aunque sea Gen 13+). La placa de video dedicada NO modifica la gama por sí sola.</p>
           </div>
         </div>
       </div>
@@ -305,11 +300,24 @@
   </section>
 
   <script>
-    const gclToggles = { marca: true, nacional: false };
+    const gclToggles = { gpu: false, gamer: false, tactil: false, oled: false };
+
+    const gclInfoPorTier = {
+      superbaja: { costo: 'bajo', descripcion: 'Equipo antiguo o de entrada. Sirve para tareas básicas: navegar, documentos.' },
+      baja:      { costo: 'estándar', descripcion: 'Equipo económico. Bueno para oficina, internet y estudio.' },
+      media:     { costo: 'medio', descripcion: 'Equipo equilibrado. Rinde bien para uso diario y multitarea moderada.' },
+      alta:      { costo: 'alto', descripcion: 'Equipo potente y actual. Rinde para tareas exigentes: edición, diseño, programación.' },
+      premium:   { costo: 'premium-gamer', descripcion: 'Equipo de alta performance. Pensado para gaming o trabajo pesado.' },
+    };
 
     const gclDataPorMarca = {
       intel: {
         generaciones: [
+          { value: '1',  label: '1ra Generación (Nehalem)',       equivIntel: 1 },
+          { value: '2',  label: '2da Generación (Sandy Bridge)',  equivIntel: 2 },
+          { value: '3',  label: '3ra Generación (Ivy Bridge)',    equivIntel: 3 },
+          { value: '4',  label: '4ta Generación (Haswell)',       equivIntel: 4 },
+          { value: '5',  label: '5ta Generación (Broadwell)',     equivIntel: 5 },
           { value: '6',  label: '6ta Generación (Skylake)',       equivIntel: 6 },
           { value: '7',  label: '7ma Generación (Kaby Lake)',     equivIntel: 7 },
           { value: '8',  label: '8va Generación (Coffee Lake)',   equivIntel: 8 },
@@ -321,16 +329,21 @@
           { value: '14', label: '14va Generación (Raptor Lake-R)',equivIntel: 14 },
         ],
         modelos: [
-          { value: 'celeron', label: 'Celeron', nivel: 'basico' },
-          { value: 'pentium', label: 'Pentium', nivel: 'basico' },
-          { value: 'i3',      label: 'Core i3', nivel: 'medio' },
-          { value: 'i5',      label: 'Core i5', nivel: 'medio' },
-          { value: 'i7',      label: 'Core i7', nivel: 'alto' },
-          { value: 'i9',      label: 'Core i9', nivel: 'alto' },
+          { value: 'celeron_baytrail', label: 'Celeron (Bay Trail)', nivel: 'basico_antiguo' },
+          { value: 'pentium_baytrail', label: 'Pentium (Bay Trail)', nivel: 'basico_antiguo' },
+          { value: 'celeron',          label: 'Celeron (moderno)',   nivel: 'basico' },
+          { value: 'pentium',          label: 'Pentium (moderno)',   nivel: 'basico' },
+          { value: 'i3',               label: 'Core i3',             nivel: 'medio' },
+          { value: 'i5',               label: 'Core i5',             nivel: 'medio' },
+          { value: 'i7',               label: 'Core i7',             nivel: 'alto' },
+          { value: 'i9',               label: 'Core i9',             nivel: 'alto' },
         ]
       },
       amd: {
         generaciones: [
+          { value: 'phenom',   label: 'Phenom / Athlon II (2008–2011)',  equivIntel: 2 },
+          { value: 'aseries',  label: 'A-Series / FX (2012–2014)',       equivIntel: 4 },
+          { value: 'aseries2', label: 'A-Series Carrizo/Bristol (2015–2017)', equivIntel: 6 },
           { value: '1000', label: 'Ryzen 1000 (Zen)',      equivIntel: 6  },
           { value: '2000', label: 'Ryzen 2000 (Zen+)',     equivIntel: 7  },
           { value: '3000', label: 'Ryzen 3000 (Zen 2)',    equivIntel: 8  },
@@ -342,7 +355,8 @@
           { value: '9000', label: 'Ryzen 9000 (Zen 5)',    equivIntel: 14 },
         ],
         modelos: [
-          { value: 'athlon', label: 'Athlon',  nivel: 'basico' },
+          { value: 'athlon_viejo', label: 'Athlon (antiguo)', nivel: 'basico_antiguo' },
+          { value: 'athlon',       label: 'Athlon (moderno)', nivel: 'basico' },
           { value: 'ryzen3', label: 'Ryzen 3', nivel: 'medio' },
           { value: 'ryzen5', label: 'Ryzen 5', nivel: 'medio' },
           { value: 'ryzen7', label: 'Ryzen 7', nivel: 'alto' },
@@ -352,6 +366,8 @@
     };
 
     const gclIntelGenLabels = {
+      1:'1ra Gen Intel', 2:'2da Gen Intel', 3:'3ra Gen Intel',
+      4:'4ta Gen Intel', 5:'5ta Gen Intel',
       6:'6ta Gen Intel', 7:'7ma Gen Intel', 8:'8va Gen Intel',
       9:'9na Gen Intel', 10:'10ma Gen Intel', 11:'11va Gen Intel',
       12:'12va Gen Intel', 13:'13va Gen Intel', 14:'14va Gen Intel'
@@ -415,7 +431,7 @@
         if (gclToggles.gpu) {
           gamerBtn.style.display = 'flex';
           gpuHint.style.display = 'block';
-          gpuHint.textContent = 'Si es un equipo Gamer marcá también "Equipo Gamer". Si no, se clasifica como video dedicado estándar.';
+          gpuHint.textContent = 'La placa de video dedicada no modifica la gama por sí sola. Si es un equipo Gamer, marcá también "🎮 Equipo Gamer".';
         } else {
           gamerBtn.style.display = 'none';
           gamerBtn.classList.remove('active-premium');
@@ -429,28 +445,6 @@
     function gclToggleTabla() {
       document.getElementById('gcl-tabla-equiv').classList.toggle('open');
       document.getElementById('gcl-arrow-tabla').classList.toggle('open');
-    }
-
-    function gclToggleOrigen(tipo) {
-      const btnMarca = document.getElementById('gcl-btn-marca');
-      const btnNacional = document.getElementById('gcl-btn-nacional');
-      const hint = document.getElementById('gcl-origen-hint');
-
-      if (tipo === 'marca') {
-        btnMarca.classList.add('active');
-        btnNacional.classList.remove('active');
-        gclToggles.marca = true;
-        gclToggles.nacional = false;
-        hint.style.display = 'none';
-      } else {
-        btnNacional.classList.add('active');
-        btnMarca.classList.remove('active');
-        gclToggles.nacional = true;
-        gclToggles.marca = false;
-        hint.style.display = 'block';
-        hint.textContent = 'Equipos Ultrabook/Nacionales: si clasifican como Gama Alta (hasta Gen 12), bajan a Gama Media. Gen 13+ se mantiene Alta. Excepción carcasa: táctil u OLED mantiene Alta.';
-      }
-      gclClasificar();
     }
 
     function gclClasificar() {
@@ -469,105 +463,43 @@
 
       const gen = parseInt(genSelect.selectedOptions[0].dataset.equiv);
       const nivel = modSelect.selectedOptions[0].dataset.nivel;
-      const esAlto  = (nivel === 'alto');
-      const esMedio = (nivel === 'medio');
 
-      /* ========== PLACA MADRE ========== */
-      let gamaPlaca = '';
-      let razonPlaca = '';
+      /* ========== CLASIFICACIÓN (5 niveles) ========== */
+      let tier = '';
+      let razon = '';
 
-      if (gamer && gen >= 9) {
-        gamaPlaca = 'premium';
-        razonPlaca = 'Equipo Gamer + Gen 9na o superior';
-      } else if (gamer && gen <= 8) {
-        gamaPlaca = 'alta';
-        razonPlaca = 'Equipo Gamer hasta Gen 8va';
-      } else if (gpu && !gamer && gen >= 10) {
-        gamaPlaca = 'alta';
-        razonPlaca = 'Video dedicado (no gamer) Gen 10ma+';
-      } else if (gpu && !gamer && gen <= 9) {
-        gamaPlaca = 'media';
-        razonPlaca = 'Video dedicado (no gamer) hasta Gen 9na';
-      } else if (gen >= 12) {
-        gamaPlaca = 'alta';
-        razonPlaca = 'Gen 12va o superior';
-      } else if (gen === 11 && esAlto) {
-        gamaPlaca = 'alta';
-        razonPlaca = 'Gen 11va con procesador de gama alta';
-      } else if (gen === 11 && esMedio) {
-        gamaPlaca = 'media';
-        razonPlaca = 'Gen 11va con procesador de gama media';
-      } else if (gen >= 9 && gen <= 10) {
-        gamaPlaca = 'media';
-        razonPlaca = 'Gen 9na–10ma';
-      } else {
-        gamaPlaca = 'baja';
-        razonPlaca = 'Gen 6ta–8va sin video dedicado';
-      }
-
-      /* ========== CARCASA ========== */
-      let gamaCarcasa = '';
-      let razonCarcasa = '';
-
-      if (oled) {
-        gamaCarcasa = 'premium';
-        razonCarcasa = 'Pantalla OLED';
-      } else if (gamer && gen >= 9) {
-        gamaCarcasa = 'premium';
-        razonCarcasa = 'Equipo Gamer + Gen 9na o superior';
+      if (gamer) {
+        tier = 'premium';
+        razon = 'Equipo Gamer';
+      } else if (oled) {
+        tier = 'premium';
+        razon = 'Pantalla OLED';
       } else if (tactil && gen >= 9) {
-        gamaCarcasa = 'premium';
-        razonCarcasa = 'Táctil desde Gen 9na';
-      } else if (gamer && gen <= 8) {
-        gamaCarcasa = 'alta';
-        razonCarcasa = 'Equipo Gamer hasta Gen 8va';
-      } else if (gpu && !gamer && gen >= 10) {
-        gamaCarcasa = 'alta';
-        razonCarcasa = 'Video dedicado (no gamer) Gen 10ma+';
-      } else if (gpu && !gamer && gen <= 9) {
-        gamaCarcasa = 'media';
-        razonCarcasa = 'Video dedicado (no gamer) hasta Gen 9na';
-      } else if (tactil && gen <= 8) {
-        gamaCarcasa = 'alta';
-        razonCarcasa = 'Táctil hasta Gen 8va';
-      } else if (gen >= 12) {
-        gamaCarcasa = 'alta';
-        razonCarcasa = 'Gen 12va o superior';
-      } else if (gen === 11 && esAlto) {
-        gamaCarcasa = 'alta';
-        razonCarcasa = 'Gen 11va con procesador de gama alta';
-      } else if (gen === 11 && esMedio) {
-        gamaCarcasa = 'media';
-        razonCarcasa = 'Gen 11va con procesador de gama media';
-      } else if (gen >= 9 && gen <= 10) {
-        gamaCarcasa = 'media';
-        razonCarcasa = 'Gen 9na–10ma';
+        tier = 'premium';
+        razon = 'Pantalla táctil desde Gen 9na';
+      } else if (nivel === 'basico_antiguo') {
+        tier = 'superbaja';
+        razon = 'Procesador básico antiguo (Bay Trail) — tope Super Baja';
+      } else if (nivel === 'basico') {
+        tier = 'baja';
+        razon = 'Procesador básico moderno — tope Gama Baja';
+      } else if (gen <= 3) {
+        tier = 'superbaja';
+        razon = 'Gen 1ra–3ra';
+      } else if (gen <= 8) {
+        tier = 'baja';
+        razon = 'Gen 4ta–8va';
+      } else if (gen <= 12) {
+        tier = 'media';
+        razon = 'Gen 9na–12va';
       } else {
-        gamaCarcasa = 'baja';
-        razonCarcasa = 'Gen 6ta–8va sin características especiales';
+        tier = 'alta';
+        razon = 'Gen 13va en adelante';
       }
 
-      /* ========== AJUSTE ULTRABOOK / NACIONAL ========== */
-      const esNacional = !!gclToggles.nacional;
-
-      if (esNacional && gamaPlaca === 'alta' && gen <= 12) {
-        gamaPlaca = 'media';
-        razonPlaca += ' → Baja a Media por ser Ultrabook/Nacional (hasta Gen 12)';
-      }
-
-      if (esNacional && gamaCarcasa === 'alta' && gen <= 12) {
-        // Excepción: si tiene táctil u OLED, se mantiene Alta
-        if (tactil || oled) {
-          razonCarcasa += ' (Ultrabook/Nacional, pero mantiene Alta por táctil/OLED)';
-        } else {
-          gamaCarcasa = 'media';
-          razonCarcasa += ' → Baja a Media por ser Ultrabook/Nacional (hasta Gen 12)';
-        }
-      }
-
-      // Mostrar badges
-      gclMostrarBadge('gcl-gama-placa', gamaPlaca);
-      gclMostrarBadge('gcl-gama-carcasa', gamaCarcasa);
+      // Badge único + costo + descripción amigable
+      gclMostrarBadge('gcl-gama-equipo', tier);
+      gclMostrarInfo(tier);
 
       // Detalle
       const marcaTexto = marca === 'intel' ? 'Intel' : 'AMD';
@@ -578,7 +510,6 @@
       if (gamer) extras.push('🎮 Gamer');
       if (tactil) extras.push('Táctil');
       if (oled) extras.push('OLED');
-      if (esNacional) extras.push('Ultrabook/Nacional');
 
       let equivLine = '';
       if (marca === 'amd') {
@@ -588,15 +519,11 @@
       document.getElementById('gcl-detalle-text').innerHTML =
         `<strong>${marcaTexto} ${modeloTexto} — ${genTexto}</strong>` +
         equivLine +
-        (extras.length ? `<br>${extras.join(' · ')}` : '') +
-        `<br><br>Placa Madre → <strong>${gclFormatGama(gamaPlaca)}</strong><br>Carcasa → <strong>${gclFormatGama(gamaCarcasa)}</strong>`;
+        (extras.length ? `<br>${extras.join(' · ')}` : '');
 
-      // Mostrar razón de clasificación
+      // Razón de clasificación
       document.getElementById('gcl-logic-explain').innerHTML =
-        `<div class="gcl-logic-tag">` +
-        `⚙️ Placa: ${razonPlaca}<br>` +
-        `💻 Carcasa: ${razonCarcasa}` +
-        `</div>`;
+        `<div class="gcl-logic-tag">💻 Clasificación: ${razon}</div>`;
 
       document.getElementById('gcl-results').classList.add('visible');
       document.getElementById('gcl-results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -609,7 +536,18 @@
     }
 
     function gclFormatGama(g) {
-      return { baja:'Gama Baja', media:'Gama Media', alta:'Gama Alta', premium:'Gamer / Premium' }[g] || g;
+      return { superbaja:'Super Baja', baja:'Gama Baja', media:'Gama Media', alta:'Gama Alta', premium:'Gamer / Premium' }[g] || g;
+    }
+
+    function gclToggleDetalle() {
+      document.getElementById('gcl-detalle-tecnico').classList.toggle('open');
+      document.getElementById('gcl-arrow-detalle').classList.toggle('open');
+    }
+
+    function gclMostrarInfo(tier) {
+      const info = gclInfoPorTier[tier];
+      document.getElementById('gcl-costo').textContent = `Costo estimado: ${info.costo}`;
+      document.getElementById('gcl-descripcion').textContent = info.descripcion;
     }
 
     function gclResetear() {
@@ -621,17 +559,15 @@
       document.getElementById('gcl-equiv-hint').innerHTML = '';
       document.getElementById('gcl-btn-gamer').style.display = 'none';
       document.getElementById('gcl-gpu-hint').style.display = 'none';
-      document.getElementById('gcl-origen-hint').style.display = 'none';
       document.querySelectorAll('.gcl-toggle').forEach(b => {
         b.classList.remove('active');
         b.classList.remove('active-premium');
       });
       Object.keys(gclToggles).forEach(k => gclToggles[k] = false);
-      // Restaurar "Marca reconocida" como default
-      gclToggles.marca = true;
-      document.getElementById('gcl-btn-marca').classList.add('active');
       document.getElementById('gcl-results').classList.remove('visible');
       document.getElementById('gcl-logic-explain').innerHTML = '';
+      document.getElementById('gcl-detalle-tecnico').classList.remove('open');
+      document.getElementById('gcl-arrow-detalle').classList.remove('open');
       document.getElementById('clasificador-gremio').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
