@@ -113,6 +113,19 @@
     ]
   }
   </script>
+  <style>
+    /* Ocultar la barra de scroll del carousel manteniendo el deslizamiento */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Zoom al pasar el mouse sobre la imagen del modal de producto */
+    #modal-img-main { transition: transform .25s ease; cursor: zoom-in; }
+    #modal-img-main:hover { transform: scale(1.8); }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
 
@@ -280,11 +293,20 @@
         </div>
         <a href="catalogo.html" class="hidden sm:inline-flex items-center gap-1.5 text-indigo-600 font-medium hover:text-indigo-700 transition-colors">Ver todo <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-h-[200px]">
-        <div class="col-span-full flex items-center justify-center py-12 text-gray-400">
-          <i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando productos...
+      <div class="relative">
+        <div id="featured-grid" class="no-scrollbar flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-5 min-h-[200px]">
+          <div class="w-full flex items-center justify-center py-12 text-gray-400">
+            <i class="fa-solid fa-spinner fa-spin text-2xl mr-3"></i> Cargando productos...
+          </div>
         </div>
+        <button id="featured-prev" type="button" aria-label="Producto anterior" class="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition-colors">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="featured-next" type="button" aria-label="Siguiente producto" class="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition-colors">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
+      <div id="featured-dots" class="flex justify-center gap-2 mt-4"></div>
       <div class="mt-8 text-center sm:hidden">
         <a href="catalogo.html" class="inline-flex items-center gap-1.5 text-indigo-600 font-medium">Ver todo el catálogo <i class="fa-solid fa-arrow-right"></i></a>
       </div>
@@ -534,7 +556,7 @@
     <div class="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
       <button id="modal-close" class="absolute top-3 right-3 z-10 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors touch-target"><i class="fa-solid fa-xmark text-xl"></i></button>
       <div class="grid md:grid-cols-2 gap-0">
-        <div class="relative bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8 min-h-[280px]">
+        <div class="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8 min-h-[280px]">
           <img id="modal-img-main" class="max-h-72 object-contain hidden" alt="Producto">
           <div id="modal-img-placeholder" class="hidden flex flex-col items-center justify-center">
             <i class="fa-solid fa-microchip text-6xl text-gray-300"></i>
@@ -552,7 +574,7 @@
           <p id="modal-subtitle" class="text-sm text-gray-500"></p>
           <p id="modal-brand" class="text-sm text-indigo-600 font-medium mt-1"></p>
           <div id="modal-specs" class="hidden grid grid-cols-2 gap-2 mt-4"></div>
-          <p id="modal-description" style="white-space:pre-line;" class="text-sm text-gray-600 mt-4"></p>
+          <p id="modal-description" style="white-space:pre-wrap;" class="text-sm text-gray-600 mt-4"></p>
           <div class="mt-5">
             <div id="modal-price-public" class="text-2xl font-bold text-indigo-600"></div>
             <div id="modal-price-guild" class="text-xl font-bold text-green-600"></div>

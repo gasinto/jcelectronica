@@ -11,13 +11,43 @@
   // Raw products fetched for the featured grid — used by the detail modal
   var featuredProducts = [];
 
+  // Interval del auto-carousel de destacados (null = detenido)
+  var featuredTimer = null;
+
   function formatPrice(n) {
     if (n === null || n === undefined || n === 0) return 'Consultar';
     return '$' + Number(n).toLocaleString('es-AR');
   }
 
+  // Origen de la API (sin la ruta /api/public) para resolver imágenes relativas.
+  function apiOrigin() {
+    var m = API.match(/^https?:\/\/[^/]+/);
+    return m ? m[0] : '';
+  }
+
+  // Extrae y normaliza la URL de un ítem de "imagenes": puede ser string,
+  // {url} o {imagen_url}. Las rutas relativas (p.ej. /static/uploads/...) se
+  // resuelven contra el origen de la API.
+  function imageUrlFromItem(item) {
+    var url = '';
+    if (typeof item === 'string') {
+      url = item.trim();
+    } else if (item && typeof item === 'object') {
+      url = String(item.url || item.imagen_url || '').trim();
+    }
+    if (url && url.charAt(0) === '/') {
+      var origin = apiOrigin();
+      if (origin) url = origin + url;
+    }
+    return url;
+  }
+
   function firstImage(p) {
-    if (Array.isArray(p.imagenes) && p.imagenes.length > 0) return p.imagenes[0];
+    var list = Array.isArray(p.imagenes) ? p.imagenes : [];
+    for (var i = 0; i < list.length; i++) {
+      var url = imageUrlFromItem(list[i]);
+      if (url) return url;
+    }
     return (window.JC_CONFIG && window.JC_CONFIG.DEFAULT_IMAGE) || '/img/logo.jpg';
   }
 
@@ -49,7 +79,7 @@
       featuredProducts = products;
 
       if (products.length === 0) {
-        grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">Aún no hay productos publicados. Consultanos por WhatsApp.</div>';
+        grid.innerHTML = '<div class="w-full text-center py-10 text-gray-400">Aún no hay productos publicados. Consultanos por WhatsApp.</div>';
         return;
       }
 
@@ -67,7 +97,7 @@
             : '<span class="absolute top-2 left-2 text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 text-red-700">vendido</span>';
 
         var img = firstImage(p);
-        return '<div class="product-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 flex flex-col" data-product-id="' + p.id + '">'
+        var card = '<div class="product-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 flex flex-col w-full h-full" data-product-id="' + p.id + '">'
           + '<div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">'
           + '<img src="' + img + '" alt="' + (p.nombre || '').replace(/"/g, '&quot;') + '" class="w-full h-full object-contain p-4" loading="lazy" onerror="this.onerror=null;this.src=\'' + ((window.JC_CONFIG && window.JC_CONFIG.DEFAULT_IMAGE) || '/img/logo.jpg') + '\'">'
           + estadoBadge
@@ -82,18 +112,118 @@
             ? '<button class="add-to-cart-btn flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-white bg-indigo-600 py-2 rounded-lg hover:bg-indigo-700 transition-colors" data-product-id="' + p.id + '" data-product-name="' + (p.nombre || '').replace(/'/g, "\\'") + '" data-product-price="' + (p.precio_publico || 0) + '" data-product-image="' + img + '"><i class="fa-solid fa-cart-plus"></i> Agregar</button>'
             : '')
           + '</div></div></div>';
+        return '<div class="snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[24%]">' + card + '</div>';
       }).join('');
+
+      initCarousel();
     } catch (err) {
       console.error('[HOME] Featured error:', err);
-      grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">No se pudieron cargar los productos.</div>';
+      grid.innerHTML = '<div class="w-full text-center py-10 text-gray-400">No se pudieron cargar los productos.</div>';
     }
+  }
+
+  // ─── Auto-carousel de destacados ──────────────────────────────────────────
+  function initCarousel() {
+    var track = document.getElementById('featured-grid');
+    if (!track) return;
+
+    var items = track.querySelectorAll('.product-card');
+    var count = items.length;
+    if (count <= 1) { stopAuto(); return; }
+
+    var dotsWrap = document.getElementById('featured-dots');
+
+    // Ancho de una tarjeta (se recalcula en cada acción, tolerante a resize).
+    function cardWidth() {
+      var card = track.querySelector('.product-card');
+      return card ? card.parentNode.offsetWidth : track.clientWidth;
+    }
+
+    // Puntos de navegación (uno por producto)
+    if (dotsWrap) {
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i < count; i++) {
+        (function (index) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (index === 0 ? 'bg-indigo-600' : 'bg-gray-300');
+          dot.setAttribute('aria-label', 'Ir al producto ' + (index + 1));
+          dot.addEventListener('click', function () {
+            track.scrollTo({ left: index * cardWidth(), behavior: 'smooth' });
+          });
+          dotsWrap.appendChild(dot);
+        })(i);
+      }
+    }
+
+    function updateDots() {
+      if (!dotsWrap || dotsWrap.children.length !== count) return;
+      var index = Math.round(track.scrollLeft / (cardWidth() || 1));
+      if (index > count - 1) index = count - 1;
+      if (index < 0) index = 0;
+      for (var j = 0; j < dotsWrap.children.length; j++) {
+        dotsWrap.children[j].className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (j === index ? 'bg-indigo-600' : 'bg-gray-300');
+      }
+    }
+
+    function scrollNext() {
+      var w = cardWidth();
+      var max = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= max - 4) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: w, behavior: 'smooth' });
+      }
+    }
+
+    function stopAuto() {
+      if (featuredTimer) {
+        clearInterval(featuredTimer);
+        featuredTimer = null;
+      }
+    }
+
+    function startAuto() {
+      if (featuredTimer) return;
+      featuredTimer = setInterval(scrollNext, 4000);
+    }
+
+    // Actualizar el punto activo al hacer scroll (manual, dots o flechas)
+    track.addEventListener('scroll', updateDots, { passive: true });
+
+    // Pausar al pasar el mouse o tocar; retomar al salir
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('touchstart', stopAuto, { passive: true });
+    track.addEventListener('touchend', startAuto);
+
+    // Flechas prev/next (solo visibles en sm+)
+    var prevBtn = document.getElementById('featured-prev');
+    var nextBtn = document.getElementById('featured-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () {
+      if (track.scrollLeft <= 4) {
+        track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+      }
+    });
+    if (nextBtn) nextBtn.addEventListener('click', scrollNext);
+
+    startAuto();
   }
 
   // ─── Product Detail Modal (featured) ──────────────────────────────────────
   // Mirrors catalog.js openModal but uses the raw API product fields.
   function normalizeProduct(p) {
     var images = Array.isArray(p.imagenes) ? p.imagenes : [];
-    var imageObjects = images.map(function (u) { return { url: u }; });
+    var imageObjects = [];
+    var firstUrl = '';
+    for (var i = 0; i < images.length; i++) {
+      var u = imageUrlFromItem(images[i]);
+      if (!u) continue;
+      if (!firstUrl) firstUrl = u;
+      imageObjects.push({ url: u });
+    }
     return {
       id: p.id,
       product_id: p.id,
@@ -107,7 +237,7 @@
       estado: p.estado || 'disponible',
       tipo: p.tipo || 'propio',
       condition: p.condition || '',
-      image_url: images.length > 0 ? images[0] : '',
+      image_url: firstUrl,
       images: imageObjects,
     };
   }

@@ -311,7 +311,7 @@
     // Description
     var descEl = document.getElementById('modal-description');
     descEl.textContent = product.description || '';
-    descEl.style.whiteSpace = 'pre-line';
+    descEl.style.whiteSpace = 'pre-wrap';
     descEl.style.display = product.description ? '' : 'none';
 
     // Price
