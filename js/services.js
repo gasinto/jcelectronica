@@ -37,13 +37,33 @@
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
+  // Línea que empieza con ## (o #/###) = título dentro del bloque.
+  // Corta la lista: se renderiza sin ✓ y destacada.
   function renderBloquesCondicion(descripcion) {
     var bloques = bloquesCondicion(descripcion);
     if (bloques.length === 0) return '';
-    return '<ul class="space-y-2">' + bloques.map(function (lineas) {
-      var texto = lineas.map(function (l) { return esc(l); }).join('<br>');
-      return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + mdInline(texto) + '</span></li>';
-    }).join('') + '</ul>';
+    var items = '';
+    bloques.forEach(function (lineas) {
+      var parrafo = [];
+      function volcar() {
+        if (parrafo.length === 0) return;
+        items += '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>'
+          + mdInline(parrafo.map(function (l) { return esc(l); }).join('<br>'))
+          + '</span></li>';
+        parrafo = [];
+      }
+      lineas.forEach(function (l) {
+        var titulo = l.match(/^#{1,3}\s+(.+)$/);
+        if (titulo) {
+          volcar();
+          items += '<li class="mt-3 mb-1"><span class="block text-base font-bold text-gray-900">' + mdInline(esc(titulo[1])) + '</span></li>';
+        } else {
+          parrafo.push(l);
+        }
+      });
+      volcar();
+    });
+    return items ? '<ul class="space-y-2">' + items + '</ul>' : '';
   }
 
   // ─── Condiciones de trabajo ───────────────────────────────────────────────
