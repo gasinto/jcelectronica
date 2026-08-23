@@ -21,6 +21,25 @@
   var imgPlaceholder = document.getElementById('pd-img-placeholder');
   var imgLetter = document.getElementById('pd-img-letter');
   var imgThumbs = document.getElementById('pd-img-thumbs');
+  var imgPrev = document.getElementById('pd-img-prev');
+  var imgNext = document.getElementById('pd-img-next');
+
+  // ─── Gallery carousel state ────────────────────────────────────────────────
+  var galleryImages = [];
+  var galleryIndex = 0;
+
+  function showImage(i) {
+    if (galleryImages.length === 0) return;
+    galleryIndex = (i + galleryImages.length) % galleryImages.length;
+    imgMain.src = galleryImages[galleryIndex];
+    imgThumbs.querySelectorAll('button').forEach(function (b, j) {
+      b.classList.toggle('border-indigo-500', j === galleryIndex);
+      b.classList.toggle('border-transparent', j !== galleryIndex);
+    });
+  }
+
+  if (imgPrev) imgPrev.addEventListener('click', function () { showImage(galleryIndex - 1); });
+  if (imgNext) imgNext.addEventListener('click', function () { showImage(galleryIndex + 1); });
 
   var estadoBadge = document.getElementById('pd-estado');
   var conditionBadge = document.getElementById('pd-condition');
@@ -107,31 +126,32 @@
     var images = Array.isArray(p.imagenes) ? p.imagenes : [];
 
     if (images.length > 0) {
+      galleryImages = images;
       imgMain.src = images[0];
       imgMain.alt = p.nombre;
       imgMain.classList.remove('hidden');
       imgPlaceholder.classList.add('hidden');
     } else {
+      galleryImages = [];
       imgMain.classList.add('hidden');
       imgPlaceholder.classList.remove('hidden');
       imgLetter.textContent = p.nombre.charAt(0).toUpperCase();
     }
 
-    if (images.length > 1) {
+    var hasMultiple = images.length > 1;
+    if (imgPrev) imgPrev.classList.toggle('hidden', !hasMultiple);
+    if (imgNext) imgNext.classList.toggle('hidden', !hasMultiple);
+
+    if (hasMultiple) {
+      galleryIndex = 0;
       imgThumbs.innerHTML = images.map(function (url, i) {
-        return '<button class="w-12 h-12 rounded-lg border-2 overflow-hidden ' + (i === 0 ? 'border-indigo-500' : 'border-transparent') + ' hover:border-indigo-300 transition-colors" data-index="' + i + '"><img src="' + url + '" class="w-full h-full object-cover" alt=""></button>';
+        return '<button class="w-12 h-12 rounded-lg border-2 overflow-hidden ' + (i === 0 ? 'border-indigo-500' : 'border-transparent') + ' hover:border-indigo-300 transition-colors" data-index="' + i + '" aria-label="Ver imagen ' + (i + 1) + '"><img src="' + url + '" class="w-full h-full object-cover" alt=""></button>';
       }).join('');
       imgThumbs.classList.remove('hidden');
 
       imgThumbs.querySelectorAll('button').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          imgMain.src = images[parseInt(btn.dataset.index, 10)];
-          imgThumbs.querySelectorAll('button').forEach(function (b) {
-            b.classList.remove('border-indigo-500');
-            b.classList.add('border-transparent');
-          });
-          btn.classList.remove('border-transparent');
-          btn.classList.add('border-indigo-500');
+          showImage(parseInt(btn.dataset.index, 10));
         });
       });
     } else {
