@@ -179,14 +179,17 @@
         ? '<span class="absolute top-2 right-2 text-xs font-medium px-2 py-0.5 rounded border ' + (conditionColors[p.condition] || 'bg-gray-100 text-gray-600 border-gray-200') + ' bg-white/90 backdrop-blur-sm">' + p.condition.replace('-', ' ') + '</span>'
         : '';
 
+      var detailHref = 'producto.html?id=' + p.id;
+      var nameAttr = p.name.replace(/"/g, '&quot;');
+
       return '<div class="product-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 flex flex-col cursor-pointer" data-product-id="' + p.id + '" data-price="' + p.price_public + '" data-price-guild="' + (p.price_gremio || '') + '" data-name="' + p.name.replace(/'/g, "\\'") + '">'
-        + '<div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">'
+        + '<a href="' + detailHref + '" target="_blank" rel="noopener" aria-label="Ver ' + nameAttr + '" class="block aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">'
         + imageHtml
         + '<span class="absolute top-2 left-2 text-xs font-semibold px-2.5 py-1 rounded-full ' + estadoBadge + '">' + p.estado + '</span>'
         + conditionBadge
-        + '</div>'
+        + '</a>'
         + '<div class="p-4 flex flex-col flex-1">'
-        + '<h3 class="font-semibold text-gray-800 text-sm leading-tight line-clamp-2">' + p.name + '</h3>'
+        + '<h3 class="font-semibold text-sm leading-tight line-clamp-2"><a href="' + detailHref + '" target="_blank" rel="noopener" class="text-gray-800 hover:text-indigo-600 transition-colors">' + p.name + '</a></h3>'
         + (p.subtitle ? '<p class="text-xs text-gray-400 mt-0.5 line-clamp-1">' + p.subtitle + '</p>' : '')
         + specsHtml
         + '<div class="mt-auto pt-3">' + priceHtml + '</div>'
