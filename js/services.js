@@ -17,6 +17,35 @@
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  // ─── Condiciones: parser de bloques + markdown inline ─────────────────────
+  // Una LÍNEA EN BLANCO separa condiciones. Un ENTER simple dentro del
+  // bloque se conserva como salto de línea (<br>). **negrita** y *cursiva*
+  // se aplican sobre texto ya escapado (seguro).
+  function bloquesCondicion(descripcion) {
+    return String(descripcion || '')
+      .split(/\n[ \t]*\n/)
+      .map(function (b) {
+        return b.split('\n').map(function (l) { return l.trim(); })
+                .filter(function (l) { return l.length > 0; });
+      })
+      .filter(function (lineas) { return lineas.length > 0; });
+  }
+
+  function mdInline(s) {
+    return s
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  }
+
+  function renderBloquesCondicion(descripcion) {
+    var bloques = bloquesCondicion(descripcion);
+    if (bloques.length === 0) return '';
+    return '<ul class="space-y-2">' + bloques.map(function (lineas) {
+      var texto = lineas.map(function (l) { return esc(l); }).join('<br>');
+      return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + mdInline(texto) + '</span></li>';
+    }).join('') + '</ul>';
+  }
+
   // ─── Condiciones de trabajo ───────────────────────────────────────────────
   async function loadCondiciones() {
     var list = document.getElementById('condiciones-list');
@@ -30,12 +59,7 @@
       }
       list.innerHTML = data.map(function (c) {
         var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
-        var lineas = String(c.descripcion || '').split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
-        var cuerpo = lineas.length > 0
-          ? '<ul class="space-y-2">' + lineas.map(function (l) {
-              return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + esc(l) + '</span></li>';
-            }).join('') + '</ul>'
-          : '<div class="text-gray-700 leading-relaxed">' + esc(c.descripcion || '') + '</div>';
+        var cuerpo = renderBloquesCondicion(c.descripcion);
         return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
           + '<div class="flex items-start gap-4">'
           + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
@@ -191,12 +215,7 @@
       }
       list.innerHTML = data.map(function (c) {
         var icono = (c.nombre || '').toLowerCase().indexOf('garant') !== -1 ? '🛡️' : '📋';
-        var lineas = String(c.descripcion || '').split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
-        var cuerpo = lineas.length > 0
-          ? '<ul class="space-y-2">' + lineas.map(function (l) {
-              return '<li class="flex items-start gap-2 text-gray-700 leading-relaxed"><span class="text-indigo-600 font-bold mt-0.5 shrink-0">✓</span><span>' + esc(l) + '</span></li>';
-            }).join('') + '</ul>'
-          : '<div class="text-gray-700 leading-relaxed">' + esc(c.descripcion || '') + '</div>';
+        var cuerpo = renderBloquesCondicion(c.descripcion);
         return '<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">'
           + '<div class="flex items-start gap-4">'
           + '<div class="text-3xl shrink-0 mt-1">' + icono + '</div>'
